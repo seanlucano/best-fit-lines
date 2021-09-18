@@ -13,7 +13,7 @@
 	import regressionLineStore from '../stores/regressionLineStore';
 	import userLineStore from '../stores/userLineStore.js'
 
-	import Circle from './Circle.svelte';
+	import Circles from './Circles.svelte';
 	import Axis from './Axis.svelte';
 	import RegressionLine from './RegressionLine.svelte';
 	import UserLine from './UserLine.svelte';
