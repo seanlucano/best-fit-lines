@@ -1,13 +1,13 @@
 var ghpages = require('gh-pages');
 
 ghpages.publish(
-    'public', // path to public directory
+    'public',
     {
-        branch: 'gh-pages',
-        repo: 'https://github.com/username/yourproject.git', // Update to point to your repository  
+        branch: 'main',
+        repo: 'https://github.com/seanlucano/best-fit-lines.git',
         user: {
-            name: 'Your name', // update to use your name
-            email: 'Your Email address' // Update to use your email
+            name: 'seanlucano', // update to use your name
+            email: 'seanlucano@gmail.com' // Update to use your email
         }
     },
     () => {
