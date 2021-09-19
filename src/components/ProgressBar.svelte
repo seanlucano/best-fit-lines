@@ -4,10 +4,10 @@ import { cubicOut } from 'svelte/easing';
 import { scale } from 'svelte/transition';
 import { createEventDispatcher } from 'svelte';
 
+import { sequence, counter } from '../stores/sequence.js'
 export let currentStep= 0;
-export let steps = [];
 
-const circleWidth = 20;
+const steps = sequence;
 
 const progress = tweened(0, {
 		duration: 400,
@@ -16,6 +16,12 @@ const progress = tweened(0, {
 
 $: $progress = (currentStep / (steps.length - 1));
 
+const circleWidth = 20;
+
+
+const setCounter = (event) => {
+		$counter = Number(event.target.id);
+	}
 
 </script>
 
@@ -28,7 +34,7 @@ $: $progress = (currentStep / (steps.length - 1));
     <ol>
         <progress value={$progress}></progress>
         {#each steps as step, i}
-            <li on:click  id='{i}' class:completed={i < currentStep} class:current={i === currentStep} style='width:{circleWidth}px'>
+            <li on:click={setCounter}  id='{i}' class:completed={i < currentStep} class:current={i === currentStep} style='width:{circleWidth}px'>
                     {#if i < currentStep }
                         <i transition:scale id={i} class="material-icons-round">done</i>
                     {/if}

@@ -8,6 +8,9 @@
 	import * as easings from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	
+	import { sequence, counter } from '../stores/sequence.js'
+	// export let counter;
+
 	import points from '../stores/data.js';
 	import member from '../stores/member.js';
 	import regressionLineStore from '../stores/regressionLineStore';
@@ -20,19 +23,31 @@
 	import Control from './Control.svelte';
 	import Residuals from './Residuals.svelte';
 
-	export let showPoints = false;
-	export let showUserLine = false;
-	export let showRegressionLine = false;
-	export let focusPoints = false;
+	// export let showPoints = false;
+	// export let showUserLine = false;
+	// export let showRegressionLine = false;
+	// export let focusPoints = false;
 	
-	export let showUserLineControls = false;
-	export let showRegressionLineControls = false;
+	// export let showUserLineControls = false;
+	// export let showRegressionLineControls = false;
 
-	export let showRegressionResiduals = true;
-	export let showUserResiduals = true;
-	export let showUserResidualLengths = false;
-	export let showRegressionResidualLengths = false;
+	// export let showRegressionResiduals = true;
+	// export let showUserResiduals = true;
+	// export let showUserResidualLengths = false;
+	// export let showRegressionResidualLengths = false;
 	
+	$:({
+		showPoints, 
+		showUserLine, 
+		showRegressionLine, 
+		showUserLineControls, 
+		showRegressionLineControls, 
+		showRegressionResiduals, 
+		showUserResiduals
+	} = sequence[$counter])
+
+
+	console.log(showPoints);
 	//userNavLogic
 
 	function controlToggle(event) {

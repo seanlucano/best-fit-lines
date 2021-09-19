@@ -1,10 +1,10 @@
 <script>
 	import { fade, slide, scale, fly } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
-	import Button from '../shared/Button.svelte'
+	import Button from '../shared/Button.svelte';
+	import { sequence, counter } from '../stores/sequence.js';
 	
-	export let counter;
-	export let sequence;
+	// export let counter;
 
 	const dispatch = createEventDispatcher();
 	
@@ -31,20 +31,20 @@
 
 </script>
 
-{#key counter}
+{#key $counter}
 	<div id='title' in:fade>
-		<h2>{sequence[counter].title}</h2>
+		<h2>{sequence[$counter].title}</h2>
 	</div>
 	<div in:fade id='text'>
-		{@html sequence[counter].prompt}	
+		{@html sequence[$counter].prompt}	
 	</div>
 	<div in:fade id='cta'>
-		{@html sequence[counter].cta}	
+		{@html sequence[$counter].cta}	
 	</div>
 	<div id='quiz'>
-		{#if sequence[counter].quiz}
+		{#if sequence[$counter].quiz}
 			<form on:submit|preventDefault={onSubmit}>
-				{#each sequence[counter].quiz.questions as question, i}
+				{#each sequence[$counter].quiz.questions as question, i}
 					<label> 
 						<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
 						{question}
@@ -57,7 +57,7 @@
 				</div>
 				<div class='feedback'>
 					{#if showFeedback}
-					{@html sequence[counter].quiz.feedback}
+					{@html sequence[$counter].quiz.feedback}
 						<!-- <Button 
 						type='reset'
 						on:click={onReset}
