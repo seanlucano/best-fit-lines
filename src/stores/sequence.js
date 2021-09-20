@@ -53,7 +53,7 @@ export const sequence = [
         showRegressionLine: true,
         showUserLineControls: true,
         showRegressionLineControls: true,
-        showRegressionResiduals: true,
+        showRegressionLineResiduals: true,
         showUserLineResiduals: true
     },
     {	title: 'Residuals',

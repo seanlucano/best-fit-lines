@@ -1445,7 +1445,7 @@ var app = (function () {
             showRegressionLine: true,
             showUserLineControls: true,
             showRegressionLineControls: true,
-            showRegressionResiduals: true,
+            showRegressionLineResiduals: true,
             showUserLineResiduals: true
         },
         {	title: 'Residuals',
