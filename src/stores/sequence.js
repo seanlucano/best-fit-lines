@@ -47,8 +47,14 @@ export const sequence = [
     },
     {	title: 'What makes a best-fit line, best?',
         prompt:`<p>To find out, we'll need to draw a verticle line from each point on the plot to our best fit line. These verticle lines are called <strong>residuals</strong>.</p>`,	
-         cta: `<strong>Use the switch to turn the residuals on!</strong>`,
-        
+        cta: `<strong>Use the switch to turn the residuals on!</strong>`,
+        showPoints: true,
+        showUserLine: true,
+        showRegressionLine: true,
+        showUserLineControls: true,
+        showRegressionLineControls: true,
+        showRegressionResiduals: true,
+        showUserLineResiduals: true
     },
     {	title: 'Residuals',
         prompt:`<p>On the chart, we're now seeing the length of each residual.</p>
