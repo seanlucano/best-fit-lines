@@ -1,6 +1,7 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import userLineStore from '../stores/userLineStore.js'
+	import { fade } from 'svelte/transition';
 
 	export let xScale;
 	export let yScale;
@@ -55,14 +56,14 @@
 
 </script>
 
-<line  
+<line transition:fade
 	x1='{xScale(x1)}'
 	y1='{yScale(y1)}'
 	x2='{xScale(x2)}'
 	y2='{yScale(y2)}'
 ></line>
 
-<circle 
+<circle transition:fade
 	id="1"
 	on:mousedown={(e) => handleMouseDown(e)}
 	cx='{xScale(x1)}'
@@ -71,7 +72,7 @@
 	>
 </circle>
 
-<circle 
+<circle transition:fade
 	id="2"
 	on:mousedown={(e) => handleMouseDown(e)}
 	cx='{xScale(x2)}'

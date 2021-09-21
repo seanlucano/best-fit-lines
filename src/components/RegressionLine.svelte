@@ -1,4 +1,6 @@
 <script>
+	import { fade } from 'svelte/transition';
+	
 	import regressionLineStore from '../stores/regressionLineStore';
 
 	export let xScale;
@@ -10,7 +12,7 @@
 
 </script>
 
-<line 
+<line transition:fade
 	transform={translate} 
 	x1='{xScale($regressionLineStore[0][0])}' 
 	x2='{xScale($regressionLineStore[1][0])}' 
