@@ -7,24 +7,8 @@
 	export let yScale;
 	export let svg;
 
-	
-	let width = 15;
-	let height = 15;
 	let r = 10;
 	
-	// locally store userLine vales and destructure for rendering
-	let userLine;
-	$: ({x1, y1, x2, y2} = userLine);
-	
-	// subscribe and unsub to the userLine data store
-	const unsub = userLineStore.subscribe(data => {
-		userLine = data;
-	});
-	onDestroy( () => {
-		unsub();
-	});
-	
-
 	// boolean for knowing when to move the handles during drag events
 	let dragging = false;
 	// keeps track of which handle shoudl be moved
@@ -56,17 +40,17 @@
 </script>
 
 <line transition:fade
-	x1='{xScale(x1)}'
-	y1='{yScale(y1)}'
-	x2='{xScale(x2)}'
-	y2='{yScale(y2)}'
+	x1='{xScale($userLineStore.x1)}'
+	y1='{yScale($userLineStore.y1)}'
+	x2='{xScale($userLineStore.x2)}'
+	y2='{yScale($userLineStore.y2)}'
 ></line>
 
 <circle transition:fade
 	id="1"
 	on:mousedown={(e) => handleMouseDown(e)}
-	cx='{xScale(x1)}'
-	cy='{yScale(y1)}'
+	cx='{xScale($userLineStore.x1)}'
+	cy='{yScale($userLineStore.y1)}'
 	{r}
 	>
 </circle>
@@ -74,8 +58,8 @@
 <circle transition:fade
 	id="2"
 	on:mousedown={(e) => handleMouseDown(e)}
-	cx='{xScale(x2)}'
-	cy='{yScale(y2)}'
+	cx='{xScale($userLineStore.x2)}'
+	cy='{yScale($userLineStore.y2)}'
 	{r}
 	>
 </circle>
