@@ -28,7 +28,6 @@
             y2={yScale(predict(x))}
 	        stroke-width={strokeWidth}
             stroke-dasharray={strokeDasharray}
-            {stroke}
             {opacity}
             id={i}
         >

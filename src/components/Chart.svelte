@@ -239,4 +239,8 @@
 	.regressionLine {
 		stroke: var(--secondary);
 	}
+
+	.userLine {
+		stroke: var(--primary)
+	}
 </style>

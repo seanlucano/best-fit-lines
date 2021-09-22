@@ -6794,8 +6794,7 @@ var app = (function () {
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[4](/*x*/ ctx[7])));
     			attr_dev(line, "stroke-width", strokeWidth);
     			attr_dev(line, "stroke-dasharray", strokeDasharray);
-    			attr_dev(line, "stroke", /*stroke*/ ctx[5]);
-    			attr_dev(line, "opacity", /*opacity*/ ctx[6]);
+    			attr_dev(line, "opacity", /*opacity*/ ctx[5]);
     			attr_dev(line, "id", /*i*/ ctx[10]);
     			add_location(line, file$4, 22, 8, 383);
     		},
@@ -6874,7 +6873,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*xScale, points, yScale, predict, strokeWidth, strokeDasharray, stroke, opacity, highlight*/ 123) {
+    			if (dirty & /*xScale, points, yScale, predict, strokeWidth, strokeDasharray, opacity, highlight*/ 59) {
     				each_value = /*points*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
@@ -6971,15 +6970,15 @@ var app = (function () {
     		if ('groupId' in $$props) $$invalidate(2, groupId = $$props.groupId);
     		if ('points' in $$props) $$invalidate(3, points = $$props.points);
     		if ('predict' in $$props) $$invalidate(4, predict = $$props.predict);
-    		if ('stroke' in $$props) $$invalidate(5, stroke = $$props.stroke);
-    		if ('opacity' in $$props) $$invalidate(6, opacity = $$props.opacity);
+    		if ('stroke' in $$props) stroke = $$props.stroke;
+    		if ('opacity' in $$props) $$invalidate(5, opacity = $$props.opacity);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [xScale, yScale, groupId, points, predict, stroke, opacity];
+    	return [xScale, yScale, groupId, points, predict, opacity];
     }
 
     class Residuals extends SvelteComponentDev {
@@ -7952,7 +7951,7 @@ var app = (function () {
     			g4 = svg_element("g");
     			if (if_block4) if_block4.c();
     			attr_dev(div0, "id", "controls");
-    			attr_dev(div0, "class", "svelte-c5qqu5");
+    			attr_dev(div0, "class", "svelte-1vh4hm0");
     			add_location(div0, file$3, 105, 0, 2420);
     			attr_dev(g0, "class", "axis y-axis");
     			add_location(g0, file$3, 138, 2, 3202);
@@ -7960,14 +7959,14 @@ var app = (function () {
     			add_location(g1, file$3, 145, 2, 3443);
     			attr_dev(g2, "class", "points");
     			add_location(g2, file$3, 151, 2, 3687);
-    			attr_dev(g3, "class", "regressionLine svelte-c5qqu5");
+    			attr_dev(g3, "class", "regressionLine svelte-1vh4hm0");
     			add_location(g3, file$3, 165, 2, 3896);
-    			attr_dev(g4, "class", "userLine");
+    			attr_dev(g4, "class", "userLine svelte-1vh4hm0");
     			add_location(g4, file$3, 180, 2, 4230);
-    			attr_dev(svg_1, "class", "svelte-c5qqu5");
+    			attr_dev(svg_1, "class", "svelte-1vh4hm0");
     			add_location(svg_1, file$3, 136, 1, 3175);
     			attr_dev(div1, "id", "chart");
-    			attr_dev(div1, "class", "svelte-c5qqu5");
+    			attr_dev(div1, "class", "svelte-1vh4hm0");
     			add_location(div1, file$3, 134, 0, 3155);
     		},
     		l: function claim(nodes) {
