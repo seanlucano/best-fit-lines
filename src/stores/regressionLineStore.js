@@ -1,5 +1,5 @@
 import { regressionLinear } from 'd3-regression';
-import { derived} from 'svelte/store';
+import { derived } from 'svelte/store';
 
 import points from './data.js';
 import member from './member.js';

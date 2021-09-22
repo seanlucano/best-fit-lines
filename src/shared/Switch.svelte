@@ -94,7 +94,7 @@
     input:disabled + .disabled:before {
         background-color: #e3e6e8;
         box-shadow: 0px 0px 0px white;
-        pointer: none;
+        cursor: not-allowed;
     }
 
 

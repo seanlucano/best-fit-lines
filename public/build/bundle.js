@@ -5983,12 +5983,12 @@ var app = (function () {
     			span = element("span");
     			attr_dev(input, "type", "checkbox");
     			input.disabled = /*disabled*/ ctx[1];
-    			attr_dev(input, "class", "svelte-on5tp0");
+    			attr_dev(input, "class", "svelte-14w7w51");
     			add_location(input, file$6, 9, 4, 148);
-    			attr_dev(span, "class", span_class_value = "slider " + /*color*/ ctx[2] + " svelte-on5tp0");
+    			attr_dev(span, "class", span_class_value = "slider " + /*color*/ ctx[2] + " svelte-14w7w51");
     			toggle_class(span, "disabled", /*disabled*/ ctx[1]);
     			add_location(span, file$6, 10, 4, 219);
-    			attr_dev(label, "class", "switch svelte-on5tp0");
+    			attr_dev(label, "class", "switch svelte-14w7w51");
     			add_location(label, file$6, 8, 0, 121);
     		},
     		l: function claim(nodes) {
@@ -6015,7 +6015,7 @@ var app = (function () {
     				input.checked = /*checked*/ ctx[0];
     			}
 
-    			if (dirty & /*color*/ 4 && span_class_value !== (span_class_value = "slider " + /*color*/ ctx[2] + " svelte-on5tp0")) {
+    			if (dirty & /*color*/ 4 && span_class_value !== (span_class_value = "slider " + /*color*/ ctx[2] + " svelte-14w7w51")) {
     				attr_dev(span, "class", span_class_value);
     			}
 
