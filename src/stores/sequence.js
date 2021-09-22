@@ -14,7 +14,9 @@ export const sequence = [
             feedback: `Low values for X tend to correspond to low values for Y.`
         },	
         showPoints: true,
-        
+        showUserLineControls: true,
+        showRegressionLineControls: true,
+        showResidualControls: true
     },
     {	
         title: 'Imagine a line',
@@ -23,7 +25,7 @@ export const sequence = [
          cta: `<strong>Turn on the "Your Line" switch and try and place your line using the circle handles. Click 'Next' when you're happy with your line.</strong>`,
         showPoints: true,
         showUserLineControls: true,
-        showRegressionLineControls: true,
+        showRegressionLineControls: true
     },
     {	
         title: 'Time to compare',

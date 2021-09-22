@@ -1125,17 +1125,16 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	const default_slot_template = /*#slots*/ ctx[5].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[4], null);
+    	const default_slot_template = /*#slots*/ ctx[4].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
 
     	const block = {
     		c: function create() {
     			button = element("button");
     			if (default_slot) default_slot.c();
-    			button.disabled = /*disabled*/ ctx[2];
+    			button.disabled = /*disabled*/ ctx[1];
     			attr_dev(button, "class", button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-wywqo"));
-    			toggle_class(button, "flat", /*flat*/ ctx[1]);
-    			add_location(button, file$e, 9, 0, 128);
+    			add_location(button, file$e, 8, 0, 102);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1150,36 +1149,32 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", self$1(/*click_handler*/ ctx[6]), false, false, false);
+    				dispose = listen_dev(button, "click", self$1(/*click_handler*/ ctx[5]), false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
     			if (default_slot) {
-    				if (default_slot.p && (!current || dirty & /*$$scope*/ 16)) {
+    				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
     					update_slot_base(
     						default_slot,
     						default_slot_template,
     						ctx,
-    						/*$$scope*/ ctx[4],
+    						/*$$scope*/ ctx[3],
     						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[4])
-    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[4], dirty, null),
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
     						null
     					);
     				}
     			}
 
-    			if (!current || dirty & /*disabled*/ 4) {
-    				prop_dev(button, "disabled", /*disabled*/ ctx[2]);
+    			if (!current || dirty & /*disabled*/ 2) {
+    				prop_dev(button, "disabled", /*disabled*/ ctx[1]);
     			}
 
     			if (!current || dirty & /*color*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-wywqo"))) {
     				attr_dev(button, "class", button_class_value);
-    			}
-
-    			if (dirty & /*color, flat*/ 3) {
-    				toggle_class(button, "flat", /*flat*/ ctx[1]);
     			}
     		},
     		i: function intro(local) {
@@ -1214,10 +1209,9 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Button', slots, ['default']);
     	let { color = 'primary' } = $$props;
-    	let { flat = false } = $$props;
     	let { disabled = false } = $$props;
     	let { type } = $$props;
-    	const writable_props = ['color', 'flat', 'disabled', 'type'];
+    	const writable_props = ['color', 'disabled', 'type'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Button> was created with unknown prop '${key}'`);
@@ -1229,32 +1223,30 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('color' in $$props) $$invalidate(0, color = $$props.color);
-    		if ('flat' in $$props) $$invalidate(1, flat = $$props.flat);
-    		if ('disabled' in $$props) $$invalidate(2, disabled = $$props.disabled);
-    		if ('type' in $$props) $$invalidate(3, type = $$props.type);
-    		if ('$$scope' in $$props) $$invalidate(4, $$scope = $$props.$$scope);
+    		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
+    		if ('type' in $$props) $$invalidate(2, type = $$props.type);
+    		if ('$$scope' in $$props) $$invalidate(3, $$scope = $$props.$$scope);
     	};
 
-    	$$self.$capture_state = () => ({ color, flat, disabled, type });
+    	$$self.$capture_state = () => ({ color, disabled, type });
 
     	$$self.$inject_state = $$props => {
     		if ('color' in $$props) $$invalidate(0, color = $$props.color);
-    		if ('flat' in $$props) $$invalidate(1, flat = $$props.flat);
-    		if ('disabled' in $$props) $$invalidate(2, disabled = $$props.disabled);
-    		if ('type' in $$props) $$invalidate(3, type = $$props.type);
+    		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
+    		if ('type' in $$props) $$invalidate(2, type = $$props.type);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [color, flat, disabled, type, $$scope, slots, click_handler];
+    	return [color, disabled, type, $$scope, slots, click_handler];
     }
 
     class Button extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$e, create_fragment$e, safe_not_equal, { color: 0, flat: 1, disabled: 2, type: 3 });
+    		init(this, options, instance$e, create_fragment$e, safe_not_equal, { color: 0, disabled: 1, type: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1266,7 +1258,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*type*/ ctx[3] === undefined && !('type' in props)) {
+    		if (/*type*/ ctx[2] === undefined && !('type' in props)) {
     			console.warn("<Button> was created without expected prop 'type'");
     		}
     	}
@@ -1276,14 +1268,6 @@ var app = (function () {
     	}
 
     	set color(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get flat() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set flat(value) {
     		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -1417,7 +1401,9 @@ var app = (function () {
                 feedback: `Low values for X tend to correspond to low values for Y.`
             },	
             showPoints: true,
-            
+            showUserLineControls: true,
+            showRegressionLineControls: true,
+            showResidualControls: true
         },
         {	
             title: 'Imagine a line',
@@ -1426,7 +1412,7 @@ var app = (function () {
              cta: `<strong>Turn on the "Your Line" switch and try and place your line using the circle handles. Click 'Next' when you're happy with your line.</strong>`,
             showPoints: true,
             showUserLineControls: true,
-            showRegressionLineControls: true,
+            showRegressionLineControls: true
         },
         {	
             title: 'Time to compare',
@@ -1509,8 +1495,8 @@ var app = (function () {
     		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
     	}
 
-    	let if_block0 = /*showSubmit*/ ctx[0] && create_if_block_2$1(ctx);
-    	let if_block1 = /*showFeedback*/ ctx[1] && create_if_block_1$2(ctx);
+    	let if_block0 = /*showSubmit*/ ctx[0] && create_if_block_2$2(ctx);
+    	let if_block1 = /*showFeedback*/ ctx[1] && create_if_block_1$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -1526,10 +1512,10 @@ var app = (function () {
     			t1 = space();
     			div1 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "submit svelte-9otfw5");
+    			attr_dev(div0, "class", "submit svelte-1fcyel0");
     			add_location(div0, file$d, 52, 4, 1178);
-    			attr_dev(div1, "class", "feedback svelte-9otfw5");
-    			add_location(div1, file$d, 57, 4, 1310);
+    			attr_dev(div1, "class", "feedback svelte-1fcyel0");
+    			add_location(div1, file$d, 57, 4, 1306);
     			add_location(form, file$d, 45, 3, 938);
     		},
     		m: function mount(target, anchor) {
@@ -1583,7 +1569,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0 = create_if_block_2$2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div0, null);
@@ -1602,7 +1588,7 @@ var app = (function () {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block_1$2(ctx);
+    					if_block1 = create_if_block_1$3(ctx);
     					if_block1.c();
     					if_block1.m(div1, null);
     				}
@@ -1661,10 +1647,10 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = /*i*/ ctx[12];
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-9otfw5");
+    			attr_dev(input, "class", "svelte-1fcyel0");
     			/*$$binding_groups*/ ctx[6][0].push(input);
     			add_location(input, file$d, 48, 6, 1062);
-    			attr_dev(label, "class", "svelte-9otfw5");
+    			attr_dev(label, "class", "svelte-1fcyel0");
     			add_location(label, file$d, 47, 5, 1047);
     		},
     		m: function mount(target, anchor) {
@@ -1706,14 +1692,14 @@ var app = (function () {
     }
 
     // (54:5) {#if showSubmit}
-    function create_if_block_2$1(ctx) {
+    function create_if_block_2$2(ctx) {
     	let button;
     	let current;
 
     	button = new Button({
     			props: {
     				type: "submit",
-    				_class: "secondary",
+    				color: "accent",
     				$$slots: { default: [create_default_slot$3] },
     				$$scope: { ctx }
     			},
@@ -1744,7 +1730,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$1.name,
+    		id: create_if_block_2$2.name,
     		type: "if",
     		source: "(54:5) {#if showSubmit}",
     		ctx
@@ -1753,7 +1739,7 @@ var app = (function () {
     	return block;
     }
 
-    // (55:6) <Button type='submit' _class='secondary'>
+    // (55:6) <Button type='submit' color='accent'>
     function create_default_slot$3(ctx) {
     	let t;
 
@@ -1773,7 +1759,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(55:6) <Button type='submit' _class='secondary'>",
+    		source: "(55:6) <Button type='submit' color='accent'>",
     		ctx
     	});
 
@@ -1781,7 +1767,7 @@ var app = (function () {
     }
 
     // (59:5) {#if showFeedback}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_1$3(ctx) {
     	let html_tag;
     	let raw_value = sequence[/*$counter*/ ctx[3]].quiz.feedback + "";
     	let html_anchor;
@@ -1807,7 +1793,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_1$3.name,
     		type: "if",
     		source: "(59:5) {#if showFeedback}",
     		ctx
@@ -1850,16 +1836,16 @@ var app = (function () {
     			if (if_block) if_block.c();
     			add_location(h2, file$d, 35, 2, 706);
     			attr_dev(div0, "id", "title");
-    			attr_dev(div0, "class", "svelte-9otfw5");
+    			attr_dev(div0, "class", "svelte-1fcyel0");
     			add_location(div0, file$d, 34, 1, 679);
     			attr_dev(div1, "id", "text");
-    			attr_dev(div1, "class", "svelte-9otfw5");
+    			attr_dev(div1, "class", "svelte-1fcyel0");
     			add_location(div1, file$d, 37, 1, 751);
     			attr_dev(div2, "id", "cta");
-    			attr_dev(div2, "class", "svelte-9otfw5");
+    			attr_dev(div2, "class", "svelte-1fcyel0");
     			add_location(div2, file$d, 40, 1, 821);
     			attr_dev(div3, "id", "quiz");
-    			attr_dev(div3, "class", "svelte-9otfw5");
+    			attr_dev(div3, "class", "svelte-1fcyel0");
     			add_location(div3, file$d, 43, 1, 887);
     		},
     		m: function mount(target, anchor) {
@@ -2112,7 +2098,7 @@ var app = (function () {
     const file$c = "src/components/UserNav.svelte";
 
     // (10:1) {#if $counter > 0}
-    function create_if_block_1$1(ctx) {
+    function create_if_block_1$2(ctx) {
     	let button;
     	let current;
 
@@ -2160,7 +2146,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$1.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
     		source: "(10:1) {#if $counter > 0}",
     		ctx
@@ -2285,7 +2271,7 @@ var app = (function () {
     	let section;
     	let t;
     	let current;
-    	let if_block0 = /*$counter*/ ctx[0] > 0 && create_if_block_1$1(ctx);
+    	let if_block0 = /*$counter*/ ctx[0] > 0 && create_if_block_1$2(ctx);
     	let if_block1 = /*$counter*/ ctx[0] < sequence.length - 1 && create_if_block$4(ctx);
 
     	const block = {
@@ -2316,7 +2302,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_1$1(ctx);
+    					if_block0 = create_if_block_1$2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(section, t);
@@ -5996,12 +5982,14 @@ var app = (function () {
     			t = space();
     			span = element("span");
     			attr_dev(input, "type", "checkbox");
-    			attr_dev(input, "class", "svelte-192gl13");
-    			add_location(input, file$6, 8, 4, 115);
-    			attr_dev(span, "class", span_class_value = "slider " + /*color*/ ctx[1] + " svelte-192gl13");
-    			add_location(span, file$6, 9, 4, 166);
-    			attr_dev(label, "class", "switch svelte-192gl13");
-    			add_location(label, file$6, 7, 0, 88);
+    			input.disabled = /*disabled*/ ctx[1];
+    			attr_dev(input, "class", "svelte-on5tp0");
+    			add_location(input, file$6, 9, 4, 148);
+    			attr_dev(span, "class", span_class_value = "slider " + /*color*/ ctx[2] + " svelte-on5tp0");
+    			toggle_class(span, "disabled", /*disabled*/ ctx[1]);
+    			add_location(span, file$6, 10, 4, 219);
+    			attr_dev(label, "class", "switch svelte-on5tp0");
+    			add_location(label, file$6, 8, 0, 121);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -6014,17 +6002,25 @@ var app = (function () {
     			append_dev(label, span);
 
     			if (!mounted) {
-    				dispose = listen_dev(input, "change", /*input_change_handler*/ ctx[2]);
+    				dispose = listen_dev(input, "change", /*input_change_handler*/ ctx[3]);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*disabled*/ 2) {
+    				prop_dev(input, "disabled", /*disabled*/ ctx[1]);
+    			}
+
     			if (dirty & /*checked*/ 1) {
     				input.checked = /*checked*/ ctx[0];
     			}
 
-    			if (dirty & /*color*/ 2 && span_class_value !== (span_class_value = "slider " + /*color*/ ctx[1] + " svelte-192gl13")) {
+    			if (dirty & /*color*/ 4 && span_class_value !== (span_class_value = "slider " + /*color*/ ctx[2] + " svelte-on5tp0")) {
     				attr_dev(span, "class", span_class_value);
+    			}
+
+    			if (dirty & /*color, disabled*/ 6) {
+    				toggle_class(span, "disabled", /*disabled*/ ctx[1]);
     			}
     		},
     		i: noop,
@@ -6051,8 +6047,9 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Switch', slots, []);
     	let { checked = false } = $$props;
+    	let { disabled = false } = $$props;
     	let { color = 'primary' } = $$props;
-    	const writable_props = ['checked', 'color'];
+    	const writable_props = ['checked', 'disabled', 'color'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Switch> was created with unknown prop '${key}'`);
@@ -6065,27 +6062,29 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(1, color = $$props.color);
+    		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
+    		if ('color' in $$props) $$invalidate(2, color = $$props.color);
     	};
 
-    	$$self.$capture_state = () => ({ checked, color });
+    	$$self.$capture_state = () => ({ checked, disabled, color });
 
     	$$self.$inject_state = $$props => {
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(1, color = $$props.color);
+    		if ('disabled' in $$props) $$invalidate(1, disabled = $$props.disabled);
+    		if ('color' in $$props) $$invalidate(2, color = $$props.color);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [checked, color, input_change_handler];
+    	return [checked, disabled, color, input_change_handler];
     }
 
     class Switch extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { checked: 0, color: 1 });
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { checked: 0, disabled: 1, color: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -6103,6 +6102,14 @@ var app = (function () {
     		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
+    	get disabled() {
+    		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set disabled(value) {
+    		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
     	get color() {
     		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
@@ -6115,19 +6122,19 @@ var app = (function () {
     /* src/components/Control.svelte generated by Svelte v3.42.6 */
     const file$5 = "src/components/Control.svelte";
 
-    // (34:2) {#if checked}
-    function create_if_block$2(ctx) {
+    // (34:4) {#if checked}
+    function create_if_block_2$1(ctx) {
     	let span0;
     	let t0;
     	let strong0;
-    	let t1_value = /*slope*/ ctx[3].toFixed(2) + "";
+    	let t1_value = /*slope*/ ctx[6].toFixed(2) + "";
     	let t1;
     	let span0_class_value;
     	let t2;
     	let span1;
     	let t3;
     	let strong1;
-    	let t4_value = /*yInt*/ ctx[4].toFixed(2) + "";
+    	let t4_value = /*yInt*/ ctx[7].toFixed(2) + "";
     	let t4;
     	let span1_class_value;
 
@@ -6139,19 +6146,19 @@ var app = (function () {
     			t1 = text(t1_value);
     			t2 = space();
     			span1 = element("span");
-    			t3 = text("Y Intercept: ");
+    			t3 = text("Y-Intercept: ");
     			strong1 = element("strong");
     			t4 = text(t4_value);
-    			attr_dev(strong0, "class", "svelte-1xue14c");
-    			add_location(strong0, file$5, 34, 43, 651);
+    			attr_dev(strong0, "class", "svelte-1bak9wu");
+    			add_location(strong0, file$5, 34, 45, 699);
     			attr_dev(span0, "id", "slope");
-    			attr_dev(span0, "class", span0_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1xue14c"));
-    			add_location(span0, file$5, 34, 4, 612);
-    			attr_dev(strong1, "class", "svelte-1xue14c");
-    			add_location(strong1, file$5, 35, 47, 741);
+    			attr_dev(span0, "class", span0_class_value = "" + (null_to_empty(/*color*/ ctx[5]) + " svelte-1bak9wu"));
+    			add_location(span0, file$5, 34, 6, 660);
+    			attr_dev(strong1, "class", "svelte-1bak9wu");
+    			add_location(strong1, file$5, 35, 49, 791);
     			attr_dev(span1, "id", "yInt");
-    			attr_dev(span1, "class", span1_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1xue14c"));
-    			add_location(span1, file$5, 35, 4, 698);
+    			attr_dev(span1, "class", span1_class_value = "" + (null_to_empty(/*color*/ ctx[5]) + " svelte-1bak9wu"));
+    			add_location(span1, file$5, 35, 6, 748);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -6165,15 +6172,15 @@ var app = (function () {
     			append_dev(strong1, t4);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*slope*/ 8 && t1_value !== (t1_value = /*slope*/ ctx[3].toFixed(2) + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*slope*/ 64 && t1_value !== (t1_value = /*slope*/ ctx[6].toFixed(2) + "")) set_data_dev(t1, t1_value);
 
-    			if (dirty & /*color*/ 4 && span0_class_value !== (span0_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1xue14c"))) {
+    			if (dirty & /*color*/ 32 && span0_class_value !== (span0_class_value = "" + (null_to_empty(/*color*/ ctx[5]) + " svelte-1bak9wu"))) {
     				attr_dev(span0, "class", span0_class_value);
     			}
 
-    			if (dirty & /*yInt*/ 16 && t4_value !== (t4_value = /*yInt*/ ctx[4].toFixed(2) + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*yInt*/ 128 && t4_value !== (t4_value = /*yInt*/ ctx[7].toFixed(2) + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*color*/ 4 && span1_class_value !== (span1_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1xue14c"))) {
+    			if (dirty & /*color*/ 32 && span1_class_value !== (span1_class_value = "" + (null_to_empty(/*color*/ ctx[5]) + " svelte-1bak9wu"))) {
     				attr_dev(span1, "class", span1_class_value);
     			}
     		},
@@ -6186,103 +6193,81 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(34:2) {#if checked}",
+    		source: "(34:4) {#if checked}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (28:0) <Card>
-    function create_default_slot$1(ctx) {
+    // (41:4) {#if showResidualControls}
+    function create_if_block$2(ctx) {
     	let switch_1;
     	let updating_checked;
     	let t0;
     	let span;
-    	let t1;
+    	let t2;
     	let if_block_anchor;
     	let current;
 
-    	function switch_1_checked_binding(value) {
-    		/*switch_1_checked_binding*/ ctx[6](value);
+    	function switch_1_checked_binding_1(value) {
+    		/*switch_1_checked_binding_1*/ ctx[10](value);
     	}
 
     	let switch_1_props = {
-    		id: /*id*/ ctx[1],
-    		color: /*color*/ ctx[2]
+    		disabled: !/*checked*/ ctx[0],
+    		id: /*id*/ ctx[3],
+    		color: /*color*/ ctx[5]
     	};
 
-    	if (/*checked*/ ctx[0] !== void 0) {
-    		switch_1_props.checked = /*checked*/ ctx[0];
+    	if (/*resChecked*/ ctx[1] !== void 0) {
+    		switch_1_props.checked = /*resChecked*/ ctx[1];
     	}
 
     	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
-    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
-    	const default_slot_template = /*#slots*/ ctx[5].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[7], null);
-    	let if_block = /*checked*/ ctx[0] && create_if_block$2(ctx);
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding_1));
+    	let if_block = /*showResValues*/ ctx[2] && create_if_block_1$1(ctx);
 
     	const block = {
     		c: function create() {
     			create_component(switch_1.$$.fragment);
     			t0 = space();
     			span = element("span");
-    			if (default_slot) default_slot.c();
-    			t1 = space();
+    			span.textContent = "Residuals";
+    			t2 = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(span, "class", "title svelte-1xue14c");
-    			add_location(span, file$5, 29, 2, 542);
+    			attr_dev(span, "class", "title svelte-1bak9wu");
+    			add_location(span, file$5, 42, 6, 1006);
     		},
     		m: function mount(target, anchor) {
     			mount_component(switch_1, target, anchor);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, span, anchor);
-
-    			if (default_slot) {
-    				default_slot.m(span, null);
-    			}
-
-    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t2, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			const switch_1_changes = {};
-    			if (dirty & /*id*/ 2) switch_1_changes.id = /*id*/ ctx[1];
-    			if (dirty & /*color*/ 4) switch_1_changes.color = /*color*/ ctx[2];
+    			if (dirty & /*checked*/ 1) switch_1_changes.disabled = !/*checked*/ ctx[0];
+    			if (dirty & /*id*/ 8) switch_1_changes.id = /*id*/ ctx[3];
+    			if (dirty & /*color*/ 32) switch_1_changes.color = /*color*/ ctx[5];
 
-    			if (!updating_checked && dirty & /*checked*/ 1) {
+    			if (!updating_checked && dirty & /*resChecked*/ 2) {
     				updating_checked = true;
-    				switch_1_changes.checked = /*checked*/ ctx[0];
+    				switch_1_changes.checked = /*resChecked*/ ctx[1];
     				add_flush_callback(() => updating_checked = false);
     			}
 
     			switch_1.$set(switch_1_changes);
 
-    			if (default_slot) {
-    				if (default_slot.p && (!current || dirty & /*$$scope*/ 128)) {
-    					update_slot_base(
-    						default_slot,
-    						default_slot_template,
-    						ctx,
-    						/*$$scope*/ ctx[7],
-    						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[7])
-    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[7], dirty, null),
-    						null
-    					);
-    				}
-    			}
-
-    			if (/*checked*/ ctx[0]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-    				} else {
-    					if_block = create_if_block$2(ctx);
+    			if (/*showResValues*/ ctx[2]) {
+    				if (if_block) ; else {
+    					if_block = create_if_block_1$1(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -6294,20 +6279,17 @@ var app = (function () {
     		i: function intro(local) {
     			if (current) return;
     			transition_in(switch_1.$$.fragment, local);
-    			transition_in(default_slot, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(switch_1.$$.fragment, local);
-    			transition_out(default_slot, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			destroy_component(switch_1, detaching);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(span);
-    			if (default_slot) default_slot.d(detaching);
-    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t2);
     			if (if_block) if_block.d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
     		}
@@ -6315,9 +6297,206 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(41:4) {#if showResidualControls}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (44:6) {#if showResValues}
+    function create_if_block_1$1(ctx) {
+    	let span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			span.textContent = "0 1 2 3 4 5 6 7 8 0 10 11";
+    			attr_dev(span, "class", "resValues");
+    			add_location(span, file$5, 44, 8, 1077);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(44:6) {#if showResValues}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (27:0) <Card>
+    function create_default_slot$1(ctx) {
+    	let section0;
+    	let switch_1;
+    	let updating_checked;
+    	let t0;
+    	let span;
+    	let t1;
+    	let t2;
+    	let section1;
+    	let current;
+
+    	function switch_1_checked_binding(value) {
+    		/*switch_1_checked_binding*/ ctx[9](value);
+    	}
+
+    	let switch_1_props = {
+    		id: /*id*/ ctx[3],
+    		color: /*color*/ ctx[5]
+    	};
+
+    	if (/*checked*/ ctx[0] !== void 0) {
+    		switch_1_props.checked = /*checked*/ ctx[0];
+    	}
+
+    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
+    	const default_slot_template = /*#slots*/ ctx[8].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[11], null);
+    	let if_block0 = /*checked*/ ctx[0] && create_if_block_2$1(ctx);
+    	let if_block1 = /*showResidualControls*/ ctx[4] && create_if_block$2(ctx);
+
+    	const block = {
+    		c: function create() {
+    			section0 = element("section");
+    			create_component(switch_1.$$.fragment);
+    			t0 = space();
+    			span = element("span");
+    			if (default_slot) default_slot.c();
+    			t1 = space();
+    			if (if_block0) if_block0.c();
+    			t2 = space();
+    			section1 = element("section");
+    			if (if_block1) if_block1.c();
+    			attr_dev(span, "class", "title svelte-1bak9wu");
+    			add_location(span, file$5, 29, 4, 582);
+    			attr_dev(section0, "class", "lineControls svelte-1bak9wu");
+    			add_location(section0, file$5, 27, 2, 497);
+    			attr_dev(section1, "class", "resControls svelte-1bak9wu");
+    			add_location(section1, file$5, 39, 2, 863);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section0, anchor);
+    			mount_component(switch_1, section0, null);
+    			append_dev(section0, t0);
+    			append_dev(section0, span);
+
+    			if (default_slot) {
+    				default_slot.m(span, null);
+    			}
+
+    			append_dev(section0, t1);
+    			if (if_block0) if_block0.m(section0, null);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, section1, anchor);
+    			if (if_block1) if_block1.m(section1, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_1_changes = {};
+    			if (dirty & /*id*/ 8) switch_1_changes.id = /*id*/ ctx[3];
+    			if (dirty & /*color*/ 32) switch_1_changes.color = /*color*/ ctx[5];
+
+    			if (!updating_checked && dirty & /*checked*/ 1) {
+    				updating_checked = true;
+    				switch_1_changes.checked = /*checked*/ ctx[0];
+    				add_flush_callback(() => updating_checked = false);
+    			}
+
+    			switch_1.$set(switch_1_changes);
+
+    			if (default_slot) {
+    				if (default_slot.p && (!current || dirty & /*$$scope*/ 2048)) {
+    					update_slot_base(
+    						default_slot,
+    						default_slot_template,
+    						ctx,
+    						/*$$scope*/ ctx[11],
+    						!current
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[11])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[11], dirty, null),
+    						null
+    					);
+    				}
+    			}
+
+    			if (/*checked*/ ctx[0]) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0.c();
+    					if_block0.m(section0, null);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*showResidualControls*/ ctx[4]) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+
+    					if (dirty & /*showResidualControls*/ 16) {
+    						transition_in(if_block1, 1);
+    					}
+    				} else {
+    					if_block1 = create_if_block$2(ctx);
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(section1, null);
+    				}
+    			} else if (if_block1) {
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(switch_1.$$.fragment, local);
+    			transition_in(default_slot, local);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(switch_1.$$.fragment, local);
+    			transition_out(default_slot, local);
+    			transition_out(if_block1);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section0);
+    			destroy_component(switch_1);
+    			if (default_slot) default_slot.d(detaching);
+    			if (if_block0) if_block0.d();
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(section1);
+    			if (if_block1) if_block1.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(28:0) <Card>",
+    		source: "(27:0) <Card>",
     		ctx
     	});
 
@@ -6350,7 +6529,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			const card_changes = {};
 
-    			if (dirty & /*$$scope, color, yInt, slope, checked, id*/ 159) {
+    			if (dirty & /*$$scope, showResValues, checked, id, color, resChecked, showResidualControls, yInt, slope*/ 2303) {
     				card_changes.$$scope = { dirty, ctx };
     			}
 
@@ -6384,13 +6563,26 @@ var app = (function () {
     function instance$5($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Control', slots, ['default']);
+    	let { showResValues } = $$props;
     	let { id = '' } = $$props;
     	let { checked = false } = $$props;
+    	let { resChecked = false } = $$props;
+    	let { showResidualControls = false } = $$props;
     	let { color = 'primary' } = $$props;
     	let { slope = 1 } = $$props;
     	let { yInt = 0 } = $$props;
-    	const dispatch = createEventDispatcher();
-    	const writable_props = ['id', 'checked', 'color', 'slope', 'yInt'];
+    	let resDisabled = false;
+
+    	const writable_props = [
+    		'showResValues',
+    		'id',
+    		'checked',
+    		'resChecked',
+    		'showResidualControls',
+    		'color',
+    		'slope',
+    		'yInt'
+    	];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Control> was created with unknown prop '${key}'`);
@@ -6401,13 +6593,21 @@ var app = (function () {
     		$$invalidate(0, checked);
     	}
 
+    	function switch_1_checked_binding_1(value) {
+    		resChecked = value;
+    		($$invalidate(1, resChecked), $$invalidate(0, checked));
+    	}
+
     	$$self.$$set = $$props => {
-    		if ('id' in $$props) $$invalidate(1, id = $$props.id);
+    		if ('showResValues' in $$props) $$invalidate(2, showResValues = $$props.showResValues);
+    		if ('id' in $$props) $$invalidate(3, id = $$props.id);
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(2, color = $$props.color);
-    		if ('slope' in $$props) $$invalidate(3, slope = $$props.slope);
-    		if ('yInt' in $$props) $$invalidate(4, yInt = $$props.yInt);
-    		if ('$$scope' in $$props) $$invalidate(7, $$scope = $$props.$$scope);
+    		if ('resChecked' in $$props) $$invalidate(1, resChecked = $$props.resChecked);
+    		if ('showResidualControls' in $$props) $$invalidate(4, showResidualControls = $$props.showResidualControls);
+    		if ('color' in $$props) $$invalidate(5, color = $$props.color);
+    		if ('slope' in $$props) $$invalidate(6, slope = $$props.slope);
+    		if ('yInt' in $$props) $$invalidate(7, yInt = $$props.yInt);
+    		if ('$$scope' in $$props) $$invalidate(11, $$scope = $$props.$$scope);
     	};
 
     	$$self.$capture_state = () => ({
@@ -6415,27 +6615,55 @@ var app = (function () {
     		fly,
     		Card,
     		Switch,
+    		showResValues,
     		id,
     		checked,
+    		resChecked,
+    		showResidualControls,
     		color,
     		slope,
     		yInt,
-    		dispatch
+    		resDisabled
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('id' in $$props) $$invalidate(1, id = $$props.id);
+    		if ('showResValues' in $$props) $$invalidate(2, showResValues = $$props.showResValues);
+    		if ('id' in $$props) $$invalidate(3, id = $$props.id);
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(2, color = $$props.color);
-    		if ('slope' in $$props) $$invalidate(3, slope = $$props.slope);
-    		if ('yInt' in $$props) $$invalidate(4, yInt = $$props.yInt);
+    		if ('resChecked' in $$props) $$invalidate(1, resChecked = $$props.resChecked);
+    		if ('showResidualControls' in $$props) $$invalidate(4, showResidualControls = $$props.showResidualControls);
+    		if ('color' in $$props) $$invalidate(5, color = $$props.color);
+    		if ('slope' in $$props) $$invalidate(6, slope = $$props.slope);
+    		if ('yInt' in $$props) $$invalidate(7, yInt = $$props.yInt);
+    		if ('resDisabled' in $$props) resDisabled = $$props.resDisabled;
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [checked, id, color, slope, yInt, slots, switch_1_checked_binding, $$scope];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*checked*/ 1) {
+    			if (!checked) {
+    				$$invalidate(1, resChecked = false);
+    			}
+    		}
+    	};
+
+    	return [
+    		checked,
+    		resChecked,
+    		showResValues,
+    		id,
+    		showResidualControls,
+    		color,
+    		slope,
+    		yInt,
+    		slots,
+    		switch_1_checked_binding,
+    		switch_1_checked_binding_1,
+    		$$scope
+    	];
     }
 
     class Control extends SvelteComponentDev {
@@ -6443,11 +6671,14 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$5, create_fragment$5, safe_not_equal, {
-    			id: 1,
+    			showResValues: 2,
+    			id: 3,
     			checked: 0,
-    			color: 2,
-    			slope: 3,
-    			yInt: 4
+    			resChecked: 1,
+    			showResidualControls: 4,
+    			color: 5,
+    			slope: 6,
+    			yInt: 7
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -6456,6 +6687,21 @@ var app = (function () {
     			options,
     			id: create_fragment$5.name
     		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*showResValues*/ ctx[2] === undefined && !('showResValues' in props)) {
+    			console.warn("<Control> was created without expected prop 'showResValues'");
+    		}
+    	}
+
+    	get showResValues() {
+    		throw new Error("<Control>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set showResValues(value) {
+    		throw new Error("<Control>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	get id() {
@@ -6471,6 +6717,22 @@ var app = (function () {
     	}
 
     	set checked(value) {
+    		throw new Error("<Control>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get resChecked() {
+    		throw new Error("<Control>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set resChecked(value) {
+    		throw new Error("<Control>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get showResidualControls() {
+    		throw new Error("<Control>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set showResidualControls(value) {
     		throw new Error("<Control>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -6800,49 +7062,61 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[28] = list[i].x;
-    	child_ctx[29] = list[i].y;
-    	child_ctx[31] = i;
+    	child_ctx[31] = list[i].x;
+    	child_ctx[32] = list[i].y;
+    	child_ctx[34] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[32] = list[i];
+    	child_ctx[35] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[32] = list[i];
+    	child_ctx[35] = list[i];
     	return child_ctx;
     }
 
-    // (107:1) {#if showUserLineControls}
+    // (108:1) {#if showUserLineControls}
     function create_if_block_6(ctx) {
     	let control;
     	let updating_checked;
+    	let updating_resChecked;
     	let current;
 
     	function control_checked_binding(value) {
-    		/*control_checked_binding*/ ctx[21](value);
+    		/*control_checked_binding*/ ctx[22](value);
+    	}
+
+    	function control_resChecked_binding(value) {
+    		/*control_resChecked_binding*/ ctx[23](value);
     	}
 
     	let control_props = {
     		id: "yourLine",
     		slope: /*$userLineStore*/ ctx[1].slope(),
     		yInt: /*$userLineStore*/ ctx[1].intercept(),
+    		showResidualControls: /*showResidualControls*/ ctx[10],
+    		showResValues: /*showUserResiduals*/ ctx[8],
     		color: "primary",
     		$$slots: { default: [create_default_slot_1] },
     		$$scope: { ctx }
     	};
 
-    	if (/*showUserLine*/ ctx[13] !== void 0) {
-    		control_props.checked = /*showUserLine*/ ctx[13];
+    	if (/*showUserLine*/ ctx[14] !== void 0) {
+    		control_props.checked = /*showUserLine*/ ctx[14];
+    	}
+
+    	if (/*showUserResiduals*/ ctx[8] !== void 0) {
+    		control_props.resChecked = /*showUserResiduals*/ ctx[8];
     	}
 
     	control = new Control({ props: control_props, $$inline: true });
     	binding_callbacks.push(() => bind(control, 'checked', control_checked_binding));
+    	binding_callbacks.push(() => bind(control, 'resChecked', control_resChecked_binding));
 
     	const block = {
     		c: function create() {
@@ -6856,15 +7130,23 @@ var app = (function () {
     			const control_changes = {};
     			if (dirty[0] & /*$userLineStore*/ 2) control_changes.slope = /*$userLineStore*/ ctx[1].slope();
     			if (dirty[0] & /*$userLineStore*/ 2) control_changes.yInt = /*$userLineStore*/ ctx[1].intercept();
+    			if (dirty[0] & /*showResidualControls*/ 1024) control_changes.showResidualControls = /*showResidualControls*/ ctx[10];
+    			if (dirty[0] & /*showUserResiduals*/ 256) control_changes.showResValues = /*showUserResiduals*/ ctx[8];
 
-    			if (dirty[1] & /*$$scope*/ 64) {
+    			if (dirty[1] & /*$$scope*/ 512) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
-    			if (!updating_checked && dirty[0] & /*showUserLine*/ 8192) {
+    			if (!updating_checked && dirty[0] & /*showUserLine*/ 16384) {
     				updating_checked = true;
-    				control_changes.checked = /*showUserLine*/ ctx[13];
+    				control_changes.checked = /*showUserLine*/ ctx[14];
     				add_flush_callback(() => updating_checked = false);
+    			}
+
+    			if (!updating_resChecked && dirty[0] & /*showUserResiduals*/ 256) {
+    				updating_resChecked = true;
+    				control_changes.resChecked = /*showUserResiduals*/ ctx[8];
+    				add_flush_callback(() => updating_resChecked = false);
     			}
 
     			control.$set(control_changes);
@@ -6887,14 +7169,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(107:1) {#if showUserLineControls}",
+    		source: "(108:1) {#if showUserLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:checked={showUserLine}     color='primary'>
+    // (109:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:checked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>
     function create_default_slot_1(ctx) {
     	let t;
 
@@ -6914,38 +7196,50 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(108:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:checked={showUserLine}     color='primary'>",
+    		source: "(109:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:checked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:1) {#if showRegressionLineControls}
+    // (121:1) {#if showRegressionLineControls}
     function create_if_block_5(ctx) {
     	let control;
     	let updating_checked;
+    	let updating_resChecked;
     	let current;
 
     	function control_checked_binding_1(value) {
-    		/*control_checked_binding_1*/ ctx[22](value);
+    		/*control_checked_binding_1*/ ctx[24](value);
+    	}
+
+    	function control_resChecked_binding_1(value) {
+    		/*control_resChecked_binding_1*/ ctx[25](value);
     	}
 
     	let control_props = {
     		id: "regressionLine",
-    		slope: /*$regressionLineStore*/ ctx[16].a,
-    		yInt: /*$regressionLineStore*/ ctx[16].b,
+    		slope: /*$regressionLineStore*/ ctx[17].a,
+    		yInt: /*$regressionLineStore*/ ctx[17].b,
+    		showResidualControls: /*showResidualControls*/ ctx[10],
+    		showResValues: /*showRegressionResiduals*/ ctx[9],
     		color: "secondary",
     		$$slots: { default: [create_default_slot] },
     		$$scope: { ctx }
     	};
 
-    	if (/*showRegressionLine*/ ctx[12] !== void 0) {
-    		control_props.checked = /*showRegressionLine*/ ctx[12];
+    	if (/*showRegressionLine*/ ctx[13] !== void 0) {
+    		control_props.checked = /*showRegressionLine*/ ctx[13];
+    	}
+
+    	if (/*showRegressionResiduals*/ ctx[9] !== void 0) {
+    		control_props.resChecked = /*showRegressionResiduals*/ ctx[9];
     	}
 
     	control = new Control({ props: control_props, $$inline: true });
     	binding_callbacks.push(() => bind(control, 'checked', control_checked_binding_1));
+    	binding_callbacks.push(() => bind(control, 'resChecked', control_resChecked_binding_1));
 
     	const block = {
     		c: function create() {
@@ -6957,17 +7251,25 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const control_changes = {};
-    			if (dirty[0] & /*$regressionLineStore*/ 65536) control_changes.slope = /*$regressionLineStore*/ ctx[16].a;
-    			if (dirty[0] & /*$regressionLineStore*/ 65536) control_changes.yInt = /*$regressionLineStore*/ ctx[16].b;
+    			if (dirty[0] & /*$regressionLineStore*/ 131072) control_changes.slope = /*$regressionLineStore*/ ctx[17].a;
+    			if (dirty[0] & /*$regressionLineStore*/ 131072) control_changes.yInt = /*$regressionLineStore*/ ctx[17].b;
+    			if (dirty[0] & /*showResidualControls*/ 1024) control_changes.showResidualControls = /*showResidualControls*/ ctx[10];
+    			if (dirty[0] & /*showRegressionResiduals*/ 512) control_changes.showResValues = /*showRegressionResiduals*/ ctx[9];
 
-    			if (dirty[1] & /*$$scope*/ 64) {
+    			if (dirty[1] & /*$$scope*/ 512) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
-    			if (!updating_checked && dirty[0] & /*showRegressionLine*/ 4096) {
+    			if (!updating_checked && dirty[0] & /*showRegressionLine*/ 8192) {
     				updating_checked = true;
-    				control_changes.checked = /*showRegressionLine*/ ctx[12];
+    				control_changes.checked = /*showRegressionLine*/ ctx[13];
     				add_flush_callback(() => updating_checked = false);
+    			}
+
+    			if (!updating_resChecked && dirty[0] & /*showRegressionResiduals*/ 512) {
+    				updating_resChecked = true;
+    				control_changes.resChecked = /*showRegressionResiduals*/ ctx[9];
+    				add_flush_callback(() => updating_resChecked = false);
     			}
 
     			control.$set(control_changes);
@@ -6990,14 +7292,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(117:1) {#if showRegressionLineControls}",
+    		source: "(121:1) {#if showRegressionLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:checked={showRegressionLine}     color='secondary'>
+    // (122:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:checked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>
     function create_default_slot(ctx) {
     	let t;
 
@@ -7017,14 +7319,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(118:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:checked={showRegressionLine}     color='secondary'>",
+    		source: "(122:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:checked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (134:3) {#each yTicks as tick}
+    // (141:3) {#each yTicks as tick}
     function create_each_block_2(ctx) {
     	let axis;
     	let current;
@@ -7032,12 +7334,12 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "yAxis",
-    				translate: "translate(0, " + /*yScale*/ ctx[6](/*tick*/ ctx[32]) + ")",
+    				translate: "translate(0, " + /*yScale*/ ctx[6](/*tick*/ ctx[35]) + ")",
     				x1: /*xScale*/ ctx[7](0),
     				x2: /*xScale*/ ctx[7](extent(/*xTicks*/ ctx[5])[1]),
-    				x: /*margins*/ ctx[17].left - 8,
+    				x: /*margins*/ ctx[18].left - 8,
     				y: "+4",
-    				text: /*tick*/ ctx[32]
+    				text: /*tick*/ ctx[35]
     			},
     			$$inline: true
     		});
@@ -7052,10 +7354,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*yScale, yTicks*/ 80) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[6](/*tick*/ ctx[32]) + ")";
+    			if (dirty[0] & /*yScale, yTicks*/ 80) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[6](/*tick*/ ctx[35]) + ")";
     			if (dirty[0] & /*xScale*/ 128) axis_changes.x1 = /*xScale*/ ctx[7](0);
     			if (dirty[0] & /*xScale, xTicks*/ 160) axis_changes.x2 = /*xScale*/ ctx[7](extent(/*xTicks*/ ctx[5])[1]);
-    			if (dirty[0] & /*yTicks*/ 16) axis_changes.text = /*tick*/ ctx[32];
+    			if (dirty[0] & /*yTicks*/ 16) axis_changes.text = /*tick*/ ctx[35];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -7076,14 +7378,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(134:3) {#each yTicks as tick}",
+    		source: "(141:3) {#each yTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (141:3) {#each xTicks as tick}
+    // (148:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -7091,11 +7393,11 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "xAxis",
-    				translate: "translate(" + /*xScale*/ ctx[7](/*tick*/ ctx[32]) + ",0)",
+    				translate: "translate(" + /*xScale*/ ctx[7](/*tick*/ ctx[35]) + ",0)",
     				y1: /*yScale*/ ctx[6](0),
     				y2: /*yScale*/ ctx[6](extent(/*yTicks*/ ctx[4])[1]),
-    				y: /*height*/ ctx[0] - /*margins*/ ctx[17].bottom + 16,
-    				text: /*tick*/ ctx[32]
+    				y: /*height*/ ctx[0] - /*margins*/ ctx[18].bottom + 16,
+    				text: /*tick*/ ctx[35]
     			},
     			$$inline: true
     		});
@@ -7110,11 +7412,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*xScale, xTicks*/ 160) axis_changes.translate = "translate(" + /*xScale*/ ctx[7](/*tick*/ ctx[32]) + ",0)";
+    			if (dirty[0] & /*xScale, xTicks*/ 160) axis_changes.translate = "translate(" + /*xScale*/ ctx[7](/*tick*/ ctx[35]) + ",0)";
     			if (dirty[0] & /*yScale*/ 64) axis_changes.y1 = /*yScale*/ ctx[6](0);
     			if (dirty[0] & /*yScale, yTicks*/ 80) axis_changes.y2 = /*yScale*/ ctx[6](extent(/*yTicks*/ ctx[4])[1]);
-    			if (dirty[0] & /*height*/ 1) axis_changes.y = /*height*/ ctx[0] - /*margins*/ ctx[17].bottom + 16;
-    			if (dirty[0] & /*xTicks*/ 32) axis_changes.text = /*tick*/ ctx[32];
+    			if (dirty[0] & /*height*/ 1) axis_changes.y = /*height*/ ctx[0] - /*margins*/ ctx[18].bottom + 16;
+    			if (dirty[0] & /*xTicks*/ 32) axis_changes.text = /*tick*/ ctx[35];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -7135,18 +7437,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(141:3) {#each xTicks as tick}",
+    		source: "(148:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (147:3) {#if showPoints}
+    // (154:3) {#if showPoints}
     function create_if_block_4(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = points[/*$member*/ ctx[15]];
+    	let each_value = points[/*$member*/ ctx[16]];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -7175,8 +7477,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*xScale, $member, yScale*/ 32960) {
-    				each_value = points[/*$member*/ ctx[15]];
+    			if (dirty[0] & /*xScale, $member, yScale*/ 65728) {
+    				each_value = points[/*$member*/ ctx[16]];
     				validate_each_argument(each_value);
     				let i;
 
@@ -7231,23 +7533,23 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(147:3) {#if showPoints}",
+    		source: "(154:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (149:4) {#each points[$member] as {x, y}
+    // (156:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
 
     	circle = new Circle({
     			props: {
-    				cx: /*xScale*/ ctx[7](/*x*/ ctx[28]),
-    				cy: /*yScale*/ ctx[6](/*y*/ ctx[29]),
-    				id: /*i*/ ctx[31]
+    				cx: /*xScale*/ ctx[7](/*x*/ ctx[31]),
+    				cy: /*yScale*/ ctx[6](/*y*/ ctx[32]),
+    				id: /*i*/ ctx[34]
     			},
     			$$inline: true
     		});
@@ -7262,8 +7564,8 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const circle_changes = {};
-    			if (dirty[0] & /*xScale, $member*/ 32896) circle_changes.cx = /*xScale*/ ctx[7](/*x*/ ctx[28]);
-    			if (dirty[0] & /*yScale, $member*/ 32832) circle_changes.cy = /*yScale*/ ctx[6](/*y*/ ctx[29]);
+    			if (dirty[0] & /*xScale, $member*/ 65664) circle_changes.cx = /*xScale*/ ctx[7](/*x*/ ctx[31]);
+    			if (dirty[0] & /*yScale, $member*/ 65600) circle_changes.cy = /*yScale*/ ctx[6](/*y*/ ctx[32]);
     			circle.$set(circle_changes);
     		},
     		i: function intro(local) {
@@ -7284,14 +7586,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(149:4) {#each points[$member] as {x, y}",
+    		source: "(156:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (161:3) {#if showRegressionLine}
+    // (168:3) {#if showRegressionLine}
     function create_if_block_2(ctx) {
     	let if_block_anchor;
     	let regressionline;
@@ -7369,14 +7671,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(161:3) {#if showRegressionLine}",
+    		source: "(168:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (162:4) {#if showRegressionResiduals}
+    // (169:4) {#if showRegressionResiduals}
     function create_if_block_3(ctx) {
     	let residuals;
     	let current;
@@ -7386,8 +7688,8 @@ var app = (function () {
     				groupId: "regressionLineResiduals",
     				xScale: /*xScale*/ ctx[7],
     				yScale: /*yScale*/ ctx[6],
-    				points: points[/*$member*/ ctx[15]],
-    				predict: /*$regressionLineStore*/ ctx[16].predict
+    				points: points[/*$member*/ ctx[16]],
+    				predict: /*$regressionLineStore*/ ctx[17].predict
     			},
     			$$inline: true
     		});
@@ -7404,8 +7706,8 @@ var app = (function () {
     			const residuals_changes = {};
     			if (dirty[0] & /*xScale*/ 128) residuals_changes.xScale = /*xScale*/ ctx[7];
     			if (dirty[0] & /*yScale*/ 64) residuals_changes.yScale = /*yScale*/ ctx[6];
-    			if (dirty[0] & /*$member*/ 32768) residuals_changes.points = points[/*$member*/ ctx[15]];
-    			if (dirty[0] & /*$regressionLineStore*/ 65536) residuals_changes.predict = /*$regressionLineStore*/ ctx[16].predict;
+    			if (dirty[0] & /*$member*/ 65536) residuals_changes.points = points[/*$member*/ ctx[16]];
+    			if (dirty[0] & /*$regressionLineStore*/ 131072) residuals_changes.predict = /*$regressionLineStore*/ ctx[17].predict;
     			residuals.$set(residuals_changes);
     		},
     		i: function intro(local) {
@@ -7426,14 +7728,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(162:4) {#if showRegressionResiduals}",
+    		source: "(169:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (176:3) {#if showUserLine}
+    // (183:3) {#if showUserLine}
     function create_if_block$1(ctx) {
     	let if_block_anchor;
     	let userline;
@@ -7513,14 +7815,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(176:3) {#if showUserLine}",
+    		source: "(183:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (177:4) {#if showUserResiduals}
+    // (184:4) {#if showUserResiduals}
     function create_if_block_1(ctx) {
     	let residuals;
     	let current;
@@ -7530,7 +7832,7 @@ var app = (function () {
     				groupId: "userLineResiduals",
     				xScale: /*xScale*/ ctx[7],
     				yScale: /*yScale*/ ctx[6],
-    				points: points[/*$member*/ ctx[15]],
+    				points: points[/*$member*/ ctx[16]],
     				predict: /*userLinePredict*/ ctx[3]
     			},
     			$$inline: true
@@ -7548,7 +7850,7 @@ var app = (function () {
     			const residuals_changes = {};
     			if (dirty[0] & /*xScale*/ 128) residuals_changes.xScale = /*xScale*/ ctx[7];
     			if (dirty[0] & /*yScale*/ 64) residuals_changes.yScale = /*yScale*/ ctx[6];
-    			if (dirty[0] & /*$member*/ 32768) residuals_changes.points = points[/*$member*/ ctx[15]];
+    			if (dirty[0] & /*$member*/ 65536) residuals_changes.points = points[/*$member*/ ctx[16]];
     			if (dirty[0] & /*userLinePredict*/ 8) residuals_changes.predict = /*userLinePredict*/ ctx[3];
     			residuals.$set(residuals_changes);
     		},
@@ -7570,7 +7872,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(177:4) {#if showUserResiduals}",
+    		source: "(184:4) {#if showUserResiduals}",
     		ctx
     	});
 
@@ -7591,8 +7893,8 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*showUserLineControls*/ ctx[11] && create_if_block_6(ctx);
-    	let if_block1 = /*showRegressionLineControls*/ ctx[10] && create_if_block_5(ctx);
+    	let if_block0 = /*showUserLineControls*/ ctx[12] && create_if_block_6(ctx);
+    	let if_block1 = /*showRegressionLineControls*/ ctx[11] && create_if_block_5(ctx);
     	let each_value_2 = /*yTicks*/ ctx[4];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
@@ -7617,9 +7919,9 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block2 = /*showPoints*/ ctx[14] && create_if_block_4(ctx);
-    	let if_block3 = /*showRegressionLine*/ ctx[12] && create_if_block_2(ctx);
-    	let if_block4 = /*showUserLine*/ ctx[13] && create_if_block$1(ctx);
+    	let if_block2 = /*showPoints*/ ctx[15] && create_if_block_4(ctx);
+    	let if_block3 = /*showRegressionLine*/ ctx[13] && create_if_block_2(ctx);
+    	let if_block4 = /*showUserLine*/ ctx[14] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -7650,22 +7952,22 @@ var app = (function () {
     			if (if_block4) if_block4.c();
     			attr_dev(div0, "id", "controls");
     			attr_dev(div0, "class", "svelte-c5qqu5");
-    			add_location(div0, file$3, 105, 0, 2424);
+    			add_location(div0, file$3, 106, 0, 2447);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 132, 2, 2948);
+    			add_location(g0, file$3, 139, 2, 3229);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 139, 2, 3189);
+    			add_location(g1, file$3, 146, 2, 3470);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 145, 2, 3433);
+    			add_location(g2, file$3, 152, 2, 3714);
     			attr_dev(g3, "class", "regressionLine svelte-c5qqu5");
-    			add_location(g3, file$3, 159, 2, 3642);
+    			add_location(g3, file$3, 166, 2, 3923);
     			attr_dev(g4, "class", "userLine");
-    			add_location(g4, file$3, 174, 2, 3976);
+    			add_location(g4, file$3, 181, 2, 4257);
     			attr_dev(svg_1, "class", "svelte-c5qqu5");
-    			add_location(svg_1, file$3, 130, 1, 2921);
+    			add_location(svg_1, file$3, 137, 1, 3202);
     			attr_dev(div1, "id", "chart");
     			attr_dev(div1, "class", "svelte-c5qqu5");
-    			add_location(div1, file$3, 128, 0, 2901);
+    			add_location(div1, file$3, 135, 0, 3182);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7696,20 +7998,20 @@ var app = (function () {
     			if (if_block3) if_block3.m(g3, null);
     			append_dev(svg_1, g4);
     			if (if_block4) if_block4.m(g4, null);
-    			/*svg_1_binding*/ ctx[23](svg_1);
+    			/*svg_1_binding*/ ctx[26](svg_1);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(window, "resize", /*resize*/ ctx[18], false, false, false);
+    				dispose = listen_dev(window, "resize", /*resize*/ ctx[19], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*showUserLineControls*/ ctx[11]) {
+    			if (/*showUserLineControls*/ ctx[12]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLineControls*/ 2048) {
+    					if (dirty[0] & /*showUserLineControls*/ 4096) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -7728,11 +8030,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionLineControls*/ ctx[10]) {
+    			if (/*showRegressionLineControls*/ ctx[11]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLineControls*/ 1024) {
+    					if (dirty[0] & /*showRegressionLineControls*/ 2048) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -7751,7 +8053,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 131312) {
+    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 262384) {
     				each_value_2 = /*yTicks*/ ctx[4];
     				validate_each_argument(each_value_2);
     				let i;
@@ -7779,7 +8081,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 131313) {
+    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 262385) {
     				each_value_1 = /*xTicks*/ ctx[5];
     				validate_each_argument(each_value_1);
     				let i;
@@ -7807,11 +8109,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showPoints*/ ctx[14]) {
+    			if (/*showPoints*/ ctx[15]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
 
-    					if (dirty[0] & /*showPoints*/ 16384) {
+    					if (dirty[0] & /*showPoints*/ 32768) {
     						transition_in(if_block2, 1);
     					}
     				} else {
@@ -7830,11 +8132,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionLine*/ ctx[12]) {
+    			if (/*showRegressionLine*/ ctx[13]) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLine*/ 4096) {
+    					if (dirty[0] & /*showRegressionLine*/ 8192) {
     						transition_in(if_block3, 1);
     					}
     				} else {
@@ -7853,11 +8155,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showUserLine*/ ctx[13]) {
+    			if (/*showUserLine*/ ctx[14]) {
     				if (if_block4) {
     					if_block4.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLine*/ 8192) {
+    					if (dirty[0] & /*showUserLine*/ 16384) {
     						transition_in(if_block4, 1);
     					}
     				} else {
@@ -7925,7 +8227,7 @@ var app = (function () {
     			if (if_block2) if_block2.d();
     			if (if_block3) if_block3.d();
     			if (if_block4) if_block4.d();
-    			/*svg_1_binding*/ ctx[23](null);
+    			/*svg_1_binding*/ ctx[26](null);
     			mounted = false;
     			dispose();
     		}
@@ -7948,6 +8250,7 @@ var app = (function () {
     	let showRegressionLine;
     	let showUserLineControls;
     	let showRegressionLineControls;
+    	let showResidualControls;
     	let showRegressionResiduals;
     	let showUserResiduals;
     	let xScale;
@@ -7962,11 +8265,11 @@ var app = (function () {
     	validate_store(userLineStore, 'userLineStore');
     	component_subscribe($$self, userLineStore, $$value => $$invalidate(1, $userLineStore = $$value));
     	validate_store(member, 'member');
-    	component_subscribe($$self, member, $$value => $$invalidate(15, $member = $$value));
+    	component_subscribe($$self, member, $$value => $$invalidate(16, $member = $$value));
     	validate_store(counter, 'counter');
-    	component_subscribe($$self, counter, $$value => $$invalidate(20, $counter = $$value));
+    	component_subscribe($$self, counter, $$value => $$invalidate(21, $counter = $$value));
     	validate_store(regressionLineStore, 'regressionLineStore');
-    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(16, $regressionLineStore = $$value));
+    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(17, $regressionLineStore = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Chart', slots, []);
     	let svg;
@@ -7990,7 +8293,7 @@ var app = (function () {
     	});
 
     	function resize() {
-    		$$invalidate(19, { width, height } = svg.getBoundingClientRect(), width, $$invalidate(0, height));
+    		$$invalidate(20, { width, height } = svg.getBoundingClientRect(), width, $$invalidate(0, height));
     	}
 
     	const writable_props = [];
@@ -8001,12 +8304,22 @@ var app = (function () {
 
     	function control_checked_binding(value) {
     		showUserLine = value;
-    		($$invalidate(13, showUserLine), $$invalidate(20, $counter));
+    		($$invalidate(14, showUserLine), $$invalidate(21, $counter));
+    	}
+
+    	function control_resChecked_binding(value) {
+    		showUserResiduals = value;
+    		($$invalidate(8, showUserResiduals), $$invalidate(21, $counter));
     	}
 
     	function control_checked_binding_1(value) {
     		showRegressionLine = value;
-    		($$invalidate(12, showRegressionLine), $$invalidate(20, $counter));
+    		($$invalidate(13, showRegressionLine), $$invalidate(21, $counter));
+    	}
+
+    	function control_resChecked_binding_1(value) {
+    		showRegressionResiduals = value;
+    		($$invalidate(9, showRegressionResiduals), $$invalidate(21, $counter));
     	}
 
     	function svg_1_binding($$value) {
@@ -8054,6 +8367,7 @@ var app = (function () {
     		xScale,
     		showUserResiduals,
     		showRegressionResiduals,
+    		showResidualControls,
     		showRegressionLineControls,
     		showUserLineControls,
     		showRegressionLine,
@@ -8067,7 +8381,7 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('svg' in $$props) $$invalidate(2, svg = $$props.svg);
-    		if ('width' in $$props) $$invalidate(19, width = $$props.width);
+    		if ('width' in $$props) $$invalidate(20, width = $$props.width);
     		if ('height' in $$props) $$invalidate(0, height = $$props.height);
     		if ('userLinePredict' in $$props) $$invalidate(3, userLinePredict = $$props.userLinePredict);
     		if ('yTicks' in $$props) $$invalidate(4, yTicks = $$props.yTicks);
@@ -8076,11 +8390,12 @@ var app = (function () {
     		if ('xScale' in $$props) $$invalidate(7, xScale = $$props.xScale);
     		if ('showUserResiduals' in $$props) $$invalidate(8, showUserResiduals = $$props.showUserResiduals);
     		if ('showRegressionResiduals' in $$props) $$invalidate(9, showRegressionResiduals = $$props.showRegressionResiduals);
-    		if ('showRegressionLineControls' in $$props) $$invalidate(10, showRegressionLineControls = $$props.showRegressionLineControls);
-    		if ('showUserLineControls' in $$props) $$invalidate(11, showUserLineControls = $$props.showUserLineControls);
-    		if ('showRegressionLine' in $$props) $$invalidate(12, showRegressionLine = $$props.showRegressionLine);
-    		if ('showUserLine' in $$props) $$invalidate(13, showUserLine = $$props.showUserLine);
-    		if ('showPoints' in $$props) $$invalidate(14, showPoints = $$props.showPoints);
+    		if ('showResidualControls' in $$props) $$invalidate(10, showResidualControls = $$props.showResidualControls);
+    		if ('showRegressionLineControls' in $$props) $$invalidate(11, showRegressionLineControls = $$props.showRegressionLineControls);
+    		if ('showUserLineControls' in $$props) $$invalidate(12, showUserLineControls = $$props.showUserLineControls);
+    		if ('showRegressionLine' in $$props) $$invalidate(13, showRegressionLine = $$props.showRegressionLine);
+    		if ('showUserLine' in $$props) $$invalidate(14, showUserLine = $$props.showUserLine);
+    		if ('showPoints' in $$props) $$invalidate(15, showPoints = $$props.showPoints);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -8088,12 +8403,12 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*$counter*/ 1048576) {
+    		if ($$self.$$.dirty[0] & /*$counter*/ 2097152) {
     			// destructure store application state variables
-    			$$invalidate(14, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showRegressionResiduals, showUserResiduals } = sequence[$counter], showPoints, ($$invalidate(13, showUserLine), $$invalidate(20, $counter)), ($$invalidate(12, showRegressionLine), $$invalidate(20, $counter)), ($$invalidate(11, showUserLineControls), $$invalidate(20, $counter)), ($$invalidate(10, showRegressionLineControls), $$invalidate(20, $counter)), ($$invalidate(9, showRegressionResiduals), $$invalidate(20, $counter)), ($$invalidate(8, showUserResiduals), $$invalidate(20, $counter)));
+    			$$invalidate(15, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showResidualControls, showRegressionResiduals, showUserResiduals } = sequence[$counter], showPoints, ($$invalidate(14, showUserLine), $$invalidate(21, $counter)), ($$invalidate(13, showRegressionLine), $$invalidate(21, $counter)), ($$invalidate(12, showUserLineControls), $$invalidate(21, $counter)), ($$invalidate(11, showRegressionLineControls), $$invalidate(21, $counter)), ($$invalidate(10, showResidualControls), $$invalidate(21, $counter)), ($$invalidate(9, showRegressionResiduals), $$invalidate(21, $counter)), ($$invalidate(8, showUserResiduals), $$invalidate(21, $counter)));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width*/ 524288) {
+    		if ($$self.$$.dirty[0] & /*width*/ 1048576) {
     			// scales
     			$$invalidate(7, xScale = linear().domain([0, 20]).range([margins.left, width - margins.right]));
     		}
@@ -8102,7 +8417,7 @@ var app = (function () {
     			$$invalidate(6, yScale = linear().domain([0, 15]).range([height - margins.bottom, margins.top]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width*/ 524288) {
+    		if ($$self.$$.dirty[0] & /*width*/ 1048576) {
     			// ticks
     			$$invalidate(5, xTicks = width > 360 ? [0, 4, 8, 12, 16, 20] : [0, 10, 20]);
     		}
@@ -8130,6 +8445,7 @@ var app = (function () {
     		xScale,
     		showUserResiduals,
     		showRegressionResiduals,
+    		showResidualControls,
     		showRegressionLineControls,
     		showUserLineControls,
     		showRegressionLine,
@@ -8142,7 +8458,9 @@ var app = (function () {
     		width,
     		$counter,
     		control_checked_binding,
+    		control_resChecked_binding,
     		control_checked_binding_1,
+    		control_resChecked_binding_1,
     		svg_1_binding
     	];
     }

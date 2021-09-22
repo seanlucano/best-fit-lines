@@ -1,13 +1,12 @@
 <script>
 	export let color = 'primary';
-	export let flat = false;
 	export let disabled = false;
 	export let type;
 	
 </script>
 
 
-<button disabled={disabled} class={color} class:flat={flat} on:click|self>
+<button disabled={disabled} class={color} on:click|self>
 <slot></slot>
 </button>
 

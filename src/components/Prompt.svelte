@@ -52,7 +52,7 @@
 				{/each}
 				<div class='submit'>
 					{#if showSubmit}
-						<Button type='submit' _class='secondary'>Submit</Button>
+						<Button type='submit' color='accent'>Submit</Button>
 					{/if}
 				</div>
 				<div class='feedback'>
@@ -97,6 +97,10 @@
 	.submit, .feedback {
 		margin-top: .7em;
 		text-align: center;
+	}
+
+	.feedback {
+		color: var(--accent);
 	}
 	
 </style>

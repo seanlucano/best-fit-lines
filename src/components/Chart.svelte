@@ -28,7 +28,8 @@
 		showUserLine, 
 		showRegressionLine, 
 		showUserLineControls, 
-		showRegressionLineControls, 
+		showRegressionLineControls,
+		showResidualControls,
 		showRegressionResiduals, 
 		showUserResiduals} = sequence[$counter])
 
@@ -110,6 +111,9 @@
 			slope={$userLineStore.slope()}
 			yInt={$userLineStore.intercept()}
 			bind:checked={showUserLine} 
+			bind:resChecked={showUserResiduals}
+			showResidualControls={showResidualControls}
+			showResValues={showUserResiduals}
 			color='primary'>
 			Your Line
 		</Control>
@@ -120,6 +124,9 @@
 			slope={$regressionLineStore.a}
 			yInt={$regressionLineStore.b}
 			bind:checked={showRegressionLine} 
+			bind:resChecked={showRegressionResiduals}
+			showResidualControls={showResidualControls}
+			showResValues={showRegressionResiduals}
 			color='secondary'>
 			Best Fit Line
 		</Control>
