@@ -67,7 +67,7 @@
 		[0, 5, 15];
 
 
-	// a predict function for the userLine residuals
+	// based on the user line, returns a y value for a given x value. Re-runs anytime userLineStore changes
 	$: userLinePredict = function(x) { return $userLineStore.m * x + $userLineStore.b;}
 
 	// responsiveness

@@ -34,7 +34,6 @@
 	const handleMouseDown = (event) => {
 		dragging = true;
 		target = event.target.id;
-		console.log('you clicked circle: ' + event.target.id)
 	}
 
 	const handleMouseMove = (event) => {
