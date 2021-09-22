@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	
-	import regressionLineStore from '../stores/regressionLineStore';
+	import { regressionLineStore } from '../stores/regressionLineStore';
 
 	export let xScale;
 	export let yScale;

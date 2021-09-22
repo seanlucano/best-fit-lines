@@ -1,5 +1,9 @@
 import { formatPrefix } from "d3";
-const points = {
+import { writable } from 'svelte/store';
+
+export const member = writable('a');
+
+export const points = {
 	a: [
 		{ x: 10, y: 8.04 },
 		{ x: 8, y: 6.95 },
@@ -53,5 +57,3 @@ const points = {
 		{ x: 8, y: 6.89 }
 	]
 };
-
-export default points;

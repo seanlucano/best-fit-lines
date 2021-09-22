@@ -10,9 +10,8 @@
 	import { fly } from 'svelte/transition';
 	
 	import { sequence, counter } from '../stores/sequence.js'
-	import points from '../stores/data.js';
-	import member from '../stores/member.js';
-	import regressionLineStore from '../stores/regressionLineStore';
+	import { member, points } from '../stores/data.js';
+	import { regressionLineStore } from '../stores/regressionLineStore';
 	import userLineStore from '../stores/userLineStore.js'
 
 	import Circle from './Circle.svelte';
