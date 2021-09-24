@@ -3,22 +3,23 @@
 import { createEventDispatcher } from 'svelte';
 import { fly } from 'svelte/transition';
 
+import ResidualValues from './ResidualValues.svelte';
 import Card from '../shared/Card.svelte';
 import Switch from '../shared/Switch.svelte';
 
 export let showResValues;
-
-export let id='';
-export let checked = false;
-export let resChecked = false;
-export let showResidualControls = false;
+export let predict;
 export let color ='primary';
+export let id='';
+export let showResidualControls = false;
 export let slope = 1;
 export let yInt = 0;
+export let lineChecked = false;
+export let resChecked = false;
 
 let resDisabled = false;
 
-$: if (!checked) {
+$: if (!lineChecked) {
   resChecked = false;
 }
 
@@ -26,12 +27,12 @@ $: if (!checked) {
 
 <Card>
   <section class='lineControls'>
-    <Switch bind:checked={checked} {id} {color}/>
+    <Switch bind:checked={lineChecked} {color}/>
     <span class='title'>
       <slot></slot>
     </span>
 
-    {#if checked}
+    {#if lineChecked}
       <span id='slope' class={color} >Slope: <strong>{slope.toFixed(2)}</strong></span>
       <span id='yInt' class={color}>Y-Intercept: <strong>{yInt.toFixed(2)}</strong></span>
     {/if}
@@ -39,10 +40,10 @@ $: if (!checked) {
     
   <section class='resControls'>
     {#if showResidualControls}
-      <Switch disabled={!checked} bind:checked={resChecked} {id} {color} />
+      <Switch disabled={!lineChecked} bind:checked={resChecked} {color} />
       <span class='title'>Residuals</span>
-      {#if showResValues}
-        <span class='resValues'>0 1 2 3 4 5 6 7 8 0 10 11</span>
+      {#if resChecked}
+        <ResidualValues {predict}/>
       {/if}
     {/if}
   </section>

@@ -109,10 +109,11 @@
 			id='yourLine' 
 			slope={$userLineStore.slope()}
 			yInt={$userLineStore.intercept()}
-			bind:checked={showUserLine} 
+			bind:lineChecked={showUserLine} 
 			bind:resChecked={showUserResiduals}
 			showResidualControls={showResidualControls}
 			showResValues={showUserResiduals}
+			predict={userLinePredict}
 			color='primary'>
 			Your Line
 		</Control>
@@ -122,10 +123,11 @@
 			id='regressionLine' 
 			slope={$regressionLineStore.a}
 			yInt={$regressionLineStore.b}
-			bind:checked={showRegressionLine} 
+			bind:lineChecked={showRegressionLine} 
 			bind:resChecked={showRegressionResiduals}
 			showResidualControls={showResidualControls}
 			showResValues={showRegressionResiduals}
+			predict={$regressionLineStore.predict}
 			color='secondary'>
 			Best Fit Line
 		</Control>

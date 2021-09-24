@@ -51,17 +51,15 @@
 	<section id='tutorial'>
 		<div id='narrative'>
 			<div id='prompt'>
-				<Prompt 
-					{$counter} 
-					/>
+				<Prompt />
 			</div>
 			<div id="userNav">
-				<UserNav {$counter}/>
+				<UserNav />
 			</div>
 		</div>
 		
 		<div id='interactive'>
-			<Chart {$counter}/>
+			<Chart />
 		</div>
 	</section>
 </main>
