@@ -20,6 +20,7 @@
 	import UserLine from './UserLine.svelte';
 	import Control from './Control.svelte';
 	import Residuals from './Residuals.svelte';
+	import ResidualsTable from './ResidualsTable.svelte';
 	
 	// destructure store application state variables
 	$:({ 
@@ -113,7 +114,6 @@
 			bind:resChecked={showUserResiduals}
 			showResidualControls={showResidualControls}
 			showResValues={showUserResiduals}
-			predict={userLinePredict}
 			color='primary'>
 			Your Line
 		</Control>
@@ -127,13 +127,23 @@
 			bind:resChecked={showRegressionResiduals}
 			showResidualControls={showResidualControls}
 			showResValues={showRegressionResiduals}
-			predict={$regressionLineStore.predict}
 			color='secondary'>
 			Best Fit Line
 		</Control>
 	{/if}
-	
 </div>
+	
+<div id='residualsTable'>
+	<ResidualsTable 
+		{showRegressionResiduals}
+		{showUserResiduals}
+		userLinePredict={userLinePredict}
+		bestFitLinePredict={$regressionLineStore.predict}
+	/>
+</div>
+
+
+
 <div id='chart'>
 	
 	<svg bind:this={svg}>
@@ -231,7 +241,6 @@
 	}
 
 	#controls {
-		
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-gap: .5em;

@@ -102,7 +102,9 @@
 		gap: .5em;
 		flex-direction: column;
 		justify-content: space-between;
-		min-width: 275px;
+		min-width: 200px;
+		background-color: white;
+
 		
 	}
 

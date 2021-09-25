@@ -14,9 +14,13 @@ export const sequence = [
             feedback: `Low values for X tend to correspond to low values for Y.`
         },	
         showPoints: true,
+        showUserLine: true,
+        showRegressionLine: true,
         showUserLineControls: true,
         showRegressionLineControls: true,
-        showResidualControls: true
+        showResidualControls: true,
+        showUserResiduals: true,
+        showRegressionResiduals: true
     },
     {	
         title: 'Imagine a line',

@@ -8,7 +8,6 @@ import Card from '../shared/Card.svelte';
 import Switch from '../shared/Switch.svelte';
 
 export let showResValues;
-export let predict;
 export let color ='primary';
 export let id='';
 export let showResidualControls = false;
@@ -33,8 +32,8 @@ $: if (!lineChecked) {
     </span>
 
     {#if lineChecked}
-      <span id='slope' class={color} >Slope: <strong>{slope.toFixed(2)}</strong></span>
-      <span id='yInt' class={color}>Y-Intercept: <strong>{yInt.toFixed(2)}</strong></span>
+      <span id='slope' class={color} >M: <strong>{slope.toFixed(2)}</strong></span>
+      <span id='yInt' class={color}>B: <strong>{yInt.toFixed(2)}</strong></span>
     {/if}
   </section>
     
@@ -42,9 +41,6 @@ $: if (!lineChecked) {
     {#if showResidualControls}
       <Switch disabled={!lineChecked} bind:checked={resChecked} {color} />
       <span class='title'>Residuals</span>
-      {#if resChecked}
-        <ResidualValues {predict}/>
-      {/if}
     {/if}
   </section>
 </Card>

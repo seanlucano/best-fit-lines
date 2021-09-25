@@ -112,6 +112,7 @@ const setCounter = (event) => {
     .current {
         color: var(--seconday);
         border-color: var(--black);
+        border-style: dashed;
 
     }
     
