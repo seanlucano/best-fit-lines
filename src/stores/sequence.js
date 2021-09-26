@@ -55,9 +55,9 @@ export const sequence = [
         showResidualControls: true
     },
     {	title: 'Residuals',
-        prompt:`<p>On the chart, we're now seeing the length of each residual.</p>
-        The best fit line tries to predict a y value for a given x value.  So a residual is the difference between what the best fit line expected, and what actually happened.  So the best best-fit line would have the <strong>smallest possible sum of residuals</strong>.</p>`,	
-         cta: `<strong>Let's try and add them up!</strong>`,
+        prompt:`<p>Let's look at what a residual is by focusing on just one point at a time.</p>
+        <p>A best fit line tries predict a new Y value based on a given X value. So a residual is the difference between what the best fit line expected, and what actually happened.  The best possible line would minimize the residual values as much as possible</p>`,	
+         cta: `<strong>Try clicking on different points to see the residuals for each one.  You can look at the residual values for your line, the best fit line, or both.</strong>`,
          showPoints: true,
          showUserLineControls: true,
          showRegressionLineControls: true,
@@ -68,9 +68,9 @@ export const sequence = [
     },
     
     {	title:"The 'least squares' line",
-        prompt:`<p>Since some of the residuals are positive and some are negative, we can't just do simple addition.  Instead, let's try first try squaring each number, so they are all positive, and then we'll add them up</p>
-        <p>The mathematical process that generates this line attempts to create the least possible sum of squares.  So statisticians call this line...<strong>The Least Squares Line</strong>`,	
-         cta: `<strong>To save you some time, use the SSR switch to show the sum of squared residuals for this line.</strong>`,
+        prompt:`<p>If we wanted to evaluate different lines to see which one is the best fit, we would try to find a line that had the lowest possible sum of residuals.  Since some residuals are negative and some are positive, we can square each one before adding them up.</p>
+        <p>The table you're now seeing has a squred residual for each point, both to your line and the best fit line.</strong>`,	
+         cta: `<strong>You can also click on the points, or the values in the table to see which go together.</strong>`,
          showPoints: true,
          showUserLineControls: true,
          showRegressionLineControls: true,
@@ -83,8 +83,8 @@ export const sequence = [
 
     {	title: 'Comparing SSRs',
         prompt:`p>Still think your line may be better?</p>
-        <p>Try bringing back your line using the user line switch.</p>`,	
-         cta: `<strong>Keep an eye on your SSR and see if you can beat the best fit line SSR.  You can redraw your line as many times as you want.</strong>`,
+        <p>What is the lowest possible sum or squared residuals you can get to with your line?</p>`,	
+         cta: `<strong>See if you can beat the SSR value for the best fit line!</strong>`,
          showPoints: true,
          showUserLineControls: true,
          showRegressionLineControls: true,
