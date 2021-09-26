@@ -24,13 +24,19 @@
 	
 	circle {
 		fill-opacity: .5;
+		stroke-opacity: 0;
 		fill: grey;
-		transition: fill 300ms, fill-opacity 300ms;
+		stroke: grey;
+		stroke-width: 2px;
+		transition: fill 300ms, fill-opacity 300ms, r 300ms;
+		cursor: pointer;
 	}
 
 	.highlighted {
-		fill-opacity: .8;
+		fill-opacity: 0;
+		stroke-opacity: 1;
 		fill: black;
+		r: 10px;
 	}
 	
 </style>

@@ -33,7 +33,8 @@
 		showRegressionLineControls,
 		showResidualControls,
 		showRegressionResiduals, 
-		showUserResiduals} = sequence[$counter])
+		showUserResiduals,
+		showResidualsTable} = sequence[$counter])
 
 	// chart size
 	let svg;
@@ -92,7 +93,7 @@
 	// const tweenedPoints = tweened(points, {
 	// 	delay: 0,
 	// 	duration: 750,
-	// 	easing: easings.cubicOut
+	// 	easing: easings.cubicOut 
 	// });
 
 	// function setTween(key) {
@@ -101,10 +102,25 @@
 
 	// $: setTween(member)
 
+	let translating = false;
+	$: {
+		if(showRegressionResiduals === true && showUserResiduals === true) {
+			translating = true;
+		} else {
+			translating = false;
+		}
+		console.log('tranlating:', translating);
+	}
+
 	let highlightId;
 	const highlight = (event) => {
 		highlightId = event.target.id;
-		console.log(highlightId);
+		console.log(event.target);
+	}
+
+	const removeHighlights = (event) => {
+		highlightId = undefined;
+		console.log(event.target);
 	}
 
 </script>
@@ -141,20 +157,23 @@
 </div>
 	
 <div id='residualsTable'>
-	<ResidualsTable 
-		on:click={highlight}
-		{showRegressionResiduals}
-		{showUserResiduals}
-		userLinePredict={userLinePredict}
-		bestFitLinePredict={$regressionLineStore.predict}
-	/>
+	{#if showResidualsTable}
+		<ResidualsTable 
+			on:click={highlight}
+			{highlightId}
+			{showRegressionResiduals}
+			{showUserResiduals}
+			userLinePredict={userLinePredict}
+			bestFitLinePredict={$regressionLineStore.predict}
+		/>
+	{/if}
 </div>
 
 
 
 <div id='chart'>
 	
-	<svg bind:this={svg}>
+	<svg bind:this={svg} on:click|self={removeHighlights}>
 		
 		<g class='axis y-axis'>
 			{#each yTicks as tick}
@@ -175,10 +194,10 @@
 				{#each points[$member] as {x, y}, i}
 					<Circle
 						on:click={highlight}
+						{highlightId}
 						cx={xScale(x)} 
 						cy={yScale(y)} 
 						id={i}
-						{highlightId}
 						>
 					</Circle>
 				{/each}
@@ -189,7 +208,9 @@
 			{#if showRegressionLine}
 				{#if showRegressionResiduals}
 					<Residuals
-						on:click{highlight} 
+						{translating}
+						on:click={highlight} 
+						{highlightId}
 						groupId='regressionLineResiduals'
 						{xScale} {yScale} 
 						points={points[$member]} 
@@ -205,6 +226,9 @@
 			{#if showUserLine}
 				{#if showUserResiduals}
 					<Residuals 
+						{translating}
+						on:click={highlight}
+						{highlightId}
 						groupId='userLineResiduals'
 						{xScale} {yScale} 
 						points={points[$member]} 

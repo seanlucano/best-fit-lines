@@ -52,7 +52,7 @@
 				{/each}
 				<div class='submit'>
 					{#if showSubmit}
-						<Button type='submit' color='accent'>Submit</Button>
+						<Button type='submit' color='white'>Submit</Button>
 					{/if}
 				</div>
 				<div class='feedback'>

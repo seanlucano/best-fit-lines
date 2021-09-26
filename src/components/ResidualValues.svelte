@@ -2,6 +2,7 @@
     
     import { points, member } from '../stores/data.js'
     export let predict;
+    export let highlightId;
     
     $: resValues = points[$member].map(point => point.y - predict(point.x));
     $: ssr = resValues.reduce((previous, current) => previous + Math.pow(current, 2));
@@ -9,13 +10,39 @@
 </script>
 
 {#each resValues as residual, i}
-    <td id={i}>{residual.toFixed(1)}</td>
+    <span 
+        id={i} 
+        on:click 
+        class:highlighted={i == highlightId}
+        >
+        {residual.toFixed(1)}
+    </span>
 {/each}
-<td class='ssr'>{ssr.toFixed(2)}</td>
+<span class='ssr'>{ssr.toFixed(2)}</span>
 
 
 <style>
     .ssr {
         font-weight: bold;
+        min-width: 60px;
     }
+
+    .highlighted {
+        font-weight: bold;
+        background-color: var(--background-color);
+        
+    }
+
+    span {
+        cursor: pointer;
+        text-align: right;
+        min-width: 35px;
+        padding: 3px;
+        border-radius: 5px;
+        font-weight: normal;
+        background-color: white;
+        transition: backgorund-color 300ms, font-weight 300ms,
+        
+    }
+
 </style>

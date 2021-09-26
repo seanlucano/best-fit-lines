@@ -41,9 +41,10 @@
 		color: white;
 	}
 
-	
 	.white {
 		background: white;
+		border: 2px solid black;
+		
 
 	}
 	

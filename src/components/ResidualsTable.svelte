@@ -1,14 +1,14 @@
 <script>
 
 import { createEventDispatcher } from 'svelte';
-import { fly } from 'svelte/transition';
+import { fade } from 'svelte/transition';
 import { points, member } from '../stores/data.js';
 
 import ResidualValues from './ResidualValues.svelte';
 import Card from '../shared/Card.svelte';
 import Switch from '../shared/Switch.svelte';
 
-
+export let highlightId;
 export let showRegressionResiduals;
 export let showUserResiduals;
 export let userLinePredict;
@@ -19,55 +19,34 @@ export let bestFitLinePredict;
 </script>
 
 <Card>
-  <table>
     
-    <tr id='user'>
+    <div id='user' class="residualsRow">
       {#if showUserResiduals}
-        <ResidualValues predict={userLinePredict}/>
+        <ResidualValues {highlightId} on:click predict={userLinePredict}/>
       {/if}
-    </tr>
-    
-    <tr id='bestFit'>
+    </div>
+  
+    <div id='regression' class="residualsRow">
       {#if showRegressionResiduals}
-        <ResidualValues predict={bestFitLinePredict}/>
+        <ResidualValues {highlightId} on:click predict={bestFitLinePredict}/>
       {/if}
-    </tr>
-
-  </table>
+    </div>
+  
 </Card>
 
 <style>
 
-
-  table {
-    width: 100%;
-    border-collapse: collapse; 
-  }
-
-  th, tr {
-    text-align: right;
-  }
-
-  th {
-    font-weight: normal;
-  }
-
-  tr {
-    border-bottom: 1px solid lightgrey;
-    padding: 5px;
-    margin: 5px;
-  }
-
-  td {
-    margin: 5px;
-    padding: 5px;
+  .residualsRow {
+    display: flex;
+    justify-content: space-between; 
+    padding: .25em;
   }
 
   #user {
     color: var(--primary);
   }
 
-  #bestFit {
+  #regression {
     color: var(--secondary);
   }
 

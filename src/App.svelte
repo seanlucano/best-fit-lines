@@ -41,7 +41,7 @@
 
 </script>
 
-<Header />
+
 
 <main>
 	<ProgressBar 
