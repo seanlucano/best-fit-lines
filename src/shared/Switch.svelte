@@ -87,7 +87,7 @@
     
     input:disabled + .disabled {
         background-color: #f0f3f5;
-        pointer: none;
+        cursor: not-allowed;
         
     }
 

@@ -21,6 +21,8 @@
 	import Control from './Control.svelte';
 	import Residuals from './Residuals.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
+
+
 	
 	// destructure store application state variables
 	$:({ 
@@ -99,6 +101,11 @@
 
 	// $: setTween(member)
 
+	let highlightId;
+	const highlight = (event) => {
+		highlightId = event.target.id;
+		console.log(highlightId);
+	}
 
 </script>
 
@@ -135,6 +142,7 @@
 	
 <div id='residualsTable'>
 	<ResidualsTable 
+		on:click={highlight}
 		{showRegressionResiduals}
 		{showUserResiduals}
 		userLinePredict={userLinePredict}
@@ -165,10 +173,12 @@
 			{#if showPoints}
 			
 				{#each points[$member] as {x, y}, i}
-					<Circle 
+					<Circle
+						on:click={highlight}
 						cx={xScale(x)} 
 						cy={yScale(y)} 
 						id={i}
+						{highlightId}
 						>
 					</Circle>
 				{/each}
@@ -178,7 +188,8 @@
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
 				{#if showRegressionResiduals}
-					<Residuals 
+					<Residuals
+						on:click{highlight} 
 						groupId='regressionLineResiduals'
 						{xScale} {yScale} 
 						points={points[$member]} 

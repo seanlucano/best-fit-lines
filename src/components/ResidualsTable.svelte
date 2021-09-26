@@ -20,24 +20,14 @@ export let bestFitLinePredict;
 
 <Card>
   <table>
-      
-    <tr id='head'> 
-      <th>Point Index</th>
-      {#each points[$member] as point, i}
-        <th id={i}>{i}</th>
-      {/each}
-      <th>SSR</th>
-    <tr>
     
     <tr id='user'>
-      <td>Your Residuals</td>
       {#if showUserResiduals}
         <ResidualValues predict={userLinePredict}/>
       {/if}
     </tr>
     
     <tr id='bestFit'>
-      <td>Best Fit Residuals</td>
       {#if showRegressionResiduals}
         <ResidualValues predict={bestFitLinePredict}/>
       {/if}
@@ -58,9 +48,30 @@ export let bestFitLinePredict;
     text-align: right;
   }
 
+  th {
+    font-weight: normal;
+  }
+
   tr {
     border-bottom: 1px solid lightgrey;
+    padding: 5px;
+    margin: 5px;
   }
+
+  td {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  #user {
+    color: var(--primary);
+  }
+
+  #bestFit {
+    color: var(--secondary);
+  }
+
+  
 
 
 

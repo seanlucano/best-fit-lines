@@ -122,19 +122,6 @@ const setCounter = (event) => {
         font-weight: bold;
     }
 
-    li:hover {
-        
-    }
-
-    
-    
-
-   
-
-
-
-   
-
     /* li:after {
         content: "";
         top: 38%;

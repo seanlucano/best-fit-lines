@@ -8,7 +8,7 @@
 	export let translate = 'translate(0,0)';
 	export let strokeWidth = 2;
 	export let strokeDasharray = '0'
-	export let opacity = 0.8;
+	export let opacity = 1;
 
 </script>
 

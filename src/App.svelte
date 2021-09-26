@@ -70,10 +70,10 @@
 
 	:global(:root) {
 	--background-color: #eff1f5;
-	--primary: #7626D2;
-	--secondary: #10c2a7;
+	--secondary: hsl(248, 53%, 58%);
+	--primary: hsl(333, 100%, 45%);
 	--accent: #ffa600;
-	--alert: #fa5639;
+	--alert: hsl(333, 100%, 45%);
 	--black: #000;
 	--header-height: 2em;
 	}

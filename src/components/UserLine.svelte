@@ -7,7 +7,7 @@
 	export let yScale;
 	export let svg;
 
-	let r = 10;
+	let r = 6;
 	
 	// boolean for knowing when to move the handles during drag events
 	let dragging = false;
@@ -73,23 +73,22 @@
 
 	line {
 		stroke: var(--primary);
-		opacity: .6;
+		opacity: 1;
 		stroke-width: 2px;
 	}
 
 	circle {
-		stroke-width: 3px;
 		fill: none;
-		opacity: .6;
+		stroke-width: 2px;
+		opacity: .5;
 		stroke: var(--primary);
 		cursor: move;
-		transition-property: fill;
-		transition-duration: 2s;
-		transform: translate
+		transition: fill .5s, r .2s;
 	}
 
 	circle:hover {
 		fill: var(--primary);
+		r: 15
 	}
 
 </style>

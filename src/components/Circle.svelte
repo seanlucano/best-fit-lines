@@ -1,30 +1,36 @@
 <script>
 	export let cx = 0;
 	export let cy = 0;
-	export let id = '';
+	export let id;
+	export let highlightId;
 	
-	let  r = 6;
+	let  r = 8;
 	let fill = 'grey';
-	let fillOpacity = 0.4;
-	let stroke = 'rgba(0,0,0,0.5)';
-	let strokeWidth = 1.5;
-	
 
-	function handleRollover() {
-		opacity = 1;
-		r = 7;
-	}
 </script>
 
 <circle 
+	on:click
 	data-tooltip='hellooooo'
 	{r} 
 	{cx}
 	{cy}
-	{fill}
-	fill-opacity={fillOpacity}
-	{stroke}
-	stroke-width={strokeWidth}
 	{id}
+	class:highlighted={id == highlightId}
 ></circle>
 
+<style>
+	
+	
+	circle {
+		fill-opacity: .5;
+		fill: grey;
+		transition: fill 300ms, fill-opacity 300ms;
+	}
+
+	.highlighted {
+		fill-opacity: .8;
+		fill: black;
+	}
+	
+</style>
