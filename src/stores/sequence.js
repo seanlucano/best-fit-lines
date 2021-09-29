@@ -22,7 +22,7 @@ export const sequence = [
         <p>Can you imagine a line drawn through the points below that best fits the data?</p>`,	
          cta: `<strong>Turn on the "Your Line" switch and try and place your line using the circle handles. Click 'Next' when you're happy with your line.</strong>`,
          showPoints: true,
-         showUserLineControls: true
+         showUserLineControls: true,
     },
     {	
         title: 'Time to compare',
@@ -36,13 +36,14 @@ export const sequence = [
     },
     
     {	title: 'Which line is best?',
-        prompt:`<p>How do we know when a line is a good "fit" for the scatter plot?  Imagine, we had a <strong>newx value,</strong> but we didn't know what the y value would be, which line would be better at predicting the new y value.</p>`,	
-        cta: `<strong>Let's find out next...</strong>`,
+        prompt:`<p>How do we know when a line is a good "fit" for the scatter plot?  <p>To find out, we'll need to draw a verticle line from each point on the plot to our best fit line. These verticle lines are called <strong>residuals</strong>.</p>`,	
+        cta: `<strong>Click any point to draw the residuals from that point to either your line or the best fit line or both</strong>`,
         showPoints: true,
         showUserLineControls: true,
         showUserLine: true,
         showRegressionLineControls: true,
-        showRegressionLine: true
+        showRegressionLine: true,
+        showSingleResidual: true
         
     },
     {	title: 'What makes a best-fit line, best?',
@@ -52,7 +53,7 @@ export const sequence = [
         showUserLineControls: true,
         showRegressionLineControls: true,
         showRegressionLine: true,
-        showResidualControls: true
+        showSingleResidual: true
     },
     {	title: 'Residuals',
         prompt:`<p>Let's look at what a residual is by focusing on just one point at a time.</p>

@@ -20,6 +20,7 @@
 	import UserLine from './UserLine.svelte';
 	import Control from './Control.svelte';
 	import Residuals from './Residuals.svelte';
+	import SingleResidual from './SingleResidual.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
 
 
@@ -32,6 +33,7 @@
 		showUserLineControls, 
 		showRegressionLineControls,
 		showResidualControls,
+		showSingleResidual,
 		showRegressionResiduals, 
 		showUserResiduals,
 		showResidualsTable} = sequence[$counter])
@@ -103,13 +105,15 @@
 	// $: setTween(member)
 
 	let translating = false;
+	
 	$: {
 		if(showRegressionResiduals === true && showUserResiduals === true) {
+			translating = true;
+		} else if (showSingleResidual && showUserLine && showRegressionLine) {
 			translating = true;
 		} else {
 			translating = false;
 		}
-		console.log('tranlating:', translating);
 	}
 
 	let highlightId;
@@ -155,9 +159,9 @@
 		</Control>
 	{/if}
 </div>
-	
-<div id='residualsTable'>
-	{#if showResidualsTable}
+
+{#if showResidualsTable}
+	<div id='residualsTable'>
 		<ResidualsTable 
 			on:click={highlight}
 			{highlightId}
@@ -166,8 +170,8 @@
 			userLinePredict={userLinePredict}
 			bestFitLinePredict={$regressionLineStore.predict}
 		/>
-	{/if}
-</div>
+	</div>
+{/if}
 
 
 
@@ -206,6 +210,17 @@
 
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
+				{#if showSingleResidual}
+				<SingleResidual
+					{translating}
+					on:click={highlight}
+					{highlightId}
+					groupId='regressionLineResiduals'
+					{xScale} {yScale} 
+					points={points[$member]} 
+					predict={$regressionLineStore.predict}   
+				/>
+				{/if}
 				{#if showRegressionResiduals}
 					<Residuals
 						{translating}
@@ -224,6 +239,18 @@
 
 		<g class='userLine'>
 			{#if showUserLine}
+				{#if showSingleResidual}
+					<SingleResidual
+						{translating}
+						on:click={highlight}
+						{highlightId}
+						groupId='userLineResiduals'
+						{xScale} {yScale} 
+						points={points[$member]} 
+						predict={userLinePredict}   
+					/>
+				{/if}
+			
 				{#if showUserResiduals}
 					<Residuals 
 						{translating}
@@ -235,6 +262,7 @@
 						predict={userLinePredict}   
 					/>
 				{/if}
+			
 				<UserLine {xScale} {yScale} {svg} />
 			{/if}
 		</g>
@@ -280,6 +308,9 @@
 		grid-template-columns: 1fr 1fr;
 		grid-gap: .5em;
 
+	}
+
+	#residualsTable {
 	}
 
 	.regressionLine {
