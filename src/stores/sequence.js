@@ -5,14 +5,14 @@ export const counter = writable(0);
 export const sequence = [
     {	
         title: 'Welcome to best fit lines!',
-        prompt: `<p>To the right, you'll see a scatter plot with littered with a set of circles. Each circle represents a pair of values.</p>
+        prompt: `<p>To the right, you'll see a scatter plot littered with a set of circles. Each circle represents a pair of values.</p>
         <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the verticle (y) values represent the total transaction cost in US dollars.</p>  
-        <p>So each cirlce represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
+        <p>So, each circle represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
         cta: `<strong>So...if you had to make a quick guess, what would you say is the relationship between dollars and donuts here? </strong>`,
         quiz: {
-            questions: [`Positive (as number of donuts increases, cost also increases)`, `Negative (as donuts increase, cost decreases`],
+            questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
             correct: 0,
-            feedback: `Let's not overthinkg it...Mo money mo donuts!`
+            feedback: `Don't overthink it...Mo' money mo' donuts!`
         },	
         showPoints: true,
         
