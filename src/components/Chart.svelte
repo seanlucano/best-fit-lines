@@ -45,7 +45,7 @@
 	
 
 	// chart margin
-	const margins = { top: 20, right: 20, bottom: 40, left: 25 };
+	const margins = { top: 20, right: 20, bottom: 50, left: 50 };
 
 
 	// MATHS
@@ -183,6 +183,8 @@
 			{#each yTicks as tick}
 			<Axis axisType='yAxis' translate='translate(0, {yScale(tick)})' x1='{xScale(0)}' x2='{xScale(extent(xTicks)[1])}' x='{margins.left - 8}' y='+4' text={tick}></Axis>
 			{/each}
+			<text text-anchor='middle' transform='translate(20,{height/2}) rotate(-90)'
+			>price ($)<text>
 		</g>
 
 		
@@ -190,6 +192,8 @@
 			{#each xTicks as tick}
 			<Axis axisType='xAxis' translate='translate({xScale(tick)},0)' y1='{yScale(0)}' y2='{yScale(extent(yTicks)[1])}' y='{height - margins.bottom + 16}' text={tick}></Axis>
 			{/each}
+			<text style='text-anchor:middle;' x={width/2 + margins.left} y={height - margins.bottom/2 + 15}
+			>donuts<text>
 		</g>
 		
 		<g class='points'>

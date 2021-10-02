@@ -1390,13 +1390,14 @@ var app = (function () {
     const sequence = [
         {	
             title: 'Welcome to best fit lines!',
-            prompt: `<p>To the right, you'll see a scatter plot with some data points on it. Each point represents a pair of values.    
-        <p>If you had to guess, what would you say is the relationship between the horizontal ("x") values and verticle ("y") values?</p>`,	
-            cta: `<strong>Put another way, as the x values increase, what do the y values tend to do?</strong>`,
+            prompt: `<p>To the right, you'll see a scatter plot with littered with a set of circles. Each circle represents a pair of values.</p>
+        <p> Just for fun, let's say that the horizonal (x) values represent donuts, and the verticle (y) values represent total transactio price in US dollars.</p>  
+        <p>So each cirlce represents a transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
+            cta: `<strong>If you had to make a quick guess, what would you say is the relationship between dollars and donuts? </strong>`,
             quiz: {
-                questions: [`As X increases, Y also increases`, `As X increases, Y decreases`],
+                questions: [`Positive (as donuts increase, price also increases)`, `Negative (as donuts increase, price decreases`],
                 correct: 0,
-                feedback: `Low values for X tend to correspond to low values for Y.`
+                feedback: `Yes! Mo money mo donuts, indeed.`
             },	
             showPoints: true,
             
@@ -8108,21 +8109,21 @@ var app = (function () {
 
     	let control_props = {
     		id: "yourLine",
-    		slope: /*$userLineStore*/ ctx[6].slope(),
-    		yInt: /*$userLineStore*/ ctx[6].intercept(),
-    		showResidualControls: /*showResidualControls*/ ctx[16],
-    		showResValues: /*showUserResiduals*/ ctx[4],
+    		slope: /*$userLineStore*/ ctx[7].slope(),
+    		yInt: /*$userLineStore*/ ctx[7].intercept(),
+    		showResidualControls: /*showResidualControls*/ ctx[17],
+    		showResValues: /*showUserResiduals*/ ctx[5],
     		color: "primary",
     		$$slots: { default: [create_default_slot_1] },
     		$$scope: { ctx }
     	};
 
-    	if (/*showUserLine*/ ctx[2] !== void 0) {
-    		control_props.lineChecked = /*showUserLine*/ ctx[2];
+    	if (/*showUserLine*/ ctx[3] !== void 0) {
+    		control_props.lineChecked = /*showUserLine*/ ctx[3];
     	}
 
-    	if (/*showUserResiduals*/ ctx[4] !== void 0) {
-    		control_props.resChecked = /*showUserResiduals*/ ctx[4];
+    	if (/*showUserResiduals*/ ctx[5] !== void 0) {
+    		control_props.resChecked = /*showUserResiduals*/ ctx[5];
     	}
 
     	control = new Control({ props: control_props, $$inline: true });
@@ -8139,24 +8140,24 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const control_changes = {};
-    			if (dirty[0] & /*$userLineStore*/ 64) control_changes.slope = /*$userLineStore*/ ctx[6].slope();
-    			if (dirty[0] & /*$userLineStore*/ 64) control_changes.yInt = /*$userLineStore*/ ctx[6].intercept();
-    			if (dirty[0] & /*showResidualControls*/ 65536) control_changes.showResidualControls = /*showResidualControls*/ ctx[16];
-    			if (dirty[0] & /*showUserResiduals*/ 16) control_changes.showResValues = /*showUserResiduals*/ ctx[4];
+    			if (dirty[0] & /*$userLineStore*/ 128) control_changes.slope = /*$userLineStore*/ ctx[7].slope();
+    			if (dirty[0] & /*$userLineStore*/ 128) control_changes.yInt = /*$userLineStore*/ ctx[7].intercept();
+    			if (dirty[0] & /*showResidualControls*/ 131072) control_changes.showResidualControls = /*showResidualControls*/ ctx[17];
+    			if (dirty[0] & /*showUserResiduals*/ 32) control_changes.showResValues = /*showUserResiduals*/ ctx[5];
 
     			if (dirty[1] & /*$$scope*/ 32768) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
-    			if (!updating_lineChecked && dirty[0] & /*showUserLine*/ 4) {
+    			if (!updating_lineChecked && dirty[0] & /*showUserLine*/ 8) {
     				updating_lineChecked = true;
-    				control_changes.lineChecked = /*showUserLine*/ ctx[2];
+    				control_changes.lineChecked = /*showUserLine*/ ctx[3];
     				add_flush_callback(() => updating_lineChecked = false);
     			}
 
-    			if (!updating_resChecked && dirty[0] & /*showUserResiduals*/ 16) {
+    			if (!updating_resChecked && dirty[0] & /*showUserResiduals*/ 32) {
     				updating_resChecked = true;
-    				control_changes.resChecked = /*showUserResiduals*/ ctx[4];
+    				control_changes.resChecked = /*showUserResiduals*/ ctx[5];
     				add_flush_callback(() => updating_resChecked = false);
     			}
 
@@ -8231,21 +8232,21 @@ var app = (function () {
 
     	let control_props = {
     		id: "regressionLine",
-    		slope: /*$regressionLineStore*/ ctx[21].a,
-    		yInt: /*$regressionLineStore*/ ctx[21].b,
-    		showResidualControls: /*showResidualControls*/ ctx[16],
-    		showResValues: /*showRegressionResiduals*/ ctx[5],
+    		slope: /*$regressionLineStore*/ ctx[22].a,
+    		yInt: /*$regressionLineStore*/ ctx[22].b,
+    		showResidualControls: /*showResidualControls*/ ctx[17],
+    		showResValues: /*showRegressionResiduals*/ ctx[6],
     		color: "secondary",
     		$$slots: { default: [create_default_slot] },
     		$$scope: { ctx }
     	};
 
-    	if (/*showRegressionLine*/ ctx[1] !== void 0) {
-    		control_props.lineChecked = /*showRegressionLine*/ ctx[1];
+    	if (/*showRegressionLine*/ ctx[2] !== void 0) {
+    		control_props.lineChecked = /*showRegressionLine*/ ctx[2];
     	}
 
-    	if (/*showRegressionResiduals*/ ctx[5] !== void 0) {
-    		control_props.resChecked = /*showRegressionResiduals*/ ctx[5];
+    	if (/*showRegressionResiduals*/ ctx[6] !== void 0) {
+    		control_props.resChecked = /*showRegressionResiduals*/ ctx[6];
     	}
 
     	control = new Control({ props: control_props, $$inline: true });
@@ -8262,24 +8263,24 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const control_changes = {};
-    			if (dirty[0] & /*$regressionLineStore*/ 2097152) control_changes.slope = /*$regressionLineStore*/ ctx[21].a;
-    			if (dirty[0] & /*$regressionLineStore*/ 2097152) control_changes.yInt = /*$regressionLineStore*/ ctx[21].b;
-    			if (dirty[0] & /*showResidualControls*/ 65536) control_changes.showResidualControls = /*showResidualControls*/ ctx[16];
-    			if (dirty[0] & /*showRegressionResiduals*/ 32) control_changes.showResValues = /*showRegressionResiduals*/ ctx[5];
+    			if (dirty[0] & /*$regressionLineStore*/ 4194304) control_changes.slope = /*$regressionLineStore*/ ctx[22].a;
+    			if (dirty[0] & /*$regressionLineStore*/ 4194304) control_changes.yInt = /*$regressionLineStore*/ ctx[22].b;
+    			if (dirty[0] & /*showResidualControls*/ 131072) control_changes.showResidualControls = /*showResidualControls*/ ctx[17];
+    			if (dirty[0] & /*showRegressionResiduals*/ 64) control_changes.showResValues = /*showRegressionResiduals*/ ctx[6];
 
     			if (dirty[1] & /*$$scope*/ 32768) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
-    			if (!updating_lineChecked && dirty[0] & /*showRegressionLine*/ 2) {
+    			if (!updating_lineChecked && dirty[0] & /*showRegressionLine*/ 4) {
     				updating_lineChecked = true;
-    				control_changes.lineChecked = /*showRegressionLine*/ ctx[1];
+    				control_changes.lineChecked = /*showRegressionLine*/ ctx[2];
     				add_flush_callback(() => updating_lineChecked = false);
     			}
 
-    			if (!updating_resChecked && dirty[0] & /*showRegressionResiduals*/ 32) {
+    			if (!updating_resChecked && dirty[0] & /*showRegressionResiduals*/ 64) {
     				updating_resChecked = true;
-    				control_changes.resChecked = /*showRegressionResiduals*/ ctx[5];
+    				control_changes.resChecked = /*showRegressionResiduals*/ ctx[6];
     				add_flush_callback(() => updating_resChecked = false);
     			}
 
@@ -8345,16 +8346,16 @@ var app = (function () {
 
     	residualstable = new ResidualsTable({
     			props: {
-    				highlightId: /*highlightId*/ ctx[9],
-    				showRegressionResiduals: /*showRegressionResiduals*/ ctx[5],
-    				showUserResiduals: /*showUserResiduals*/ ctx[4],
-    				userLinePredict: /*userLinePredict*/ ctx[10],
-    				bestFitLinePredict: /*$regressionLineStore*/ ctx[21].predict
+    				highlightId: /*highlightId*/ ctx[10],
+    				showRegressionResiduals: /*showRegressionResiduals*/ ctx[6],
+    				showUserResiduals: /*showUserResiduals*/ ctx[5],
+    				userLinePredict: /*userLinePredict*/ ctx[11],
+    				bestFitLinePredict: /*$regressionLineStore*/ ctx[22].predict
     			},
     			$$inline: true
     		});
 
-    	residualstable.$on("click", /*highlight*/ ctx[24]);
+    	residualstable.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -8371,11 +8372,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const residualstable_changes = {};
-    			if (dirty[0] & /*highlightId*/ 512) residualstable_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*showRegressionResiduals*/ 32) residualstable_changes.showRegressionResiduals = /*showRegressionResiduals*/ ctx[5];
-    			if (dirty[0] & /*showUserResiduals*/ 16) residualstable_changes.showUserResiduals = /*showUserResiduals*/ ctx[4];
-    			if (dirty[0] & /*userLinePredict*/ 1024) residualstable_changes.userLinePredict = /*userLinePredict*/ ctx[10];
-    			if (dirty[0] & /*$regressionLineStore*/ 2097152) residualstable_changes.bestFitLinePredict = /*$regressionLineStore*/ ctx[21].predict;
+    			if (dirty[0] & /*highlightId*/ 1024) residualstable_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*showRegressionResiduals*/ 64) residualstable_changes.showRegressionResiduals = /*showRegressionResiduals*/ ctx[6];
+    			if (dirty[0] & /*showUserResiduals*/ 32) residualstable_changes.showUserResiduals = /*showUserResiduals*/ ctx[5];
+    			if (dirty[0] & /*userLinePredict*/ 2048) residualstable_changes.userLinePredict = /*userLinePredict*/ ctx[11];
+    			if (dirty[0] & /*$regressionLineStore*/ 4194304) residualstable_changes.bestFitLinePredict = /*$regressionLineStore*/ ctx[22].predict;
     			residualstable.$set(residualstable_changes);
     		},
     		i: function intro(local) {
@@ -8412,10 +8413,10 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "yAxis",
-    				translate: "translate(0, " + /*yScale*/ ctx[13](/*tick*/ ctx[41]) + ")",
-    				x1: /*xScale*/ ctx[14](0),
-    				x2: /*xScale*/ ctx[14](extent(/*xTicks*/ ctx[12])[1]),
-    				x: /*margins*/ ctx[22].left - 8,
+    				translate: "translate(0, " + /*yScale*/ ctx[14](/*tick*/ ctx[41]) + ")",
+    				x1: /*xScale*/ ctx[15](0),
+    				x2: /*xScale*/ ctx[15](extent(/*xTicks*/ ctx[13])[1]),
+    				x: /*margins*/ ctx[23].left - 8,
     				y: "+4",
     				text: /*tick*/ ctx[41]
     			},
@@ -8432,10 +8433,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*yScale, yTicks*/ 10240) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[13](/*tick*/ ctx[41]) + ")";
-    			if (dirty[0] & /*xScale*/ 16384) axis_changes.x1 = /*xScale*/ ctx[14](0);
-    			if (dirty[0] & /*xScale, xTicks*/ 20480) axis_changes.x2 = /*xScale*/ ctx[14](extent(/*xTicks*/ ctx[12])[1]);
-    			if (dirty[0] & /*yTicks*/ 2048) axis_changes.text = /*tick*/ ctx[41];
+    			if (dirty[0] & /*yScale, yTicks*/ 20480) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[14](/*tick*/ ctx[41]) + ")";
+    			if (dirty[0] & /*xScale*/ 32768) axis_changes.x1 = /*xScale*/ ctx[15](0);
+    			if (dirty[0] & /*xScale, xTicks*/ 40960) axis_changes.x2 = /*xScale*/ ctx[15](extent(/*xTicks*/ ctx[13])[1]);
+    			if (dirty[0] & /*yTicks*/ 4096) axis_changes.text = /*tick*/ ctx[41];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -8463,7 +8464,7 @@ var app = (function () {
     	return block;
     }
 
-    // (190:3) {#each xTicks as tick}
+    // (192:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -8471,10 +8472,10 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "xAxis",
-    				translate: "translate(" + /*xScale*/ ctx[14](/*tick*/ ctx[41]) + ",0)",
-    				y1: /*yScale*/ ctx[13](0),
-    				y2: /*yScale*/ ctx[13](extent(/*yTicks*/ ctx[11])[1]),
-    				y: /*height*/ ctx[0] - /*margins*/ ctx[22].bottom + 16,
+    				translate: "translate(" + /*xScale*/ ctx[15](/*tick*/ ctx[41]) + ",0)",
+    				y1: /*yScale*/ ctx[14](0),
+    				y2: /*yScale*/ ctx[14](extent(/*yTicks*/ ctx[12])[1]),
+    				y: /*height*/ ctx[1] - /*margins*/ ctx[23].bottom + 16,
     				text: /*tick*/ ctx[41]
     			},
     			$$inline: true
@@ -8490,11 +8491,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*xScale, xTicks*/ 20480) axis_changes.translate = "translate(" + /*xScale*/ ctx[14](/*tick*/ ctx[41]) + ",0)";
-    			if (dirty[0] & /*yScale*/ 8192) axis_changes.y1 = /*yScale*/ ctx[13](0);
-    			if (dirty[0] & /*yScale, yTicks*/ 10240) axis_changes.y2 = /*yScale*/ ctx[13](extent(/*yTicks*/ ctx[11])[1]);
-    			if (dirty[0] & /*height*/ 1) axis_changes.y = /*height*/ ctx[0] - /*margins*/ ctx[22].bottom + 16;
-    			if (dirty[0] & /*xTicks*/ 4096) axis_changes.text = /*tick*/ ctx[41];
+    			if (dirty[0] & /*xScale, xTicks*/ 40960) axis_changes.translate = "translate(" + /*xScale*/ ctx[15](/*tick*/ ctx[41]) + ",0)";
+    			if (dirty[0] & /*yScale*/ 16384) axis_changes.y1 = /*yScale*/ ctx[14](0);
+    			if (dirty[0] & /*yScale, yTicks*/ 20480) axis_changes.y2 = /*yScale*/ ctx[14](extent(/*yTicks*/ ctx[12])[1]);
+    			if (dirty[0] & /*height*/ 2) axis_changes.y = /*height*/ ctx[1] - /*margins*/ ctx[23].bottom + 16;
+    			if (dirty[0] & /*xTicks*/ 8192) axis_changes.text = /*tick*/ ctx[41];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -8515,18 +8516,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(190:3) {#each xTicks as tick}",
+    		source: "(192:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (196:3) {#if showPoints}
+    // (200:3) {#if showPoints}
     function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = points[/*$member*/ ctx[20]];
+    	let each_value = points[/*$member*/ ctx[21]];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -8555,8 +8556,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*highlightId, xScale, $member, yScale, highlight*/ 17850880) {
-    				each_value = points[/*$member*/ ctx[20]];
+    			if (dirty[0] & /*highlightId, xScale, $member, yScale, highlight*/ 35701760) {
+    				each_value = points[/*$member*/ ctx[21]];
     				validate_each_argument(each_value);
     				let i;
 
@@ -8611,29 +8612,29 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(196:3) {#if showPoints}",
+    		source: "(200:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (198:4) {#each points[$member] as {x, y}
+    // (202:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
 
     	circle = new Circle({
     			props: {
-    				highlightId: /*highlightId*/ ctx[9],
-    				cx: /*xScale*/ ctx[14](/*x*/ ctx[37]),
-    				cy: /*yScale*/ ctx[13](/*y*/ ctx[38]),
+    				highlightId: /*highlightId*/ ctx[10],
+    				cx: /*xScale*/ ctx[15](/*x*/ ctx[37]),
+    				cy: /*yScale*/ ctx[14](/*y*/ ctx[38]),
     				id: /*i*/ ctx[40]
     			},
     			$$inline: true
     		});
 
-    	circle.$on("click", /*highlight*/ ctx[24]);
+    	circle.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -8645,9 +8646,9 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const circle_changes = {};
-    			if (dirty[0] & /*highlightId*/ 512) circle_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*xScale, $member*/ 1064960) circle_changes.cx = /*xScale*/ ctx[14](/*x*/ ctx[37]);
-    			if (dirty[0] & /*yScale, $member*/ 1056768) circle_changes.cy = /*yScale*/ ctx[13](/*y*/ ctx[38]);
+    			if (dirty[0] & /*highlightId*/ 1024) circle_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*xScale, $member*/ 2129920) circle_changes.cx = /*xScale*/ ctx[15](/*x*/ ctx[37]);
+    			if (dirty[0] & /*yScale, $member*/ 2113536) circle_changes.cy = /*yScale*/ ctx[14](/*y*/ ctx[38]);
     			circle.$set(circle_changes);
     		},
     		i: function intro(local) {
@@ -8668,26 +8669,26 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(198:4) {#each points[$member] as {x, y}",
+    		source: "(202:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (212:3) {#if showRegressionLine}
+    // (216:3) {#if showRegressionLine}
     function create_if_block_3(ctx) {
     	let if_block0_anchor;
     	let if_block1_anchor;
     	let regressionline;
     	let current;
-    	let if_block0 = /*showSingleResidual*/ ctx[3] && create_if_block_5(ctx);
-    	let if_block1 = /*showRegressionResiduals*/ ctx[5] && create_if_block_4(ctx);
+    	let if_block0 = /*showSingleResidual*/ ctx[4] && create_if_block_5(ctx);
+    	let if_block1 = /*showRegressionResiduals*/ ctx[6] && create_if_block_4(ctx);
 
     	regressionline = new RegressionLine({
     			props: {
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13]
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14]
     			},
     			$$inline: true
     		});
@@ -8709,11 +8710,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*showSingleResidual*/ ctx[3]) {
+    			if (/*showSingleResidual*/ ctx[4]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty[0] & /*showSingleResidual*/ 8) {
+    					if (dirty[0] & /*showSingleResidual*/ 16) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -8732,11 +8733,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionResiduals*/ ctx[5]) {
+    			if (/*showRegressionResiduals*/ ctx[6]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionResiduals*/ 32) {
+    					if (dirty[0] & /*showRegressionResiduals*/ 64) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -8756,8 +8757,8 @@ var app = (function () {
     			}
 
     			const regressionline_changes = {};
-    			if (dirty[0] & /*xScale*/ 16384) regressionline_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) regressionline_changes.yScale = /*yScale*/ ctx[13];
+    			if (dirty[0] & /*xScale*/ 32768) regressionline_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) regressionline_changes.yScale = /*yScale*/ ctx[14];
     			regressionline.$set(regressionline_changes);
     		},
     		i: function intro(local) {
@@ -8786,32 +8787,32 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(212:3) {#if showRegressionLine}",
+    		source: "(216:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (213:4) {#if showSingleResidual}
+    // (217:4) {#if showSingleResidual}
     function create_if_block_5(ctx) {
     	let singleresidual;
     	let current;
 
     	singleresidual = new SingleResidual({
     			props: {
-    				translating: /*translating*/ ctx[8],
-    				highlightId: /*highlightId*/ ctx[9],
+    				translating: /*translating*/ ctx[9],
+    				highlightId: /*highlightId*/ ctx[10],
     				groupId: "regressionLineResiduals",
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13],
-    				points: points[/*$member*/ ctx[20]],
-    				predict: /*$regressionLineStore*/ ctx[21].predict
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14],
+    				points: points[/*$member*/ ctx[21]],
+    				predict: /*$regressionLineStore*/ ctx[22].predict
     			},
     			$$inline: true
     		});
 
-    	singleresidual.$on("click", /*highlight*/ ctx[24]);
+    	singleresidual.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -8823,12 +8824,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const singleresidual_changes = {};
-    			if (dirty[0] & /*translating*/ 256) singleresidual_changes.translating = /*translating*/ ctx[8];
-    			if (dirty[0] & /*highlightId*/ 512) singleresidual_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*xScale*/ 16384) singleresidual_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) singleresidual_changes.yScale = /*yScale*/ ctx[13];
-    			if (dirty[0] & /*$member*/ 1048576) singleresidual_changes.points = points[/*$member*/ ctx[20]];
-    			if (dirty[0] & /*$regressionLineStore*/ 2097152) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[21].predict;
+    			if (dirty[0] & /*translating*/ 512) singleresidual_changes.translating = /*translating*/ ctx[9];
+    			if (dirty[0] & /*highlightId*/ 1024) singleresidual_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*xScale*/ 32768) singleresidual_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) singleresidual_changes.yScale = /*yScale*/ ctx[14];
+    			if (dirty[0] & /*$member*/ 2097152) singleresidual_changes.points = points[/*$member*/ ctx[21]];
+    			if (dirty[0] & /*$regressionLineStore*/ 4194304) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[22].predict;
     			singleresidual.$set(singleresidual_changes);
     		},
     		i: function intro(local) {
@@ -8849,32 +8850,32 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(213:4) {#if showSingleResidual}",
+    		source: "(217:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (224:4) {#if showRegressionResiduals}
+    // (228:4) {#if showRegressionResiduals}
     function create_if_block_4(ctx) {
     	let residuals;
     	let current;
 
     	residuals = new Residuals({
     			props: {
-    				translating: /*translating*/ ctx[8],
-    				highlightId: /*highlightId*/ ctx[9],
+    				translating: /*translating*/ ctx[9],
+    				highlightId: /*highlightId*/ ctx[10],
     				groupId: "regressionLineResiduals",
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13],
-    				points: points[/*$member*/ ctx[20]],
-    				predict: /*$regressionLineStore*/ ctx[21].predict
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14],
+    				points: points[/*$member*/ ctx[21]],
+    				predict: /*$regressionLineStore*/ ctx[22].predict
     			},
     			$$inline: true
     		});
 
-    	residuals.$on("click", /*highlight*/ ctx[24]);
+    	residuals.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -8886,12 +8887,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const residuals_changes = {};
-    			if (dirty[0] & /*translating*/ 256) residuals_changes.translating = /*translating*/ ctx[8];
-    			if (dirty[0] & /*highlightId*/ 512) residuals_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*xScale*/ 16384) residuals_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) residuals_changes.yScale = /*yScale*/ ctx[13];
-    			if (dirty[0] & /*$member*/ 1048576) residuals_changes.points = points[/*$member*/ ctx[20]];
-    			if (dirty[0] & /*$regressionLineStore*/ 2097152) residuals_changes.predict = /*$regressionLineStore*/ ctx[21].predict;
+    			if (dirty[0] & /*translating*/ 512) residuals_changes.translating = /*translating*/ ctx[9];
+    			if (dirty[0] & /*highlightId*/ 1024) residuals_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*xScale*/ 32768) residuals_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) residuals_changes.yScale = /*yScale*/ ctx[14];
+    			if (dirty[0] & /*$member*/ 2097152) residuals_changes.points = points[/*$member*/ ctx[21]];
+    			if (dirty[0] & /*$regressionLineStore*/ 4194304) residuals_changes.predict = /*$regressionLineStore*/ ctx[22].predict;
     			residuals.$set(residuals_changes);
     		},
     		i: function intro(local) {
@@ -8912,27 +8913,27 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(224:4) {#if showRegressionResiduals}",
+    		source: "(228:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (241:3) {#if showUserLine}
+    // (245:3) {#if showUserLine}
     function create_if_block$1(ctx) {
     	let if_block0_anchor;
     	let if_block1_anchor;
     	let userline;
     	let current;
-    	let if_block0 = /*showSingleResidual*/ ctx[3] && create_if_block_2(ctx);
-    	let if_block1 = /*showUserResiduals*/ ctx[4] && create_if_block_1(ctx);
+    	let if_block0 = /*showSingleResidual*/ ctx[4] && create_if_block_2(ctx);
+    	let if_block1 = /*showUserResiduals*/ ctx[5] && create_if_block_1(ctx);
 
     	userline = new UserLine({
     			props: {
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13],
-    				svg: /*svg*/ ctx[7]
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14],
+    				svg: /*svg*/ ctx[8]
     			},
     			$$inline: true
     		});
@@ -8954,11 +8955,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*showSingleResidual*/ ctx[3]) {
+    			if (/*showSingleResidual*/ ctx[4]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty[0] & /*showSingleResidual*/ 8) {
+    					if (dirty[0] & /*showSingleResidual*/ 16) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -8977,11 +8978,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showUserResiduals*/ ctx[4]) {
+    			if (/*showUserResiduals*/ ctx[5]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserResiduals*/ 16) {
+    					if (dirty[0] & /*showUserResiduals*/ 32) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -9001,9 +9002,9 @@ var app = (function () {
     			}
 
     			const userline_changes = {};
-    			if (dirty[0] & /*xScale*/ 16384) userline_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) userline_changes.yScale = /*yScale*/ ctx[13];
-    			if (dirty[0] & /*svg*/ 128) userline_changes.svg = /*svg*/ ctx[7];
+    			if (dirty[0] & /*xScale*/ 32768) userline_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) userline_changes.yScale = /*yScale*/ ctx[14];
+    			if (dirty[0] & /*svg*/ 256) userline_changes.svg = /*svg*/ ctx[8];
     			userline.$set(userline_changes);
     		},
     		i: function intro(local) {
@@ -9032,32 +9033,32 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(241:3) {#if showUserLine}",
+    		source: "(245:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (242:4) {#if showSingleResidual}
+    // (246:4) {#if showSingleResidual}
     function create_if_block_2(ctx) {
     	let singleresidual;
     	let current;
 
     	singleresidual = new SingleResidual({
     			props: {
-    				translating: /*translating*/ ctx[8],
-    				highlightId: /*highlightId*/ ctx[9],
+    				translating: /*translating*/ ctx[9],
+    				highlightId: /*highlightId*/ ctx[10],
     				groupId: "userLineResiduals",
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13],
-    				points: points[/*$member*/ ctx[20]],
-    				predict: /*userLinePredict*/ ctx[10]
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14],
+    				points: points[/*$member*/ ctx[21]],
+    				predict: /*userLinePredict*/ ctx[11]
     			},
     			$$inline: true
     		});
 
-    	singleresidual.$on("click", /*highlight*/ ctx[24]);
+    	singleresidual.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -9069,12 +9070,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const singleresidual_changes = {};
-    			if (dirty[0] & /*translating*/ 256) singleresidual_changes.translating = /*translating*/ ctx[8];
-    			if (dirty[0] & /*highlightId*/ 512) singleresidual_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*xScale*/ 16384) singleresidual_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) singleresidual_changes.yScale = /*yScale*/ ctx[13];
-    			if (dirty[0] & /*$member*/ 1048576) singleresidual_changes.points = points[/*$member*/ ctx[20]];
-    			if (dirty[0] & /*userLinePredict*/ 1024) singleresidual_changes.predict = /*userLinePredict*/ ctx[10];
+    			if (dirty[0] & /*translating*/ 512) singleresidual_changes.translating = /*translating*/ ctx[9];
+    			if (dirty[0] & /*highlightId*/ 1024) singleresidual_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*xScale*/ 32768) singleresidual_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) singleresidual_changes.yScale = /*yScale*/ ctx[14];
+    			if (dirty[0] & /*$member*/ 2097152) singleresidual_changes.points = points[/*$member*/ ctx[21]];
+    			if (dirty[0] & /*userLinePredict*/ 2048) singleresidual_changes.predict = /*userLinePredict*/ ctx[11];
     			singleresidual.$set(singleresidual_changes);
     		},
     		i: function intro(local) {
@@ -9095,32 +9096,32 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(242:4) {#if showSingleResidual}",
+    		source: "(246:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (254:4) {#if showUserResiduals}
+    // (258:4) {#if showUserResiduals}
     function create_if_block_1(ctx) {
     	let residuals;
     	let current;
 
     	residuals = new Residuals({
     			props: {
-    				translating: /*translating*/ ctx[8],
-    				highlightId: /*highlightId*/ ctx[9],
+    				translating: /*translating*/ ctx[9],
+    				highlightId: /*highlightId*/ ctx[10],
     				groupId: "userLineResiduals",
-    				xScale: /*xScale*/ ctx[14],
-    				yScale: /*yScale*/ ctx[13],
-    				points: points[/*$member*/ ctx[20]],
-    				predict: /*userLinePredict*/ ctx[10]
+    				xScale: /*xScale*/ ctx[15],
+    				yScale: /*yScale*/ ctx[14],
+    				points: points[/*$member*/ ctx[21]],
+    				predict: /*userLinePredict*/ ctx[11]
     			},
     			$$inline: true
     		});
 
-    	residuals.$on("click", /*highlight*/ ctx[24]);
+    	residuals.$on("click", /*highlight*/ ctx[25]);
 
     	const block = {
     		c: function create() {
@@ -9132,12 +9133,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const residuals_changes = {};
-    			if (dirty[0] & /*translating*/ 256) residuals_changes.translating = /*translating*/ ctx[8];
-    			if (dirty[0] & /*highlightId*/ 512) residuals_changes.highlightId = /*highlightId*/ ctx[9];
-    			if (dirty[0] & /*xScale*/ 16384) residuals_changes.xScale = /*xScale*/ ctx[14];
-    			if (dirty[0] & /*yScale*/ 8192) residuals_changes.yScale = /*yScale*/ ctx[13];
-    			if (dirty[0] & /*$member*/ 1048576) residuals_changes.points = points[/*$member*/ ctx[20]];
-    			if (dirty[0] & /*userLinePredict*/ 1024) residuals_changes.predict = /*userLinePredict*/ ctx[10];
+    			if (dirty[0] & /*translating*/ 512) residuals_changes.translating = /*translating*/ ctx[9];
+    			if (dirty[0] & /*highlightId*/ 1024) residuals_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*xScale*/ 32768) residuals_changes.xScale = /*xScale*/ ctx[15];
+    			if (dirty[0] & /*yScale*/ 16384) residuals_changes.yScale = /*yScale*/ ctx[14];
+    			if (dirty[0] & /*$member*/ 2097152) residuals_changes.points = points[/*$member*/ ctx[21]];
+    			if (dirty[0] & /*userLinePredict*/ 2048) residuals_changes.predict = /*userLinePredict*/ ctx[11];
     			residuals.$set(residuals_changes);
     		},
     		i: function intro(local) {
@@ -9158,7 +9159,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(254:4) {#if showUserResiduals}",
+    		source: "(258:4) {#if showUserResiduals}",
     		ctx
     	});
 
@@ -9173,17 +9174,26 @@ var app = (function () {
     	let div1;
     	let svg_1;
     	let g0;
+    	let text1;
+    	let t3;
+    	let text0;
+    	let text1_transform_value;
     	let g1;
+    	let text3;
+    	let t4;
+    	let text2;
+    	let text3_x_value;
+    	let text3_y_value;
     	let g2;
     	let g3;
     	let g4;
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*showUserLineControls*/ ctx[18] && create_if_block_9(ctx);
-    	let if_block1 = /*showRegressionLineControls*/ ctx[17] && create_if_block_8(ctx);
-    	let if_block2 = /*showResidualsTable*/ ctx[15] && create_if_block_7(ctx);
-    	let each_value_2 = /*yTicks*/ ctx[11];
+    	let if_block0 = /*showUserLineControls*/ ctx[19] && create_if_block_9(ctx);
+    	let if_block1 = /*showRegressionLineControls*/ ctx[18] && create_if_block_8(ctx);
+    	let if_block2 = /*showResidualsTable*/ ctx[16] && create_if_block_7(ctx);
+    	let each_value_2 = /*yTicks*/ ctx[12];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
 
@@ -9195,7 +9205,7 @@ var app = (function () {
     		each_blocks_1[i] = null;
     	});
 
-    	let each_value_1 = /*xTicks*/ ctx[12];
+    	let each_value_1 = /*xTicks*/ ctx[13];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -9207,9 +9217,9 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block3 = /*showPoints*/ ctx[19] && create_if_block_6(ctx);
-    	let if_block4 = /*showRegressionLine*/ ctx[1] && create_if_block_3(ctx);
-    	let if_block5 = /*showUserLine*/ ctx[2] && create_if_block$1(ctx);
+    	let if_block3 = /*showPoints*/ ctx[20] && create_if_block_6(ctx);
+    	let if_block4 = /*showRegressionLine*/ ctx[2] && create_if_block_3(ctx);
+    	let if_block5 = /*showUserLine*/ ctx[3] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9228,12 +9238,18 @@ var app = (function () {
     				each_blocks_1[i].c();
     			}
 
+    			text1 = svg_element("text");
+    			t3 = text("price ($)");
+    			text0 = svg_element("text");
     			g1 = svg_element("g");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
+    			text3 = svg_element("text");
+    			t4 = text("donuts");
+    			text2 = svg_element("text");
     			g2 = svg_element("g");
     			if (if_block3) if_block3.c();
     			g3 = svg_element("g");
@@ -9243,16 +9259,25 @@ var app = (function () {
     			attr_dev(div0, "id", "controls");
     			attr_dev(div0, "class", "svelte-1pi5tw9");
     			add_location(div0, file$3, 133, 0, 3113);
+    			add_location(text0, file$3, 186, 13, 4531);
+    			attr_dev(text1, "text-anchor", "middle");
+    			attr_dev(text1, "transform", text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)");
+    			add_location(text1, file$3, 185, 3, 4442);
     			attr_dev(g0, "class", "axis y-axis");
     			add_location(g0, file$3, 181, 2, 4211);
+    			add_location(text2, file$3, 195, 10, 4892);
+    			set_style(text3, "text-anchor", "middle");
+    			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[23].left);
+    			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[23].bottom / 2 + 15);
+    			add_location(text3, file$3, 194, 3, 4786);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 188, 2, 4452);
+    			add_location(g1, file$3, 190, 2, 4551);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 194, 2, 4696);
+    			add_location(g2, file$3, 198, 2, 4911);
     			attr_dev(g3, "class", "regressionLine svelte-1pi5tw9");
-    			add_location(g3, file$3, 210, 2, 4951);
+    			add_location(g3, file$3, 214, 2, 5166);
     			attr_dev(g4, "class", "userLine svelte-1pi5tw9");
-    			add_location(g4, file$3, 239, 2, 5623);
+    			add_location(g4, file$3, 243, 2, 5838);
     			attr_dev(svg_1, "class", "svelte-1pi5tw9");
     			add_location(svg_1, file$3, 179, 1, 4151);
     			attr_dev(div1, "id", "chart");
@@ -9278,12 +9303,18 @@ var app = (function () {
     				each_blocks_1[i].m(g0, null);
     			}
 
+    			append_dev(g0, text1);
+    			append_dev(text1, t3);
+    			append_dev(text1, text0);
     			append_dev(svg_1, g1);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(g1, null);
     			}
 
+    			append_dev(g1, text3);
+    			append_dev(text3, t4);
+    			append_dev(text3, text2);
     			append_dev(svg_1, g2);
     			if (if_block3) if_block3.m(g2, null);
     			append_dev(svg_1, g3);
@@ -9295,19 +9326,19 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(window, "resize", /*resize*/ ctx[23], false, false, false),
-    					listen_dev(svg_1, "click", self$1(/*removeHighlights*/ ctx[25]), false, false, false)
+    					listen_dev(window, "resize", /*resize*/ ctx[24], false, false, false),
+    					listen_dev(svg_1, "click", self$1(/*removeHighlights*/ ctx[26]), false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*showUserLineControls*/ ctx[18]) {
+    			if (/*showUserLineControls*/ ctx[19]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLineControls*/ 262144) {
+    					if (dirty[0] & /*showUserLineControls*/ 524288) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -9326,11 +9357,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionLineControls*/ ctx[17]) {
+    			if (/*showRegressionLineControls*/ ctx[18]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLineControls*/ 131072) {
+    					if (dirty[0] & /*showRegressionLineControls*/ 262144) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -9349,11 +9380,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showResidualsTable*/ ctx[15]) {
+    			if (/*showResidualsTable*/ ctx[16]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
 
-    					if (dirty[0] & /*showResidualsTable*/ 32768) {
+    					if (dirty[0] & /*showResidualsTable*/ 65536) {
     						transition_in(if_block2, 1);
     					}
     				} else {
@@ -9372,8 +9403,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 4225024) {
-    				each_value_2 = /*yTicks*/ ctx[11];
+    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 8450048) {
+    				each_value_2 = /*yTicks*/ ctx[12];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -9387,7 +9418,7 @@ var app = (function () {
     						each_blocks_1[i] = create_each_block_2(child_ctx);
     						each_blocks_1[i].c();
     						transition_in(each_blocks_1[i], 1);
-    						each_blocks_1[i].m(g0, null);
+    						each_blocks_1[i].m(g0, text1);
     					}
     				}
 
@@ -9400,8 +9431,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 4225025) {
-    				each_value_1 = /*xTicks*/ ctx[12];
+    			if (!current || dirty[0] & /*height*/ 2 && text1_transform_value !== (text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)")) {
+    				attr_dev(text1, "transform", text1_transform_value);
+    			}
+
+    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 8450050) {
+    				each_value_1 = /*xTicks*/ ctx[13];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -9415,7 +9450,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block_1(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(g1, null);
+    						each_blocks[i].m(g1, text3);
     					}
     				}
 
@@ -9428,11 +9463,19 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showPoints*/ ctx[19]) {
+    			if (!current || dirty[0] & /*width*/ 1 && text3_x_value !== (text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[23].left)) {
+    				attr_dev(text3, "x", text3_x_value);
+    			}
+
+    			if (!current || dirty[0] & /*height*/ 2 && text3_y_value !== (text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[23].bottom / 2 + 15)) {
+    				attr_dev(text3, "y", text3_y_value);
+    			}
+
+    			if (/*showPoints*/ ctx[20]) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
 
-    					if (dirty[0] & /*showPoints*/ 524288) {
+    					if (dirty[0] & /*showPoints*/ 1048576) {
     						transition_in(if_block3, 1);
     					}
     				} else {
@@ -9451,11 +9494,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionLine*/ ctx[1]) {
+    			if (/*showRegressionLine*/ ctx[2]) {
     				if (if_block4) {
     					if_block4.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLine*/ 2) {
+    					if (dirty[0] & /*showRegressionLine*/ 4) {
     						transition_in(if_block4, 1);
     					}
     				} else {
@@ -9474,11 +9517,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showUserLine*/ ctx[2]) {
+    			if (/*showUserLine*/ ctx[3]) {
     				if (if_block5) {
     					if_block5.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLine*/ 4) {
+    					if (dirty[0] & /*showUserLine*/ 8) {
     						transition_in(if_block5, 1);
     					}
     				} else {
@@ -9588,13 +9631,13 @@ var app = (function () {
     	let $counter;
     	let $regressionLineStore;
     	validate_store(userLineStore, 'userLineStore');
-    	component_subscribe($$self, userLineStore, $$value => $$invalidate(6, $userLineStore = $$value));
+    	component_subscribe($$self, userLineStore, $$value => $$invalidate(7, $userLineStore = $$value));
     	validate_store(member, 'member');
-    	component_subscribe($$self, member, $$value => $$invalidate(20, $member = $$value));
+    	component_subscribe($$self, member, $$value => $$invalidate(21, $member = $$value));
     	validate_store(counter, 'counter');
     	component_subscribe($$self, counter, $$value => $$invalidate(27, $counter = $$value));
     	validate_store(regressionLineStore, 'regressionLineStore');
-    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(21, $regressionLineStore = $$value));
+    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(22, $regressionLineStore = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Chart', slots, []);
     	let svg;
@@ -9602,7 +9645,7 @@ var app = (function () {
     	let height = 400;
 
     	// chart margin
-    	const margins = { top: 20, right: 20, bottom: 40, left: 25 };
+    	const margins = { top: 20, right: 20, bottom: 50, left: 50 };
 
     	// MATHS
     	// array range
@@ -9618,7 +9661,7 @@ var app = (function () {
     	});
 
     	function resize() {
-    		$$invalidate(26, { width, height } = svg.getBoundingClientRect(), width, $$invalidate(0, height));
+    		$$invalidate(0, { width, height } = svg.getBoundingClientRect(), width, $$invalidate(1, height));
     	}
 
     	//STATE CHANGE LOGIC
@@ -9638,12 +9681,12 @@ var app = (function () {
     	let highlightId;
 
     	const highlight = event => {
-    		$$invalidate(9, highlightId = event.target.id);
+    		$$invalidate(10, highlightId = event.target.id);
     		console.log(event.target);
     	};
 
     	const removeHighlights = event => {
-    		$$invalidate(9, highlightId = undefined);
+    		$$invalidate(10, highlightId = undefined);
     		console.log(event.target);
     	};
 
@@ -9655,28 +9698,28 @@ var app = (function () {
 
     	function control_lineChecked_binding(value) {
     		showUserLine = value;
-    		($$invalidate(2, showUserLine), $$invalidate(27, $counter));
+    		($$invalidate(3, showUserLine), $$invalidate(27, $counter));
     	}
 
     	function control_resChecked_binding(value) {
     		showUserResiduals = value;
-    		($$invalidate(4, showUserResiduals), $$invalidate(27, $counter));
+    		($$invalidate(5, showUserResiduals), $$invalidate(27, $counter));
     	}
 
     	function control_lineChecked_binding_1(value) {
     		showRegressionLine = value;
-    		($$invalidate(1, showRegressionLine), $$invalidate(27, $counter));
+    		($$invalidate(2, showRegressionLine), $$invalidate(27, $counter));
     	}
 
     	function control_resChecked_binding_1(value) {
     		showRegressionResiduals = value;
-    		($$invalidate(5, showRegressionResiduals), $$invalidate(27, $counter));
+    		($$invalidate(6, showRegressionResiduals), $$invalidate(27, $counter));
     	}
 
     	function svg_1_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			svg = $$value;
-    			$$invalidate(7, svg);
+    			$$invalidate(8, svg);
     		});
     	}
 
@@ -9739,26 +9782,26 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('svg' in $$props) $$invalidate(7, svg = $$props.svg);
-    		if ('width' in $$props) $$invalidate(26, width = $$props.width);
-    		if ('height' in $$props) $$invalidate(0, height = $$props.height);
-    		if ('translating' in $$props) $$invalidate(8, translating = $$props.translating);
-    		if ('highlightId' in $$props) $$invalidate(9, highlightId = $$props.highlightId);
-    		if ('showRegressionLine' in $$props) $$invalidate(1, showRegressionLine = $$props.showRegressionLine);
-    		if ('showUserLine' in $$props) $$invalidate(2, showUserLine = $$props.showUserLine);
-    		if ('showSingleResidual' in $$props) $$invalidate(3, showSingleResidual = $$props.showSingleResidual);
-    		if ('showUserResiduals' in $$props) $$invalidate(4, showUserResiduals = $$props.showUserResiduals);
-    		if ('showRegressionResiduals' in $$props) $$invalidate(5, showRegressionResiduals = $$props.showRegressionResiduals);
-    		if ('userLinePredict' in $$props) $$invalidate(10, userLinePredict = $$props.userLinePredict);
-    		if ('yTicks' in $$props) $$invalidate(11, yTicks = $$props.yTicks);
-    		if ('xTicks' in $$props) $$invalidate(12, xTicks = $$props.xTicks);
-    		if ('yScale' in $$props) $$invalidate(13, yScale = $$props.yScale);
-    		if ('xScale' in $$props) $$invalidate(14, xScale = $$props.xScale);
-    		if ('showResidualsTable' in $$props) $$invalidate(15, showResidualsTable = $$props.showResidualsTable);
-    		if ('showResidualControls' in $$props) $$invalidate(16, showResidualControls = $$props.showResidualControls);
-    		if ('showRegressionLineControls' in $$props) $$invalidate(17, showRegressionLineControls = $$props.showRegressionLineControls);
-    		if ('showUserLineControls' in $$props) $$invalidate(18, showUserLineControls = $$props.showUserLineControls);
-    		if ('showPoints' in $$props) $$invalidate(19, showPoints = $$props.showPoints);
+    		if ('svg' in $$props) $$invalidate(8, svg = $$props.svg);
+    		if ('width' in $$props) $$invalidate(0, width = $$props.width);
+    		if ('height' in $$props) $$invalidate(1, height = $$props.height);
+    		if ('translating' in $$props) $$invalidate(9, translating = $$props.translating);
+    		if ('highlightId' in $$props) $$invalidate(10, highlightId = $$props.highlightId);
+    		if ('showRegressionLine' in $$props) $$invalidate(2, showRegressionLine = $$props.showRegressionLine);
+    		if ('showUserLine' in $$props) $$invalidate(3, showUserLine = $$props.showUserLine);
+    		if ('showSingleResidual' in $$props) $$invalidate(4, showSingleResidual = $$props.showSingleResidual);
+    		if ('showUserResiduals' in $$props) $$invalidate(5, showUserResiduals = $$props.showUserResiduals);
+    		if ('showRegressionResiduals' in $$props) $$invalidate(6, showRegressionResiduals = $$props.showRegressionResiduals);
+    		if ('userLinePredict' in $$props) $$invalidate(11, userLinePredict = $$props.userLinePredict);
+    		if ('yTicks' in $$props) $$invalidate(12, yTicks = $$props.yTicks);
+    		if ('xTicks' in $$props) $$invalidate(13, xTicks = $$props.xTicks);
+    		if ('yScale' in $$props) $$invalidate(14, yScale = $$props.yScale);
+    		if ('xScale' in $$props) $$invalidate(15, xScale = $$props.xScale);
+    		if ('showResidualsTable' in $$props) $$invalidate(16, showResidualsTable = $$props.showResidualsTable);
+    		if ('showResidualControls' in $$props) $$invalidate(17, showResidualControls = $$props.showResidualControls);
+    		if ('showRegressionLineControls' in $$props) $$invalidate(18, showRegressionLineControls = $$props.showRegressionLineControls);
+    		if ('showUserLineControls' in $$props) $$invalidate(19, showUserLineControls = $$props.showUserLineControls);
+    		if ('showPoints' in $$props) $$invalidate(20, showPoints = $$props.showPoints);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -9768,48 +9811,49 @@ var app = (function () {
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty[0] & /*$counter*/ 134217728) {
     			// destructure store application state variables
-    			$$invalidate(19, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showResidualControls, showSingleResidual, showRegressionResiduals, showUserResiduals, showResidualsTable } = sequence[$counter], showPoints, ($$invalidate(2, showUserLine), $$invalidate(27, $counter)), ($$invalidate(1, showRegressionLine), $$invalidate(27, $counter)), ($$invalidate(18, showUserLineControls), $$invalidate(27, $counter)), ($$invalidate(17, showRegressionLineControls), $$invalidate(27, $counter)), ($$invalidate(16, showResidualControls), $$invalidate(27, $counter)), ($$invalidate(3, showSingleResidual), $$invalidate(27, $counter)), ($$invalidate(5, showRegressionResiduals), $$invalidate(27, $counter)), ($$invalidate(4, showUserResiduals), $$invalidate(27, $counter)), ($$invalidate(15, showResidualsTable), $$invalidate(27, $counter)));
+    			$$invalidate(20, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showResidualControls, showSingleResidual, showRegressionResiduals, showUserResiduals, showResidualsTable } = sequence[$counter], showPoints, ($$invalidate(3, showUserLine), $$invalidate(27, $counter)), ($$invalidate(2, showRegressionLine), $$invalidate(27, $counter)), ($$invalidate(19, showUserLineControls), $$invalidate(27, $counter)), ($$invalidate(18, showRegressionLineControls), $$invalidate(27, $counter)), ($$invalidate(17, showResidualControls), $$invalidate(27, $counter)), ($$invalidate(4, showSingleResidual), $$invalidate(27, $counter)), ($$invalidate(6, showRegressionResiduals), $$invalidate(27, $counter)), ($$invalidate(5, showUserResiduals), $$invalidate(27, $counter)), ($$invalidate(16, showResidualsTable), $$invalidate(27, $counter)));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width*/ 67108864) {
+    		if ($$self.$$.dirty[0] & /*width*/ 1) {
     			// scales
-    			$$invalidate(14, xScale = linear().domain([0, 20]).range([margins.left, width - margins.right]));
+    			$$invalidate(15, xScale = linear().domain([0, 20]).range([margins.left, width - margins.right]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*height*/ 1) {
-    			$$invalidate(13, yScale = linear().domain([0, 15]).range([height - margins.bottom, margins.top]));
+    		if ($$self.$$.dirty[0] & /*height*/ 2) {
+    			$$invalidate(14, yScale = linear().domain([0, 15]).range([height - margins.bottom, margins.top]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width*/ 67108864) {
+    		if ($$self.$$.dirty[0] & /*width*/ 1) {
     			// ticks
-    			$$invalidate(12, xTicks = width > 360 ? [0, 4, 8, 12, 16, 20] : [0, 10, 20]);
+    			$$invalidate(13, xTicks = width > 360 ? [0, 4, 8, 12, 16, 20] : [0, 10, 20]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*height*/ 1) {
-    			$$invalidate(11, yTicks = height > 180 ? [0, 3, 6, 9, 12, 15] : [0, 5, 15]);
+    		if ($$self.$$.dirty[0] & /*height*/ 2) {
+    			$$invalidate(12, yTicks = height > 180 ? [0, 3, 6, 9, 12, 15] : [0, 5, 15]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*$userLineStore*/ 64) {
+    		if ($$self.$$.dirty[0] & /*$userLineStore*/ 128) {
     			// based on the user line, returns a y value for a given x value. Re-runs anytime userLineStore changes
-    			$$invalidate(10, userLinePredict = function (x) {
+    			$$invalidate(11, userLinePredict = function (x) {
     				return $userLineStore.m * x + $userLineStore.b;
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*showRegressionResiduals, showUserResiduals, showSingleResidual, showUserLine, showRegressionLine*/ 62) {
+    		if ($$self.$$.dirty[0] & /*showRegressionResiduals, showUserResiduals, showSingleResidual, showUserLine, showRegressionLine*/ 124) {
     			{
     				if (showRegressionResiduals === true && showUserResiduals === true) {
-    					$$invalidate(8, translating = true);
+    					$$invalidate(9, translating = true);
     				} else if (showSingleResidual && showUserLine && showRegressionLine) {
-    					$$invalidate(8, translating = true);
+    					$$invalidate(9, translating = true);
     				} else {
-    					$$invalidate(8, translating = false);
+    					$$invalidate(9, translating = false);
     				}
     			}
     		}
     	};
 
     	return [
+    		width,
     		height,
     		showRegressionLine,
     		showUserLine,
@@ -9836,7 +9880,6 @@ var app = (function () {
     		resize,
     		highlight,
     		removeHighlights,
-    		width,
     		$counter,
     		control_lineChecked_binding,
     		control_resChecked_binding,
