@@ -6363,70 +6363,53 @@ var app = (function () {
 
     // (34:4) {#if lineChecked}
     function create_if_block_1$2(ctx) {
-    	let span0;
+    	let span;
     	let t0;
     	let strong0;
     	let t1_value = /*slope*/ ctx[4].toFixed(2) + "";
     	let t1;
-    	let span0_class_value;
     	let t2;
-    	let span1;
-    	let t3;
     	let strong1;
-    	let t4_value = /*yInt*/ ctx[5].toFixed(2) + "";
-    	let t4;
-    	let span1_class_value;
+    	let t3_value = /*yInt*/ ctx[5].toFixed(2) + "";
+    	let t3;
+    	let span_class_value;
 
     	const block = {
     		c: function create() {
-    			span0 = element("span");
-    			t0 = text("M: ");
+    			span = element("span");
+    			t0 = text("y = ");
     			strong0 = element("strong");
     			t1 = text(t1_value);
-    			t2 = space();
-    			span1 = element("span");
-    			t3 = text("B: ");
+    			t2 = text("x + ");
     			strong1 = element("strong");
-    			t4 = text(t4_value);
+    			t3 = text(t3_value);
     			attr_dev(strong0, "class", "svelte-1bak9wu");
-    			add_location(strong0, file$7, 34, 41, 759);
-    			attr_dev(span0, "id", "slope");
-    			attr_dev(span0, "class", span0_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"));
-    			add_location(span0, file$7, 34, 6, 724);
+    			add_location(strong0, file$7, 34, 48, 766);
     			attr_dev(strong1, "class", "svelte-1bak9wu");
-    			add_location(strong1, file$7, 35, 39, 841);
-    			attr_dev(span1, "id", "yInt");
-    			attr_dev(span1, "class", span1_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"));
-    			add_location(span1, file$7, 35, 6, 808);
+    			add_location(strong1, file$7, 34, 87, 805);
+    			attr_dev(span, "id", "lineFormula");
+    			attr_dev(span, "class", span_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"));
+    			add_location(span, file$7, 34, 6, 724);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, span0, anchor);
-    			append_dev(span0, t0);
-    			append_dev(span0, strong0);
+    			insert_dev(target, span, anchor);
+    			append_dev(span, t0);
+    			append_dev(span, strong0);
     			append_dev(strong0, t1);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, span1, anchor);
-    			append_dev(span1, t3);
-    			append_dev(span1, strong1);
-    			append_dev(strong1, t4);
+    			append_dev(span, t2);
+    			append_dev(span, strong1);
+    			append_dev(strong1, t3);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*slope*/ 16 && t1_value !== (t1_value = /*slope*/ ctx[4].toFixed(2) + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*yInt*/ 32 && t3_value !== (t3_value = /*yInt*/ ctx[5].toFixed(2) + "")) set_data_dev(t3, t3_value);
 
-    			if (dirty & /*color*/ 4 && span0_class_value !== (span0_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"))) {
-    				attr_dev(span0, "class", span0_class_value);
-    			}
-
-    			if (dirty & /*yInt*/ 32 && t4_value !== (t4_value = /*yInt*/ ctx[5].toFixed(2) + "")) set_data_dev(t4, t4_value);
-
-    			if (dirty & /*color*/ 4 && span1_class_value !== (span1_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"))) {
-    				attr_dev(span1, "class", span1_class_value);
+    			if (dirty & /*color*/ 4 && span_class_value !== (span_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"))) {
+    				attr_dev(span, "class", span_class_value);
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(span0);
-    			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(span1);
+    			if (detaching) detach_dev(span);
     		}
     	};
 
@@ -6441,7 +6424,7 @@ var app = (function () {
     	return block;
     }
 
-    // (41:4) {#if showResidualControls}
+    // (40:4) {#if showResidualControls}
     function create_if_block$3(ctx) {
     	let switch_1;
     	let updating_checked;
@@ -6472,7 +6455,7 @@ var app = (function () {
     			span = element("span");
     			span.textContent = "Residuals";
     			attr_dev(span, "class", "title svelte-1bak9wu");
-    			add_location(span, file$7, 42, 6, 1055);
+    			add_location(span, file$7, 41, 6, 1019);
     		},
     		m: function mount(target, anchor) {
     			mount_component(switch_1, target, anchor);
@@ -6513,7 +6496,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(41:4) {#if showResidualControls}",
+    		source: "(40:4) {#if showResidualControls}",
     		ctx
     	});
 
@@ -6566,7 +6549,7 @@ var app = (function () {
     			attr_dev(section0, "class", "lineControls svelte-1bak9wu");
     			add_location(section0, file$7, 27, 2, 558);
     			attr_dev(section1, "class", "resControls svelte-1bak9wu");
-    			add_location(section1, file$7, 39, 2, 913);
+    			add_location(section1, file$7, 38, 2, 877);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section0, anchor);
