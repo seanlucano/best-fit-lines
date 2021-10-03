@@ -24,7 +24,6 @@ export const sequence = [
         <p>That relationship, between dollars and donuts, could be expressed in the form of a <strong>line</stong>.</p>`,	
          cta: `<strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong>`,
          showPoints: true,
-         showUserLineControls: true,
          showUserLine: true
     },
     {	
@@ -32,7 +31,7 @@ export const sequence = [
         prompt:`<p>Nice job!  This seems like a perfectly reasonable line.  But I'm sure you can also imagine two or three different lines that would all look pretty good.</p>  
         <p>If only there were a way to figure out the <strong>best possible line</strong> that expresses the dollars to donuts relationship...hmmmmm.</p>  
         <p>As it turns out, there is! Statisticians have a tried and true way of creating a "best fit" line for this sort of data.</p>`,	
-         cta: `<strong>Use the "Best Fit Line" switch to reveal this line!</strong>`,
+         cta: `<strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong>`,
         showPoints: true,
         showUserLineControls: true,
         showUserLine: true,
@@ -45,17 +44,18 @@ export const sequence = [
         <p>What if you could measure the distance between each data point and these two lines?</p>`,	
         cta: `<strong>Click any point to reveal the line showing the distance between that point and the two lines. <p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
         showPoints: true,
-        showUserLineControls: true,
         showUserLine: true,
-        showRegressionLineControls: true,
         showRegressionLine: true,
+        showUserLineControls: true,
+        showRegressionLineControls: true,
         showSingleResidual: true
         
     },
     {	title: 'Residuals',
         prompt:`<p>You may have noticed that sometimes your line has a shorter or longer distance from each point than the best fit line...but what do these lengths actually represent?.</p>
-        <p>Over on the chart, you should now see some text to help explain.  For any given point, we know exactly what the actual cost for each number of donuts was.  But in most cases, the lines actually predicted a slightly different cost for each given number of donuts.</p>
-        <p>The difference between the actual observed value of each point and the predicted value of the line is called the <strong>residual</strong> value for each data point.	
+        <p>Over on the chart, you should now see some text to help explain.</p>  
+        <p>For any given point, we know exactly what the actual cost was for each transaction.  But the line sometimes expected a slightly different cost (y) for each given number of donuts (x).</p>
+        <p>The verticle (y) distance between each point and the line is the <strong>residual</strong> value, in other words, the <strong>difference between the observed value and the predicted value</strong>.	
         `,
         cta: `<strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
         showPoints: true,
@@ -66,13 +66,8 @@ export const sequence = [
         showSingleResidual: true
     },
     {	title: 'Minimizing residuals',
-<<<<<<< Updated upstream
         prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>`,
          cta: `<strong><p>Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once.  Try moving your line around to see the lenghts of each residual change.</p><p>As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!</p></strong>`,
-=======
-        prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>
-         cta: `Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once. Try moving your line around to see the lenghts of each residual change.As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!`,
->>>>>>> Stashed changes
          showPoints: true,
          showUserLineControls: true,
          showUserLine: true,

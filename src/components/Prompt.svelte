@@ -75,7 +75,11 @@
 	}
 
 	#cta {
-		padding-top: .5em;
+		padding: .5em;
+		padding-bottom: .5em;
+		background-color:#DFEBF6;
+		border: 2px solid hsl(245deg 100% 60%);
+		border-radius: 5px;
 	}
 
 	#quiz label {

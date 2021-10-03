@@ -22,6 +22,7 @@
 	import Residuals from './Residuals.svelte';
 	import SingleResidual from './SingleResidual.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
+	import PredictTooltip from './PredictTooltip.svelte';
 
 
 	
@@ -117,9 +118,11 @@
 	}
 
 	let highlightId;
+	let clickedElement;
 	const highlight = (event) => {
 		highlightId = event.target.id;
-		console.log(event.target);
+		clickedElement = event.target;
+		console.log(clickedElement);
 	}
 
 	const removeHighlights = (event) => {
@@ -269,6 +272,12 @@
 			
 				<UserLine {xScale} {yScale} {svg} />
 			{/if}
+		</g>
+		<g class='tooltips'>
+			<PredictTooltip 
+				{clickedElement}
+				points ={points[$member]}
+			/>
 		</g>
 	
 	</svg>
