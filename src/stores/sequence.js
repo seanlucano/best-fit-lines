@@ -66,7 +66,7 @@ export const sequence = [
         showSingleResidual: true
     },
     {	title: 'Minimizing residuals',
-        prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>
+        prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>`,
          cta: `<strong><p>Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once.  Try moving your line around to see the lenghts of each residual change.</p><p>As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!</p></strong>`,
          showPoints: true,
          showUserLineControls: true,
