@@ -67,7 +67,7 @@ export const sequence = [
     },
     {	title: 'Minimizing residuals',
         prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>
-         cta: `<p><strong>Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once.  Try moving your line around to see the lenghts of each residual change.</strong></p><p>As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!</p>`,
+         cta: `<strong><p>Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once.  Try moving your line around to see the lenghts of each residual change.</p><p>As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!</p></strong>`,
          showPoints: true,
          showUserLineControls: true,
          showUserLine: true,
@@ -76,7 +76,7 @@ export const sequence = [
     
     {	title:"The 'least squares' line",
         prompt:`<p>So, if we wanted to truly evaluate different lines to see which one is the "best fit" line, we would try to find a line that had the lowest possible sum of all residuals.  However, since some residuals are negative and some are positive, we can square each one before adding them up so they don't cancel out. So this mysterious "best fit" line we've been seaching for could also be called the "least squares line."</p>
-        <p>The table you're now seeing has a squared residual for each point, both to your line and the best fit line as well as a total sum of squared residuals (SSR) for each line.</strong>`,	
+        <p>The table you're now seeing has a squared residual for each point, both to your line and the best fit line as well as a total sum of squared residuals (SSR) for each line.`,	
          cta: `<strong>You can click on any point, or any values in the table to see which go together.</strong>`,
          showPoints: true,
          showUserLineControls: true,
