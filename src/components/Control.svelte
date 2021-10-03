@@ -32,8 +32,7 @@ $: if (!lineChecked) {
     </span>
 
     {#if lineChecked}
-      <span id='slope' class={color} >M: <strong>{slope.toFixed(2)}</strong></span>
-      <span id='yInt' class={color}>B: <strong>{yInt.toFixed(2)}</strong></span>
+      <span id='lineFormula' class={color} >y = <strong>{slope.toFixed(2)}</strong>x + <strong>{yInt.toFixed(2)}</strong></span>
     {/if}
   </section>
     
