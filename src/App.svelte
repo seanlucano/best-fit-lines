@@ -109,8 +109,9 @@
 	}
 
 	#userNav {
-		margin: 0 1em 0 1em;
+		margin:.5em;
 	}
+
 
 	#interactive {
 		height: 100%;

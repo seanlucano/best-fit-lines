@@ -39,34 +39,35 @@
 		{@html sequence[$counter].prompt}	
 	</div>
 	<div in:fade id='cta'>
-		{@html sequence[$counter].cta}	
+		{@html sequence[$counter].cta}
+		<div id='quiz'>
+			{#if sequence[$counter].quiz}
+				<form on:submit|preventDefault={onSubmit}>
+					{#each sequence[$counter].quiz.questions as question, i}
+						<label> 
+							<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
+							{question}
+						</label>
+					{/each}
+					<div class='submit'>
+						{#if showSubmit}
+							<Button type='submit' color='white'>Submit</Button>
+						{/if}
+					</div>
+					<div class='feedback'>
+						{#if showFeedback}
+						{@html sequence[$counter].quiz.feedback}
+							<!-- <Button 
+							type='reset'
+							on:click={onReset}
+							_class='secondary'>Try again</Button> -->
+						{/if}
+					</div>
+				</form>
+			{/if}
+		</div>	
 	</div>
-	<div id='quiz'>
-		{#if sequence[$counter].quiz}
-			<form on:submit|preventDefault={onSubmit}>
-				{#each sequence[$counter].quiz.questions as question, i}
-					<label> 
-						<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
-						{question}
-					</label>
-				{/each}
-				<div class='submit'>
-					{#if showSubmit}
-						<Button type='submit' color='white'>Submit</Button>
-					{/if}
-				</div>
-				<div class='feedback'>
-					{#if showFeedback}
-					{@html sequence[$counter].quiz.feedback}
-						<!-- <Button 
-						type='reset'
-						on:click={onReset}
-						_class='secondary'>Try again</Button> -->
-					{/if}
-				</div>
-			</form>
-		{/if}
-	</div>
+	
 {/key}
 
 <style>
@@ -75,11 +76,12 @@
 	}
 
 	#cta {
-		padding: .5em;
-		padding-bottom: .5em;
+		padding: .25em 1em;
+		/* padding-bottom: .5em; */
 		background-color:#DFEBF6;
-		border: 2px solid hsl(245deg 100% 60%);
-		border-radius: 5px;
+		/* box-shadow: 2px 6px 11px 0px #e3e6e8; */
+		/* border: 2px solid hsl(245deg 100% 60%); */
+		border-radius: .5em;
 	}
 
 	#quiz label {
@@ -99,7 +101,7 @@
 	}
 
 	.submit, .feedback {
-		margin-top: .7em;
+		margin-top: 1em;
 		text-align: center;
 	}
 

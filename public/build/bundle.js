@@ -1133,7 +1133,7 @@ var app = (function () {
     			button = element("button");
     			if (default_slot) default_slot.c();
     			button.disabled = /*disabled*/ ctx[1];
-    			attr_dev(button, "class", button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-12nrvny"));
+    			attr_dev(button, "class", button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-1w3q01o"));
     			attr_dev(button, "type", /*type*/ ctx[2]);
     			add_location(button, file$i, 8, 0, 107);
     		},
@@ -1174,7 +1174,7 @@ var app = (function () {
     				prop_dev(button, "disabled", /*disabled*/ ctx[1]);
     			}
 
-    			if (!current || dirty & /*color*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-12nrvny"))) {
+    			if (!current || dirty & /*color*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*color*/ ctx[0]) + " svelte-1w3q01o"))) {
     				attr_dev(button, "class", button_class_value);
     			}
 
@@ -1393,7 +1393,7 @@ var app = (function () {
             prompt: `<p>To the right, you'll see a scatter plot littered with a set of circles. Each circle represents a pair of values.</p>
         <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the verticle (y) values represent the total transaction cost in US dollars.</p>  
         <p>So, each circle represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
-            cta: `<strong>So...if you had to make a quick guess, what would you say is the relationship between dollars and donuts here? </strong>`,
+            cta: `<p><strong>What would you say is the relationship between dollars and donuts here? </strong></p>`,
             quiz: {
                 questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
                 correct: 0,
@@ -1407,7 +1407,7 @@ var app = (function () {
             prompt:`<p>These two variables have a positive relationship, meaning that as one increases, the other also increases.  But what if we needed to be more specific?</p>
         <p>Say you are on a very strict donut budget, and you wanted to be able to <strong>predict</strong> the cost of a new transaction for various numbers of donuts purchased.</p>
         <p>That relationship, between dollars and donuts, could be expressed in the form of a <strong>line</stong>.</p>`,	
-             cta: `<strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong>`,
+             cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong></p>`,
              showPoints: true,
              showUserLine: true
         },
@@ -1416,7 +1416,7 @@ var app = (function () {
             prompt:`<p>Nice job!  This seems like a perfectly reasonable line.  But I'm sure you can also imagine two or three different lines that would all look pretty good.</p>  
         <p>If only there were a way to figure out the <strong>best possible line</strong> that expresses the dollars to donuts relationship...hmmmmm.</p>  
         <p>As it turns out, there is! Statisticians have a tried and true way of creating a "best fit" line for this sort of data.</p>`,	
-             cta: `<strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong>`,
+             cta: `<p><strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong></p>`,
             showPoints: true,
             showUserLineControls: true,
             showUserLine: true,
@@ -1427,7 +1427,7 @@ var app = (function () {
             prompt:`<p>So now we know that there is such a thing as a "best fit" line...but what makes this line so...best?  How do we know it's any better than the line you drew?
         <p>Here's one way to start thinking about what makes a line a <strong>good fit</strong>.</p>  
         <p>What if you could measure the distance between each data point and these two lines?</p>`,	
-            cta: `<strong>Click any point to reveal the line showing the distance between that point and the two lines. <p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
+            cta: `<p><strong>Click any point to reveal the line showing the distance between that point and the two lines.</p><p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
             showPoints: true,
             showUserLine: true,
             showRegressionLine: true,
@@ -1442,7 +1442,7 @@ var app = (function () {
         <p>For any given point, we know exactly what the actual cost was for each transaction.  But the line sometimes expected a slightly different cost (y) for each given number of donuts (x).</p>
         <p>The verticle (y) distance between each point and the line is the <strong>residual</strong> value, in other words, the <strong>difference between the observed value and the predicted value</strong>.	
         `,
-            cta: `<strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
+            cta: `<p><strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
             showPoints: true,
             showUserLineControls: true,
             showRegressionLineControls: true,
@@ -1462,7 +1462,7 @@ var app = (function () {
         {	title:"The 'least squares' line",
             prompt:`<p>So, if we wanted to truly evaluate different lines to see which one is the "best fit" line, we would try to find a line that had the lowest possible sum of all residuals.  However, since some residuals are negative and some are positive, we can square each one before adding them up so they don't cancel out. So this mysterious "best fit" line we've been seaching for could also be called the "least squares line."</p>
         <p>The table you're now seeing has a squared residual for each point, both to your line and the best fit line as well as a total sum of squared residuals (SSR) for each line.`,	
-             cta: `<strong>You can click on any point, or any values in the table to see which go together.</strong>`,
+             cta: `<p><strong>You can click on any point, or any values in the table to see which go together.</strong></p>`,
              showPoints: true,
              showUserLineControls: true,
              showUserLine: true,
@@ -1476,7 +1476,7 @@ var app = (function () {
         {	title: 'Comparing SSRs',
             prompt:`<p> Do you still think your line may be better?</p>
         <p>What is the lowest possible sum or squared residuals you can get to with your line? </p>`,	
-             cta: `<strong>See if you can "beat" the SSR value for the best fit line, then we know that this line is actually the "least squares line" after all!</strong>`,
+             cta: `<p><strong>See if you can "beat" the SSR value for the best fit line, then we know that this line is actually the "least squares line" after all!</strong></p>`,
              showPoints: true,
              showUserLineControls: true,
              showRegressionLineControls: true,
@@ -1500,7 +1500,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (45:2) {#if sequence[$counter].quiz}
+    // (44:3) {#if sequence[$counter].quiz}
     function create_if_block$6(ctx) {
     	let form;
     	let t0;
@@ -1535,11 +1535,11 @@ var app = (function () {
     			t1 = space();
     			div1 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "submit svelte-18m45e1");
-    			add_location(div0, file$h, 52, 4, 1178);
-    			attr_dev(div1, "class", "feedback svelte-18m45e1");
-    			add_location(div1, file$h, 57, 4, 1305);
-    			add_location(form, file$h, 45, 3, 938);
+    			attr_dev(div0, "class", "submit svelte-bz6dxi");
+    			add_location(div0, file$h, 51, 5, 1179);
+    			attr_dev(div1, "class", "feedback svelte-bz6dxi");
+    			add_location(div1, file$h, 56, 5, 1311);
+    			add_location(form, file$h, 44, 4, 932);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -1643,14 +1643,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(45:2) {#if sequence[$counter].quiz}",
+    		source: "(44:3) {#if sequence[$counter].quiz}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:4) {#each sequence[$counter].quiz.questions as question, i}
+    // (46:5) {#each sequence[$counter].quiz.questions as question, i}
     function create_each_block$5(ctx) {
     	let label;
     	let input;
@@ -1670,11 +1670,11 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = /*i*/ ctx[12];
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-18m45e1");
+    			attr_dev(input, "class", "svelte-bz6dxi");
     			/*$$binding_groups*/ ctx[6][0].push(input);
-    			add_location(input, file$h, 48, 6, 1062);
-    			attr_dev(label, "class", "svelte-18m45e1");
-    			add_location(label, file$h, 47, 5, 1047);
+    			add_location(input, file$h, 47, 7, 1059);
+    			attr_dev(label, "class", "svelte-bz6dxi");
+    			add_location(label, file$h, 46, 6, 1043);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, label, anchor);
@@ -1707,14 +1707,14 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(47:4) {#each sequence[$counter].quiz.questions as question, i}",
+    		source: "(46:5) {#each sequence[$counter].quiz.questions as question, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:5) {#if showSubmit}
+    // (53:6) {#if showSubmit}
     function create_if_block_2$1(ctx) {
     	let button;
     	let current;
@@ -1755,14 +1755,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(54:5) {#if showSubmit}",
+    		source: "(53:6) {#if showSubmit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:6) <Button type='submit' color='white'>
+    // (54:7) <Button type='submit' color='white'>
     function create_default_slot$4(ctx) {
     	let t;
 
@@ -1782,14 +1782,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(55:6) <Button type='submit' color='white'>",
+    		source: "(54:7) <Button type='submit' color='white'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:5) {#if showFeedback}
+    // (58:6) {#if showFeedback}
     function create_if_block_1$4(ctx) {
     	let html_tag;
     	let raw_value = sequence[/*$counter*/ ctx[3]].quiz.feedback + "";
@@ -1818,7 +1818,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(59:5) {#if showFeedback}",
+    		source: "(58:6) {#if showFeedback}",
     		ctx
     	});
 
@@ -1837,11 +1837,12 @@ var app = (function () {
     	let raw0_value = sequence[/*$counter*/ ctx[3]].prompt + "";
     	let div1_intro;
     	let t2;
-    	let div2;
-    	let raw1_value = sequence[/*$counter*/ ctx[3]].cta + "";
-    	let div2_intro;
-    	let t3;
     	let div3;
+    	let html_tag;
+    	let raw1_value = sequence[/*$counter*/ ctx[3]].cta + "";
+    	let t3;
+    	let div2;
+    	let div3_intro;
     	let current;
     	let if_block = sequence[/*$counter*/ ctx[3]].quiz && create_if_block$6(ctx);
 
@@ -1853,23 +1854,25 @@ var app = (function () {
     			t1 = space();
     			div1 = element("div");
     			t2 = space();
-    			div2 = element("div");
-    			t3 = space();
     			div3 = element("div");
+    			html_tag = new HtmlTag();
+    			t3 = space();
+    			div2 = element("div");
     			if (if_block) if_block.c();
     			add_location(h2, file$h, 35, 2, 706);
     			attr_dev(div0, "id", "title");
-    			attr_dev(div0, "class", "svelte-18m45e1");
+    			attr_dev(div0, "class", "svelte-bz6dxi");
     			add_location(div0, file$h, 34, 1, 679);
     			attr_dev(div1, "id", "text");
-    			attr_dev(div1, "class", "svelte-18m45e1");
+    			attr_dev(div1, "class", "svelte-bz6dxi");
     			add_location(div1, file$h, 37, 1, 751);
-    			attr_dev(div2, "id", "cta");
-    			attr_dev(div2, "class", "svelte-18m45e1");
-    			add_location(div2, file$h, 40, 1, 821);
-    			attr_dev(div3, "id", "quiz");
-    			attr_dev(div3, "class", "svelte-18m45e1");
-    			add_location(div3, file$h, 43, 1, 887);
+    			html_tag.a = t3;
+    			attr_dev(div2, "id", "quiz");
+    			attr_dev(div2, "class", "svelte-bz6dxi");
+    			add_location(div2, file$h, 42, 2, 879);
+    			attr_dev(div3, "id", "cta");
+    			attr_dev(div3, "class", "svelte-bz6dxi");
+    			add_location(div3, file$h, 40, 1, 821);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1879,16 +1882,17 @@ var app = (function () {
     			insert_dev(target, div1, anchor);
     			div1.innerHTML = raw0_value;
     			insert_dev(target, t2, anchor);
-    			insert_dev(target, div2, anchor);
-    			div2.innerHTML = raw1_value;
-    			insert_dev(target, t3, anchor);
     			insert_dev(target, div3, anchor);
-    			if (if_block) if_block.m(div3, null);
+    			html_tag.m(raw1_value, div3);
+    			append_dev(div3, t3);
+    			append_dev(div3, div2);
+    			if (if_block) if_block.m(div2, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*$counter*/ 8) && t0_value !== (t0_value = sequence[/*$counter*/ ctx[3]].title + "")) set_data_dev(t0, t0_value);
-    			if ((!current || dirty & /*$counter*/ 8) && raw0_value !== (raw0_value = sequence[/*$counter*/ ctx[3]].prompt + "")) div1.innerHTML = raw0_value;			if ((!current || dirty & /*$counter*/ 8) && raw1_value !== (raw1_value = sequence[/*$counter*/ ctx[3]].cta + "")) div2.innerHTML = raw1_value;
+    			if ((!current || dirty & /*$counter*/ 8) && raw0_value !== (raw0_value = sequence[/*$counter*/ ctx[3]].prompt + "")) div1.innerHTML = raw0_value;			if ((!current || dirty & /*$counter*/ 8) && raw1_value !== (raw1_value = sequence[/*$counter*/ ctx[3]].cta + "")) html_tag.p(raw1_value);
+
     			if (sequence[/*$counter*/ ctx[3]].quiz) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
@@ -1900,7 +1904,7 @@ var app = (function () {
     					if_block = create_if_block$6(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
-    					if_block.m(div3, null);
+    					if_block.m(div2, null);
     				}
     			} else if (if_block) {
     				group_outros();
@@ -1929,14 +1933,15 @@ var app = (function () {
     				});
     			}
 
-    			if (!div2_intro) {
+    			transition_in(if_block);
+
+    			if (!div3_intro) {
     				add_render_callback(() => {
-    					div2_intro = create_in_transition(div2, fade, {});
-    					div2_intro.start();
+    					div3_intro = create_in_transition(div3, fade, {});
+    					div3_intro.start();
     				});
     			}
 
-    			transition_in(if_block);
     			current = true;
     		},
     		o: function outro(local) {
@@ -1948,8 +1953,6 @@ var app = (function () {
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(div1);
     			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(div2);
-    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div3);
     			if (if_block) if_block.d();
     		}
@@ -10565,21 +10568,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-u35i9c");
+    			attr_dev(div0, "class", "svelte-1ms8tv");
     			add_location(div0, file, 52, 3, 1237);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-u35i9c");
+    			attr_dev(div1, "class", "svelte-1ms8tv");
     			add_location(div1, file, 55, 3, 1283);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-u35i9c");
+    			attr_dev(div2, "class", "svelte-1ms8tv");
     			add_location(div2, file, 51, 2, 1213);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-u35i9c");
+    			attr_dev(div3, "class", "svelte-1ms8tv");
     			add_location(div3, file, 60, 2, 1342);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-u35i9c");
+    			attr_dev(section, "class", "svelte-1ms8tv");
     			add_location(section, file, 50, 1, 1187);
-    			attr_dev(main, "class", "svelte-u35i9c");
+    			attr_dev(main, "class", "svelte-1ms8tv");
     			add_location(main, file, 45, 0, 1131);
     		},
     		l: function claim(nodes) {

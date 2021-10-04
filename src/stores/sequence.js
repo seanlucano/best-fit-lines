@@ -8,7 +8,7 @@ export const sequence = [
         prompt: `<p>To the right, you'll see a scatter plot littered with a set of circles. Each circle represents a pair of values.</p>
         <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the verticle (y) values represent the total transaction cost in US dollars.</p>  
         <p>So, each circle represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
-        cta: `<strong>So...if you had to make a quick guess, what would you say is the relationship between dollars and donuts here? </strong>`,
+        cta: `<p><strong>What would you say is the relationship between dollars and donuts here? </strong></p>`,
         quiz: {
             questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
             correct: 0,
@@ -22,7 +22,7 @@ export const sequence = [
         prompt:`<p>These two variables have a positive relationship, meaning that as one increases, the other also increases.  But what if we needed to be more specific?</p>
         <p>Say you are on a very strict donut budget, and you wanted to be able to <strong>predict</strong> the cost of a new transaction for various numbers of donuts purchased.</p>
         <p>That relationship, between dollars and donuts, could be expressed in the form of a <strong>line</stong>.</p>`,	
-         cta: `<strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong>`,
+         cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong></p>`,
          showPoints: true,
          showUserLine: true
     },
@@ -31,7 +31,7 @@ export const sequence = [
         prompt:`<p>Nice job!  This seems like a perfectly reasonable line.  But I'm sure you can also imagine two or three different lines that would all look pretty good.</p>  
         <p>If only there were a way to figure out the <strong>best possible line</strong> that expresses the dollars to donuts relationship...hmmmmm.</p>  
         <p>As it turns out, there is! Statisticians have a tried and true way of creating a "best fit" line for this sort of data.</p>`,	
-         cta: `<strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong>`,
+         cta: `<p><strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong></p>`,
         showPoints: true,
         showUserLineControls: true,
         showUserLine: true,
@@ -42,7 +42,7 @@ export const sequence = [
         prompt:`<p>So now we know that there is such a thing as a "best fit" line...but what makes this line so...best?  How do we know it's any better than the line you drew?
         <p>Here's one way to start thinking about what makes a line a <strong>good fit</strong>.</p>  
         <p>What if you could measure the distance between each data point and these two lines?</p>`,	
-        cta: `<strong>Click any point to reveal the line showing the distance between that point and the two lines. <p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
+        cta: `<p><strong>Click any point to reveal the line showing the distance between that point and the two lines.</p><p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
         showPoints: true,
         showUserLine: true,
         showRegressionLine: true,
@@ -57,7 +57,7 @@ export const sequence = [
         <p>For any given point, we know exactly what the actual cost was for each transaction.  But the line sometimes expected a slightly different cost (y) for each given number of donuts (x).</p>
         <p>The verticle (y) distance between each point and the line is the <strong>residual</strong> value, in other words, the <strong>difference between the observed value and the predicted value</strong>.	
         `,
-        cta: `<strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
+        cta: `<p><strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
         showPoints: true,
         showUserLineControls: true,
         showRegressionLineControls: true,
@@ -77,7 +77,7 @@ export const sequence = [
     {	title:"The 'least squares' line",
         prompt:`<p>So, if we wanted to truly evaluate different lines to see which one is the "best fit" line, we would try to find a line that had the lowest possible sum of all residuals.  However, since some residuals are negative and some are positive, we can square each one before adding them up so they don't cancel out. So this mysterious "best fit" line we've been seaching for could also be called the "least squares line."</p>
         <p>The table you're now seeing has a squared residual for each point, both to your line and the best fit line as well as a total sum of squared residuals (SSR) for each line.`,	
-         cta: `<strong>You can click on any point, or any values in the table to see which go together.</strong>`,
+         cta: `<p><strong>You can click on any point, or any values in the table to see which go together.</strong></p>`,
          showPoints: true,
          showUserLineControls: true,
          showUserLine: true,
@@ -91,7 +91,7 @@ export const sequence = [
     {	title: 'Comparing SSRs',
         prompt:`<p> Do you still think your line may be better?</p>
         <p>What is the lowest possible sum or squared residuals you can get to with your line? </p>`,	
-         cta: `<strong>See if you can "beat" the SSR value for the best fit line, then we know that this line is actually the "least squares line" after all!</strong>`,
+         cta: `<p><strong>See if you can "beat" the SSR value for the best fit line, then we know that this line is actually the "least squares line" after all!</strong></p>`,
          showPoints: true,
          showUserLineControls: true,
          showRegressionLineControls: true,
