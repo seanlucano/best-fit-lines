@@ -63,7 +63,8 @@ export const sequence = [
         showRegressionLineControls: true,
         showRegressionLine: true,
         showUserLine: true,
-        showSingleResidual: true
+        showSingleResidual: true,
+        showPredictTooltip: true
     },
     {	title: 'Minimizing residuals',
         prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>`,

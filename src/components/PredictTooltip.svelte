@@ -8,9 +8,14 @@ export let clickedElement;
 </script>
 
 
-
+<rect
+width=350
+height=100
+rx=10
+fill='grey'
+opacity=.5>
+</rect>
 <text
-    x=''
-    y=''
->I'm a tooltip</text>
+    x=20 y =50
+>Placeholder for cool tootip!</text>
 

@@ -35,6 +35,7 @@
 		showRegressionLineControls,
 		showResidualControls,
 		showSingleResidual,
+		showPredictTooltip,
 		showRegressionResiduals, 
 		showUserResiduals,
 		showResidualsTable} = sequence[$counter])
@@ -273,12 +274,15 @@
 				{/if}
 			{/if}
 		</g>
-		<g class='tooltips'>
-			<PredictTooltip 
-				{clickedElement}
-				points ={points[$member]}
-			/>
-		</g>
+		{#if showPredictTooltip}
+			<g class='tooltips'
+			transform='translate(75, 50)'>
+				<PredictTooltip 
+					{clickedElement}
+					points ={points[$member]}
+				/>
+			</g>
+		{/if}
 	
 	</svg>
 	
