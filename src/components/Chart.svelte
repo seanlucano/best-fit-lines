@@ -217,17 +217,7 @@
 
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
-				{#if showSingleResidual}
-				<SingleResidual
-					{translating}
-					on:click={highlight}
-					{highlightId}
-					groupId='regressionLineResiduals'
-					{xScale} {yScale} 
-					points={points[$member]} 
-					predict={$regressionLineStore.predict}   
-				/>
-				{/if}
+				
 				{#if showRegressionResiduals}
 					<Residuals
 						{translating}
@@ -240,24 +230,22 @@
 					/>
 				{/if}
 				<RegressionLine {xScale} {yScale}/>
-				
+				{#if showSingleResidual}
+				<SingleResidual
+					{translating}
+					on:click={highlight}
+					{highlightId}
+					groupId='regressionLineResiduals'
+					{xScale} {yScale} 
+					points={points[$member]} 
+					predict={$regressionLineStore.predict}   
+				/>
+				{/if}
 			{/if}
 		</g>
 
 		<g class='userLine'>
 			{#if showUserLine}
-				{#if showSingleResidual}
-					<SingleResidual
-						{translating}
-						on:click={highlight}
-						{highlightId}
-						groupId='userLineResiduals'
-						{xScale} {yScale} 
-						points={points[$member]} 
-						predict={userLinePredict}   
-					/>
-				{/if}
-			
 				{#if showUserResiduals}
 					<Residuals 
 						{translating}
@@ -271,6 +259,18 @@
 				{/if}
 			
 				<UserLine {xScale} {yScale} {svg} />
+				
+				{#if showSingleResidual}
+					<SingleResidual
+						{translating}
+						on:click={highlight}
+						{highlightId}
+						groupId='userLineResiduals'
+						{xScale} {yScale} 
+						points={points[$member]} 
+						predict={userLinePredict}   
+					/>
+				{/if}
 			{/if}
 		</g>
 		<g class='tooltips'>
