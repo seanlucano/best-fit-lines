@@ -4,8 +4,8 @@
     export let predict;
     export let highlightId;
     
-    $: resValues = points[$member].map(point => point.y - predict(point.x));
-    $: ssr = resValues.reduce((previous, current) => previous + Math.pow(current, 2));
+    $: resValues = points[$member].map(point => Math.pow( (point.y - predict(point.x)),2 ) );
+    $: ssr = resValues.reduce((previous, current) => previous + current);
 
 </script>
 
