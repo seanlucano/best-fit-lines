@@ -34,6 +34,7 @@
 		showUserLineControls, 
 		showRegressionLineControls,
 		showResidualControls,
+		showHighlighting,
 		showSingleResidual,
 		showPredictTooltip,
 		showRegressionResiduals, 
@@ -106,24 +107,35 @@
 
 	// $: setTween(member)
 
+	// logic for seperating residuals slightly when both lines are present. 
 	let translating = false;
+	let singleTranslating = false;
 	
 	$: {
 		if(showRegressionResiduals === true && showUserResiduals === true) {
 			translating = true;
-		} else if (showSingleResidual && showUserLine && showRegressionLine) {
-			translating = true;
 		} else {
 			translating = false;
 		}
+
+		if (showSingleResidual && showUserLine && showRegressionLine) {
+			singleTranslating = true;
+		} else {
+			singleTranslating = false;
+		}
 	}
 
+	
+
+
+	// locig for highlighing related elements on click
 	let highlightId;
 	let clickedElement;
 	const highlight = (event) => {
-		highlightId = event.target.id;
-		clickedElement = event.target;
-		console.log(clickedElement);
+		if (showHighlighting) {
+			highlightId = event.target.id;
+			clickedElement = event.target;
+		}
 	}
 
 	const removeHighlights = (event) => {
@@ -206,6 +218,7 @@
 				{#each points[$member] as {x, y}, i}
 					<Circle
 						on:click={highlight}
+						{showHighlighting}
 						{highlightId}
 						cx={xScale(x)} 
 						cy={yScale(y)} 
@@ -233,10 +246,10 @@
 				<RegressionLine {xScale} {yScale}/>
 				{#if showSingleResidual}
 				<SingleResidual
-					{translating}
+					translating={singleTranslating}
 					on:click={highlight}
 					{highlightId}
-					groupId='regressionLineResiduals'
+					groupId='regressionLineResidual'
 					{xScale} {yScale} 
 					points={points[$member]} 
 					predict={$regressionLineStore.predict}   
@@ -263,10 +276,10 @@
 				
 				{#if showSingleResidual}
 					<SingleResidual
-						{translating}
+						translating={singleTranslating}
 						on:click={highlight}
 						{highlightId}
-						groupId='userLineResiduals'
+						groupId='userLineResidual'
 						{xScale} {yScale} 
 						points={points[$member]} 
 						predict={userLinePredict}   

@@ -7,9 +7,9 @@
     export let translating;
     export let points;
 
-    let offset = 15;
+    let offset = 20;
 
-   $: if (groupId === 'userLineResiduals') {
+   $: if (groupId === 'userLineResidual') {
        offset *= -1;
    }
     
@@ -20,9 +20,9 @@
 <g id={groupId}>
     {#each points as {x, y}, i}
         <line
-            id={groupId}
+            id={i}
             class:translated={translating}
-            class:highlighted={i == highlightId}
+            class:hidden={i != highlightId}
             on:click
             x1={xScale(x)}
             y1={yScale(y)}
@@ -31,40 +31,42 @@
         >
         </line>
         <text
+            id={i}
             class:translated={translating}
-            class:highlighted={i == highlightId}
+            class:hidden={i != highlightId}
             text-anchor='middle'
             x={xScale(x) + offset}
             y={yScale( (y + predict(x))/2  )} 
-        >{(y - predict(x)).toFixed(1)}</text>
+        >{(y - predict(x)).toFixed(2)}</text>
     {/each}
 </g>
+
 <style>
 
     line {
-
-        opacity: 0;
-        stroke-width: 2.5;
-        stroke-dasharray: 2,2;
-            
-        }
+        stroke-width: 2;
+        stroke-dasharray: 2,2;   
+        opacity: 1;
+        transition: opacity, .5s;
+    }
     
     text {
         font-size: .8em;
+        opacity: 1;
+        transition: opacity, .5s;
+    }
+
+    .hidden {
         opacity: 0;
+        visibility: hidden;
     }
 
-    .highlighted {
-        opacity: 1; 
-        
-    }
-
-    #regressionLineResiduals .translated {
+    #regressionLineResidual .translated {
         transform: translate(2.5px, 0px);
         transition: transform, 0.5s;
     }
 
-    #userLineResiduals .translated {
+    #userLineResidual .translated {
         transform: translate(-2.5px, 0px);
         transition: transform, 0.5s;
     }

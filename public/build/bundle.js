@@ -1391,7 +1391,7 @@ var app = (function () {
         {	
             title: 'Welcome to best fit lines!',
             prompt: `<p>To the right, you'll see a scatter plot littered with a set of circles. Each circle represents a pair of values.</p>
-        <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the verticle (y) values represent the total transaction cost in US dollars.</p>  
+        <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the vertical (y) values represent the total transaction cost in US dollars.</p>  
         <p>So, each circle represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
             cta: `<p><strong>What would you say is the relationship between dollars and donuts here? </strong></p>`,
             quiz: {
@@ -1407,16 +1407,15 @@ var app = (function () {
             prompt:`<p>These two variables have a positive relationship, meaning that as one increases, the other also increases.  But what if we needed to be more specific?</p>
         <p>Say you are on a very strict donut budget, and you wanted to be able to <strong>predict</strong> the cost of a new transaction for various numbers of donuts purchased.</p>
         <p>That relationship, between dollars and donuts, could be expressed in the form of a <strong>line</stong>.</p>`,	
-             cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship. It's ok if it's not perfect, just take a guess and click 'Next' when you're done.</strong></p>`,
+             cta: `<p><strong>Using the circle handles at the end points of the line, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click next when you are happy with your line</p>`,
              showPoints: true,
              showUserLine: true
         },
         {	
             title: 'Good line...best line',
-            prompt:`<p>Nice job!  This seems like a perfectly reasonable line.  But I'm sure you can also imagine two or three different lines that would all look pretty good.</p>  
-        <p>If only there were a way to figure out the <strong>best possible line</strong> that expresses the dollars to donuts relationship...hmmmmm.</p>  
-        <p>As it turns out, there is! Statisticians have a tried and true way of creating a "best fit" line for this sort of data.</p>`,	
-             cta: `<p><strong>Use the "Best Fit Line" switch to reveal this line!<p>But what makes it the best fit line?</p></strong></p>`,
+            prompt:`<p>Nice job!  This seems like a very reasonable line!</p>  <p>But is it the... <strong>best possible line</strong>?</p>    
+        <p>Statisticians have a way of calculating the best fitting line for data like this. But how do they do it?</p>`,	
+             cta: `<p><strong>Use the "Best Fit Line" switch in the upper right to reveal this mysterious best fit line!<p></strong></p>`,
             showPoints: true,
             showUserLineControls: true,
             showUserLine: true,
@@ -1424,50 +1423,55 @@ var app = (function () {
         },
         
         {	title: 'What makes a good "fit"',
-            prompt:`<p>So now we know that there is such a thing as a "best fit" line...but what makes this line so...best?  How do we know it's any better than the line you drew?
-        <p>Here's one way to start thinking about what makes a line a <strong>good fit</strong>.</p>  
-        <p>What if you could measure the distance between each data point and these two lines?</p>`,	
-            cta: `<p><strong>Click any point to reveal the line showing the distance between that point and the two lines.</p><p>Which line seems to produce smaller distances between itself and each point?</p> <p>Click next to dig a little deeper.</strong></p>`,
+            prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
+        <p>Here's one way to start thinking about what makes a line's fit good or bad:.</p>  
+        <p><strong>First you need to be able to measure the distance between each data point and the line</strong></p>`,	
+            cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p>Your line and the best fit line are different distances from each point.  Hmmmm...</p>`,
             showPoints: true,
             showUserLine: true,
             showRegressionLine: true,
             showUserLineControls: true,
             showRegressionLineControls: true,
+            showHighlighting: true,
             showSingleResidual: true
             
         },
         {	title: 'Residuals',
-            prompt:`<p>You may have noticed that sometimes your line has a shorter or longer distance from each point than the best fit line...but what do these lengths actually represent?.</p>
-        <p>Over on the chart, you should now see some text to help explain.</p>  
-        <p>For any given point, we know exactly what the actual cost was for each transaction.  But the line sometimes expected a slightly different cost (y) for each given number of donuts (x).</p>
-        <p>The verticle (y) distance between each point and the line is the <strong>residual</strong> value, in other words, the <strong>difference between the observed value and the predicted value</strong>.	
+            prompt:`<p>So what do these new dotted lines represent?.</p> 
+        <p>For any given point, we know both the number of donuts and the cost each transaction.  But notice that the line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from what we know happened in real life.</p>
+        <p>That means that the distance between each point and the line tells us how far away the line's prediction was from the actual value, in other words, the <strong>residual</strong> (or error) value for the line at that point.</p>	
         `,
-            cta: `<p><strong>Click on any point to reveal the predicted value for each line, and the residual values associated with each.</strong></p>`,
+            cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
             showPoints: true,
             showUserLineControls: true,
             showRegressionLineControls: true,
-            showRegressionLine: true,
             showUserLine: true,
+            showRegressionLine: true,
             showSingleResidual: true,
+            showHighlighting: true,
             showPredictTooltip: true
         },
         {	title: 'Minimizing residuals',
-            prompt: `<p>It seems reasonable to assume that any self respecting "best fit" line would try to reduce the length of all of its residuals as much as possible, as this would mean it tends to be closer in its predictions to the actual values we've observed in the data.</p>`,
-             cta: `<strong><p>Let's just focus on your line for a second. Use the "Residuals" switch to turn on ALL residuals for your line at once.  Try moving your line around to see the lenghts of each residual change.</p><p>As you move your line around, you might notice that decreasing the residuals for one point might increase the residuals of another....arrrgggg!</p></strong>`,
+            prompt: `<p>Any self-respecting <strong>best fit</strong> line would try to reduce the length of all of its residuals (or errors) as much as possible. So let's try and minimize residuals for your line.</p>`,
+             cta: `<strong><p>Try moving your line around to minimize the lenghts of all residuals.</p></strong><p>`,
              showPoints: true,
              showUserLineControls: true,
              showUserLine: true,
+             showSingleResidual: true,
+             showHighlighting: true,
              showResidualControls: true,
         },
         
         {	title:"The 'least squares' line",
-            prompt:`<p>So, if we wanted to truly evaluate different lines to see which one is the "best fit" line, we would try to find a line that had the lowest possible sum of all residuals.  However, since some residuals are negative and some are positive, we can square each one before adding them up so they don't cancel out. So this mysterious "best fit" line we've been seaching for could also be called the "least squares line."</p>
-        <p>The table you're now seeing has a squared residual for each point, both to your line and the best fit line as well as a total sum of squared residuals (SSR) for each line.`,	
-             cta: `<p><strong>You can click on any point, or any values in the table to see which go together.</strong></p>`,
+            prompt:`<p>Let's try and be a bit more scientific about this. If we want to truly find the <strong>best fit</strong> line, we would need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one before adding all together.</p> <p>That means that another way to describe the <strong>best fit</strong> line would be the <strong>least squares</strong> line</p>
+        <p>The table you're now seeing has shows the squared residual for each point, as well as a the total <strong>sum of squared residuals (SSR)</strong> for each line.`,	
+             cta: `<p><strong>Click on any point, or any value in the table, to see which go together.</strong></p><p>The vlaues you are seeing displayed are rounded for readability, but don't worry!  'Under the hood' we're calculating the exact values.`,
              showPoints: true,
              showUserLineControls: true,
              showUserLine: true,
              showUserResiduals: true,
+             showSingleResidual: true,
+             showHighlighting: true,
              showRegressionLineControls: true,
              showResidualControls: true,
              showResidualsTable: true
@@ -1475,14 +1479,16 @@ var app = (function () {
         },
 
         {	title: 'Comparing SSRs',
-            prompt:`<p> Do you still think your line may be better?</p>
+            prompt:`<p> Do you still think your line is better than the best fit line?</p>
         <p>What is the lowest possible sum or squared residuals you can get to with your line? </p>`,	
-             cta: `<p><strong>See if you can "beat" the SSR value for the best fit line, then we know that this line is actually the "least squares line" after all!</strong></p>`,
+             cta: `<p><strong>Can you get a lower SSR than the best fit line?</strong></p>`,
              showPoints: true,
              showUserLineControls: true,
              showRegressionLineControls: true,
              showRegressionLine: true,
              showUserLine: true,
+             showSingleResidual: true,
+             showHighlighting: true,
              showResidualControls: true,
              showRegressionResiduals: true,
              showUserResiduals: true,
@@ -4787,13 +4793,14 @@ var app = (function () {
     		c: function create() {
     			circle = svg_element("circle");
     			attr_dev(circle, "data-tooltip", "hellooooo");
-    			attr_dev(circle, "r", /*r*/ ctx[4]);
+    			attr_dev(circle, "r", /*r*/ ctx[5]);
     			attr_dev(circle, "cx", /*cx*/ ctx[0]);
     			attr_dev(circle, "cy", /*cy*/ ctx[1]);
     			attr_dev(circle, "id", /*id*/ ctx[2]);
-    			attr_dev(circle, "class", "svelte-ir2hug");
+    			attr_dev(circle, "class", "svelte-16aexma");
     			toggle_class(circle, "highlighted", /*id*/ ctx[2] == /*highlightId*/ ctx[3]);
-    			add_location(circle, file$f, 11, 0, 137);
+    			toggle_class(circle, "clickable", /*showHighlighting*/ ctx[4]);
+    			add_location(circle, file$f, 12, 0, 167);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4802,7 +4809,7 @@ var app = (function () {
     			insert_dev(target, circle, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(circle, "click", /*click_handler*/ ctx[5], false, false, false);
+    				dispose = listen_dev(circle, "click", /*click_handler*/ ctx[6], false, false, false);
     				mounted = true;
     			}
     		},
@@ -4821,6 +4828,10 @@ var app = (function () {
 
     			if (dirty & /*id, highlightId*/ 12) {
     				toggle_class(circle, "highlighted", /*id*/ ctx[2] == /*highlightId*/ ctx[3]);
+    			}
+
+    			if (dirty & /*showHighlighting*/ 16) {
+    				toggle_class(circle, "clickable", /*showHighlighting*/ ctx[4]);
     			}
     		},
     		i: noop,
@@ -4850,9 +4861,10 @@ var app = (function () {
     	let { cy = 0 } = $$props;
     	let { id } = $$props;
     	let { highlightId } = $$props;
+    	let { showHighlighting } = $$props;
     	let r = 8;
     	let fill = 'grey';
-    	const writable_props = ['cx', 'cy', 'id', 'highlightId'];
+    	const writable_props = ['cx', 'cy', 'id', 'highlightId', 'showHighlighting'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Circle> was created with unknown prop '${key}'`);
@@ -4867,16 +4879,26 @@ var app = (function () {
     		if ('cy' in $$props) $$invalidate(1, cy = $$props.cy);
     		if ('id' in $$props) $$invalidate(2, id = $$props.id);
     		if ('highlightId' in $$props) $$invalidate(3, highlightId = $$props.highlightId);
+    		if ('showHighlighting' in $$props) $$invalidate(4, showHighlighting = $$props.showHighlighting);
     	};
 
-    	$$self.$capture_state = () => ({ cx, cy, id, highlightId, r, fill });
+    	$$self.$capture_state = () => ({
+    		cx,
+    		cy,
+    		id,
+    		highlightId,
+    		showHighlighting,
+    		r,
+    		fill
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('cx' in $$props) $$invalidate(0, cx = $$props.cx);
     		if ('cy' in $$props) $$invalidate(1, cy = $$props.cy);
     		if ('id' in $$props) $$invalidate(2, id = $$props.id);
     		if ('highlightId' in $$props) $$invalidate(3, highlightId = $$props.highlightId);
-    		if ('r' in $$props) $$invalidate(4, r = $$props.r);
+    		if ('showHighlighting' in $$props) $$invalidate(4, showHighlighting = $$props.showHighlighting);
+    		if ('r' in $$props) $$invalidate(5, r = $$props.r);
     		if ('fill' in $$props) fill = $$props.fill;
     	};
 
@@ -4884,13 +4906,20 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [cx, cy, id, highlightId, r, click_handler];
+    	return [cx, cy, id, highlightId, showHighlighting, r, click_handler];
     }
 
     class Circle extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$f, create_fragment$f, safe_not_equal, { cx: 0, cy: 1, id: 2, highlightId: 3 });
+
+    		init(this, options, instance$f, create_fragment$f, safe_not_equal, {
+    			cx: 0,
+    			cy: 1,
+    			id: 2,
+    			highlightId: 3,
+    			showHighlighting: 4
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -4908,6 +4937,10 @@ var app = (function () {
 
     		if (/*highlightId*/ ctx[3] === undefined && !('highlightId' in props)) {
     			console.warn("<Circle> was created without expected prop 'highlightId'");
+    		}
+
+    		if (/*showHighlighting*/ ctx[4] === undefined && !('showHighlighting' in props)) {
+    			console.warn("<Circle> was created without expected prop 'showHighlighting'");
     		}
     	}
 
@@ -4940,6 +4973,14 @@ var app = (function () {
     	}
 
     	set highlightId(value) {
+    		throw new Error("<Circle>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get showHighlighting() {
+    		throw new Error("<Circle>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set showHighlighting(value) {
     		throw new Error("<Circle>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -5868,7 +5909,7 @@ var app = (function () {
     // (12:0) {#each resValues as residual, i}
     function create_each_block$4(ctx) {
     	let span;
-    	let t_value = /*residual*/ ctx[6].toFixed(1) + "";
+    	let t_value = /*residual*/ ctx[6].toFixed(2) + "";
     	let t;
     	let mounted;
     	let dispose;
@@ -5892,7 +5933,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*resValues*/ 2 && t_value !== (t_value = /*residual*/ ctx[6].toFixed(1) + "")) set_data_dev(t, t_value);
+    			if (dirty & /*resValues*/ 2 && t_value !== (t_value = /*residual*/ ctx[6].toFixed(2) + "")) set_data_dev(t, t_value);
 
     			if (dirty & /*highlightId*/ 1) {
     				toggle_class(span, "highlighted", /*i*/ ctx[8] == /*highlightId*/ ctx[0]);
@@ -6955,7 +6996,7 @@ var app = (function () {
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*x*/ ctx[8]));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[4](/*x*/ ctx[8])));
     			attr_dev(line, "id", /*i*/ ctx[11]);
-    			attr_dev(line, "class", "svelte-qxe183");
+    			attr_dev(line, "class", "svelte-zsth8g");
     			toggle_class(line, "highlighted", /*i*/ ctx[11] == /*highlightId*/ ctx[5]);
     			toggle_class(line, "translated", /*translating*/ ctx[6]);
     			add_location(line, file$7, 16, 8, 268);
@@ -7030,7 +7071,7 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", /*groupId*/ ctx[2]);
-    			attr_dev(g, "class", "svelte-qxe183");
+    			attr_dev(g, "class", "svelte-zsth8g");
     			add_location(g, file$7, 14, 0, 211);
     		},
     		l: function claim(nodes) {
@@ -7288,7 +7329,7 @@ var app = (function () {
     	let line_x__value_1;
     	let line_y__value_1;
     	let text_1;
-    	let t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(1) + "";
+    	let t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(2) + "";
     	let t;
     	let text_1_x_value;
     	let text_1_y_value;
@@ -7300,22 +7341,23 @@ var app = (function () {
     			line = svg_element("line");
     			text_1 = svg_element("text");
     			t = text(t_value);
-    			attr_dev(line, "id", /*groupId*/ ctx[2]);
+    			attr_dev(line, "id", /*i*/ ctx[12]);
     			attr_dev(line, "x1", line_x__value = /*xScale*/ ctx[0](/*x*/ ctx[9]));
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[10]));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*x*/ ctx[9]));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[3](/*x*/ ctx[9])));
-    			attr_dev(line, "class", "svelte-1bpy0nf");
+    			attr_dev(line, "class", "svelte-1b2h6v5");
     			toggle_class(line, "translated", /*translating*/ ctx[5]);
-    			toggle_class(line, "highlighted", /*i*/ ctx[12] == /*highlightId*/ ctx[4]);
-    			add_location(line, file$6, 21, 8, 351);
+    			toggle_class(line, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    			add_location(line, file$6, 21, 8, 350);
+    			attr_dev(text_1, "id", /*i*/ ctx[12]);
     			attr_dev(text_1, "text-anchor", "middle");
     			attr_dev(text_1, "x", text_1_x_value = /*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]);
     			attr_dev(text_1, "y", text_1_y_value = /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2));
-    			attr_dev(text_1, "class", "svelte-1bpy0nf");
+    			attr_dev(text_1, "class", "svelte-1b2h6v5");
     			toggle_class(text_1, "translated", /*translating*/ ctx[5]);
-    			toggle_class(text_1, "highlighted", /*i*/ ctx[12] == /*highlightId*/ ctx[4]);
-    			add_location(text_1, file$6, 32, 8, 646);
+    			toggle_class(text_1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    			add_location(text_1, file$6, 32, 8, 634);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, line, anchor);
@@ -7328,10 +7370,6 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*groupId*/ 4) {
-    				attr_dev(line, "id", /*groupId*/ ctx[2]);
-    			}
-
     			if (dirty & /*xScale, points*/ 65 && line_x__value !== (line_x__value = /*xScale*/ ctx[0](/*x*/ ctx[9]))) {
     				attr_dev(line, "x1", line_x__value);
     			}
@@ -7353,10 +7391,10 @@ var app = (function () {
     			}
 
     			if (dirty & /*highlightId*/ 16) {
-    				toggle_class(line, "highlighted", /*i*/ ctx[12] == /*highlightId*/ ctx[4]);
+    				toggle_class(line, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			}
 
-    			if (dirty & /*points, predict*/ 72 && t_value !== (t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(1) + "")) set_data_dev(t, t_value);
+    			if (dirty & /*points, predict*/ 72 && t_value !== (t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(2) + "")) set_data_dev(t, t_value);
 
     			if (dirty & /*xScale, points, offset*/ 193 && text_1_x_value !== (text_1_x_value = /*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7])) {
     				attr_dev(text_1, "x", text_1_x_value);
@@ -7371,7 +7409,7 @@ var app = (function () {
     			}
 
     			if (dirty & /*highlightId*/ 16) {
-    				toggle_class(text_1, "highlighted", /*i*/ ctx[12] == /*highlightId*/ ctx[4]);
+    				toggle_class(text_1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -7412,8 +7450,8 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", /*groupId*/ ctx[2]);
-    			attr_dev(g, "class", "svelte-1bpy0nf");
-    			add_location(g, file$6, 19, 0, 294);
+    			attr_dev(g, "class", "svelte-1b2h6v5");
+    			add_location(g, file$6, 19, 0, 293);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7426,7 +7464,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*xScale, points, offset, yScale, predict, translating, highlightId, groupId*/ 255) {
+    			if (dirty & /*xScale, points, offset, yScale, predict, translating, highlightId*/ 251) {
     				each_value = /*points*/ ctx[6];
     				validate_each_argument(each_value);
     				let i;
@@ -7483,7 +7521,7 @@ var app = (function () {
     	let { highlightId } = $$props;
     	let { translating } = $$props;
     	let { points } = $$props;
-    	let offset = 15;
+    	let offset = 20;
 
     	const writable_props = [
     		'xScale',
@@ -7541,7 +7579,7 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*groupId, offset*/ 132) {
-    			if (groupId === 'userLineResiduals') {
+    			if (groupId === 'userLineResidual') {
     				$$invalidate(7, offset *= -1);
     			}
     		}
@@ -8263,25 +8301,25 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[39] = list[i].x;
-    	child_ctx[40] = list[i].y;
-    	child_ctx[42] = i;
+    	child_ctx[41] = list[i].x;
+    	child_ctx[42] = list[i].y;
+    	child_ctx[44] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[43] = list[i];
+    	child_ctx[45] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[43] = list[i];
+    	child_ctx[45] = list[i];
     	return child_ctx;
     }
 
-    // (139:1) {#if showUserLineControls}
+    // (151:1) {#if showUserLineControls}
     function create_if_block_10(ctx) {
     	let control;
     	let updating_lineChecked;
@@ -8289,18 +8327,18 @@ var app = (function () {
     	let current;
 
     	function control_lineChecked_binding(value) {
-    		/*control_lineChecked_binding*/ ctx[30](value);
+    		/*control_lineChecked_binding*/ ctx[32](value);
     	}
 
     	function control_resChecked_binding(value) {
-    		/*control_resChecked_binding*/ ctx[31](value);
+    		/*control_resChecked_binding*/ ctx[33](value);
     	}
 
     	let control_props = {
     		id: "yourLine",
     		slope: /*$userLineStore*/ ctx[7].slope(),
     		yInt: /*$userLineStore*/ ctx[7].intercept(),
-    		showResidualControls: /*showResidualControls*/ ctx[19],
+    		showResidualControls: /*showResidualControls*/ ctx[21],
     		showResValues: /*showUserResiduals*/ ctx[5],
     		color: "primary",
     		$$slots: { default: [create_default_slot_1] },
@@ -8331,10 +8369,10 @@ var app = (function () {
     			const control_changes = {};
     			if (dirty[0] & /*$userLineStore*/ 128) control_changes.slope = /*$userLineStore*/ ctx[7].slope();
     			if (dirty[0] & /*$userLineStore*/ 128) control_changes.yInt = /*$userLineStore*/ ctx[7].intercept();
-    			if (dirty[0] & /*showResidualControls*/ 524288) control_changes.showResidualControls = /*showResidualControls*/ ctx[19];
+    			if (dirty[0] & /*showResidualControls*/ 2097152) control_changes.showResidualControls = /*showResidualControls*/ ctx[21];
     			if (dirty[0] & /*showUserResiduals*/ 32) control_changes.showResValues = /*showUserResiduals*/ ctx[5];
 
-    			if (dirty[1] & /*$$scope*/ 131072) {
+    			if (dirty[1] & /*$$scope*/ 524288) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
@@ -8370,14 +8408,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(139:1) {#if showUserLineControls}",
+    		source: "(151:1) {#if showUserLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (140:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>
+    // (152:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>
     function create_default_slot_1(ctx) {
     	let t;
 
@@ -8397,14 +8435,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(140:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>",
+    		source: "(152:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:1) {#if showRegressionLineControls}
+    // (164:1) {#if showRegressionLineControls}
     function create_if_block_9(ctx) {
     	let control;
     	let updating_lineChecked;
@@ -8412,18 +8450,18 @@ var app = (function () {
     	let current;
 
     	function control_lineChecked_binding_1(value) {
-    		/*control_lineChecked_binding_1*/ ctx[32](value);
+    		/*control_lineChecked_binding_1*/ ctx[34](value);
     	}
 
     	function control_resChecked_binding_1(value) {
-    		/*control_resChecked_binding_1*/ ctx[33](value);
+    		/*control_resChecked_binding_1*/ ctx[35](value);
     	}
 
     	let control_props = {
     		id: "regressionLine",
-    		slope: /*$regressionLineStore*/ ctx[24].a,
-    		yInt: /*$regressionLineStore*/ ctx[24].b,
-    		showResidualControls: /*showResidualControls*/ ctx[19],
+    		slope: /*$regressionLineStore*/ ctx[26].a,
+    		yInt: /*$regressionLineStore*/ ctx[26].b,
+    		showResidualControls: /*showResidualControls*/ ctx[21],
     		showResValues: /*showRegressionResiduals*/ ctx[6],
     		color: "secondary",
     		$$slots: { default: [create_default_slot] },
@@ -8452,12 +8490,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const control_changes = {};
-    			if (dirty[0] & /*$regressionLineStore*/ 16777216) control_changes.slope = /*$regressionLineStore*/ ctx[24].a;
-    			if (dirty[0] & /*$regressionLineStore*/ 16777216) control_changes.yInt = /*$regressionLineStore*/ ctx[24].b;
-    			if (dirty[0] & /*showResidualControls*/ 524288) control_changes.showResidualControls = /*showResidualControls*/ ctx[19];
+    			if (dirty[0] & /*$regressionLineStore*/ 67108864) control_changes.slope = /*$regressionLineStore*/ ctx[26].a;
+    			if (dirty[0] & /*$regressionLineStore*/ 67108864) control_changes.yInt = /*$regressionLineStore*/ ctx[26].b;
+    			if (dirty[0] & /*showResidualControls*/ 2097152) control_changes.showResidualControls = /*showResidualControls*/ ctx[21];
     			if (dirty[0] & /*showRegressionResiduals*/ 64) control_changes.showResValues = /*showRegressionResiduals*/ ctx[6];
 
-    			if (dirty[1] & /*$$scope*/ 131072) {
+    			if (dirty[1] & /*$$scope*/ 524288) {
     				control_changes.$$scope = { dirty, ctx };
     			}
 
@@ -8493,14 +8531,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(152:1) {#if showRegressionLineControls}",
+    		source: "(164:1) {#if showRegressionLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>
+    // (165:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>
     function create_default_slot(ctx) {
     	let t;
 
@@ -8520,14 +8558,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(153:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>",
+    		source: "(165:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (167:0) {#if showResidualsTable}
+    // (179:0) {#if showResidualsTable}
     function create_if_block_8(ctx) {
     	let div;
     	let residualstable;
@@ -8535,16 +8573,16 @@ var app = (function () {
 
     	residualstable = new ResidualsTable({
     			props: {
-    				highlightId: /*highlightId*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
     				showRegressionResiduals: /*showRegressionResiduals*/ ctx[6],
     				showUserResiduals: /*showUserResiduals*/ ctx[5],
-    				userLinePredict: /*userLinePredict*/ ctx[12],
-    				bestFitLinePredict: /*$regressionLineStore*/ ctx[24].predict
+    				userLinePredict: /*userLinePredict*/ ctx[14],
+    				bestFitLinePredict: /*$regressionLineStore*/ ctx[26].predict
     			},
     			$$inline: true
     		});
 
-    	residualstable.$on("click", /*highlight*/ ctx[27]);
+    	residualstable.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -8552,7 +8590,7 @@ var app = (function () {
     			create_component(residualstable.$$.fragment);
     			attr_dev(div, "id", "residualsTable");
     			attr_dev(div, "class", "svelte-1pi5tw9");
-    			add_location(div, file$3, 167, 1, 4014);
+    			add_location(div, file$3, 179, 1, 4242);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -8561,11 +8599,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const residualstable_changes = {};
-    			if (dirty[0] & /*highlightId*/ 1024) residualstable_changes.highlightId = /*highlightId*/ ctx[10];
+    			if (dirty[0] & /*highlightId*/ 2048) residualstable_changes.highlightId = /*highlightId*/ ctx[11];
     			if (dirty[0] & /*showRegressionResiduals*/ 64) residualstable_changes.showRegressionResiduals = /*showRegressionResiduals*/ ctx[6];
     			if (dirty[0] & /*showUserResiduals*/ 32) residualstable_changes.showUserResiduals = /*showUserResiduals*/ ctx[5];
-    			if (dirty[0] & /*userLinePredict*/ 4096) residualstable_changes.userLinePredict = /*userLinePredict*/ ctx[12];
-    			if (dirty[0] & /*$regressionLineStore*/ 16777216) residualstable_changes.bestFitLinePredict = /*$regressionLineStore*/ ctx[24].predict;
+    			if (dirty[0] & /*userLinePredict*/ 16384) residualstable_changes.userLinePredict = /*userLinePredict*/ ctx[14];
+    			if (dirty[0] & /*$regressionLineStore*/ 67108864) residualstable_changes.bestFitLinePredict = /*$regressionLineStore*/ ctx[26].predict;
     			residualstable.$set(residualstable_changes);
     		},
     		i: function intro(local) {
@@ -8587,14 +8625,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(167:0) {#if showResidualsTable}",
+    		source: "(179:0) {#if showResidualsTable}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:3) {#each yTicks as tick}
+    // (199:3) {#each yTicks as tick}
     function create_each_block_2(ctx) {
     	let axis;
     	let current;
@@ -8602,12 +8640,12 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "yAxis",
-    				translate: "translate(0, " + /*yScale*/ ctx[15](/*tick*/ ctx[43]) + ")",
-    				x1: /*xScale*/ ctx[16](0),
-    				x2: /*xScale*/ ctx[16](extent(/*xTicks*/ ctx[14])[1]),
-    				x: /*margins*/ ctx[25].left - 8,
+    				translate: "translate(0, " + /*yScale*/ ctx[17](/*tick*/ ctx[45]) + ")",
+    				x1: /*xScale*/ ctx[18](0),
+    				x2: /*xScale*/ ctx[18](extent(/*xTicks*/ ctx[16])[1]),
+    				x: /*margins*/ ctx[27].left - 8,
     				y: "+4",
-    				text: /*tick*/ ctx[43]
+    				text: /*tick*/ ctx[45]
     			},
     			$$inline: true
     		});
@@ -8622,10 +8660,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*yScale, yTicks*/ 40960) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[15](/*tick*/ ctx[43]) + ")";
-    			if (dirty[0] & /*xScale*/ 65536) axis_changes.x1 = /*xScale*/ ctx[16](0);
-    			if (dirty[0] & /*xScale, xTicks*/ 81920) axis_changes.x2 = /*xScale*/ ctx[16](extent(/*xTicks*/ ctx[14])[1]);
-    			if (dirty[0] & /*yTicks*/ 8192) axis_changes.text = /*tick*/ ctx[43];
+    			if (dirty[0] & /*yScale, yTicks*/ 163840) axis_changes.translate = "translate(0, " + /*yScale*/ ctx[17](/*tick*/ ctx[45]) + ")";
+    			if (dirty[0] & /*xScale*/ 262144) axis_changes.x1 = /*xScale*/ ctx[18](0);
+    			if (dirty[0] & /*xScale, xTicks*/ 327680) axis_changes.x2 = /*xScale*/ ctx[18](extent(/*xTicks*/ ctx[16])[1]);
+    			if (dirty[0] & /*yTicks*/ 32768) axis_changes.text = /*tick*/ ctx[45];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -8646,14 +8684,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(187:3) {#each yTicks as tick}",
+    		source: "(199:3) {#each yTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (196:3) {#each xTicks as tick}
+    // (208:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -8661,11 +8699,11 @@ var app = (function () {
     	axis = new Axis({
     			props: {
     				axisType: "xAxis",
-    				translate: "translate(" + /*xScale*/ ctx[16](/*tick*/ ctx[43]) + ",0)",
-    				y1: /*yScale*/ ctx[15](0),
-    				y2: /*yScale*/ ctx[15](extent(/*yTicks*/ ctx[13])[1]),
-    				y: /*height*/ ctx[1] - /*margins*/ ctx[25].bottom + 16,
-    				text: /*tick*/ ctx[43]
+    				translate: "translate(" + /*xScale*/ ctx[18](/*tick*/ ctx[45]) + ",0)",
+    				y1: /*yScale*/ ctx[17](0),
+    				y2: /*yScale*/ ctx[17](extent(/*yTicks*/ ctx[15])[1]),
+    				y: /*height*/ ctx[1] - /*margins*/ ctx[27].bottom + 16,
+    				text: /*tick*/ ctx[45]
     			},
     			$$inline: true
     		});
@@ -8680,11 +8718,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const axis_changes = {};
-    			if (dirty[0] & /*xScale, xTicks*/ 81920) axis_changes.translate = "translate(" + /*xScale*/ ctx[16](/*tick*/ ctx[43]) + ",0)";
-    			if (dirty[0] & /*yScale*/ 32768) axis_changes.y1 = /*yScale*/ ctx[15](0);
-    			if (dirty[0] & /*yScale, yTicks*/ 40960) axis_changes.y2 = /*yScale*/ ctx[15](extent(/*yTicks*/ ctx[13])[1]);
-    			if (dirty[0] & /*height*/ 2) axis_changes.y = /*height*/ ctx[1] - /*margins*/ ctx[25].bottom + 16;
-    			if (dirty[0] & /*xTicks*/ 16384) axis_changes.text = /*tick*/ ctx[43];
+    			if (dirty[0] & /*xScale, xTicks*/ 327680) axis_changes.translate = "translate(" + /*xScale*/ ctx[18](/*tick*/ ctx[45]) + ",0)";
+    			if (dirty[0] & /*yScale*/ 131072) axis_changes.y1 = /*yScale*/ ctx[17](0);
+    			if (dirty[0] & /*yScale, yTicks*/ 163840) axis_changes.y2 = /*yScale*/ ctx[17](extent(/*yTicks*/ ctx[15])[1]);
+    			if (dirty[0] & /*height*/ 2) axis_changes.y = /*height*/ ctx[1] - /*margins*/ ctx[27].bottom + 16;
+    			if (dirty[0] & /*xTicks*/ 65536) axis_changes.text = /*tick*/ ctx[45];
     			axis.$set(axis_changes);
     		},
     		i: function intro(local) {
@@ -8705,18 +8743,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(196:3) {#each xTicks as tick}",
+    		source: "(208:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (204:3) {#if showPoints}
+    // (216:3) {#if showPoints}
     function create_if_block_7(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = points[/*$member*/ ctx[23]];
+    	let each_value = points[/*$member*/ ctx[25]];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -8745,8 +8783,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*highlightId, xScale, $member, yScale, highlight*/ 142705664) {
-    				each_value = points[/*$member*/ ctx[23]];
+    			if (dirty[0] & /*showHighlighting, highlightId, xScale, $member, yScale, highlight*/ 570828800) {
+    				each_value = points[/*$member*/ ctx[25]];
     				validate_each_argument(each_value);
     				let i;
 
@@ -8801,29 +8839,30 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(204:3) {#if showPoints}",
+    		source: "(216:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (206:4) {#each points[$member] as {x, y}
+    // (218:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
 
     	circle = new Circle({
     			props: {
-    				highlightId: /*highlightId*/ ctx[10],
-    				cx: /*xScale*/ ctx[16](/*x*/ ctx[39]),
-    				cy: /*yScale*/ ctx[15](/*y*/ ctx[40]),
-    				id: /*i*/ ctx[42]
+    				showHighlighting: /*showHighlighting*/ ctx[13],
+    				highlightId: /*highlightId*/ ctx[11],
+    				cx: /*xScale*/ ctx[18](/*x*/ ctx[41]),
+    				cy: /*yScale*/ ctx[17](/*y*/ ctx[42]),
+    				id: /*i*/ ctx[44]
     			},
     			$$inline: true
     		});
 
-    	circle.$on("click", /*highlight*/ ctx[27]);
+    	circle.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -8835,9 +8874,10 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const circle_changes = {};
-    			if (dirty[0] & /*highlightId*/ 1024) circle_changes.highlightId = /*highlightId*/ ctx[10];
-    			if (dirty[0] & /*xScale, $member*/ 8454144) circle_changes.cx = /*xScale*/ ctx[16](/*x*/ ctx[39]);
-    			if (dirty[0] & /*yScale, $member*/ 8421376) circle_changes.cy = /*yScale*/ ctx[15](/*y*/ ctx[40]);
+    			if (dirty[0] & /*showHighlighting*/ 8192) circle_changes.showHighlighting = /*showHighlighting*/ ctx[13];
+    			if (dirty[0] & /*highlightId*/ 2048) circle_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale, $member*/ 33816576) circle_changes.cx = /*xScale*/ ctx[18](/*x*/ ctx[41]);
+    			if (dirty[0] & /*yScale, $member*/ 33685504) circle_changes.cy = /*yScale*/ ctx[17](/*y*/ ctx[42]);
     			circle.$set(circle_changes);
     		},
     		i: function intro(local) {
@@ -8858,14 +8898,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(206:4) {#each points[$member] as {x, y}",
+    		source: "(218:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (220:3) {#if showRegressionLine}
+    // (233:3) {#if showRegressionLine}
     function create_if_block_4(ctx) {
     	let if_block0_anchor;
     	let regressionline;
@@ -8875,8 +8915,8 @@ var app = (function () {
 
     	regressionline = new RegressionLine({
     			props: {
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15]
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17]
     			},
     			$$inline: true
     		});
@@ -8924,8 +8964,8 @@ var app = (function () {
     			}
 
     			const regressionline_changes = {};
-    			if (dirty[0] & /*xScale*/ 65536) regressionline_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) regressionline_changes.yScale = /*yScale*/ ctx[15];
+    			if (dirty[0] & /*xScale*/ 262144) regressionline_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) regressionline_changes.yScale = /*yScale*/ ctx[17];
     			regressionline.$set(regressionline_changes);
 
     			if (/*showSingleResidual*/ ctx[4]) {
@@ -8977,14 +9017,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(220:3) {#if showRegressionLine}",
+    		source: "(233:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (222:4) {#if showRegressionResiduals}
+    // (235:4) {#if showRegressionResiduals}
     function create_if_block_6(ctx) {
     	let residuals;
     	let current;
@@ -8992,17 +9032,17 @@ var app = (function () {
     	residuals = new Residuals({
     			props: {
     				translating: /*translating*/ ctx[9],
-    				highlightId: /*highlightId*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
     				groupId: "regressionLineResiduals",
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15],
-    				points: points[/*$member*/ ctx[23]],
-    				predict: /*$regressionLineStore*/ ctx[24].predict
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17],
+    				points: points[/*$member*/ ctx[25]],
+    				predict: /*$regressionLineStore*/ ctx[26].predict
     			},
     			$$inline: true
     		});
 
-    	residuals.$on("click", /*highlight*/ ctx[27]);
+    	residuals.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -9015,11 +9055,11 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const residuals_changes = {};
     			if (dirty[0] & /*translating*/ 512) residuals_changes.translating = /*translating*/ ctx[9];
-    			if (dirty[0] & /*highlightId*/ 1024) residuals_changes.highlightId = /*highlightId*/ ctx[10];
-    			if (dirty[0] & /*xScale*/ 65536) residuals_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) residuals_changes.yScale = /*yScale*/ ctx[15];
-    			if (dirty[0] & /*$member*/ 8388608) residuals_changes.points = points[/*$member*/ ctx[23]];
-    			if (dirty[0] & /*$regressionLineStore*/ 16777216) residuals_changes.predict = /*$regressionLineStore*/ ctx[24].predict;
+    			if (dirty[0] & /*highlightId*/ 2048) residuals_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale*/ 262144) residuals_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) residuals_changes.yScale = /*yScale*/ ctx[17];
+    			if (dirty[0] & /*$member*/ 33554432) residuals_changes.points = points[/*$member*/ ctx[25]];
+    			if (dirty[0] & /*$regressionLineStore*/ 67108864) residuals_changes.predict = /*$regressionLineStore*/ ctx[26].predict;
     			residuals.$set(residuals_changes);
     		},
     		i: function intro(local) {
@@ -9040,32 +9080,32 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(222:4) {#if showRegressionResiduals}",
+    		source: "(235:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (234:4) {#if showSingleResidual}
+    // (247:4) {#if showSingleResidual}
     function create_if_block_5(ctx) {
     	let singleresidual;
     	let current;
 
     	singleresidual = new SingleResidual({
     			props: {
-    				translating: /*translating*/ ctx[9],
-    				highlightId: /*highlightId*/ ctx[10],
-    				groupId: "regressionLineResiduals",
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15],
-    				points: points[/*$member*/ ctx[23]],
-    				predict: /*$regressionLineStore*/ ctx[24].predict
+    				translating: /*singleTranslating*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
+    				groupId: "regressionLineResidual",
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17],
+    				points: points[/*$member*/ ctx[25]],
+    				predict: /*$regressionLineStore*/ ctx[26].predict
     			},
     			$$inline: true
     		});
 
-    	singleresidual.$on("click", /*highlight*/ ctx[27]);
+    	singleresidual.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -9077,12 +9117,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const singleresidual_changes = {};
-    			if (dirty[0] & /*translating*/ 512) singleresidual_changes.translating = /*translating*/ ctx[9];
-    			if (dirty[0] & /*highlightId*/ 1024) singleresidual_changes.highlightId = /*highlightId*/ ctx[10];
-    			if (dirty[0] & /*xScale*/ 65536) singleresidual_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) singleresidual_changes.yScale = /*yScale*/ ctx[15];
-    			if (dirty[0] & /*$member*/ 8388608) singleresidual_changes.points = points[/*$member*/ ctx[23]];
-    			if (dirty[0] & /*$regressionLineStore*/ 16777216) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[24].predict;
+    			if (dirty[0] & /*singleTranslating*/ 1024) singleresidual_changes.translating = /*singleTranslating*/ ctx[10];
+    			if (dirty[0] & /*highlightId*/ 2048) singleresidual_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale*/ 262144) singleresidual_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) singleresidual_changes.yScale = /*yScale*/ ctx[17];
+    			if (dirty[0] & /*$member*/ 33554432) singleresidual_changes.points = points[/*$member*/ ctx[25]];
+    			if (dirty[0] & /*$regressionLineStore*/ 67108864) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[26].predict;
     			singleresidual.$set(singleresidual_changes);
     		},
     		i: function intro(local) {
@@ -9103,14 +9143,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(234:4) {#if showSingleResidual}",
+    		source: "(247:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (249:3) {#if showUserLine}
+    // (262:3) {#if showUserLine}
     function create_if_block_1(ctx) {
     	let if_block0_anchor;
     	let userline;
@@ -9120,8 +9160,8 @@ var app = (function () {
 
     	userline = new UserLine({
     			props: {
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15],
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17],
     				svg: /*svg*/ ctx[8]
     			},
     			$$inline: true
@@ -9170,8 +9210,8 @@ var app = (function () {
     			}
 
     			const userline_changes = {};
-    			if (dirty[0] & /*xScale*/ 65536) userline_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) userline_changes.yScale = /*yScale*/ ctx[15];
+    			if (dirty[0] & /*xScale*/ 262144) userline_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) userline_changes.yScale = /*yScale*/ ctx[17];
     			if (dirty[0] & /*svg*/ 256) userline_changes.svg = /*svg*/ ctx[8];
     			userline.$set(userline_changes);
 
@@ -9224,14 +9264,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(249:3) {#if showUserLine}",
+    		source: "(262:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (250:4) {#if showUserResiduals}
+    // (263:4) {#if showUserResiduals}
     function create_if_block_3(ctx) {
     	let residuals;
     	let current;
@@ -9239,17 +9279,17 @@ var app = (function () {
     	residuals = new Residuals({
     			props: {
     				translating: /*translating*/ ctx[9],
-    				highlightId: /*highlightId*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
     				groupId: "userLineResiduals",
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15],
-    				points: points[/*$member*/ ctx[23]],
-    				predict: /*userLinePredict*/ ctx[12]
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17],
+    				points: points[/*$member*/ ctx[25]],
+    				predict: /*userLinePredict*/ ctx[14]
     			},
     			$$inline: true
     		});
 
-    	residuals.$on("click", /*highlight*/ ctx[27]);
+    	residuals.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -9262,11 +9302,11 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const residuals_changes = {};
     			if (dirty[0] & /*translating*/ 512) residuals_changes.translating = /*translating*/ ctx[9];
-    			if (dirty[0] & /*highlightId*/ 1024) residuals_changes.highlightId = /*highlightId*/ ctx[10];
-    			if (dirty[0] & /*xScale*/ 65536) residuals_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) residuals_changes.yScale = /*yScale*/ ctx[15];
-    			if (dirty[0] & /*$member*/ 8388608) residuals_changes.points = points[/*$member*/ ctx[23]];
-    			if (dirty[0] & /*userLinePredict*/ 4096) residuals_changes.predict = /*userLinePredict*/ ctx[12];
+    			if (dirty[0] & /*highlightId*/ 2048) residuals_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale*/ 262144) residuals_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) residuals_changes.yScale = /*yScale*/ ctx[17];
+    			if (dirty[0] & /*$member*/ 33554432) residuals_changes.points = points[/*$member*/ ctx[25]];
+    			if (dirty[0] & /*userLinePredict*/ 16384) residuals_changes.predict = /*userLinePredict*/ ctx[14];
     			residuals.$set(residuals_changes);
     		},
     		i: function intro(local) {
@@ -9287,32 +9327,32 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(250:4) {#if showUserResiduals}",
+    		source: "(263:4) {#if showUserResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (264:4) {#if showSingleResidual}
+    // (277:4) {#if showSingleResidual}
     function create_if_block_2(ctx) {
     	let singleresidual;
     	let current;
 
     	singleresidual = new SingleResidual({
     			props: {
-    				translating: /*translating*/ ctx[9],
-    				highlightId: /*highlightId*/ ctx[10],
-    				groupId: "userLineResiduals",
-    				xScale: /*xScale*/ ctx[16],
-    				yScale: /*yScale*/ ctx[15],
-    				points: points[/*$member*/ ctx[23]],
-    				predict: /*userLinePredict*/ ctx[12]
+    				translating: /*singleTranslating*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
+    				groupId: "userLineResidual",
+    				xScale: /*xScale*/ ctx[18],
+    				yScale: /*yScale*/ ctx[17],
+    				points: points[/*$member*/ ctx[25]],
+    				predict: /*userLinePredict*/ ctx[14]
     			},
     			$$inline: true
     		});
 
-    	singleresidual.$on("click", /*highlight*/ ctx[27]);
+    	singleresidual.$on("click", /*highlight*/ ctx[29]);
 
     	const block = {
     		c: function create() {
@@ -9324,12 +9364,12 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const singleresidual_changes = {};
-    			if (dirty[0] & /*translating*/ 512) singleresidual_changes.translating = /*translating*/ ctx[9];
-    			if (dirty[0] & /*highlightId*/ 1024) singleresidual_changes.highlightId = /*highlightId*/ ctx[10];
-    			if (dirty[0] & /*xScale*/ 65536) singleresidual_changes.xScale = /*xScale*/ ctx[16];
-    			if (dirty[0] & /*yScale*/ 32768) singleresidual_changes.yScale = /*yScale*/ ctx[15];
-    			if (dirty[0] & /*$member*/ 8388608) singleresidual_changes.points = points[/*$member*/ ctx[23]];
-    			if (dirty[0] & /*userLinePredict*/ 4096) singleresidual_changes.predict = /*userLinePredict*/ ctx[12];
+    			if (dirty[0] & /*singleTranslating*/ 1024) singleresidual_changes.translating = /*singleTranslating*/ ctx[10];
+    			if (dirty[0] & /*highlightId*/ 2048) singleresidual_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale*/ 262144) singleresidual_changes.xScale = /*xScale*/ ctx[18];
+    			if (dirty[0] & /*yScale*/ 131072) singleresidual_changes.yScale = /*yScale*/ ctx[17];
+    			if (dirty[0] & /*$member*/ 33554432) singleresidual_changes.points = points[/*$member*/ ctx[25]];
+    			if (dirty[0] & /*userLinePredict*/ 16384) singleresidual_changes.predict = /*userLinePredict*/ ctx[14];
     			singleresidual.$set(singleresidual_changes);
     		},
     		i: function intro(local) {
@@ -9350,14 +9390,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(264:4) {#if showSingleResidual}",
+    		source: "(277:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (277:2) {#if showPredictTooltip}
+    // (290:2) {#if showPredictTooltip}
     function create_if_block$1(ctx) {
     	let g;
     	let predicttooltip;
@@ -9365,8 +9405,8 @@ var app = (function () {
 
     	predicttooltip = new PredictTooltip({
     			props: {
-    				clickedElement: /*clickedElement*/ ctx[11],
-    				points: points[/*$member*/ ctx[23]]
+    				clickedElement: /*clickedElement*/ ctx[12],
+    				points: points[/*$member*/ ctx[25]]
     			},
     			$$inline: true
     		});
@@ -9377,7 +9417,7 @@ var app = (function () {
     			create_component(predicttooltip.$$.fragment);
     			attr_dev(g, "class", "tooltips");
     			attr_dev(g, "transform", "translate(75, 50)");
-    			add_location(g, file$3, 277, 3, 6626);
+    			add_location(g, file$3, 290, 3, 6913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -9386,8 +9426,8 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const predicttooltip_changes = {};
-    			if (dirty[0] & /*clickedElement*/ 2048) predicttooltip_changes.clickedElement = /*clickedElement*/ ctx[11];
-    			if (dirty[0] & /*$member*/ 8388608) predicttooltip_changes.points = points[/*$member*/ ctx[23]];
+    			if (dirty[0] & /*clickedElement*/ 4096) predicttooltip_changes.clickedElement = /*clickedElement*/ ctx[12];
+    			if (dirty[0] & /*$member*/ 33554432) predicttooltip_changes.points = points[/*$member*/ ctx[25]];
     			predicttooltip.$set(predicttooltip_changes);
     		},
     		i: function intro(local) {
@@ -9409,7 +9449,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(277:2) {#if showPredictTooltip}",
+    		source: "(290:2) {#if showPredictTooltip}",
     		ctx
     	});
 
@@ -9440,10 +9480,10 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*showUserLineControls*/ ctx[21] && create_if_block_10(ctx);
-    	let if_block1 = /*showRegressionLineControls*/ ctx[20] && create_if_block_9(ctx);
-    	let if_block2 = /*showResidualsTable*/ ctx[17] && create_if_block_8(ctx);
-    	let each_value_2 = /*yTicks*/ ctx[13];
+    	let if_block0 = /*showUserLineControls*/ ctx[23] && create_if_block_10(ctx);
+    	let if_block1 = /*showRegressionLineControls*/ ctx[22] && create_if_block_9(ctx);
+    	let if_block2 = /*showResidualsTable*/ ctx[19] && create_if_block_8(ctx);
+    	let each_value_2 = /*yTicks*/ ctx[15];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
 
@@ -9455,7 +9495,7 @@ var app = (function () {
     		each_blocks_1[i] = null;
     	});
 
-    	let each_value_1 = /*xTicks*/ ctx[14];
+    	let each_value_1 = /*xTicks*/ ctx[16];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -9467,10 +9507,10 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block3 = /*showPoints*/ ctx[22] && create_if_block_7(ctx);
+    	let if_block3 = /*showPoints*/ ctx[24] && create_if_block_7(ctx);
     	let if_block4 = /*showRegressionLine*/ ctx[2] && create_if_block_4(ctx);
     	let if_block5 = /*showUserLine*/ ctx[3] && create_if_block_1(ctx);
-    	let if_block6 = /*showPredictTooltip*/ ctx[18] && create_if_block$1(ctx);
+    	let if_block6 = /*showPredictTooltip*/ ctx[20] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9510,31 +9550,31 @@ var app = (function () {
     			if (if_block6) if_block6.c();
     			attr_dev(div0, "id", "controls");
     			attr_dev(div0, "class", "svelte-1pi5tw9");
-    			add_location(div0, file$3, 137, 0, 3246);
-    			add_location(text0, file$3, 190, 12, 4663);
+    			add_location(div0, file$3, 149, 0, 3474);
+    			add_location(text0, file$3, 202, 12, 4891);
     			attr_dev(text1, "text-anchor", "middle");
     			attr_dev(text1, "transform", text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)");
-    			add_location(text1, file$3, 189, 3, 4575);
+    			add_location(text1, file$3, 201, 3, 4803);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 185, 2, 4344);
-    			add_location(text2, file$3, 199, 10, 5024);
+    			add_location(g0, file$3, 197, 2, 4572);
+    			add_location(text2, file$3, 211, 10, 5252);
     			set_style(text3, "text-anchor", "middle");
-    			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[25].left);
-    			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[25].bottom / 2 + 15);
-    			add_location(text3, file$3, 198, 3, 4918);
+    			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[27].left);
+    			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[27].bottom / 2 + 15);
+    			add_location(text3, file$3, 210, 3, 5146);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 194, 2, 4683);
+    			add_location(g1, file$3, 206, 2, 4911);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 202, 2, 5043);
+    			add_location(g2, file$3, 214, 2, 5271);
     			attr_dev(g3, "class", "regressionLine svelte-1pi5tw9");
-    			add_location(g3, file$3, 218, 2, 5298);
+    			add_location(g3, file$3, 231, 2, 5551);
     			attr_dev(g4, "class", "userLine svelte-1pi5tw9");
-    			add_location(g4, file$3, 247, 2, 5970);
+    			add_location(g4, file$3, 260, 2, 6240);
     			attr_dev(svg_1, "class", "svelte-1pi5tw9");
-    			add_location(svg_1, file$3, 183, 1, 4284);
+    			add_location(svg_1, file$3, 195, 1, 4512);
     			attr_dev(div1, "id", "chart");
     			attr_dev(div1, "class", "svelte-1pi5tw9");
-    			add_location(div1, file$3, 181, 0, 4264);
+    			add_location(div1, file$3, 193, 0, 4492);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9574,24 +9614,24 @@ var app = (function () {
     			append_dev(svg_1, g4);
     			if (if_block5) if_block5.m(g4, null);
     			if (if_block6) if_block6.m(svg_1, null);
-    			/*svg_1_binding*/ ctx[34](svg_1);
+    			/*svg_1_binding*/ ctx[36](svg_1);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(window, "resize", /*resize*/ ctx[26], false, false, false),
-    					listen_dev(svg_1, "click", self$1(/*removeHighlights*/ ctx[28]), false, false, false)
+    					listen_dev(window, "resize", /*resize*/ ctx[28], false, false, false),
+    					listen_dev(svg_1, "click", self$1(/*removeHighlights*/ ctx[30]), false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*showUserLineControls*/ ctx[21]) {
+    			if (/*showUserLineControls*/ ctx[23]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLineControls*/ 2097152) {
+    					if (dirty[0] & /*showUserLineControls*/ 8388608) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -9610,11 +9650,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showRegressionLineControls*/ ctx[20]) {
+    			if (/*showRegressionLineControls*/ ctx[22]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLineControls*/ 1048576) {
+    					if (dirty[0] & /*showRegressionLineControls*/ 4194304) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -9633,11 +9673,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showResidualsTable*/ ctx[17]) {
+    			if (/*showResidualsTable*/ ctx[19]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
 
-    					if (dirty[0] & /*showResidualsTable*/ 131072) {
+    					if (dirty[0] & /*showResidualsTable*/ 524288) {
     						transition_in(if_block2, 1);
     					}
     				} else {
@@ -9656,8 +9696,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 33677312) {
-    				each_value_2 = /*yTicks*/ ctx[13];
+    			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 134709248) {
+    				each_value_2 = /*yTicks*/ ctx[15];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -9688,8 +9728,8 @@ var app = (function () {
     				attr_dev(text1, "transform", text1_transform_value);
     			}
 
-    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 33677314) {
-    				each_value_1 = /*xTicks*/ ctx[14];
+    			if (dirty[0] & /*xScale, xTicks, yScale, yTicks, height, margins*/ 134709250) {
+    				each_value_1 = /*xTicks*/ ctx[16];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -9716,19 +9756,19 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*width*/ 1 && text3_x_value !== (text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[25].left)) {
+    			if (!current || dirty[0] & /*width*/ 1 && text3_x_value !== (text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[27].left)) {
     				attr_dev(text3, "x", text3_x_value);
     			}
 
-    			if (!current || dirty[0] & /*height*/ 2 && text3_y_value !== (text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[25].bottom / 2 + 15)) {
+    			if (!current || dirty[0] & /*height*/ 2 && text3_y_value !== (text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[27].bottom / 2 + 15)) {
     				attr_dev(text3, "y", text3_y_value);
     			}
 
-    			if (/*showPoints*/ ctx[22]) {
+    			if (/*showPoints*/ ctx[24]) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
 
-    					if (dirty[0] & /*showPoints*/ 4194304) {
+    					if (dirty[0] & /*showPoints*/ 16777216) {
     						transition_in(if_block3, 1);
     					}
     				} else {
@@ -9793,11 +9833,11 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showPredictTooltip*/ ctx[18]) {
+    			if (/*showPredictTooltip*/ ctx[20]) {
     				if (if_block6) {
     					if_block6.p(ctx, dirty);
 
-    					if (dirty[0] & /*showPredictTooltip*/ 262144) {
+    					if (dirty[0] & /*showPredictTooltip*/ 1048576) {
     						transition_in(if_block6, 1);
     					}
     				} else {
@@ -9872,7 +9912,7 @@ var app = (function () {
     			if (if_block4) if_block4.d();
     			if (if_block5) if_block5.d();
     			if (if_block6) if_block6.d();
-    			/*svg_1_binding*/ ctx[34](null);
+    			/*svg_1_binding*/ ctx[36](null);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -9896,6 +9936,7 @@ var app = (function () {
     	let showUserLineControls;
     	let showRegressionLineControls;
     	let showResidualControls;
+    	let showHighlighting;
     	let showSingleResidual;
     	let showPredictTooltip;
     	let showRegressionResiduals;
@@ -9913,11 +9954,11 @@ var app = (function () {
     	validate_store(userLineStore, 'userLineStore');
     	component_subscribe($$self, userLineStore, $$value => $$invalidate(7, $userLineStore = $$value));
     	validate_store(member, 'member');
-    	component_subscribe($$self, member, $$value => $$invalidate(23, $member = $$value));
+    	component_subscribe($$self, member, $$value => $$invalidate(25, $member = $$value));
     	validate_store(counter, 'counter');
-    	component_subscribe($$self, counter, $$value => $$invalidate(29, $counter = $$value));
+    	component_subscribe($$self, counter, $$value => $$invalidate(31, $counter = $$value));
     	validate_store(regressionLineStore, 'regressionLineStore');
-    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(24, $regressionLineStore = $$value));
+    	component_subscribe($$self, regressionLineStore, $$value => $$invalidate(26, $regressionLineStore = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Chart', slots, []);
     	let svg;
@@ -9956,19 +9997,25 @@ var app = (function () {
     	// 	tweenedPoints.set(data[key]);
     	// }
     	// $: setTween(member)
+    	// logic for seperating residuals slightly when both lines are present. 
     	let translating = false;
 
+    	let singleTranslating = false;
+
+    	// locig for highlighing related elements on click
     	let highlightId;
+
     	let clickedElement;
 
     	const highlight = event => {
-    		$$invalidate(10, highlightId = event.target.id);
-    		$$invalidate(11, clickedElement = event.target);
-    		console.log(clickedElement);
+    		if (showHighlighting) {
+    			$$invalidate(11, highlightId = event.target.id);
+    			$$invalidate(12, clickedElement = event.target);
+    		}
     	};
 
     	const removeHighlights = event => {
-    		$$invalidate(10, highlightId = undefined);
+    		$$invalidate(11, highlightId = undefined);
     		console.log(event.target);
     	};
 
@@ -9980,22 +10027,22 @@ var app = (function () {
 
     	function control_lineChecked_binding(value) {
     		showUserLine = value;
-    		($$invalidate(3, showUserLine), $$invalidate(29, $counter));
+    		($$invalidate(3, showUserLine), $$invalidate(31, $counter));
     	}
 
     	function control_resChecked_binding(value) {
     		showUserResiduals = value;
-    		($$invalidate(5, showUserResiduals), $$invalidate(29, $counter));
+    		($$invalidate(5, showUserResiduals), $$invalidate(31, $counter));
     	}
 
     	function control_lineChecked_binding_1(value) {
     		showRegressionLine = value;
-    		($$invalidate(2, showRegressionLine), $$invalidate(29, $counter));
+    		($$invalidate(2, showRegressionLine), $$invalidate(31, $counter));
     	}
 
     	function control_resChecked_binding_1(value) {
     		showRegressionResiduals = value;
-    		($$invalidate(6, showRegressionResiduals), $$invalidate(29, $counter));
+    		($$invalidate(6, showRegressionResiduals), $$invalidate(31, $counter));
     	}
 
     	function svg_1_binding($$value) {
@@ -10040,10 +10087,12 @@ var app = (function () {
     		maxY,
     		resize,
     		translating,
+    		singleTranslating,
     		highlightId,
     		clickedElement,
     		highlight,
     		removeHighlights,
+    		showHighlighting,
     		showRegressionLine,
     		showUserLine,
     		showSingleResidual,
@@ -10071,24 +10120,26 @@ var app = (function () {
     		if ('width' in $$props) $$invalidate(0, width = $$props.width);
     		if ('height' in $$props) $$invalidate(1, height = $$props.height);
     		if ('translating' in $$props) $$invalidate(9, translating = $$props.translating);
-    		if ('highlightId' in $$props) $$invalidate(10, highlightId = $$props.highlightId);
-    		if ('clickedElement' in $$props) $$invalidate(11, clickedElement = $$props.clickedElement);
+    		if ('singleTranslating' in $$props) $$invalidate(10, singleTranslating = $$props.singleTranslating);
+    		if ('highlightId' in $$props) $$invalidate(11, highlightId = $$props.highlightId);
+    		if ('clickedElement' in $$props) $$invalidate(12, clickedElement = $$props.clickedElement);
+    		if ('showHighlighting' in $$props) $$invalidate(13, showHighlighting = $$props.showHighlighting);
     		if ('showRegressionLine' in $$props) $$invalidate(2, showRegressionLine = $$props.showRegressionLine);
     		if ('showUserLine' in $$props) $$invalidate(3, showUserLine = $$props.showUserLine);
     		if ('showSingleResidual' in $$props) $$invalidate(4, showSingleResidual = $$props.showSingleResidual);
     		if ('showUserResiduals' in $$props) $$invalidate(5, showUserResiduals = $$props.showUserResiduals);
     		if ('showRegressionResiduals' in $$props) $$invalidate(6, showRegressionResiduals = $$props.showRegressionResiduals);
-    		if ('userLinePredict' in $$props) $$invalidate(12, userLinePredict = $$props.userLinePredict);
-    		if ('yTicks' in $$props) $$invalidate(13, yTicks = $$props.yTicks);
-    		if ('xTicks' in $$props) $$invalidate(14, xTicks = $$props.xTicks);
-    		if ('yScale' in $$props) $$invalidate(15, yScale = $$props.yScale);
-    		if ('xScale' in $$props) $$invalidate(16, xScale = $$props.xScale);
-    		if ('showResidualsTable' in $$props) $$invalidate(17, showResidualsTable = $$props.showResidualsTable);
-    		if ('showPredictTooltip' in $$props) $$invalidate(18, showPredictTooltip = $$props.showPredictTooltip);
-    		if ('showResidualControls' in $$props) $$invalidate(19, showResidualControls = $$props.showResidualControls);
-    		if ('showRegressionLineControls' in $$props) $$invalidate(20, showRegressionLineControls = $$props.showRegressionLineControls);
-    		if ('showUserLineControls' in $$props) $$invalidate(21, showUserLineControls = $$props.showUserLineControls);
-    		if ('showPoints' in $$props) $$invalidate(22, showPoints = $$props.showPoints);
+    		if ('userLinePredict' in $$props) $$invalidate(14, userLinePredict = $$props.userLinePredict);
+    		if ('yTicks' in $$props) $$invalidate(15, yTicks = $$props.yTicks);
+    		if ('xTicks' in $$props) $$invalidate(16, xTicks = $$props.xTicks);
+    		if ('yScale' in $$props) $$invalidate(17, yScale = $$props.yScale);
+    		if ('xScale' in $$props) $$invalidate(18, xScale = $$props.xScale);
+    		if ('showResidualsTable' in $$props) $$invalidate(19, showResidualsTable = $$props.showResidualsTable);
+    		if ('showPredictTooltip' in $$props) $$invalidate(20, showPredictTooltip = $$props.showPredictTooltip);
+    		if ('showResidualControls' in $$props) $$invalidate(21, showResidualControls = $$props.showResidualControls);
+    		if ('showRegressionLineControls' in $$props) $$invalidate(22, showRegressionLineControls = $$props.showRegressionLineControls);
+    		if ('showUserLineControls' in $$props) $$invalidate(23, showUserLineControls = $$props.showUserLineControls);
+    		if ('showPoints' in $$props) $$invalidate(24, showPoints = $$props.showPoints);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -10096,32 +10147,32 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*$counter*/ 536870912) {
+    		if ($$self.$$.dirty[1] & /*$counter*/ 1) {
     			// destructure store application state variables
-    			$$invalidate(22, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showResidualControls, showSingleResidual, showPredictTooltip, showRegressionResiduals, showUserResiduals, showResidualsTable } = sequence[$counter], showPoints, ($$invalidate(3, showUserLine), $$invalidate(29, $counter)), ($$invalidate(2, showRegressionLine), $$invalidate(29, $counter)), ($$invalidate(21, showUserLineControls), $$invalidate(29, $counter)), ($$invalidate(20, showRegressionLineControls), $$invalidate(29, $counter)), ($$invalidate(19, showResidualControls), $$invalidate(29, $counter)), ($$invalidate(4, showSingleResidual), $$invalidate(29, $counter)), ($$invalidate(18, showPredictTooltip), $$invalidate(29, $counter)), ($$invalidate(6, showRegressionResiduals), $$invalidate(29, $counter)), ($$invalidate(5, showUserResiduals), $$invalidate(29, $counter)), ($$invalidate(17, showResidualsTable), $$invalidate(29, $counter)));
+    			$$invalidate(24, { showPoints, showUserLine, showRegressionLine, showUserLineControls, showRegressionLineControls, showResidualControls, showHighlighting, showSingleResidual, showPredictTooltip, showRegressionResiduals, showUserResiduals, showResidualsTable } = sequence[$counter], showPoints, ($$invalidate(3, showUserLine), $$invalidate(31, $counter)), ($$invalidate(2, showRegressionLine), $$invalidate(31, $counter)), ($$invalidate(23, showUserLineControls), $$invalidate(31, $counter)), ($$invalidate(22, showRegressionLineControls), $$invalidate(31, $counter)), ($$invalidate(21, showResidualControls), $$invalidate(31, $counter)), ($$invalidate(13, showHighlighting), $$invalidate(31, $counter)), ($$invalidate(4, showSingleResidual), $$invalidate(31, $counter)), ($$invalidate(20, showPredictTooltip), $$invalidate(31, $counter)), ($$invalidate(6, showRegressionResiduals), $$invalidate(31, $counter)), ($$invalidate(5, showUserResiduals), $$invalidate(31, $counter)), ($$invalidate(19, showResidualsTable), $$invalidate(31, $counter)));
     		}
 
     		if ($$self.$$.dirty[0] & /*width*/ 1) {
     			// scales
-    			$$invalidate(16, xScale = linear().domain([0, 20]).range([margins.left, width - margins.right]));
+    			$$invalidate(18, xScale = linear().domain([0, 20]).range([margins.left, width - margins.right]));
     		}
 
     		if ($$self.$$.dirty[0] & /*height*/ 2) {
-    			$$invalidate(15, yScale = linear().domain([0, 15]).range([height - margins.bottom, margins.top]));
+    			$$invalidate(17, yScale = linear().domain([0, 15]).range([height - margins.bottom, margins.top]));
     		}
 
     		if ($$self.$$.dirty[0] & /*width*/ 1) {
     			// ticks
-    			$$invalidate(14, xTicks = width > 360 ? [0, 4, 8, 12, 16, 20] : [0, 10, 20]);
+    			$$invalidate(16, xTicks = width > 360 ? [0, 4, 8, 12, 16, 20] : [0, 10, 20]);
     		}
 
     		if ($$self.$$.dirty[0] & /*height*/ 2) {
-    			$$invalidate(13, yTicks = height > 180 ? [0, 3, 6, 9, 12, 15] : [0, 5, 15]);
+    			$$invalidate(15, yTicks = height > 180 ? [0, 3, 6, 9, 12, 15] : [0, 5, 15]);
     		}
 
     		if ($$self.$$.dirty[0] & /*$userLineStore*/ 128) {
     			// based on the user line, returns a y value for a given x value. Re-runs anytime userLineStore changes
-    			$$invalidate(12, userLinePredict = function (x) {
+    			$$invalidate(14, userLinePredict = function (x) {
     				return $userLineStore.m * x + $userLineStore.b;
     			});
     		}
@@ -10130,10 +10181,14 @@ var app = (function () {
     			{
     				if (showRegressionResiduals === true && showUserResiduals === true) {
     					$$invalidate(9, translating = true);
-    				} else if (showSingleResidual && showUserLine && showRegressionLine) {
-    					$$invalidate(9, translating = true);
     				} else {
     					$$invalidate(9, translating = false);
+    				}
+
+    				if (showSingleResidual && showUserLine && showRegressionLine) {
+    					$$invalidate(10, singleTranslating = true);
+    				} else {
+    					$$invalidate(10, singleTranslating = false);
     				}
     			}
     		}
@@ -10150,8 +10205,10 @@ var app = (function () {
     		$userLineStore,
     		svg,
     		translating,
+    		singleTranslating,
     		highlightId,
     		clickedElement,
+    		showHighlighting,
     		userLinePredict,
     		yTicks,
     		xTicks,

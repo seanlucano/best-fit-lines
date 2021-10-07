@@ -15,7 +15,7 @@
         on:click 
         class:highlighted={i == highlightId}
         >
-        {residual.toFixed(1)}
+        {residual.toFixed(2)}
     </span>
 {/each}
 <span class='ssr'>{ssr.toFixed(2)}</span>
