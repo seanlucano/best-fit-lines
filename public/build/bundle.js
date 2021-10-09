@@ -1424,7 +1424,7 @@ var app = (function () {
         
         {	title: 'What makes a good "fit"',
             prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
-        <p>Here's one way to start thinking about what makes a line's fit good or bad:.</p>  
+        <p>Here's one way to start thinking about what makes a line's fit good or bad:</p>  
         <p><strong>First you need to be able to measure the distance between each data point and the line</strong></p>`,	
             cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p>Your line and the best fit line are different distances from each point.  Hmmmm...</p>`,
             showPoints: true,
@@ -1437,9 +1437,9 @@ var app = (function () {
             
         },
         {	title: 'Residuals',
-            prompt:`<p>So what do these new dotted lines represent?.</p> 
-        <p>For any given point, we know both the number of donuts and the cost each transaction.  But notice that the line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from what we know happened in real life.</p>
-        <p>That means that the distance between each point and the line tells us how far away the line's prediction was from the actual value, in other words, the <strong>residual</strong> (or error) value for the line at that point.</p>	
+            prompt:`<p>But what do these new dotted lines represent?</p> 
+        <p>For any point, we know both the number of donuts and the cost each transaction.  But even the best fit line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from the <strong>observed const</strong>.</p>
+        <p>That means that the distance between a point and the line tells us how much this line's prediction is different from reality, in other words, the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
             cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
             showPoints: true,
@@ -1453,17 +1453,18 @@ var app = (function () {
         },
         {	title: 'Minimizing residuals',
             prompt: `<p>Any self-respecting <strong>best fit</strong> line would try to reduce the length of all of its residuals (or errors) as much as possible. So let's try and minimize residuals for your line.</p>`,
-             cta: `<strong><p>Try moving your line around to minimize the lenghts of all residuals.</p></strong><p>`,
+             cta: `<strong><p>Try moving your line around to minimize the lenghts of all residuals.</p></strong><p>You can still click any point to see the value of its residual.  Turn all residuals on and off using the "Residuals" switch above the chart.</p>`,
              showPoints: true,
              showUserLineControls: true,
              showUserLine: true,
+             showUserResiduals: true,
              showSingleResidual: true,
              showHighlighting: true,
              showResidualControls: true,
         },
         
-        {	title:"The 'least squares' line",
-            prompt:`<p>Let's try and be a bit more scientific about this. If we want to truly find the <strong>best fit</strong> line, we would need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one before adding all together.</p> <p>That means that another way to describe the <strong>best fit</strong> line would be the <strong>least squares</strong> line</p>
+        {	title:"The 'least squares' method",
+            prompt:`<p>Let's try and be a bit more scientific about this. If we want to truly find the <strong>best fit</strong> line, we would need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one before adding all together.</p>
         <p>The table you're now seeing has shows the squared residual for each point, as well as a the total <strong>sum of squared residuals (SSR)</strong> for each line.`,	
              cta: `<p><strong>Click on any point, or any value in the table, to see which go together.</strong></p><p>The vlaues you are seeing displayed are rounded for readability, but don't worry!  'Under the hood' we're calculating the exact values.`,
              showPoints: true,
@@ -1479,18 +1480,17 @@ var app = (function () {
         },
 
         {	title: 'Comparing SSRs',
-            prompt:`<p> Do you still think your line is better than the best fit line?</p>
-        <p>What is the lowest possible sum or squared residuals you can get to with your line? </p>`,	
-             cta: `<p><strong>Can you get a lower SSR than the best fit line?</strong></p>`,
+            prompt:`<p> So, let's come back to our original question...which line is <strong>best</strong></p> <p>Based on what we've learned so far, the best fitting line would also be the line that has the <strong>least sum of squared residuals</strong>.
+        <p>This is why the best fit line is also called the <strong>least squares line</strong></p>`,	
+             cta: `<p><strong>What is the lowest SSR you can get for your line?</strong></p> 
+         <p>If the only way to get the lowest possible SSR is to match the SSR of the best fit line, then we know that your line is now truly the <strong>best fit</strong> or <strong>least squares</strong> line!</p>`,
              showPoints: true,
              showUserLineControls: true,
              showRegressionLineControls: true,
-             showRegressionLine: true,
              showUserLine: true,
              showSingleResidual: true,
              showHighlighting: true,
              showResidualControls: true,
-             showRegressionResiduals: true,
              showUserResiduals: true,
              showResidualsTable: true
             
