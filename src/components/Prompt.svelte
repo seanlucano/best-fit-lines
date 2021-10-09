@@ -30,6 +30,10 @@
 	}
 
 </script>
+<svelte:head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet">
+</svelte:head>
 
 {#key $counter}
 	<div id='title' in:fade>
@@ -39,6 +43,9 @@
 		{@html sequence[$counter].prompt}	
 	</div>
 	<div in:fade id='cta'>
+		<span class="material-icons-round">
+			ads_click
+			</span>
 		{@html sequence[$counter].cta}
 		<div id='quiz'>
 			{#if sequence[$counter].quiz}
@@ -76,12 +83,18 @@
 	}
 
 	#cta {
-		padding: .25em 1em;
+		margin-top: 1.5em;
+		padding: .75em 1.35em;
 		/* padding-bottom: .5em; */
 		background-color:#DFEBF6;
 		/* box-shadow: 2px 6px 11px 0px #e3e6e8; */
 		/* border: 2px solid hsl(245deg 100% 60%); */
 		border-radius: .5em;
+		position: relative;
+	}
+
+	strong {
+		color: var(--heading);
 	}
 
 	#quiz label {
@@ -103,11 +116,23 @@
 	.submit, .feedback {
 		margin-top: 1em;
 		text-align: center;
+		font-weight: bold;
 	}
 
 	.feedback {
-		color: var(--accent);
+		color: var(--heading);
 	}
+
+	.material-icons-round {
+		font-size: 1.75em;
+		padding: 3px;
+		position: absolute;
+		background: white;
+		border-radius: 50%;
+		top: -5px;
+		left: -5px;
+		color: var(--emphasis);
+    }
 	
 </style>
 	

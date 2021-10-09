@@ -1507,7 +1507,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (44:3) {#if sequence[$counter].quiz}
+    // (51:3) {#if sequence[$counter].quiz}
     function create_if_block$6(ctx) {
     	let form;
     	let t0;
@@ -1542,11 +1542,11 @@ var app = (function () {
     			t1 = space();
     			div1 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "submit svelte-bz6dxi");
-    			add_location(div0, file$h, 51, 5, 1179);
-    			attr_dev(div1, "class", "feedback svelte-bz6dxi");
-    			add_location(div1, file$h, 56, 5, 1311);
-    			add_location(form, file$h, 44, 4, 932);
+    			attr_dev(div0, "class", "submit svelte-vftldo");
+    			add_location(div0, file$h, 58, 5, 1375);
+    			attr_dev(div1, "class", "feedback svelte-vftldo");
+    			add_location(div1, file$h, 63, 5, 1507);
+    			add_location(form, file$h, 51, 4, 1128);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -1650,14 +1650,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(44:3) {#if sequence[$counter].quiz}",
+    		source: "(51:3) {#if sequence[$counter].quiz}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:5) {#each sequence[$counter].quiz.questions as question, i}
+    // (53:5) {#each sequence[$counter].quiz.questions as question, i}
     function create_each_block$5(ctx) {
     	let label;
     	let input;
@@ -1677,11 +1677,11 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = /*i*/ ctx[12];
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-bz6dxi");
+    			attr_dev(input, "class", "svelte-vftldo");
     			/*$$binding_groups*/ ctx[6][0].push(input);
-    			add_location(input, file$h, 47, 7, 1059);
-    			attr_dev(label, "class", "svelte-bz6dxi");
-    			add_location(label, file$h, 46, 6, 1043);
+    			add_location(input, file$h, 54, 7, 1255);
+    			attr_dev(label, "class", "svelte-vftldo");
+    			add_location(label, file$h, 53, 6, 1239);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, label, anchor);
@@ -1714,14 +1714,14 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(46:5) {#each sequence[$counter].quiz.questions as question, i}",
+    		source: "(53:5) {#each sequence[$counter].quiz.questions as question, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:6) {#if showSubmit}
+    // (60:6) {#if showSubmit}
     function create_if_block_2$1(ctx) {
     	let button;
     	let current;
@@ -1762,14 +1762,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(53:6) {#if showSubmit}",
+    		source: "(60:6) {#if showSubmit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:7) <Button type='submit' color='white'>
+    // (61:7) <Button type='submit' color='white'>
     function create_default_slot$4(ctx) {
     	let t;
 
@@ -1789,14 +1789,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(54:7) <Button type='submit' color='white'>",
+    		source: "(61:7) <Button type='submit' color='white'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:6) {#if showFeedback}
+    // (65:6) {#if showFeedback}
     function create_if_block_1$4(ctx) {
     	let html_tag;
     	let raw_value = sequence[/*$counter*/ ctx[3]].quiz.feedback + "";
@@ -1825,14 +1825,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(58:6) {#if showFeedback}",
+    		source: "(65:6) {#if showFeedback}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:0) {#key $counter}
+    // (38:0) {#key $counter}
     function create_key_block(ctx) {
     	let div0;
     	let h2;
@@ -1845,9 +1845,11 @@ var app = (function () {
     	let div1_intro;
     	let t2;
     	let div3;
+    	let span;
+    	let t4;
     	let html_tag;
     	let raw1_value = sequence[/*$counter*/ ctx[3]].cta + "";
-    	let t3;
+    	let t5;
     	let div2;
     	let div3_intro;
     	let current;
@@ -1862,24 +1864,29 @@ var app = (function () {
     			div1 = element("div");
     			t2 = space();
     			div3 = element("div");
+    			span = element("span");
+    			span.textContent = "ads_click";
+    			t4 = space();
     			html_tag = new HtmlTag();
-    			t3 = space();
+    			t5 = space();
     			div2 = element("div");
     			if (if_block) if_block.c();
-    			add_location(h2, file$h, 35, 2, 706);
+    			add_location(h2, file$h, 39, 2, 840);
     			attr_dev(div0, "id", "title");
-    			attr_dev(div0, "class", "svelte-bz6dxi");
-    			add_location(div0, file$h, 34, 1, 679);
+    			attr_dev(div0, "class", "svelte-vftldo");
+    			add_location(div0, file$h, 38, 1, 813);
     			attr_dev(div1, "id", "text");
-    			attr_dev(div1, "class", "svelte-bz6dxi");
-    			add_location(div1, file$h, 37, 1, 751);
-    			html_tag.a = t3;
+    			attr_dev(div1, "class", "svelte-vftldo");
+    			add_location(div1, file$h, 41, 1, 885);
+    			attr_dev(span, "class", "material-icons-round svelte-vftldo");
+    			add_location(span, file$h, 45, 2, 980);
+    			html_tag.a = t5;
     			attr_dev(div2, "id", "quiz");
-    			attr_dev(div2, "class", "svelte-bz6dxi");
-    			add_location(div2, file$h, 42, 2, 879);
+    			attr_dev(div2, "class", "svelte-vftldo");
+    			add_location(div2, file$h, 49, 2, 1075);
     			attr_dev(div3, "id", "cta");
-    			attr_dev(div3, "class", "svelte-bz6dxi");
-    			add_location(div3, file$h, 40, 1, 821);
+    			attr_dev(div3, "class", "svelte-vftldo");
+    			add_location(div3, file$h, 44, 1, 955);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1890,8 +1897,10 @@ var app = (function () {
     			div1.innerHTML = raw0_value;
     			insert_dev(target, t2, anchor);
     			insert_dev(target, div3, anchor);
+    			append_dev(div3, span);
+    			append_dev(div3, t4);
     			html_tag.m(raw1_value, div3);
-    			append_dev(div3, t3);
+    			append_dev(div3, t5);
     			append_dev(div3, div2);
     			if (if_block) if_block.m(div2, null);
     			current = true;
@@ -1969,7 +1978,7 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(34:0) {#key $counter}",
+    		source: "(38:0) {#key $counter}",
     		ctx
     	});
 
@@ -1977,6 +1986,8 @@ var app = (function () {
     }
 
     function create_fragment$h(ctx) {
+    	let link;
+    	let t;
     	let previous_key = /*$counter*/ ctx[3];
     	let key_block_anchor;
     	let current;
@@ -1984,13 +1995,20 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			link = element("link");
+    			t = space();
     			key_block.c();
     			key_block_anchor = empty();
+    			attr_dev(link, "href", "https://fonts.googleapis.com/icon?family=Material+Icons+Round");
+    			attr_dev(link, "rel", "stylesheet");
+    			add_location(link, file$h, 33, 6, 681);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
+    			append_dev(document.head, link);
+    			insert_dev(target, t, anchor);
     			key_block.m(target, anchor);
     			insert_dev(target, key_block_anchor, anchor);
     			current = true;
@@ -2018,6 +2036,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			detach_dev(link);
+    			if (detaching) detach_dev(t);
     			if (detaching) detach_dev(key_block_anchor);
     			key_block.d(detaching);
     		}
@@ -10731,21 +10751,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-1ms8tv");
+    			attr_dev(div0, "class", "svelte-185lb4i");
     			add_location(div0, file, 52, 3, 1237);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-1ms8tv");
+    			attr_dev(div1, "class", "svelte-185lb4i");
     			add_location(div1, file, 55, 3, 1283);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-1ms8tv");
+    			attr_dev(div2, "class", "svelte-185lb4i");
     			add_location(div2, file, 51, 2, 1213);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-1ms8tv");
+    			attr_dev(div3, "class", "svelte-185lb4i");
     			add_location(div3, file, 60, 2, 1342);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-1ms8tv");
+    			attr_dev(section, "class", "svelte-185lb4i");
     			add_location(section, file, 50, 1, 1187);
-    			attr_dev(main, "class", "svelte-1ms8tv");
+    			attr_dev(main, "class", "svelte-185lb4i");
     			add_location(main, file, 45, 0, 1131);
     		},
     		l: function claim(nodes) {

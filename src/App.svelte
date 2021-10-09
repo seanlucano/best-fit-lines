@@ -75,7 +75,9 @@
 	--accent: #ffa600;
 	--alert: hsl(333, 100%, 45%);
 	--black: #000;
-	--header-height: 2em;
+	--emphasis: #4433FF;
+	--heading: #2C0B8E;
+	--header-height: .5em;
 	}
 
 	main {
