@@ -1427,10 +1427,9 @@ var app = (function () {
     const sequence = [
         {	
             title: 'Welcome to best fit lines!',
-            prompt: `<p>To the right, you'll see a scatter plot littered with a set of circles. Each circle represents a pair of values.</p>
-        <p> Just for fun, let's say that the horizonal (x) values represents the number of donuts purchased, and the vertical (y) values represent the total transaction cost in US dollars.</p>  
-        <p>So, each circle represents a single transaction, in which which x number of donuts were purchased for y dollars.</p> `,	
-            cta: `<p><strong>What would you say is the relationship between dollars and donuts here? </strong></p>`,
+            prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
+        <p> Just for fun, let's say that the horizonal (x) axis represents the number of donuts purchased, and the vertical (y) axis represent the total transaction cost in US dollars.</p> `,	
+            cta: `<p><strong>What would you say is the best describes the dollars to donuts relationship here?</p>`,
             quiz: {
                 questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
                 correct: 0,
@@ -1442,8 +1441,8 @@ var app = (function () {
         {	
             title: 'Imagine a line',
             prompt:`<p>These two variables have a positive relationship, meaning that as one increases, the other also increases.  But what if we needed to be more specific?</p>
-        <p>Say you are on a very strict donut budget, and you wanted to be able to <strong>predict</strong> the cost of a new transaction for various numbers of donuts purchased.</p>
-        <p>That relationship, between dollars and donuts, could be expressed in the form of a <strong>line</stong>.</p>`,	
+        <p>Say you are on a very strict dollars to donuts budget, and you wanted to be able to <strong>predict</strong> the cost of a transaction given any number of donuts purchased.</p>
+        <p>That relationship could be expressed in the form of a <strong>line</stong>.</p>`,	
              cta: `<p><strong>Using the circle handles at the end points of the line, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click next when you are happy with your line</p>`,
              showPoints: true,
              showUserLine: true
@@ -1451,8 +1450,8 @@ var app = (function () {
         {	
             title: 'Good line...best line',
             prompt:`<p>Nice job!  This seems like a very reasonable line!</p>  <p>But is it the... <strong>best possible line</strong>?</p>    
-        <p>Statisticians have a way of calculating the best fitting line for data like this. But how do they do it?</p>`,	
-             cta: `<p><strong>Use the "Best Fit Line" switch in the upper right to reveal this mysterious best fit line!<p></strong></p>`,
+        <p>What if you knew that a line existed that would give you the best possible idea of the dollars to donuts relationship based on the data we have.</p>`,
+             cta: `<p><strong>Use the "Best Fit Line" switch in the upper right to reveal this mysterious line!<p></strong></p>`,
             showPoints: true,
             showUserLineControls: true,
             showUserLine: true,
@@ -1462,8 +1461,8 @@ var app = (function () {
         {	title: 'What makes a good "fit"',
             prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
         <p>Here's one way to start thinking about what makes a line's fit good or bad:</p>  
-        <p><strong>First you need to be able to measure the distance between each data point and the line</strong></p>`,	
-            cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p>Your line and the best fit line are different distances from each point.  Hmmmm...</p>`,
+        <p><strong>First you need to be able to measure the distance between each data point and the line.</strong></p>`,	
+            cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p>Ok, sort of interesting...but so what?</p>`,
             showPoints: true,
             showUserLine: true,
             showRegressionLine: true,
@@ -1474,9 +1473,9 @@ var app = (function () {
             
         },
         {	title: 'Residuals',
-            prompt:`<p>But what do these new dotted lines represent?</p> 
-        <p>For any point, we know both the number of donuts and the cost each transaction.  But even the best fit line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from the <strong>observed const</strong>.</p>
-        <p>That means that the distance between a point and the line tells us how much this line's prediction is different from reality, in other words, the <strong>residual</strong> (or error) value for the line at each point.</p>	
+            prompt:`<p>What do these new lines represent?</p> 
+        <p>For any point, we already know both the number of donuts and the cost each transaction.  But even the best fit line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from the <strong>observed const</strong>.</p>
+        <p>So the distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
             cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
             showPoints: true,
