@@ -12,7 +12,7 @@
 
 <circle 
 	on:click
-	data-tooltip='hellooooo'
+	data-tooltip='{cx},{cy}'
 	{r} 
 	{cx}
 	{cy}

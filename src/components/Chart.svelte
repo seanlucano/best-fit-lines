@@ -188,6 +188,18 @@
 		/>
 	</div>
 {/if}
+{#if showPredictTooltip}
+			<PredictTooltip 
+				chartWidth={width}
+				{showUserLine}
+				{showRegressionLine}
+				userLinePredict={userLinePredict}
+				bestFitLinePredict={$regressionLineStore.predict}
+				{clickedElement}
+				{...points[$member][highlightId]} 
+				
+			/>
+	{/if}
 
 
 
@@ -287,17 +299,8 @@
 				{/if}
 			{/if}
 		</g>
-		{#if showPredictTooltip}
-			<g class='tooltips'
-			transform='translate(75, 50)'>
-				<PredictTooltip 
-					{clickedElement}
-					points ={points[$member]}
-				/>
-			</g>
-		{/if}
-	
 	</svg>
+	
 	
 	<!-- <h3>Select quartet member:</h3>
 	<div style='display:flex;'>
@@ -345,9 +348,12 @@
 
 	.regressionLine {
 		stroke: var(--secondary);
+		fill: var(--secondary);
 	}
 
 	.userLine {
-		stroke: var(--primary)
+		stroke: var(--primary);
+		fill: var(--primary);
 	}
+
 </style>

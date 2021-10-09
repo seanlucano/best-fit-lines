@@ -656,6 +656,43 @@ var app = (function () {
             ? globalThis
             : global);
 
+    function get_spread_update(levels, updates) {
+        const update = {};
+        const to_null_out = {};
+        const accounted_for = { $$scope: 1 };
+        let i = levels.length;
+        while (i--) {
+            const o = levels[i];
+            const n = updates[i];
+            if (n) {
+                for (const key in o) {
+                    if (!(key in n))
+                        to_null_out[key] = 1;
+                }
+                for (const key in n) {
+                    if (!accounted_for[key]) {
+                        update[key] = n[key];
+                        accounted_for[key] = 1;
+                    }
+                }
+                levels[i] = n;
+            }
+            else {
+                for (const key in o) {
+                    accounted_for[key] = 1;
+                }
+            }
+        }
+        for (const key in to_null_out) {
+            if (!(key in update))
+                update[key] = undefined;
+        }
+        return update;
+    }
+    function get_spread_object(spread_props) {
+        return typeof spread_props === 'object' && spread_props !== null ? spread_props : {};
+    }
+
     function bind(component, name, callback) {
         const index = component.$$.props[name];
         if (index !== undefined) {
@@ -1447,8 +1484,8 @@ var app = (function () {
             showRegressionLineControls: true,
             showUserLine: true,
             showRegressionLine: true,
-            showSingleResidual: true,
             showHighlighting: true,
+            showSingleResidual: true,
             showPredictTooltip: true
         },
         {	title: 'Minimizing residuals',
@@ -1508,7 +1545,7 @@ var app = (function () {
     }
 
     // (51:3) {#if sequence[$counter].quiz}
-    function create_if_block$6(ctx) {
+    function create_if_block$7(ctx) {
     	let form;
     	let t0;
     	let div0;
@@ -1525,8 +1562,8 @@ var app = (function () {
     		each_blocks[i] = create_each_block$5(get_each_context$5(ctx, each_value, i));
     	}
 
-    	let if_block0 = /*showSubmit*/ ctx[0] && create_if_block_2$1(ctx);
-    	let if_block1 = /*showFeedback*/ ctx[1] && create_if_block_1$4(ctx);
+    	let if_block0 = /*showSubmit*/ ctx[0] && create_if_block_2$2(ctx);
+    	let if_block1 = /*showFeedback*/ ctx[1] && create_if_block_1$5(ctx);
 
     	const block = {
     		c: function create() {
@@ -1599,7 +1636,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0 = create_if_block_2$2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div0, null);
@@ -1618,7 +1655,7 @@ var app = (function () {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block_1$4(ctx);
+    					if_block1 = create_if_block_1$5(ctx);
     					if_block1.c();
     					if_block1.m(div1, null);
     				}
@@ -1648,7 +1685,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$6.name,
+    		id: create_if_block$7.name,
     		type: "if",
     		source: "(51:3) {#if sequence[$counter].quiz}",
     		ctx
@@ -1722,7 +1759,7 @@ var app = (function () {
     }
 
     // (60:6) {#if showSubmit}
-    function create_if_block_2$1(ctx) {
+    function create_if_block_2$2(ctx) {
     	let button;
     	let current;
 
@@ -1730,7 +1767,7 @@ var app = (function () {
     			props: {
     				type: "submit",
     				color: "white",
-    				$$slots: { default: [create_default_slot$4] },
+    				$$slots: { default: [create_default_slot$5] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -1760,7 +1797,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$1.name,
+    		id: create_if_block_2$2.name,
     		type: "if",
     		source: "(60:6) {#if showSubmit}",
     		ctx
@@ -1770,7 +1807,7 @@ var app = (function () {
     }
 
     // (61:7) <Button type='submit' color='white'>
-    function create_default_slot$4(ctx) {
+    function create_default_slot$5(ctx) {
     	let t;
 
     	const block = {
@@ -1787,7 +1824,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$4.name,
+    		id: create_default_slot$5.name,
     		type: "slot",
     		source: "(61:7) <Button type='submit' color='white'>",
     		ctx
@@ -1797,7 +1834,7 @@ var app = (function () {
     }
 
     // (65:6) {#if showFeedback}
-    function create_if_block_1$4(ctx) {
+    function create_if_block_1$5(ctx) {
     	let html_tag;
     	let raw_value = sequence[/*$counter*/ ctx[3]].quiz.feedback + "";
     	let html_anchor;
@@ -1823,7 +1860,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$4.name,
+    		id: create_if_block_1$5.name,
     		type: "if",
     		source: "(65:6) {#if showFeedback}",
     		ctx
@@ -1853,7 +1890,7 @@ var app = (function () {
     	let div2;
     	let div3_intro;
     	let current;
-    	let if_block = sequence[/*$counter*/ ctx[3]].quiz && create_if_block$6(ctx);
+    	let if_block = sequence[/*$counter*/ ctx[3]].quiz && create_if_block$7(ctx);
 
     	const block = {
     		c: function create() {
@@ -1917,7 +1954,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$6(ctx);
+    					if_block = create_if_block$7(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(div2, null);
@@ -2151,7 +2188,7 @@ var app = (function () {
     const file$g = "src/components/UserNav.svelte";
 
     // (10:1) {#if $counter > 0}
-    function create_if_block_1$3(ctx) {
+    function create_if_block_1$4(ctx) {
     	let button;
     	let current;
 
@@ -2199,7 +2236,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$3.name,
+    		id: create_if_block_1$4.name,
     		type: "if",
     		source: "(10:1) {#if $counter > 0}",
     		ctx
@@ -2236,14 +2273,14 @@ var app = (function () {
     }
 
     // (14:1) {#if $counter < sequence.length - 1}
-    function create_if_block$5(ctx) {
+    function create_if_block$6(ctx) {
     	let button;
     	let current;
 
     	button = new Button({
     			props: {
     				color: "black",
-    				$$slots: { default: [create_default_slot$3] },
+    				$$slots: { default: [create_default_slot$4] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -2284,7 +2321,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$5.name,
+    		id: create_if_block$6.name,
     		type: "if",
     		source: "(14:1) {#if $counter < sequence.length - 1}",
     		ctx
@@ -2294,7 +2331,7 @@ var app = (function () {
     }
 
     // (15:2) <Button on:click={() => $counter +=1} color='black'>
-    function create_default_slot$3(ctx) {
+    function create_default_slot$4(ctx) {
     	let t;
 
     	const block = {
@@ -2311,7 +2348,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$3.name,
+    		id: create_default_slot$4.name,
     		type: "slot",
     		source: "(15:2) <Button on:click={() => $counter +=1} color='black'>",
     		ctx
@@ -2324,8 +2361,8 @@ var app = (function () {
     	let section;
     	let t;
     	let current;
-    	let if_block0 = /*$counter*/ ctx[0] > 0 && create_if_block_1$3(ctx);
-    	let if_block1 = /*$counter*/ ctx[0] < sequence.length - 1 && create_if_block$5(ctx);
+    	let if_block0 = /*$counter*/ ctx[0] > 0 && create_if_block_1$4(ctx);
+    	let if_block1 = /*$counter*/ ctx[0] < sequence.length - 1 && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
@@ -2355,7 +2392,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_1$3(ctx);
+    					if_block0 = create_if_block_1$4(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(section, t);
@@ -2378,7 +2415,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block$5(ctx);
+    					if_block1 = create_if_block$6(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(section, null);
@@ -4806,13 +4843,14 @@ var app = (function () {
 
     function create_fragment$f(ctx) {
     	let circle;
+    	let circle_data_tooltip_value;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
     			circle = svg_element("circle");
-    			attr_dev(circle, "data-tooltip", "hellooooo");
+    			attr_dev(circle, "data-tooltip", circle_data_tooltip_value = "" + (/*cx*/ ctx[0] + "," + /*cy*/ ctx[1]));
     			attr_dev(circle, "r", /*r*/ ctx[5]);
     			attr_dev(circle, "cx", /*cx*/ ctx[0]);
     			attr_dev(circle, "cy", /*cy*/ ctx[1]);
@@ -4834,6 +4872,10 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*cx, cy*/ 3 && circle_data_tooltip_value !== (circle_data_tooltip_value = "" + (/*cx*/ ctx[0] + "," + /*cy*/ ctx[1]))) {
+    				attr_dev(circle, "data-tooltip", circle_data_tooltip_value);
+    			}
+
     			if (dirty & /*cx*/ 1) {
     				attr_dev(circle, "cx", /*cx*/ ctx[0]);
     			}
@@ -5082,7 +5124,7 @@ var app = (function () {
     }
 
     // (13:0) {#if axisType == 'xAxis'}
-    function create_if_block$4(ctx) {
+    function create_if_block$5(ctx) {
     	let g;
     	let line;
     	let text_1;
@@ -5139,7 +5181,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$4.name,
+    		id: create_if_block$5.name,
     		type: "if",
     		source: "(13:0) {#if axisType == 'xAxis'}",
     		ctx
@@ -5152,7 +5194,7 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*axisType*/ ctx[0] == 'xAxis') return create_if_block$4;
+    		if (/*axisType*/ ctx[0] == 'xAxis') return create_if_block$5;
     		return create_else_block;
     	}
 
@@ -6423,7 +6465,7 @@ var app = (function () {
     const file$8 = "src/components/Control.svelte";
 
     // (34:4) {#if lineChecked}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_1$3(ctx) {
     	let span;
     	let t0;
     	let strong0;
@@ -6476,7 +6518,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_1$3.name,
     		type: "if",
     		source: "(34:4) {#if lineChecked}",
     		ctx
@@ -6485,8 +6527,9 @@ var app = (function () {
     	return block;
     }
 
-    // (40:4) {#if showResidualControls}
-    function create_if_block$3(ctx) {
+    // (39:2) {#if showResidualControls}
+    function create_if_block$4(ctx) {
+    	let section;
     	let switch_1;
     	let updating_checked;
     	let t0;
@@ -6511,17 +6554,21 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			section = element("section");
     			create_component(switch_1.$$.fragment);
     			t0 = space();
     			span = element("span");
     			span.textContent = "Residuals";
     			attr_dev(span, "class", "title svelte-1bak9wu");
-    			add_location(span, file$8, 41, 6, 1019);
+    			add_location(span, file$8, 42, 6, 1021);
+    			attr_dev(section, "class", "resControls svelte-1bak9wu");
+    			add_location(section, file$8, 39, 2, 905);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(switch_1, target, anchor);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, span, anchor);
+    			insert_dev(target, section, anchor);
+    			mount_component(switch_1, section, null);
+    			append_dev(section, t0);
+    			append_dev(section, span);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -6547,17 +6594,16 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(switch_1, detaching);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(span);
+    			if (detaching) detach_dev(section);
+    			destroy_component(switch_1);
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block$4.name,
     		type: "if",
-    		source: "(40:4) {#if showResidualControls}",
+    		source: "(39:2) {#if showResidualControls}",
     		ctx
     	});
 
@@ -6565,15 +6611,15 @@ var app = (function () {
     }
 
     // (27:0) <Card>
-    function create_default_slot$2(ctx) {
-    	let section0;
+    function create_default_slot$3(ctx) {
+    	let section;
     	let switch_1;
     	let updating_checked;
     	let t0;
     	let span;
     	let t1;
     	let t2;
-    	let section1;
+    	let if_block1_anchor;
     	let current;
 
     	function switch_1_checked_binding(value) {
@@ -6590,12 +6636,12 @@ var app = (function () {
     	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
     	const default_slot_template = /*#slots*/ ctx[8].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[11], null);
-    	let if_block0 = /*lineChecked*/ ctx[0] && create_if_block_1$2(ctx);
-    	let if_block1 = /*showResidualControls*/ ctx[3] && create_if_block$3(ctx);
+    	let if_block0 = /*lineChecked*/ ctx[0] && create_if_block_1$3(ctx);
+    	let if_block1 = /*showResidualControls*/ ctx[3] && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
-    			section0 = element("section");
+    			section = element("section");
     			create_component(switch_1.$$.fragment);
     			t0 = space();
     			span = element("span");
@@ -6603,30 +6649,28 @@ var app = (function () {
     			t1 = space();
     			if (if_block0) if_block0.c();
     			t2 = space();
-    			section1 = element("section");
     			if (if_block1) if_block1.c();
+    			if_block1_anchor = empty();
     			attr_dev(span, "class", "title svelte-1bak9wu");
     			add_location(span, file$8, 29, 4, 642);
-    			attr_dev(section0, "class", "lineControls svelte-1bak9wu");
-    			add_location(section0, file$8, 27, 2, 558);
-    			attr_dev(section1, "class", "resControls svelte-1bak9wu");
-    			add_location(section1, file$8, 38, 2, 877);
+    			attr_dev(section, "class", "lineControls svelte-1bak9wu");
+    			add_location(section, file$8, 27, 2, 558);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section0, anchor);
-    			mount_component(switch_1, section0, null);
-    			append_dev(section0, t0);
-    			append_dev(section0, span);
+    			insert_dev(target, section, anchor);
+    			mount_component(switch_1, section, null);
+    			append_dev(section, t0);
+    			append_dev(section, span);
 
     			if (default_slot) {
     				default_slot.m(span, null);
     			}
 
-    			append_dev(section0, t1);
-    			if (if_block0) if_block0.m(section0, null);
+    			append_dev(section, t1);
+    			if (if_block0) if_block0.m(section, null);
     			insert_dev(target, t2, anchor);
-    			insert_dev(target, section1, anchor);
-    			if (if_block1) if_block1.m(section1, null);
+    			if (if_block1) if_block1.m(target, anchor);
+    			insert_dev(target, if_block1_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -6660,9 +6704,9 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$2(ctx);
+    					if_block0 = create_if_block_1$3(ctx);
     					if_block0.c();
-    					if_block0.m(section0, null);
+    					if_block0.m(section, null);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -6677,10 +6721,10 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block$3(ctx);
+    					if_block1 = create_if_block$4(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
-    					if_block1.m(section1, null);
+    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -6706,19 +6750,19 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(section0);
+    			if (detaching) detach_dev(section);
     			destroy_component(switch_1);
     			if (default_slot) default_slot.d(detaching);
     			if (if_block0) if_block0.d();
     			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(section1);
-    			if (if_block1) if_block1.d();
+    			if (if_block1) if_block1.d(detaching);
+    			if (detaching) detach_dev(if_block1_anchor);
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$2.name,
+    		id: create_default_slot$3.name,
     		type: "slot",
     		source: "(27:0) <Card>",
     		ctx
@@ -6733,7 +6777,7 @@ var app = (function () {
 
     	card = new Card({
     			props: {
-    				$$slots: { default: [create_default_slot$2] },
+    				$$slots: { default: [create_default_slot$3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -7732,7 +7776,7 @@ var app = (function () {
     const file$5 = "src/components/ResidualsTable.svelte";
 
     // (26:6) {#if showUserResiduals}
-    function create_if_block_1$1(ctx) {
+    function create_if_block_1$2(ctx) {
     	let residualvalues;
     	let current;
 
@@ -7776,7 +7820,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$1.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
     		source: "(26:6) {#if showUserResiduals}",
     		ctx
@@ -7786,7 +7830,7 @@ var app = (function () {
     }
 
     // (32:6) {#if showRegressionResiduals}
-    function create_if_block$2(ctx) {
+    function create_if_block$3(ctx) {
     	let residualvalues;
     	let current;
 
@@ -7830,7 +7874,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$3.name,
     		type: "if",
     		source: "(32:6) {#if showRegressionResiduals}",
     		ctx
@@ -7840,7 +7884,7 @@ var app = (function () {
     }
 
     // (21:0) <Card>
-    function create_default_slot$1(ctx) {
+    function create_default_slot$2(ctx) {
     	let div0;
     	let span0;
     	let t1;
@@ -7850,8 +7894,8 @@ var app = (function () {
     	let t4;
     	let div2;
     	let current;
-    	let if_block0 = /*showUserResiduals*/ ctx[2] && create_if_block_1$1(ctx);
-    	let if_block1 = /*showRegressionResiduals*/ ctx[1] && create_if_block$2(ctx);
+    	let if_block0 = /*showUserResiduals*/ ctx[2] && create_if_block_1$2(ctx);
+    	let if_block1 = /*showRegressionResiduals*/ ctx[1] && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -7900,7 +7944,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_1$1(ctx);
+    					if_block0 = create_if_block_1$2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div1, null);
@@ -7923,7 +7967,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block$2(ctx);
+    					if_block1 = create_if_block$3(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div2, null);
@@ -7962,7 +8006,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$1.name,
+    		id: create_default_slot$2.name,
     		type: "slot",
     		source: "(21:0) <Card>",
     		ctx
@@ -7977,7 +8021,7 @@ var app = (function () {
 
     	card = new Card({
     			props: {
-    				$$slots: { default: [create_default_slot$1] },
+    				$$slots: { default: [create_default_slot$2] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8188,47 +8232,359 @@ var app = (function () {
     }
 
     /* src/components/PredictTooltip.svelte generated by Svelte v3.42.6 */
-
     const file$4 = "src/components/PredictTooltip.svelte";
 
-    function create_fragment$4(ctx) {
-    	let rect;
-    	let t0;
-    	let text_1;
-    	let t1;
+    // (23:4) {#if x}
+    function create_if_block$2(ctx) {
+    	let card;
+    	let current;
+
+    	card = new Card({
+    			props: {
+    				$$slots: { default: [create_default_slot$1] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
-    			rect = svg_element("rect");
-    			t0 = space();
-    			text_1 = svg_element("text");
-    			t1 = text("Placeholder for cool tootip!");
-    			attr_dev(rect, "width", "350");
-    			attr_dev(rect, "height", "100");
-    			attr_dev(rect, "rx", "10");
-    			attr_dev(rect, "fill", "grey");
-    			attr_dev(rect, "opacity", ".5");
-    			add_location(rect, file$4, 10, 0, 71);
-    			attr_dev(text_1, "x", "20");
-    			attr_dev(text_1, "y", "50");
-    			add_location(text_1, file$4, 17, 0, 136);
+    			create_component(card.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(card, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const card_changes = {};
+
+    			if (dirty & /*$$scope, regDiff, regVal, showRegressionLine, userDiff, userVal, showUserLine, y, x*/ 8447) {
+    				card_changes.$$scope = { dirty, ctx };
+    			}
+
+    			card.$set(card_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(card.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(card.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(card, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(23:4) {#if x}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (27:12) {#if showUserLine}
+    function create_if_block_2$1(ctx) {
+    	let p;
+    	let span0;
+    	let t1;
+    	let span1;
+    	let t2;
+    	let t3;
+    	let t4;
+    	let span2;
+    	let t5;
+    	let t6;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			span0 = element("span");
+    			span0.textContent = "Your line";
+    			t1 = text(" predicted a cost of ");
+    			span1 = element("span");
+    			t2 = text("$");
+    			t3 = text(/*userVal*/ ctx[5]);
+    			t4 = text(", yeilding a residual difference of ");
+    			span2 = element("span");
+    			t5 = text(/*userDiff*/ ctx[7]);
+    			t6 = text(".");
+    			attr_dev(span0, "class", "user svelte-yj0cs8");
+    			add_location(span0, file$4, 27, 19, 673);
+    			attr_dev(span1, "class", "user svelte-yj0cs8");
+    			add_location(span1, file$4, 27, 75, 729);
+    			attr_dev(span2, "class", "user svelte-yj0cs8");
+    			add_location(span2, file$4, 27, 147, 801);
+    			attr_dev(p, "class", "svelte-yj0cs8");
+    			add_location(p, file$4, 27, 16, 670);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, span0);
+    			append_dev(p, t1);
+    			append_dev(p, span1);
+    			append_dev(span1, t2);
+    			append_dev(span1, t3);
+    			append_dev(p, t4);
+    			append_dev(p, span2);
+    			append_dev(span2, t5);
+    			append_dev(p, t6);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*userVal*/ 32) set_data_dev(t3, /*userVal*/ ctx[5]);
+    			if (dirty & /*userDiff*/ 128) set_data_dev(t5, /*userDiff*/ ctx[7]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(27:12) {#if showUserLine}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (30:12) {#if showRegressionLine}
+    function create_if_block_1$1(ctx) {
+    	let p;
+    	let t0;
+    	let span0;
+    	let t2;
+    	let span1;
+    	let t3;
+    	let t4;
+    	let t5;
+    	let span2;
+    	let t6;
+    	let t7;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			t0 = text("The ");
+    			span0 = element("span");
+    			span0.textContent = "best fit line";
+    			t2 = text(" predicted a cost of ");
+    			span1 = element("span");
+    			t3 = text("$");
+    			t4 = text(/*regVal*/ ctx[4]);
+    			t5 = text(", yeilding a residual difference of ");
+    			span2 = element("span");
+    			t6 = text(/*regDiff*/ ctx[6]);
+    			t7 = text(".");
+    			attr_dev(span0, "class", "best-fit svelte-yj0cs8");
+    			add_location(span0, file$4, 30, 23, 921);
+    			attr_dev(span1, "class", "best-fit svelte-yj0cs8");
+    			add_location(span1, file$4, 30, 87, 985);
+    			attr_dev(span2, "class", "best-fit svelte-yj0cs8");
+    			add_location(span2, file$4, 30, 162, 1060);
+    			attr_dev(p, "class", "svelte-yj0cs8");
+    			add_location(p, file$4, 30, 16, 914);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, span0);
+    			append_dev(p, t2);
+    			append_dev(p, span1);
+    			append_dev(span1, t3);
+    			append_dev(span1, t4);
+    			append_dev(p, t5);
+    			append_dev(p, span2);
+    			append_dev(span2, t6);
+    			append_dev(p, t7);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*regVal*/ 16) set_data_dev(t4, /*regVal*/ ctx[4]);
+    			if (dirty & /*regDiff*/ 64) set_data_dev(t6, /*regDiff*/ ctx[6]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(30:12) {#if showRegressionLine}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (24:4) <Card>
+    function create_default_slot$1(ctx) {
+    	let div;
+    	let p;
+    	let t0;
+    	let strong0;
+    	let t1;
+    	let t2;
+    	let strong2;
+    	let t3;
+    	let t4_value = /*y*/ ctx[1].toFixed(2) + "";
+    	let t4;
+    	let strong1;
+    	let t5;
+    	let t6;
+    	let if_block0 = /*showUserLine*/ ctx[2] && create_if_block_2$1(ctx);
+    	let if_block1 = /*showRegressionLine*/ ctx[3] && create_if_block_1$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			p = element("p");
+    			t0 = text("A customer bought ");
+    			strong0 = element("strong");
+    			t1 = text(/*x*/ ctx[0]);
+    			t2 = text(" donuts at a cost of ");
+    			strong2 = element("strong");
+    			t3 = text("$");
+    			t4 = text(t4_value);
+    			strong1 = element("strong");
+    			t5 = space();
+    			if (if_block0) if_block0.c();
+    			t6 = space();
+    			if (if_block1) if_block1.c();
+    			add_location(strong0, file$4, 25, 33, 546);
+    			add_location(strong1, file$4, 25, 97, 610);
+    			add_location(strong2, file$4, 25, 74, 587);
+    			attr_dev(p, "class", "svelte-yj0cs8");
+    			add_location(p, file$4, 25, 12, 525);
+    			add_location(div, file$4, 24, 8, 507);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, p);
+    			append_dev(p, t0);
+    			append_dev(p, strong0);
+    			append_dev(strong0, t1);
+    			append_dev(p, t2);
+    			append_dev(p, strong2);
+    			append_dev(strong2, t3);
+    			append_dev(strong2, t4);
+    			append_dev(strong2, strong1);
+    			append_dev(div, t5);
+    			if (if_block0) if_block0.m(div, null);
+    			append_dev(div, t6);
+    			if (if_block1) if_block1.m(div, null);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*x*/ 1) set_data_dev(t1, /*x*/ ctx[0]);
+    			if (dirty & /*y*/ 2 && t4_value !== (t4_value = /*y*/ ctx[1].toFixed(2) + "")) set_data_dev(t4, t4_value);
+
+    			if (/*showUserLine*/ ctx[2]) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0.c();
+    					if_block0.m(div, t6);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*showRegressionLine*/ ctx[3]) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_1$1(ctx);
+    					if_block1.c();
+    					if_block1.m(div, null);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot$1.name,
+    		type: "slot",
+    		source: "(24:4) <Card>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let if_block_anchor;
+    	let current;
+    	let if_block = /*x*/ ctx[0] && create_if_block$2(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, rect, anchor);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, text_1, anchor);
-    			append_dev(text_1, t1);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
     		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (/*x*/ ctx[0]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*x*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$2(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(rect);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(text_1);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -8244,39 +8600,138 @@ var app = (function () {
     }
 
     function instance$4($$self, $$props, $$invalidate) {
+    	let userVal;
+    	let regVal;
+    	let userDiff;
+    	let regDiff;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('PredictTooltip', slots, []);
-    	let { points } = $$props;
-    	let { clickedElement } = $$props;
-    	const writable_props = ['points', 'clickedElement'];
+    	let { chartWidth } = $$props;
+    	let { posX } = $$props;
+    	let { posY } = $$props;
+    	let { x } = $$props;
+    	let { y } = $$props;
+    	let { showUserLine } = $$props;
+    	let { showRegressionLine } = $$props;
+    	let { userLinePredict } = $$props;
+    	let { bestFitLinePredict } = $$props;
+
+    	const writable_props = [
+    		'chartWidth',
+    		'posX',
+    		'posY',
+    		'x',
+    		'y',
+    		'showUserLine',
+    		'showRegressionLine',
+    		'userLinePredict',
+    		'bestFitLinePredict'
+    	];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PredictTooltip> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ('points' in $$props) $$invalidate(0, points = $$props.points);
-    		if ('clickedElement' in $$props) $$invalidate(1, clickedElement = $$props.clickedElement);
+    		if ('chartWidth' in $$props) $$invalidate(8, chartWidth = $$props.chartWidth);
+    		if ('posX' in $$props) $$invalidate(9, posX = $$props.posX);
+    		if ('posY' in $$props) $$invalidate(10, posY = $$props.posY);
+    		if ('x' in $$props) $$invalidate(0, x = $$props.x);
+    		if ('y' in $$props) $$invalidate(1, y = $$props.y);
+    		if ('showUserLine' in $$props) $$invalidate(2, showUserLine = $$props.showUserLine);
+    		if ('showRegressionLine' in $$props) $$invalidate(3, showRegressionLine = $$props.showRegressionLine);
+    		if ('userLinePredict' in $$props) $$invalidate(11, userLinePredict = $$props.userLinePredict);
+    		if ('bestFitLinePredict' in $$props) $$invalidate(12, bestFitLinePredict = $$props.bestFitLinePredict);
     	};
 
-    	$$self.$capture_state = () => ({ points, clickedElement });
+    	$$self.$capture_state = () => ({
+    		fade,
+    		Card,
+    		chartWidth,
+    		posX,
+    		posY,
+    		x,
+    		y,
+    		showUserLine,
+    		showRegressionLine,
+    		userLinePredict,
+    		bestFitLinePredict,
+    		regVal,
+    		regDiff,
+    		userVal,
+    		userDiff
+    	});
 
     	$$self.$inject_state = $$props => {
-    		if ('points' in $$props) $$invalidate(0, points = $$props.points);
-    		if ('clickedElement' in $$props) $$invalidate(1, clickedElement = $$props.clickedElement);
+    		if ('chartWidth' in $$props) $$invalidate(8, chartWidth = $$props.chartWidth);
+    		if ('posX' in $$props) $$invalidate(9, posX = $$props.posX);
+    		if ('posY' in $$props) $$invalidate(10, posY = $$props.posY);
+    		if ('x' in $$props) $$invalidate(0, x = $$props.x);
+    		if ('y' in $$props) $$invalidate(1, y = $$props.y);
+    		if ('showUserLine' in $$props) $$invalidate(2, showUserLine = $$props.showUserLine);
+    		if ('showRegressionLine' in $$props) $$invalidate(3, showRegressionLine = $$props.showRegressionLine);
+    		if ('userLinePredict' in $$props) $$invalidate(11, userLinePredict = $$props.userLinePredict);
+    		if ('bestFitLinePredict' in $$props) $$invalidate(12, bestFitLinePredict = $$props.bestFitLinePredict);
+    		if ('regVal' in $$props) $$invalidate(4, regVal = $$props.regVal);
+    		if ('regDiff' in $$props) $$invalidate(6, regDiff = $$props.regDiff);
+    		if ('userVal' in $$props) $$invalidate(5, userVal = $$props.userVal);
+    		if ('userDiff' in $$props) $$invalidate(7, userDiff = $$props.userDiff);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [points, clickedElement];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*userLinePredict, x*/ 2049) {
+    			$$invalidate(5, userVal = userLinePredict(x).toFixed(2));
+    		}
+
+    		if ($$self.$$.dirty & /*bestFitLinePredict, x*/ 4097) {
+    			$$invalidate(4, regVal = bestFitLinePredict(x).toFixed(2));
+    		}
+
+    		if ($$self.$$.dirty & /*y, userVal*/ 34) {
+    			$$invalidate(7, userDiff = (y - userVal).toFixed(2));
+    		}
+
+    		if ($$self.$$.dirty & /*y, regVal*/ 18) {
+    			$$invalidate(6, regDiff = (y - regVal).toFixed(2));
+    		}
+    	};
+
+    	return [
+    		x,
+    		y,
+    		showUserLine,
+    		showRegressionLine,
+    		regVal,
+    		userVal,
+    		regDiff,
+    		userDiff,
+    		chartWidth,
+    		posX,
+    		posY,
+    		userLinePredict,
+    		bestFitLinePredict
+    	];
     }
 
     class PredictTooltip extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { points: 0, clickedElement: 1 });
+
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, {
+    			chartWidth: 8,
+    			posX: 9,
+    			posY: 10,
+    			x: 0,
+    			y: 1,
+    			showUserLine: 2,
+    			showRegressionLine: 3,
+    			userLinePredict: 11,
+    			bestFitLinePredict: 12
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -8288,28 +8743,112 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*points*/ ctx[0] === undefined && !('points' in props)) {
-    			console.warn("<PredictTooltip> was created without expected prop 'points'");
+    		if (/*chartWidth*/ ctx[8] === undefined && !('chartWidth' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'chartWidth'");
     		}
 
-    		if (/*clickedElement*/ ctx[1] === undefined && !('clickedElement' in props)) {
-    			console.warn("<PredictTooltip> was created without expected prop 'clickedElement'");
+    		if (/*posX*/ ctx[9] === undefined && !('posX' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'posX'");
+    		}
+
+    		if (/*posY*/ ctx[10] === undefined && !('posY' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'posY'");
+    		}
+
+    		if (/*x*/ ctx[0] === undefined && !('x' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'x'");
+    		}
+
+    		if (/*y*/ ctx[1] === undefined && !('y' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'y'");
+    		}
+
+    		if (/*showUserLine*/ ctx[2] === undefined && !('showUserLine' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'showUserLine'");
+    		}
+
+    		if (/*showRegressionLine*/ ctx[3] === undefined && !('showRegressionLine' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'showRegressionLine'");
+    		}
+
+    		if (/*userLinePredict*/ ctx[11] === undefined && !('userLinePredict' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'userLinePredict'");
+    		}
+
+    		if (/*bestFitLinePredict*/ ctx[12] === undefined && !('bestFitLinePredict' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'bestFitLinePredict'");
     		}
     	}
 
-    	get points() {
+    	get chartWidth() {
     		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set points(value) {
+    	set chartWidth(value) {
     		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get clickedElement() {
+    	get posX() {
     		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set clickedElement(value) {
+    	set posX(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get posY() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set posY(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get x() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set x(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get y() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set y(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get showUserLine() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set showUserLine(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get showRegressionLine() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set showRegressionLine(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get userLinePredict() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set userLinePredict(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get bestFitLinePredict() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set bestFitLinePredict(value) {
     		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -8609,7 +9148,7 @@ var app = (function () {
     			div = element("div");
     			create_component(residualstable.$$.fragment);
     			attr_dev(div, "id", "residualsTable");
-    			attr_dev(div, "class", "svelte-1pi5tw9");
+    			attr_dev(div, "class", "svelte-a909fq");
     			add_location(div, file$3, 179, 1, 4242);
     		},
     		m: function mount(target, anchor) {
@@ -8652,7 +9191,97 @@ var app = (function () {
     	return block;
     }
 
-    // (199:3) {#each yTicks as tick}
+    // (191:0) {#if showPredictTooltip}
+    function create_if_block_7(ctx) {
+    	let predicttooltip;
+    	let current;
+
+    	const predicttooltip_spread_levels = [
+    		{ chartWidth: /*width*/ ctx[0] },
+    		{ showUserLine: /*showUserLine*/ ctx[3] },
+    		{
+    			showRegressionLine: /*showRegressionLine*/ ctx[2]
+    		},
+    		{
+    			userLinePredict: /*userLinePredict*/ ctx[14]
+    		},
+    		{
+    			bestFitLinePredict: /*$regressionLineStore*/ ctx[26].predict
+    		},
+    		{
+    			clickedElement: /*clickedElement*/ ctx[12]
+    		},
+    		points[/*$member*/ ctx[25]][/*highlightId*/ ctx[11]]
+    	];
+
+    	let predicttooltip_props = {};
+
+    	for (let i = 0; i < predicttooltip_spread_levels.length; i += 1) {
+    		predicttooltip_props = assign(predicttooltip_props, predicttooltip_spread_levels[i]);
+    	}
+
+    	predicttooltip = new PredictTooltip({
+    			props: predicttooltip_props,
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(predicttooltip.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(predicttooltip, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const predicttooltip_changes = (dirty[0] & /*width, showUserLine, showRegressionLine, userLinePredict, $regressionLineStore, clickedElement, $member, highlightId*/ 100685837)
+    			? get_spread_update(predicttooltip_spread_levels, [
+    					dirty[0] & /*width*/ 1 && { chartWidth: /*width*/ ctx[0] },
+    					dirty[0] & /*showUserLine*/ 8 && { showUserLine: /*showUserLine*/ ctx[3] },
+    					dirty[0] & /*showRegressionLine*/ 4 && {
+    						showRegressionLine: /*showRegressionLine*/ ctx[2]
+    					},
+    					dirty[0] & /*userLinePredict*/ 16384 && {
+    						userLinePredict: /*userLinePredict*/ ctx[14]
+    					},
+    					dirty[0] & /*$regressionLineStore*/ 67108864 && {
+    						bestFitLinePredict: /*$regressionLineStore*/ ctx[26].predict
+    					},
+    					dirty[0] & /*clickedElement*/ 4096 && {
+    						clickedElement: /*clickedElement*/ ctx[12]
+    					},
+    					dirty[0] & /*$member, highlightId*/ 33556480 && get_spread_object(points[/*$member*/ ctx[25]][/*highlightId*/ ctx[11]])
+    				])
+    			: {};
+
+    			predicttooltip.$set(predicttooltip_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(predicttooltip.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(predicttooltip.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(predicttooltip, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_7.name,
+    		type: "if",
+    		source: "(191:0) {#if showPredictTooltip}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (211:3) {#each yTicks as tick}
     function create_each_block_2(ctx) {
     	let axis;
     	let current;
@@ -8704,14 +9333,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(199:3) {#each yTicks as tick}",
+    		source: "(211:3) {#each yTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (208:3) {#each xTicks as tick}
+    // (220:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -8763,15 +9392,15 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(208:3) {#each xTicks as tick}",
+    		source: "(220:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (216:3) {#if showPoints}
-    function create_if_block_7(ctx) {
+    // (228:3) {#if showPoints}
+    function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let current;
     	let each_value = points[/*$member*/ ctx[25]];
@@ -8857,16 +9486,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_6.name,
     		type: "if",
-    		source: "(216:3) {#if showPoints}",
+    		source: "(228:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (218:4) {#each points[$member] as {x, y}
+    // (230:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
@@ -8918,20 +9547,20 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(218:4) {#each points[$member] as {x, y}",
+    		source: "(230:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (233:3) {#if showRegressionLine}
-    function create_if_block_4(ctx) {
+    // (245:3) {#if showRegressionLine}
+    function create_if_block_3(ctx) {
     	let if_block0_anchor;
     	let regressionline;
     	let if_block1_anchor;
     	let current;
-    	let if_block0 = /*showRegressionResiduals*/ ctx[6] && create_if_block_6(ctx);
+    	let if_block0 = /*showRegressionResiduals*/ ctx[6] && create_if_block_5(ctx);
 
     	regressionline = new RegressionLine({
     			props: {
@@ -8941,7 +9570,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_5(ctx);
+    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_4(ctx);
 
     	const block = {
     		c: function create() {
@@ -8968,7 +9597,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_6(ctx);
+    					if_block0 = create_if_block_5(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -8996,7 +9625,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block_5(ctx);
+    					if_block1 = create_if_block_4(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -9035,17 +9664,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4.name,
+    		id: create_if_block_3.name,
     		type: "if",
-    		source: "(233:3) {#if showRegressionLine}",
+    		source: "(245:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (235:4) {#if showRegressionResiduals}
-    function create_if_block_6(ctx) {
+    // (247:4) {#if showRegressionResiduals}
+    function create_if_block_5(ctx) {
     	let residuals;
     	let current;
 
@@ -9098,17 +9727,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_6.name,
+    		id: create_if_block_5.name,
     		type: "if",
-    		source: "(235:4) {#if showRegressionResiduals}",
+    		source: "(247:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (247:4) {#if showSingleResidual}
-    function create_if_block_5(ctx) {
+    // (259:4) {#if showSingleResidual}
+    function create_if_block_4(ctx) {
     	let singleresidual;
     	let current;
 
@@ -9161,22 +9790,22 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5.name,
+    		id: create_if_block_4.name,
     		type: "if",
-    		source: "(247:4) {#if showSingleResidual}",
+    		source: "(259:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (262:3) {#if showUserLine}
-    function create_if_block_1(ctx) {
+    // (274:3) {#if showUserLine}
+    function create_if_block$1(ctx) {
     	let if_block0_anchor;
     	let userline;
     	let if_block1_anchor;
     	let current;
-    	let if_block0 = /*showUserResiduals*/ ctx[5] && create_if_block_3(ctx);
+    	let if_block0 = /*showUserResiduals*/ ctx[5] && create_if_block_2(ctx);
 
     	userline = new UserLine({
     			props: {
@@ -9187,7 +9816,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_2(ctx);
+    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9214,7 +9843,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_3(ctx);
+    					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -9243,7 +9872,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block_2(ctx);
+    					if_block1 = create_if_block_1(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -9282,17 +9911,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1.name,
+    		id: create_if_block$1.name,
     		type: "if",
-    		source: "(262:3) {#if showUserLine}",
+    		source: "(274:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (263:4) {#if showUserResiduals}
-    function create_if_block_3(ctx) {
+    // (275:4) {#if showUserResiduals}
+    function create_if_block_2(ctx) {
     	let residuals;
     	let current;
 
@@ -9345,17 +9974,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3.name,
+    		id: create_if_block_2.name,
     		type: "if",
-    		source: "(263:4) {#if showUserResiduals}",
+    		source: "(275:4) {#if showUserResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (277:4) {#if showSingleResidual}
-    function create_if_block_2(ctx) {
+    // (289:4) {#if showSingleResidual}
+    function create_if_block_1(ctx) {
     	let singleresidual;
     	let current;
 
@@ -9408,68 +10037,9 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2.name,
+    		id: create_if_block_1.name,
     		type: "if",
-    		source: "(277:4) {#if showSingleResidual}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (290:2) {#if showPredictTooltip}
-    function create_if_block$1(ctx) {
-    	let g;
-    	let predicttooltip;
-    	let current;
-
-    	predicttooltip = new PredictTooltip({
-    			props: {
-    				clickedElement: /*clickedElement*/ ctx[12],
-    				points: points[/*$member*/ ctx[25]]
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			g = svg_element("g");
-    			create_component(predicttooltip.$$.fragment);
-    			attr_dev(g, "class", "tooltips");
-    			attr_dev(g, "transform", "translate(75, 50)");
-    			add_location(g, file$3, 290, 3, 6913);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, g, anchor);
-    			mount_component(predicttooltip, g, null);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const predicttooltip_changes = {};
-    			if (dirty[0] & /*clickedElement*/ 4096) predicttooltip_changes.clickedElement = /*clickedElement*/ ctx[12];
-    			if (dirty[0] & /*$member*/ 33554432) predicttooltip_changes.points = points[/*$member*/ ctx[25]];
-    			predicttooltip.$set(predicttooltip_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(predicttooltip.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(predicttooltip.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(g);
-    			destroy_component(predicttooltip);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block$1.name,
-    		type: "if",
-    		source: "(290:2) {#if showPredictTooltip}",
+    		source: "(289:4) {#if showSingleResidual}",
     		ctx
     	});
 
@@ -9481,16 +10051,17 @@ var app = (function () {
     	let t0;
     	let t1;
     	let t2;
+    	let t3;
     	let div1;
     	let svg_1;
     	let g0;
     	let text1;
-    	let t3;
+    	let t4;
     	let text0;
     	let text1_transform_value;
     	let g1;
     	let text3;
-    	let t4;
+    	let t5;
     	let text2;
     	let text3_x_value;
     	let text3_y_value;
@@ -9503,6 +10074,7 @@ var app = (function () {
     	let if_block0 = /*showUserLineControls*/ ctx[23] && create_if_block_10(ctx);
     	let if_block1 = /*showRegressionLineControls*/ ctx[22] && create_if_block_9(ctx);
     	let if_block2 = /*showResidualsTable*/ ctx[19] && create_if_block_8(ctx);
+    	let if_block3 = /*showPredictTooltip*/ ctx[20] && create_if_block_7(ctx);
     	let each_value_2 = /*yTicks*/ ctx[15];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
@@ -9527,10 +10099,9 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block3 = /*showPoints*/ ctx[24] && create_if_block_7(ctx);
-    	let if_block4 = /*showRegressionLine*/ ctx[2] && create_if_block_4(ctx);
-    	let if_block5 = /*showUserLine*/ ctx[3] && create_if_block_1(ctx);
-    	let if_block6 = /*showPredictTooltip*/ ctx[20] && create_if_block$1(ctx);
+    	let if_block4 = /*showPoints*/ ctx[24] && create_if_block_6(ctx);
+    	let if_block5 = /*showRegressionLine*/ ctx[2] && create_if_block_3(ctx);
+    	let if_block6 = /*showUserLine*/ ctx[3] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9541,6 +10112,8 @@ var app = (function () {
     			t1 = space();
     			if (if_block2) if_block2.c();
     			t2 = space();
+    			if (if_block3) if_block3.c();
+    			t3 = space();
     			div1 = element("div");
     			svg_1 = svg_element("svg");
     			g0 = svg_element("g");
@@ -9550,7 +10123,7 @@ var app = (function () {
     			}
 
     			text1 = svg_element("text");
-    			t3 = text("cost ($)");
+    			t4 = text("cost ($)");
     			text0 = svg_element("text");
     			g1 = svg_element("g");
 
@@ -9559,42 +10132,41 @@ var app = (function () {
     			}
 
     			text3 = svg_element("text");
-    			t4 = text("donuts");
+    			t5 = text("donuts");
     			text2 = svg_element("text");
     			g2 = svg_element("g");
-    			if (if_block3) if_block3.c();
-    			g3 = svg_element("g");
     			if (if_block4) if_block4.c();
-    			g4 = svg_element("g");
+    			g3 = svg_element("g");
     			if (if_block5) if_block5.c();
+    			g4 = svg_element("g");
     			if (if_block6) if_block6.c();
     			attr_dev(div0, "id", "controls");
-    			attr_dev(div0, "class", "svelte-1pi5tw9");
+    			attr_dev(div0, "class", "svelte-a909fq");
     			add_location(div0, file$3, 149, 0, 3474);
-    			add_location(text0, file$3, 202, 12, 4891);
+    			add_location(text0, file$3, 214, 12, 5173);
     			attr_dev(text1, "text-anchor", "middle");
     			attr_dev(text1, "transform", text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)");
-    			add_location(text1, file$3, 201, 3, 4803);
+    			add_location(text1, file$3, 213, 3, 5085);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 197, 2, 4572);
-    			add_location(text2, file$3, 211, 10, 5252);
+    			add_location(g0, file$3, 209, 2, 4854);
+    			add_location(text2, file$3, 223, 10, 5534);
     			set_style(text3, "text-anchor", "middle");
     			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[27].left);
     			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[27].bottom / 2 + 15);
-    			add_location(text3, file$3, 210, 3, 5146);
+    			add_location(text3, file$3, 222, 3, 5428);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 206, 2, 4911);
+    			add_location(g1, file$3, 218, 2, 5193);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 214, 2, 5271);
-    			attr_dev(g3, "class", "regressionLine svelte-1pi5tw9");
-    			add_location(g3, file$3, 231, 2, 5551);
-    			attr_dev(g4, "class", "userLine svelte-1pi5tw9");
-    			add_location(g4, file$3, 260, 2, 6240);
-    			attr_dev(svg_1, "class", "svelte-1pi5tw9");
-    			add_location(svg_1, file$3, 195, 1, 4512);
+    			add_location(g2, file$3, 226, 2, 5553);
+    			attr_dev(g3, "class", "regressionLine svelte-a909fq");
+    			add_location(g3, file$3, 243, 2, 5833);
+    			attr_dev(g4, "class", "userLine svelte-a909fq");
+    			add_location(g4, file$3, 272, 2, 6522);
+    			attr_dev(svg_1, "class", "svelte-a909fq");
+    			add_location(svg_1, file$3, 207, 1, 4794);
     			attr_dev(div1, "id", "chart");
-    			attr_dev(div1, "class", "svelte-1pi5tw9");
-    			add_location(div1, file$3, 193, 0, 4492);
+    			attr_dev(div1, "class", "svelte-a909fq");
+    			add_location(div1, file$3, 205, 0, 4774);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9607,6 +10179,8 @@ var app = (function () {
     			insert_dev(target, t1, anchor);
     			if (if_block2) if_block2.m(target, anchor);
     			insert_dev(target, t2, anchor);
+    			if (if_block3) if_block3.m(target, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, div1, anchor);
     			append_dev(div1, svg_1);
     			append_dev(svg_1, g0);
@@ -9616,7 +10190,7 @@ var app = (function () {
     			}
 
     			append_dev(g0, text1);
-    			append_dev(text1, t3);
+    			append_dev(text1, t4);
     			append_dev(text1, text0);
     			append_dev(svg_1, g1);
 
@@ -9625,15 +10199,14 @@ var app = (function () {
     			}
 
     			append_dev(g1, text3);
-    			append_dev(text3, t4);
+    			append_dev(text3, t5);
     			append_dev(text3, text2);
     			append_dev(svg_1, g2);
-    			if (if_block3) if_block3.m(g2, null);
+    			if (if_block4) if_block4.m(g2, null);
     			append_dev(svg_1, g3);
-    			if (if_block4) if_block4.m(g3, null);
+    			if (if_block5) if_block5.m(g3, null);
     			append_dev(svg_1, g4);
-    			if (if_block5) if_block5.m(g4, null);
-    			if (if_block6) if_block6.m(svg_1, null);
+    			if (if_block6) if_block6.m(g4, null);
     			/*svg_1_binding*/ ctx[36](svg_1);
     			current = true;
 
@@ -9716,6 +10289,29 @@ var app = (function () {
     				check_outros();
     			}
 
+    			if (/*showPredictTooltip*/ ctx[20]) {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+
+    					if (dirty[0] & /*showPredictTooltip*/ 1048576) {
+    						transition_in(if_block3, 1);
+    					}
+    				} else {
+    					if_block3 = create_if_block_7(ctx);
+    					if_block3.c();
+    					transition_in(if_block3, 1);
+    					if_block3.m(t3.parentNode, t3);
+    				}
+    			} else if (if_block3) {
+    				group_outros();
+
+    				transition_out(if_block3, 1, 1, () => {
+    					if_block3 = null;
+    				});
+
+    				check_outros();
+    			}
+
     			if (dirty[0] & /*yScale, yTicks, xScale, xTicks, margins*/ 134709248) {
     				each_value_2 = /*yTicks*/ ctx[15];
     				validate_each_argument(each_value_2);
@@ -9785,40 +10381,17 @@ var app = (function () {
     			}
 
     			if (/*showPoints*/ ctx[24]) {
-    				if (if_block3) {
-    					if_block3.p(ctx, dirty);
-
-    					if (dirty[0] & /*showPoints*/ 16777216) {
-    						transition_in(if_block3, 1);
-    					}
-    				} else {
-    					if_block3 = create_if_block_7(ctx);
-    					if_block3.c();
-    					transition_in(if_block3, 1);
-    					if_block3.m(g2, null);
-    				}
-    			} else if (if_block3) {
-    				group_outros();
-
-    				transition_out(if_block3, 1, 1, () => {
-    					if_block3 = null;
-    				});
-
-    				check_outros();
-    			}
-
-    			if (/*showRegressionLine*/ ctx[2]) {
     				if (if_block4) {
     					if_block4.p(ctx, dirty);
 
-    					if (dirty[0] & /*showRegressionLine*/ 4) {
+    					if (dirty[0] & /*showPoints*/ 16777216) {
     						transition_in(if_block4, 1);
     					}
     				} else {
-    					if_block4 = create_if_block_4(ctx);
+    					if_block4 = create_if_block_6(ctx);
     					if_block4.c();
     					transition_in(if_block4, 1);
-    					if_block4.m(g3, null);
+    					if_block4.m(g2, null);
     				}
     			} else if (if_block4) {
     				group_outros();
@@ -9830,18 +10403,18 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showUserLine*/ ctx[3]) {
+    			if (/*showRegressionLine*/ ctx[2]) {
     				if (if_block5) {
     					if_block5.p(ctx, dirty);
 
-    					if (dirty[0] & /*showUserLine*/ 8) {
+    					if (dirty[0] & /*showRegressionLine*/ 4) {
     						transition_in(if_block5, 1);
     					}
     				} else {
-    					if_block5 = create_if_block_1(ctx);
+    					if_block5 = create_if_block_3(ctx);
     					if_block5.c();
     					transition_in(if_block5, 1);
-    					if_block5.m(g4, null);
+    					if_block5.m(g3, null);
     				}
     			} else if (if_block5) {
     				group_outros();
@@ -9853,18 +10426,18 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*showPredictTooltip*/ ctx[20]) {
+    			if (/*showUserLine*/ ctx[3]) {
     				if (if_block6) {
     					if_block6.p(ctx, dirty);
 
-    					if (dirty[0] & /*showPredictTooltip*/ 1048576) {
+    					if (dirty[0] & /*showUserLine*/ 8) {
     						transition_in(if_block6, 1);
     					}
     				} else {
     					if_block6 = create_if_block$1(ctx);
     					if_block6.c();
     					transition_in(if_block6, 1);
-    					if_block6.m(svg_1, null);
+    					if_block6.m(g4, null);
     				}
     			} else if (if_block6) {
     				group_outros();
@@ -9881,6 +10454,7 @@ var app = (function () {
     			transition_in(if_block0);
     			transition_in(if_block1);
     			transition_in(if_block2);
+    			transition_in(if_block3);
 
     			for (let i = 0; i < each_value_2.length; i += 1) {
     				transition_in(each_blocks_1[i]);
@@ -9890,7 +10464,6 @@ var app = (function () {
     				transition_in(each_blocks[i]);
     			}
 
-    			transition_in(if_block3);
     			transition_in(if_block4);
     			transition_in(if_block5);
     			transition_in(if_block6);
@@ -9900,6 +10473,7 @@ var app = (function () {
     			transition_out(if_block0);
     			transition_out(if_block1);
     			transition_out(if_block2);
+    			transition_out(if_block3);
     			each_blocks_1 = each_blocks_1.filter(Boolean);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
@@ -9912,7 +10486,6 @@ var app = (function () {
     				transition_out(each_blocks[i]);
     			}
 
-    			transition_out(if_block3);
     			transition_out(if_block4);
     			transition_out(if_block5);
     			transition_out(if_block6);
@@ -9925,10 +10498,11 @@ var app = (function () {
     			if (detaching) detach_dev(t1);
     			if (if_block2) if_block2.d(detaching);
     			if (detaching) detach_dev(t2);
+    			if (if_block3) if_block3.d(detaching);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
-    			if (if_block3) if_block3.d();
     			if (if_block4) if_block4.d();
     			if (if_block5) if_block5.d();
     			if (if_block6) if_block6.d();

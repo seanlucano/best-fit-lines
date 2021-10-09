@@ -62,8 +62,8 @@ export const sequence = [
         showRegressionLineControls: true,
         showUserLine: true,
         showRegressionLine: true,
-        showSingleResidual: true,
         showHighlighting: true,
+        showSingleResidual: true,
         showPredictTooltip: true
     },
     {	title: 'Minimizing residuals',
