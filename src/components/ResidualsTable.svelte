@@ -21,7 +21,7 @@ export let bestFitLinePredict;
 <Card>
     <div class='title'>
       <span>Squared Residuals</span> 
-    <span>SSR</span></div>
+    <span><strong>SSR</strong></span></div>
     <div id='user' class="residualsRow">
       {#if showUserResiduals}
         <ResidualValues {highlightId} on:click predict={userLinePredict}/>
@@ -53,7 +53,7 @@ export let bestFitLinePredict;
   }
 
   .title {
-    padding: .5em 1em .5em .5em;
+    padding: .5em;
     display: flex;
     justify-content: space-between;
   }

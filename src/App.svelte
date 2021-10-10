@@ -89,7 +89,7 @@
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		grid-gap: 1em;
-		height: calc(100% - 4em);
+		height: calc(100% - 1em);
 	}
 
 	#prompt {

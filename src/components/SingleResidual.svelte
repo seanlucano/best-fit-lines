@@ -7,7 +7,7 @@
     export let translating;
     export let points;
 
-    let offset = 20;
+    let offset = 25;
 
    $: if (groupId === 'userLineResidual') {
        offset *= -1;
@@ -51,7 +51,7 @@
     }
     
     text {
-        font-size: .8em;
+        font-size: 1em;
         opacity: 1;
         transition: opacity, .5s;
     }

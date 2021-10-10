@@ -28,7 +28,7 @@
 		fill-opacity: .5;
 		stroke-opacity: 0;
 		fill: grey;
-		stroke: grey;
+		stroke: black;
 		stroke-width: 2px;
 		transition: fill 300ms, fill-opacity 300ms, r 300ms;
 		
@@ -39,7 +39,7 @@
 	}
 
 	.highlighted {
-		fill-opacity: .15;
+		fill-opacity: 0;
 		stroke-opacity: 1;
 		fill: black;
 		/* r: 10px; */

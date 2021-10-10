@@ -85,10 +85,7 @@
 	#cta {
 		margin-top: 1.5em;
 		padding: .75em 1.35em;
-		/* padding-bottom: .5em; */
 		background-color:#DFEBF6;
-		/* box-shadow: 2px 6px 11px 0px #e3e6e8; */
-		/* border: 2px solid hsl(245deg 100% 60%); */
 		border-radius: .5em;
 		position: relative;
 	}
@@ -116,7 +113,6 @@
 	.submit, .feedback {
 		margin-top: 1em;
 		text-align: center;
-		font-weight: bold;
 	}
 
 	.feedback {

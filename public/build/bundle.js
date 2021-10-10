@@ -1429,11 +1429,11 @@ var app = (function () {
             title: 'Welcome to best fit lines!',
             prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
         <p> Just for fun, let's say that the horizonal (x) axis represents the number of donuts purchased, and the vertical (y) axis represent the total transaction cost in US dollars.</p> `,	
-            cta: `<p><strong>What would you say is the best describes the dollars to donuts relationship here?</p>`,
+            cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
             quiz: {
-                questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
+                questions: [`Positive`, `Negative `],
                 correct: 0,
-                feedback: `Don't overthink it...Mo' money mo' donuts!`
+                feedback: `As the number of donuts increases, so does transaction cost!`
             },	
             showPoints: true,
             
@@ -1473,9 +1473,9 @@ var app = (function () {
             
         },
         {	title: 'Residuals',
-            prompt:`<p>What do these new lines represent?</p> 
-        <p>For any point, we already know both the number of donuts and the cost each transaction.  But even the best fit line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from the <strong>observed const</strong>.</p>
-        <p>So the distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
+            prompt:` <p>For any point, we already know the number of donuts and the cost of each transaction.  But our line cannot run directly through every point.  It sometimes will be above or below one of the observed transactions.</p> 
+        <p>This means that for any given number of <strong>donuts</strong>, the line is representing an <strong>expected cost</strong> that is different from the <strong>observed cost</strong>.</p>
+        <p>The distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
             cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
             showPoints: true,
@@ -1578,9 +1578,9 @@ var app = (function () {
     			t1 = space();
     			div1 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "submit svelte-vftldo");
+    			attr_dev(div0, "class", "submit svelte-3hlzph");
     			add_location(div0, file$h, 58, 5, 1375);
-    			attr_dev(div1, "class", "feedback svelte-vftldo");
+    			attr_dev(div1, "class", "feedback svelte-3hlzph");
     			add_location(div1, file$h, 63, 5, 1507);
     			add_location(form, file$h, 51, 4, 1128);
     		},
@@ -1713,10 +1713,10 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = /*i*/ ctx[12];
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-vftldo");
+    			attr_dev(input, "class", "svelte-3hlzph");
     			/*$$binding_groups*/ ctx[6][0].push(input);
     			add_location(input, file$h, 54, 7, 1255);
-    			attr_dev(label, "class", "svelte-vftldo");
+    			attr_dev(label, "class", "svelte-3hlzph");
     			add_location(label, file$h, 53, 6, 1239);
     		},
     		m: function mount(target, anchor) {
@@ -1909,19 +1909,19 @@ var app = (function () {
     			if (if_block) if_block.c();
     			add_location(h2, file$h, 39, 2, 840);
     			attr_dev(div0, "id", "title");
-    			attr_dev(div0, "class", "svelte-vftldo");
+    			attr_dev(div0, "class", "svelte-3hlzph");
     			add_location(div0, file$h, 38, 1, 813);
     			attr_dev(div1, "id", "text");
-    			attr_dev(div1, "class", "svelte-vftldo");
+    			attr_dev(div1, "class", "svelte-3hlzph");
     			add_location(div1, file$h, 41, 1, 885);
-    			attr_dev(span, "class", "material-icons-round svelte-vftldo");
+    			attr_dev(span, "class", "material-icons-round svelte-3hlzph");
     			add_location(span, file$h, 45, 2, 980);
     			html_tag.a = t5;
     			attr_dev(div2, "id", "quiz");
-    			attr_dev(div2, "class", "svelte-vftldo");
+    			attr_dev(div2, "class", "svelte-3hlzph");
     			add_location(div2, file$h, 49, 2, 1075);
     			attr_dev(div3, "id", "cta");
-    			attr_dev(div3, "class", "svelte-vftldo");
+    			attr_dev(div3, "class", "svelte-3hlzph");
     			add_location(div3, file$h, 44, 1, 955);
     		},
     		m: function mount(target, anchor) {
@@ -4854,7 +4854,7 @@ var app = (function () {
     			attr_dev(circle, "cx", /*cx*/ ctx[0]);
     			attr_dev(circle, "cy", /*cy*/ ctx[1]);
     			attr_dev(circle, "id", /*id*/ ctx[2]);
-    			attr_dev(circle, "class", "svelte-16aexma");
+    			attr_dev(circle, "class", "svelte-gf9hu8");
     			toggle_class(circle, "highlighted", /*id*/ ctx[2] == /*highlightId*/ ctx[3]);
     			toggle_class(circle, "clickable", /*showHighlighting*/ ctx[4]);
     			add_location(circle, file$f, 12, 0, 167);
@@ -7409,7 +7409,7 @@ var app = (function () {
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[10]));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*x*/ ctx[9]));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[3](/*x*/ ctx[9])));
-    			attr_dev(line, "class", "svelte-1b2h6v5");
+    			attr_dev(line, "class", "svelte-z6l7mu");
     			toggle_class(line, "translated", /*translating*/ ctx[5]);
     			toggle_class(line, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			add_location(line, file$6, 21, 8, 350);
@@ -7417,7 +7417,7 @@ var app = (function () {
     			attr_dev(text_1, "text-anchor", "middle");
     			attr_dev(text_1, "x", text_1_x_value = /*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]);
     			attr_dev(text_1, "y", text_1_y_value = /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2));
-    			attr_dev(text_1, "class", "svelte-1b2h6v5");
+    			attr_dev(text_1, "class", "svelte-z6l7mu");
     			toggle_class(text_1, "translated", /*translating*/ ctx[5]);
     			toggle_class(text_1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			add_location(text_1, file$6, 32, 8, 634);
@@ -7513,7 +7513,7 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", /*groupId*/ ctx[2]);
-    			attr_dev(g, "class", "svelte-1b2h6v5");
+    			attr_dev(g, "class", "svelte-z6l7mu");
     			add_location(g, file$6, 19, 0, 293);
     		},
     		l: function claim(nodes) {
@@ -7584,7 +7584,7 @@ var app = (function () {
     	let { highlightId } = $$props;
     	let { translating } = $$props;
     	let { points } = $$props;
-    	let offset = 20;
+    	let offset = 25;
 
     	const writable_props = [
     		'xScale',
@@ -7888,6 +7888,7 @@ var app = (function () {
     	let span0;
     	let t1;
     	let span1;
+    	let strong;
     	let t3;
     	let div1;
     	let t4;
@@ -7903,7 +7904,8 @@ var app = (function () {
     			span0.textContent = "Squared Residuals";
     			t1 = space();
     			span1 = element("span");
-    			span1.textContent = "SSR";
+    			strong = element("strong");
+    			strong.textContent = "SSR";
     			t3 = space();
     			div1 = element("div");
     			if (if_block0) if_block0.c();
@@ -7911,21 +7913,23 @@ var app = (function () {
     			div2 = element("div");
     			if (if_block1) if_block1.c();
     			add_location(span0, file$5, 22, 6, 496);
+    			add_location(strong, file$5, 23, 10, 538);
     			add_location(span1, file$5, 23, 4, 532);
-    			attr_dev(div0, "class", "title svelte-4c3jbn");
+    			attr_dev(div0, "class", "title svelte-1dspyky");
     			add_location(div0, file$5, 21, 4, 470);
     			attr_dev(div1, "id", "user");
-    			attr_dev(div1, "class", "residualsRow svelte-4c3jbn");
-    			add_location(div1, file$5, 24, 4, 559);
+    			attr_dev(div1, "class", "residualsRow svelte-1dspyky");
+    			add_location(div1, file$5, 24, 4, 576);
     			attr_dev(div2, "id", "regression");
-    			attr_dev(div2, "class", "residualsRow svelte-4c3jbn");
-    			add_location(div2, file$5, 30, 4, 731);
+    			attr_dev(div2, "class", "residualsRow svelte-1dspyky");
+    			add_location(div2, file$5, 30, 4, 748);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
     			append_dev(div0, span0);
     			append_dev(div0, t1);
     			append_dev(div0, span1);
+    			append_dev(span1, strong);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, div1, anchor);
     			if (if_block0) if_block0.m(div1, null);
@@ -11324,21 +11328,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-185lb4i");
+    			attr_dev(div0, "class", "svelte-2mbgmt");
     			add_location(div0, file, 52, 3, 1237);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-185lb4i");
+    			attr_dev(div1, "class", "svelte-2mbgmt");
     			add_location(div1, file, 55, 3, 1283);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-185lb4i");
+    			attr_dev(div2, "class", "svelte-2mbgmt");
     			add_location(div2, file, 51, 2, 1213);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-185lb4i");
+    			attr_dev(div3, "class", "svelte-2mbgmt");
     			add_location(div3, file, 60, 2, 1342);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-185lb4i");
+    			attr_dev(section, "class", "svelte-2mbgmt");
     			add_location(section, file, 50, 1, 1187);
-    			attr_dev(main, "class", "svelte-185lb4i");
+    			attr_dev(main, "class", "svelte-2mbgmt");
     			add_location(main, file, 45, 0, 1131);
     		},
     		l: function claim(nodes) {

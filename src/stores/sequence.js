@@ -7,11 +7,11 @@ export const sequence = [
         title: 'Welcome to best fit lines!',
         prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
         <p> Just for fun, let's say that the horizonal (x) axis represents the number of donuts purchased, and the vertical (y) axis represent the total transaction cost in US dollars.</p> `,	
-        cta: `<p><strong>What would you say is the best describes the dollars to donuts relationship here?</p>`,
+        cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
         quiz: {
-            questions: [`Positive (as the number of donuts increases, cost also increases)`, `Negative (as the number of donuts increases, cost decreases)`],
+            questions: [`Positive`, `Negative `],
             correct: 0,
-            feedback: `Don't overthink it...Mo' money mo' donuts!`
+            feedback: `As the number of donuts increases, so does transaction cost!`
         },	
         showPoints: true,
         
@@ -51,9 +51,9 @@ export const sequence = [
         
     },
     {	title: 'Residuals',
-        prompt:`<p>What do these new lines represent?</p> 
-        <p>For any point, we already know both the number of donuts and the cost each transaction.  But even the best fit line does not run exactly through every point.  Sometimes it's a bit above or a bit below.</p> <p>This means that for any given number of <strong>donuts</strong>, the line is <strong>predicting</strong> an expected <strong>cost</strong> that is different from the <strong>observed const</strong>.</p>
-        <p>So the distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
+        prompt:` <p>For any point, we already know the number of donuts and the cost of each transaction.  But our line cannot run directly through every point.  It sometimes will be above or below one of the observed transactions.</p> 
+        <p>This means that for any given number of <strong>donuts</strong>, the line is representing an <strong>expected cost</strong> that is different from the <strong>observed cost</strong>.</p>
+        <p>The distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
         cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
         showPoints: true,
