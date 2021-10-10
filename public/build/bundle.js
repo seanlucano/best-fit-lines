@@ -1428,20 +1428,20 @@ var app = (function () {
         {	
             title: 'Welcome to best fit lines!',
             prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
-        <p> Just for fun, let's say that the horizonal (x) axis represents the number of donuts purchased, and the vertical (y) axis represent the total transaction cost in US dollars.</p> `,	
+        <p>Just for fun, let's say all each transactions is for some (x) number of donuts for some (y) amount of US Dollars.</p>`,	
             cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
             quiz: {
                 questions: [`Positive`, `Negative `],
                 correct: 0,
-                feedback: `As the number of donuts increases, so does transaction cost!`
+                feedback: `It's positive! As the number of donuts increases, so does transaction cost.`
             },	
             showPoints: true,
             
         },
         {	
             title: 'Imagine a line',
-            prompt:`<p>These two variables have a positive relationship, meaning that as one increases, the other also increases.  But what if we needed to be more specific?</p>
-        <p>Say you are on a very strict dollars to donuts budget, and you wanted to be able to <strong>predict</strong> the cost of a transaction given any number of donuts purchased.</p>
+            prompt:`<p>We know that these two variables have a positive relationship.  But what if we would like to be more specific?</p>
+        <p>Imagine you are on a very strict dollars to donuts budget, and you wanted to be able to <strong>predict</strong> the cost of a new transaction given any number of donuts purchased.</p>
         <p>That relationship could be expressed in the form of a <strong>line</stong>.</p>`,	
              cta: `<p><strong>Using the circle handles at the end points of the line, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click next when you are happy with your line</p>`,
              showPoints: true,
@@ -1450,7 +1450,7 @@ var app = (function () {
         {	
             title: 'Good line...best line',
             prompt:`<p>Nice job!  This seems like a very reasonable line!</p>  <p>But is it the... <strong>best possible line</strong>?</p>    
-        <p>What if you knew that a line existed that would give you the best possible idea of the dollars to donuts relationship based on the data we have.</p>`,
+        <p>What if you knew that a line existed that would give you the best possible linear relationship between dollars and donuts?</p>`,
              cta: `<p><strong>Use the "Best Fit Line" switch in the upper right to reveal this mysterious line!<p></strong></p>`,
             showPoints: true,
             showUserLineControls: true,
@@ -1460,8 +1460,7 @@ var app = (function () {
         
         {	title: 'What makes a good "fit"',
             prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
-        <p>Here's one way to start thinking about what makes a line's fit good or bad:</p>  
-        <p><strong>First you need to be able to measure the distance between each data point and the line.</strong></p>`,	
+        <p>Here's one way to start thinking about what makes a line's fit good or bad: <strong>you need to be able to measure the distance between each data point and the line.</strong></p>`,	
             cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p>Ok, sort of interesting...but so what?</p>`,
             showPoints: true,
             showUserLine: true,
@@ -1473,9 +1472,9 @@ var app = (function () {
             
         },
         {	title: 'Residuals',
-            prompt:` <p>For any point, we already know the number of donuts and the cost of each transaction.  But our line cannot run directly through every point.  It sometimes will be above or below one of the observed transactions.</p> 
-        <p>This means that for any given number of <strong>donuts</strong>, the line is representing an <strong>expected cost</strong> that is different from the <strong>observed cost</strong>.</p>
-        <p>The distance between a point and the line is the <strong>residual</strong> (or error) value for the line at each point.</p>	
+            prompt:` <p>Each of these points tell us about an <strong>observed</strong> transaction.  Our line, on the other hand, is attempting to predict future dollar vlues for any number of donuts purchased.</p>
+        <p>Sometimes the line makes a prediction about a transaction cost that we already know.</p>
+        <p>The distance between the <strong>observed</strong> cost and the line's <strong>predicted</strong> cost is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
             cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
             showPoints: true,
