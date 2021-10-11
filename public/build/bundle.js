@@ -5677,20 +5677,20 @@ var app = (function () {
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2));
-    			attr_dev(line, "class", "svelte-rwb72p");
-    			add_location(line, file$c, 41, 0, 906);
+    			attr_dev(line, "class", "svelte-1rkymrg");
+    			add_location(line, file$c, 41, 0, 907);
     			attr_dev(circle0, "id", "1");
     			attr_dev(circle0, "cx", circle0_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x1));
     			attr_dev(circle0, "cy", circle0_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1));
     			attr_dev(circle0, "r", /*r*/ ctx[3]);
-    			attr_dev(circle0, "class", "svelte-rwb72p");
-    			add_location(circle0, file$c, 48, 0, 1074);
+    			attr_dev(circle0, "class", "svelte-1rkymrg");
+    			add_location(circle0, file$c, 48, 0, 1075);
     			attr_dev(circle1, "id", "2");
     			attr_dev(circle1, "cx", circle1_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2));
     			attr_dev(circle1, "cy", circle1_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2));
     			attr_dev(circle1, "r", /*r*/ ctx[3]);
-    			attr_dev(circle1, "class", "svelte-rwb72p");
-    			add_location(circle1, file$c, 57, 0, 1235);
+    			attr_dev(circle1, "class", "svelte-1rkymrg");
+    			add_location(circle1, file$c, 57, 0, 1236);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5810,7 +5810,7 @@ var app = (function () {
     	let { xScale } = $$props;
     	let { yScale } = $$props;
     	let { svg } = $$props;
-    	let r = 6;
+    	let r = 15;
 
     	// boolean for knowing when to move the handles during drag events
     	let dragging = false;
@@ -9150,7 +9150,7 @@ var app = (function () {
     			div = element("div");
     			create_component(residualstable.$$.fragment);
     			attr_dev(div, "id", "residualsTable");
-    			attr_dev(div, "class", "svelte-a909fq");
+    			attr_dev(div, "class", "svelte-qph85x");
     			add_location(div, file$3, 179, 1, 4242);
     		},
     		m: function mount(target, anchor) {
@@ -10143,7 +10143,7 @@ var app = (function () {
     			g4 = svg_element("g");
     			if (if_block6) if_block6.c();
     			attr_dev(div0, "id", "controls");
-    			attr_dev(div0, "class", "svelte-a909fq");
+    			attr_dev(div0, "class", "svelte-qph85x");
     			add_location(div0, file$3, 149, 0, 3474);
     			add_location(text0, file$3, 214, 12, 5173);
     			attr_dev(text1, "text-anchor", "middle");
@@ -10160,14 +10160,14 @@ var app = (function () {
     			add_location(g1, file$3, 218, 2, 5193);
     			attr_dev(g2, "class", "points");
     			add_location(g2, file$3, 226, 2, 5553);
-    			attr_dev(g3, "class", "regressionLine svelte-a909fq");
+    			attr_dev(g3, "class", "regressionLine svelte-qph85x");
     			add_location(g3, file$3, 243, 2, 5833);
-    			attr_dev(g4, "class", "userLine svelte-a909fq");
+    			attr_dev(g4, "class", "userLine svelte-qph85x");
     			add_location(g4, file$3, 272, 2, 6522);
-    			attr_dev(svg_1, "class", "svelte-a909fq");
+    			attr_dev(svg_1, "class", "svelte-qph85x");
     			add_location(svg_1, file$3, 207, 1, 4794);
     			attr_dev(div1, "id", "chart");
-    			attr_dev(div1, "class", "svelte-a909fq");
+    			attr_dev(div1, "class", "svelte-qph85x");
     			add_location(div1, file$3, 205, 0, 4774);
     		},
     		l: function claim(nodes) {
@@ -10938,7 +10938,7 @@ var app = (function () {
     			i = element("i");
     			i.textContent = "done";
     			attr_dev(i, "id", /*i*/ ctx[8]);
-    			attr_dev(i, "class", "material-icons-round svelte-2lz4ie");
+    			attr_dev(i, "class", "material-icons-round svelte-1fj5sz9");
     			add_location(i, file$1, 38, 24, 991);
     		},
     		m: function mount(target, anchor) {
@@ -10993,7 +10993,7 @@ var app = (function () {
     			t = space();
     			attr_dev(li, "id", /*i*/ ctx[8]);
     			set_style(li, "width", circleWidth + "px");
-    			attr_dev(li, "class", "svelte-2lz4ie");
+    			attr_dev(li, "class", "svelte-1fj5sz9");
     			toggle_class(li, "completed", /*i*/ ctx[8] < /*currentStep*/ ctx[0]);
     			toggle_class(li, "current", /*i*/ ctx[8] === /*currentStep*/ ctx[0]);
     			add_location(li, file$1, 36, 12, 789);
@@ -11104,12 +11104,12 @@ var app = (function () {
     			attr_dev(link, "rel", "stylesheet");
     			add_location(link, file$1, 28, 6, 549);
     			progress_1.value = /*$progress*/ ctx[1];
-    			attr_dev(progress_1, "class", "svelte-2lz4ie");
+    			attr_dev(progress_1, "class", "svelte-1fj5sz9");
     			add_location(progress_1, file$1, 34, 8, 704);
-    			attr_dev(ol, "class", "svelte-2lz4ie");
+    			attr_dev(ol, "class", "svelte-1fj5sz9");
     			add_location(ol, file$1, 33, 4, 691);
     			attr_dev(div, "id", "progressBar");
-    			attr_dev(div, "class", "svelte-2lz4ie");
+    			attr_dev(div, "class", "svelte-1fj5sz9");
     			add_location(div, file$1, 32, 0, 664);
     		},
     		l: function claim(nodes) {

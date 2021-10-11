@@ -325,9 +325,9 @@
 		background-color: white;
 		border-radius: .5em;
 		min-width: 300px;
-		max-width: 960px;
+		/* max-width: 960px; */
 		min-height: 350px;
-		max-height: 800px;
+		/* max-height: 1200px; */
 		transition: flex 1s linear;
 	}
 

@@ -61,9 +61,9 @@ const setCounter = (event) => {
         width: 100%;
         height: 4px;
         top: 40%;
-        border: none;
-        
-        
+        border: none; 
+        -webkit-appearance: none;
+        appearance: none;
     }
 
     progress::-webkit-progress-bar {
@@ -71,6 +71,10 @@ const setCounter = (event) => {
         }
   
     progress::-webkit-progress-value {
+            background-color: var(--black)
+        }
+    
+    progress::-moz-progress-bar {
             background-color: var(--black)
         }
 
