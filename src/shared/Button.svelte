@@ -18,7 +18,7 @@
 		border-radius: 5px;
 		padding: .5em 1em;
 		font-weight: bold;
-		box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+		box-shadow: 0px 1px 6px 1px rgb(0 0 0 / 20%);
 	}
 	
 	.primary {
@@ -43,7 +43,6 @@
 
 	.white {
 		background: white;
-		border: 2px solid black;
 		
 
 	}

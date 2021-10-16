@@ -30,6 +30,10 @@
 	}
 
 </script>
+<svelte:head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet">
+</svelte:head>
 
 {#key $counter}
 	<div id='title' in:fade>
@@ -39,34 +43,38 @@
 		{@html sequence[$counter].prompt}	
 	</div>
 	<div in:fade id='cta'>
-		{@html sequence[$counter].cta}	
+		<span class="material-icons-round">
+			ads_click
+			</span>
+		{@html sequence[$counter].cta}
+		<div id='quiz'>
+			{#if sequence[$counter].quiz}
+				<form on:submit|preventDefault={onSubmit}>
+					{#each sequence[$counter].quiz.questions as question, i}
+						<label> 
+							<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
+							{question}
+						</label>
+					{/each}
+					<div class='submit'>
+						{#if showSubmit}
+							<Button type='submit' color='white'>Submit</Button>
+						{/if}
+					</div>
+					<div class='feedback'>
+						{#if showFeedback}
+						{@html sequence[$counter].quiz.feedback}
+							<!-- <Button 
+							type='reset'
+							on:click={onReset}
+							_class='secondary'>Try again</Button> -->
+						{/if}
+					</div>
+				</form>
+			{/if}
+		</div>	
 	</div>
-	<div id='quiz'>
-		{#if sequence[$counter].quiz}
-			<form on:submit|preventDefault={onSubmit}>
-				{#each sequence[$counter].quiz.questions as question, i}
-					<label> 
-						<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
-						{question}
-					</label>
-				{/each}
-				<div class='submit'>
-					{#if showSubmit}
-						<Button type='submit' color='white'>Submit</Button>
-					{/if}
-				</div>
-				<div class='feedback'>
-					{#if showFeedback}
-					{@html sequence[$counter].quiz.feedback}
-						<!-- <Button 
-						type='reset'
-						on:click={onReset}
-						_class='secondary'>Try again</Button> -->
-					{/if}
-				</div>
-			</form>
-		{/if}
-	</div>
+	
 {/key}
 
 <style>
@@ -75,7 +83,15 @@
 	}
 
 	#cta {
-		padding-top: .5em;
+		margin-top: 1.5em;
+		padding: .75em 1.35em;
+		background-color:#DFEBF6;
+		border-radius: .5em;
+		position: relative;
+	}
+
+	strong {
+		color: var(--heading);
 	}
 
 	#quiz label {
@@ -95,13 +111,24 @@
 	}
 
 	.submit, .feedback {
-		margin-top: .7em;
+		margin-top: 1em;
 		text-align: center;
 	}
 
 	.feedback {
-		color: var(--accent);
+		color: var(--heading);
 	}
+
+	.material-icons-round {
+		font-size: 1.75em;
+		padding: 3px;
+		position: absolute;
+		background: white;
+		border-radius: 50%;
+		top: -5px;
+		left: -5px;
+		color: var(--emphasis);
+    }
 	
 </style>
 	

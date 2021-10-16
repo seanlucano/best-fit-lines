@@ -38,17 +38,17 @@
     }
 
     .highlighted {
-        opacity: 1; 
-        stroke-width: 2.5;
+        visibility: hidden;
     }
 
+
     #regressionLineResiduals .translated {
-        transform: translate(1.7px, 0px);
+        transform: translate(2.5px, 0px);
         transition: transform, 0.5s;
     }
 
     #userLineResiduals .translated {
-        transform: translate(-1.7px, 0px);
+        transform: translate(-2.5px, 0px);
         transition: transform, 0.5s;
     }
 

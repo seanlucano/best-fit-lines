@@ -75,7 +75,9 @@
 	--accent: #ffa600;
 	--alert: hsl(333, 100%, 45%);
 	--black: #000;
-	--header-height: 2em;
+	--emphasis: #4433FF;
+	--heading: #2C0B8E;
+	--header-height: .5em;
 	}
 
 	main {
@@ -87,7 +89,7 @@
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		grid-gap: 1em;
-		height: calc(100% - 4em);
+		height: calc(100% - 1em);
 	}
 
 	#prompt {
@@ -109,8 +111,9 @@
 	}
 
 	#userNav {
-		margin: 0 1em 0 1em;
+		margin:.5em;
 	}
+
 
 	#interactive {
 		height: 100%;

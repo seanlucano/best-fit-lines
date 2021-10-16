@@ -22,6 +22,7 @@
 	import Residuals from './Residuals.svelte';
 	import SingleResidual from './SingleResidual.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
+	import PredictTooltip from './PredictTooltip.svelte';
 
 
 	
@@ -33,7 +34,9 @@
 		showUserLineControls, 
 		showRegressionLineControls,
 		showResidualControls,
+		showHighlighting,
 		showSingleResidual,
+		showPredictTooltip,
 		showRegressionResiduals, 
 		showUserResiduals,
 		showResidualsTable} = sequence[$counter])
@@ -104,22 +107,35 @@
 
 	// $: setTween(member)
 
+	// logic for seperating residuals slightly when both lines are present. 
 	let translating = false;
+	let singleTranslating = false;
 	
 	$: {
 		if(showRegressionResiduals === true && showUserResiduals === true) {
 			translating = true;
-		} else if (showSingleResidual && showUserLine && showRegressionLine) {
-			translating = true;
 		} else {
 			translating = false;
 		}
+
+		if (showSingleResidual && showUserLine && showRegressionLine) {
+			singleTranslating = true;
+		} else {
+			singleTranslating = false;
+		}
 	}
 
+	
+
+
+	// locig for highlighing related elements on click
 	let highlightId;
+	let clickedElement;
 	const highlight = (event) => {
-		highlightId = event.target.id;
-		console.log(event.target);
+		if (showHighlighting) {
+			highlightId = event.target.id;
+			clickedElement = event.target;
+		}
 	}
 
 	const removeHighlights = (event) => {
@@ -172,6 +188,18 @@
 		/>
 	</div>
 {/if}
+{#if showPredictTooltip}
+			<PredictTooltip 
+				chartWidth={width}
+				{showUserLine}
+				{showRegressionLine}
+				userLinePredict={userLinePredict}
+				bestFitLinePredict={$regressionLineStore.predict}
+				{clickedElement}
+				{...points[$member][highlightId]} 
+				
+			/>
+	{/if}
 
 
 
@@ -202,6 +230,7 @@
 				{#each points[$member] as {x, y}, i}
 					<Circle
 						on:click={highlight}
+						{showHighlighting}
 						{highlightId}
 						cx={xScale(x)} 
 						cy={yScale(y)} 
@@ -214,17 +243,7 @@
 
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
-				{#if showSingleResidual}
-				<SingleResidual
-					{translating}
-					on:click={highlight}
-					{highlightId}
-					groupId='regressionLineResiduals'
-					{xScale} {yScale} 
-					points={points[$member]} 
-					predict={$regressionLineStore.predict}   
-				/>
-				{/if}
+				
 				{#if showRegressionResiduals}
 					<Residuals
 						{translating}
@@ -237,24 +256,22 @@
 					/>
 				{/if}
 				<RegressionLine {xScale} {yScale}/>
-				
+				{#if showSingleResidual}
+				<SingleResidual
+					translating={singleTranslating}
+					on:click={highlight}
+					{highlightId}
+					groupId='regressionLineResidual'
+					{xScale} {yScale} 
+					points={points[$member]} 
+					predict={$regressionLineStore.predict}   
+				/>
+				{/if}
 			{/if}
 		</g>
 
 		<g class='userLine'>
 			{#if showUserLine}
-				{#if showSingleResidual}
-					<SingleResidual
-						{translating}
-						on:click={highlight}
-						{highlightId}
-						groupId='userLineResiduals'
-						{xScale} {yScale} 
-						points={points[$member]} 
-						predict={userLinePredict}   
-					/>
-				{/if}
-			
 				{#if showUserResiduals}
 					<Residuals 
 						{translating}
@@ -268,10 +285,22 @@
 				{/if}
 			
 				<UserLine {xScale} {yScale} {svg} />
+				
+				{#if showSingleResidual}
+					<SingleResidual
+						translating={singleTranslating}
+						on:click={highlight}
+						{highlightId}
+						groupId='userLineResidual'
+						{xScale} {yScale} 
+						points={points[$member]} 
+						predict={userLinePredict}   
+					/>
+				{/if}
 			{/if}
 		</g>
-	
 	</svg>
+	
 	
 	<!-- <h3>Select quartet member:</h3>
 	<div style='display:flex;'>
@@ -296,9 +325,9 @@
 		background-color: white;
 		border-radius: .5em;
 		min-width: 300px;
-		max-width: 960px;
+		/* max-width: 960px; */
 		min-height: 350px;
-		max-height: 800px;
+		/* max-height: 1200px; */
 		transition: flex 1s linear;
 	}
 
@@ -319,9 +348,12 @@
 
 	.regressionLine {
 		stroke: var(--secondary);
+		fill: var(--secondary);
 	}
 
 	.userLine {
-		stroke: var(--primary)
+		stroke: var(--primary);
+		fill: var(--primary);
 	}
+
 </style>
