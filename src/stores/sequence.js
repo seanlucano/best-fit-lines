@@ -58,7 +58,6 @@ export const sequence = [
         showUserLineControls: true,
         showRegressionLineControls: true,
         showUserLine: true,
-        showRegressionLine: true,
         showHighlighting: true,
         showSingleResidual: true,
         showPredictTooltip: true
@@ -68,6 +67,7 @@ export const sequence = [
          cta: `<strong><p>Try moving your line around to minimize the lenghts of all residuals.</p></strong><p>You can still click any point to see the value of its residual.  Turn all residuals on and off using the "Residuals" switch above the chart.</p>`,
          showPoints: true,
          showUserLineControls: true,
+         showRegressionLineControls: true,
          showUserLine: true,
          showUserResiduals: true,
          showSingleResidual: true,
