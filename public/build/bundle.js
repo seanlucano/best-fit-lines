@@ -6469,7 +6469,9 @@ var app = (function () {
     const file$8 = "src/components/Control.svelte";
 
     // (34:4) {#if lineChecked}
+
     function create_if_block_1$3(ctx) {
+
     	let span;
     	let t0;
     	let strong0;
@@ -6491,12 +6493,14 @@ var app = (function () {
     			strong1 = element("strong");
     			t3 = text(t3_value);
     			attr_dev(strong0, "class", "svelte-1bak9wu");
+
     			add_location(strong0, file$8, 34, 48, 766);
     			attr_dev(strong1, "class", "svelte-1bak9wu");
     			add_location(strong1, file$8, 34, 87, 805);
     			attr_dev(span, "id", "lineFormula");
     			attr_dev(span, "class", span_class_value = "" + (null_to_empty(/*color*/ ctx[2]) + " svelte-1bak9wu"));
     			add_location(span, file$8, 34, 6, 724);
+
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -6531,6 +6535,7 @@ var app = (function () {
     	return block;
     }
 
+
     // (39:2) {#if showResidualControls}
     function create_if_block$4(ctx) {
     	let section;
@@ -6564,9 +6569,11 @@ var app = (function () {
     			span = element("span");
     			span.textContent = "Residuals";
     			attr_dev(span, "class", "title svelte-1bak9wu");
+
     			add_location(span, file$8, 42, 6, 1021);
     			attr_dev(section, "class", "resControls svelte-1bak9wu");
     			add_location(section, file$8, 39, 2, 905);
+
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -6607,6 +6614,7 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
+
     		source: "(39:2) {#if showResidualControls}",
     		ctx
     	});
@@ -6656,9 +6664,11 @@ var app = (function () {
     			if (if_block1) if_block1.c();
     			if_block1_anchor = empty();
     			attr_dev(span, "class", "title svelte-1bak9wu");
+
     			add_location(span, file$8, 29, 4, 642);
     			attr_dev(section, "class", "lineControls svelte-1bak9wu");
     			add_location(section, file$8, 27, 2, 558);
+
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
