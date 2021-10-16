@@ -1527,6 +1527,8 @@ var app = (function () {
              showHighlighting: true,
              showResidualControls: true,
              showUserResiduals: true,
+             showRegressionLine: true,
+             showRegressionResiduals: true,
              showResidualsTable: true
             
         }
