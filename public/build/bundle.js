@@ -5984,8 +5984,8 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
+    			attr_dev(span, "class", "squaredResidual svelte-11kk52");
     			attr_dev(span, "id", /*i*/ ctx[8]);
-    			attr_dev(span, "class", "svelte-cfou56");
     			toggle_class(span, "highlighted", /*i*/ ctx[8] == /*highlightId*/ ctx[0]);
     			add_location(span, file$b, 12, 4, 343);
     		},
@@ -6045,8 +6045,8 @@ var app = (function () {
     			t0 = space();
     			span = element("span");
     			t1 = text(t1_value);
-    			attr_dev(span, "class", "ssr svelte-cfou56");
-    			add_location(span, file$b, 20, 0, 489);
+    			attr_dev(span, "class", "ssr svelte-11kk52");
+    			add_location(span, file$b, 20, 0, 512);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

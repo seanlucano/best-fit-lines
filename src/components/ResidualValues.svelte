@@ -10,7 +10,7 @@
 </script>
 
 {#each resValues as residual, i}
-    <span 
+    <span class='squaredResidual'
         id={i} 
         on:click 
         class:highlighted={i == highlightId}
@@ -34,15 +34,17 @@
     }
 
     span {
-        cursor: pointer;
         text-align: right;
         min-width: 35px;
         padding: 3px;
         border-radius: 5px;
         font-weight: normal;
         background-color: white;
-        transition: backgorund-color 300ms, font-weight 300ms,
-        
+        transition: backgorund-color 300ms, font-weight 300ms,  
+    }
+
+    .squaredResidual {
+        cursor: pointer;
     }
 
 </style>
