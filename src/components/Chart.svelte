@@ -7,7 +7,7 @@
 	import { regressionLinear } from 'd3-regression';
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	import * as easings from 'svelte/easing';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	
 	import { sequence, counter } from '../stores/sequence.js'
 	import { member, points } from '../stores/data.js';
@@ -23,6 +23,7 @@
 	import SingleResidual from './SingleResidual.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
 	import PredictTooltip from './PredictTooltip.svelte';
+	import Card from '../shared/Card.svelte';
 
 
 	
@@ -55,8 +56,8 @@
 	// array range
 	const [minX, maxX] = extent(points[$member],(d) => d.x);
 	const [minY, maxY] = extent(points[$member],(d) => d.y);
-
-	  
+	
+	
 	// scales
 	$: xScale = scaleLinear()
 		.domain([0, 20])
@@ -177,7 +178,7 @@
 </div>
 
 {#if showResidualsTable}
-	<div id='residualsTable'>
+	<div id='residualsTable'>	
 		<ResidualsTable 
 			on:click={highlight}
 			{highlightId}
@@ -185,21 +186,25 @@
 			{showUserResiduals}
 			userLinePredict={userLinePredict}
 			bestFitLinePredict={$regressionLineStore.predict}
-		/>
+		/>	
 	</div>
 {/if}
 {#if showPredictTooltip}
+	<Card>
+		{#if highlightId === undefined}
+			<p style='background-color: #DFEBF6; padding: 1em;border-radius: 5px;'><strong>Click on any point to see an explanation of the the residual cost here.</strong></p>
+		{:else}
 			<PredictTooltip 
 				chartWidth={width}
 				{showUserLine}
 				{showRegressionLine}
 				userLinePredict={userLinePredict}
 				bestFitLinePredict={$regressionLineStore.predict}
-				{clickedElement}
 				{...points[$member][highlightId]} 
-				
 			/>
-	{/if}
+		{/if}
+	</Card>
+{/if}
 
 
 
