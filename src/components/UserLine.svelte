@@ -1,5 +1,5 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
+
 	import userLineStore from '../stores/userLineStore.js'
 	import { fade } from 'svelte/transition';
 
@@ -8,7 +8,10 @@
 	export let svg;
 
 	let r = 15;
-	
+
+	$: y = $userLineStore.intercept();
+	$: yy = $userLineStore.slope() * 20 + $userLineStore.intercept();
+
 	// boolean for knowing when to move the handles during drag events
 	let dragging = false;
 	// keeps track of which handle shoudl be moved
@@ -40,10 +43,10 @@
 </script>
 
 <line transition:fade
-	x1='{xScale($userLineStore.x1)}'
-	y1='{yScale($userLineStore.y1)}'
-	x2='{xScale($userLineStore.x2)}'
-	y2='{yScale($userLineStore.y2)}'
+	x1='{xScale(0)}'
+	y1='{yScale(y)}'
+	x2='{xScale(20)}'
+	y2='{yScale(yy)}'
 ></line>
 
 <circle transition:fade
@@ -79,14 +82,14 @@
 	}
 
 	circle {
-		fill-opacity:0;
+		fill-opacity:.25;
 		stroke-width: 2px;
 		stroke-opacity: .5;
 		fill: var(--primary);
 		stroke: var(--primary);
 		cursor: move;
 		z-index: 1;
-		transition: stroke-width .2s, fill-opacity .2s;
+		transition: stroke-width .5s, fill-opacity .5s;
 	}
 
 	circle:hover {

@@ -335,9 +335,6 @@ var app = (function () {
     function afterUpdate(fn) {
         get_current_component().$$.after_update.push(fn);
     }
-    function onDestroy(fn) {
-        get_current_component().$$.on_destroy.push(fn);
-    }
     function createEventDispatcher() {
         const component = get_current_component();
         return (type, detail) => {
@@ -4830,8 +4827,8 @@ var app = (function () {
         y1: 8, 
         x2: 18, 
         y2: 8,
-        m: 1,
-        b: 1,
+        m: 0,
+        b: 7,
         
         slope: function() { 
             this.m = (this.y2 - this.y1) / (this.x2 - this.x1); return this.m; 
@@ -5680,24 +5677,24 @@ var app = (function () {
     			circle0 = svg_element("circle");
     			t1 = space();
     			circle1 = svg_element("circle");
-    			attr_dev(line, "x1", line_x__value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x1));
-    			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1));
-    			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2));
-    			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2));
-    			attr_dev(line, "class", "svelte-1rkymrg");
-    			add_location(line, file$c, 41, 0, 907);
+    			attr_dev(line, "x1", line_x__value = /*xScale*/ ctx[0](0));
+    			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[4]));
+    			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](20));
+    			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*yy*/ ctx[3]));
+    			attr_dev(line, "class", "svelte-12621x1");
+    			add_location(line, file$c, 44, 0, 965);
     			attr_dev(circle0, "id", "1");
     			attr_dev(circle0, "cx", circle0_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x1));
     			attr_dev(circle0, "cy", circle0_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1));
-    			attr_dev(circle0, "r", /*r*/ ctx[3]);
-    			attr_dev(circle0, "class", "svelte-1rkymrg");
-    			add_location(circle0, file$c, 48, 0, 1075);
+    			attr_dev(circle0, "r", /*r*/ ctx[5]);
+    			attr_dev(circle0, "class", "svelte-12621x1");
+    			add_location(circle0, file$c, 51, 0, 1071);
     			attr_dev(circle1, "id", "2");
     			attr_dev(circle1, "cx", circle1_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2));
     			attr_dev(circle1, "cy", circle1_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2));
-    			attr_dev(circle1, "r", /*r*/ ctx[3]);
-    			attr_dev(circle1, "class", "svelte-1rkymrg");
-    			add_location(circle1, file$c, 57, 0, 1236);
+    			attr_dev(circle1, "r", /*r*/ ctx[5]);
+    			attr_dev(circle1, "class", "svelte-12621x1");
+    			add_location(circle1, file$c, 60, 0, 1232);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5712,29 +5709,29 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(window, "mousemove", /*mousemove_handler*/ ctx[8], false, false, false),
-    					listen_dev(window, "mouseup", /*mouseup_handler*/ ctx[9], false, false, false),
-    					listen_dev(circle0, "mousedown", /*mousedown_handler*/ ctx[10], false, false, false),
-    					listen_dev(circle1, "mousedown", /*mousedown_handler_1*/ ctx[11], false, false, false)
+    					listen_dev(window, "mousemove", /*mousemove_handler*/ ctx[10], false, false, false),
+    					listen_dev(window, "mouseup", /*mouseup_handler*/ ctx[11], false, false, false),
+    					listen_dev(circle0, "mousedown", /*mousedown_handler*/ ctx[12], false, false, false),
+    					listen_dev(circle1, "mousedown", /*mousedown_handler_1*/ ctx[13], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*xScale, $userLineStore*/ 5 && line_x__value !== (line_x__value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x1))) {
+    			if (!current || dirty & /*xScale*/ 1 && line_x__value !== (line_x__value = /*xScale*/ ctx[0](0))) {
     				attr_dev(line, "x1", line_x__value);
     			}
 
-    			if (!current || dirty & /*yScale, $userLineStore*/ 6 && line_y__value !== (line_y__value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1))) {
+    			if (!current || dirty & /*yScale, y*/ 18 && line_y__value !== (line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[4]))) {
     				attr_dev(line, "y1", line_y__value);
     			}
 
-    			if (!current || dirty & /*xScale, $userLineStore*/ 5 && line_x__value_1 !== (line_x__value_1 = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2))) {
+    			if (!current || dirty & /*xScale*/ 1 && line_x__value_1 !== (line_x__value_1 = /*xScale*/ ctx[0](20))) {
     				attr_dev(line, "x2", line_x__value_1);
     			}
 
-    			if (!current || dirty & /*yScale, $userLineStore*/ 6 && line_y__value_1 !== (line_y__value_1 = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2))) {
+    			if (!current || dirty & /*yScale, yy*/ 10 && line_y__value_1 !== (line_y__value_1 = /*yScale*/ ctx[1](/*yy*/ ctx[3]))) {
     				attr_dev(line, "y2", line_y__value_1);
     			}
 
@@ -5809,6 +5806,8 @@ var app = (function () {
     }
 
     function instance$c($$self, $$props, $$invalidate) {
+    	let y;
+    	let yy;
     	let $userLineStore;
     	validate_store(userLineStore, 'userLineStore');
     	component_subscribe($$self, userLineStore, $$value => $$invalidate(2, $userLineStore = $$value));
@@ -5861,12 +5860,10 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('xScale' in $$props) $$invalidate(0, xScale = $$props.xScale);
     		if ('yScale' in $$props) $$invalidate(1, yScale = $$props.yScale);
-    		if ('svg' in $$props) $$invalidate(7, svg = $$props.svg);
+    		if ('svg' in $$props) $$invalidate(9, svg = $$props.svg);
     	};
 
     	$$self.$capture_state = () => ({
-    		onMount,
-    		onDestroy,
     		userLineStore,
     		fade,
     		xScale,
@@ -5878,26 +5875,42 @@ var app = (function () {
     		handleMouseDown,
     		handleMouseMove,
     		handleMouseUp,
+    		yy,
+    		y,
     		$userLineStore
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('xScale' in $$props) $$invalidate(0, xScale = $$props.xScale);
     		if ('yScale' in $$props) $$invalidate(1, yScale = $$props.yScale);
-    		if ('svg' in $$props) $$invalidate(7, svg = $$props.svg);
-    		if ('r' in $$props) $$invalidate(3, r = $$props.r);
+    		if ('svg' in $$props) $$invalidate(9, svg = $$props.svg);
+    		if ('r' in $$props) $$invalidate(5, r = $$props.r);
     		if ('dragging' in $$props) dragging = $$props.dragging;
     		if ('target' in $$props) target = $$props.target;
+    		if ('yy' in $$props) $$invalidate(3, yy = $$props.yy);
+    		if ('y' in $$props) $$invalidate(4, y = $$props.y);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*$userLineStore*/ 4) {
+    			$$invalidate(4, y = $userLineStore.intercept());
+    		}
+
+    		if ($$self.$$.dirty & /*$userLineStore*/ 4) {
+    			$$invalidate(3, yy = $userLineStore.slope() * 20 + $userLineStore.intercept());
+    		}
+    	};
+
     	return [
     		xScale,
     		yScale,
     		$userLineStore,
+    		yy,
+    		y,
     		r,
     		handleMouseDown,
     		handleMouseMove,
@@ -5913,7 +5926,7 @@ var app = (function () {
     class UserLine extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$c, create_fragment$c, safe_not_equal, { xScale: 0, yScale: 1, svg: 7 });
+    		init(this, options, instance$c, create_fragment$c, safe_not_equal, { xScale: 0, yScale: 1, svg: 9 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -5933,7 +5946,7 @@ var app = (function () {
     			console.warn("<UserLine> was created without expected prop 'yScale'");
     		}
 
-    		if (/*svg*/ ctx[7] === undefined && !('svg' in props)) {
+    		if (/*svg*/ ctx[9] === undefined && !('svg' in props)) {
     			console.warn("<UserLine> was created without expected prop 'svg'");
     		}
     	}
