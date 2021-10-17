@@ -2,7 +2,7 @@ import { writable} from 'svelte/store';
 
 
 const userLineStore = writable({
-    x1: 1, 
+    x1: 2, 
     y1: 8, 
     x2: 18, 
     y2: 8,

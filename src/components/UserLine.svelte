@@ -9,11 +9,14 @@
 
 	let r = 15;
 
+	// create line endpoints
 	$: y = $userLineStore.intercept();
 	$: yy = $userLineStore.slope() * 20 + $userLineStore.intercept();
 
 	// boolean for knowing when to move the handles during drag events
 	let dragging = false;
+	$: console.log(dragging);
+	
 	// keeps track of which handle shoudl be moved
 	let target;
 
@@ -25,20 +28,30 @@
 
 	const handleMouseMove = (event) => {
 		if (dragging) {
-
 			if (target === '1') {
-				$userLineStore.x1 = xScale.invert(event.offsetX)
-				$userLineStore.y1 = yScale.invert(event.offsetY);
+				if (xScale.invert(event.offsetX) > 0 && xScale.invert(event.offsetX) < 20) {
+					$userLineStore.x1 = xScale.invert(event.offsetX)
+				}
+				if (yScale.invert(event.offsetY) > 0 && yScale.invert(event.offsetY) < 15) {
+					$userLineStore.y1 = yScale.invert(event.offsetY);
+				}
 			} else if (target === '2') {
-				$userLineStore.x2 = xScale.invert(event.offsetX)
-				$userLineStore.y2 = yScale.invert(event.offsetY);
-			}
+				if (xScale.invert(event.offsetX) > 0 && xScale.invert(event.offsetX) < 20) {
+					$userLineStore.x2 = xScale.invert(event.offsetX)
+				}
+				if (yScale.invert(event.offsetY) > 0 && yScale.invert(event.offsetY) < 15) {	
+					$userLineStore.y2 = yScale.invert(event.offsetY);
+				}
+			}		
 		}
 	}
 
 	const handleMouseUp = (event) => {
 		dragging = false;
 	}
+
+	// ensure handles do not leave chart
+
 
 </script>
 

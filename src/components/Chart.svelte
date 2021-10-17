@@ -141,7 +141,6 @@
 
 	const removeHighlights = (event) => {
 		highlightId = undefined;
-		console.log(event.target);
 	}
 
 </script>
