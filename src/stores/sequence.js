@@ -53,7 +53,7 @@ export const sequence = [
         prompt:` <p>Each points tells us about an <strong>observed</strong> transaction.  Our line, on the other hand, is making a <strong>prediction</strong> about a future transaction.</p>
         <p>The distance between the <strong>observed</strong> cost and the line's <strong>predicted</strong> cost is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
-        cta: `<p><strong>Click on any point to see an explanation of the the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
+        cta: `<p><strong>Click on any point to see an explanation of the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
         showPoints: true,
         showUserLineControls: true,
         showRegressionLineControls: true,
