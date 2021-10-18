@@ -64,7 +64,7 @@ export const sequence = [
     },
     {	title: 'Minimizing residuals',
         prompt: `<p>Any self-respecting <strong>best fit</strong> line would try to reduce the length of all of its residuals (or errors) as much as possible. So let's try and minimize residuals for your line.</p>`,
-         cta: `<strong><p>Try moving your line around to minimize the lenghts of all residuals.</p></strong><p>You can still click any point to see the value of its residual.  Turn all residuals on and off using the "Residuals" switch above the chart.</p>`,
+         cta: `<strong><p>Try moving your line around to minimize the lengths of all residuals.</p></strong><p>You can still click any point to see the value of its residual.  Turn all residuals on and off using the "Residuals" switch above the chart.</p>`,
          showPoints: true,
          showUserLineControls: true,
          showRegressionLineControls: true,
@@ -77,7 +77,7 @@ export const sequence = [
     
     {	title:"The 'least squares' method",
         prompt:`<p>Let's try and be a bit more scientific about this. If we want to truly find the <strong>best fit</strong> line, we would need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one before adding all together.</p>
-        <p>The table you're now seeing has shows the squared residual for each point, as well as a the total <strong>sum of squared residuals (SSR)</strong> for each line.`,	
+        <p>The table you're now seeing shows the squared residual for each point, as well as a the total <strong>sum of squared residuals (SSR)</strong> for each line.`,	
          cta: `<p><strong>Click on any point, or any value in the table, to see which go together.</strong></p><p>The vlaues you are seeing displayed are rounded for readability, but don't worry!  'Under the hood' we're calculating the exact values.`,
          showPoints: true,
          showUserLineControls: true,
