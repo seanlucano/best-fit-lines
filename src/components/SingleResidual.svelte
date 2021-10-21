@@ -7,10 +7,12 @@
     export let translating;
     export let points;
 
-    let offset = 25;
+    let offset;
 
    $: if (groupId === 'userLineResidual') {
-       offset *= -1;
+       offset = -50;
+   } else {
+    offset = 15;
    }
     
 </script>
@@ -19,25 +21,29 @@
 
 <g id={groupId}>
     {#each points as {x, y}, i}
-        <line
-            id={i}
-            class:translated={translating}
-            class:hidden={i != highlightId}
-            on:click
-            x1={xScale(x)}
-            y1={yScale(y)}
-            x2={xScale(x)}
-            y2={yScale(predict(x))}
-        >
-        </line>
-        <text
-            id={i}
-            class:translated={translating}
-            class:hidden={i != highlightId}
-            text-anchor='middle'
-            x={xScale(x) + offset}
-            y={yScale( (y + predict(x))/2  )} 
-        >{(y - predict(x)).toFixed(2)}</text>
+        <g class:translated={translating} class:hidden={i != highlightId}>
+            <line
+                id={i}
+                on:click
+                x1={xScale(x)}
+                y1={yScale(y)}
+                x2={xScale(x)}
+                y2={yScale(predict(x))}
+            >
+            </line>
+            <g transform='translate({(xScale(x)) + offset},{yScale((y + predict(x))/2)})'>
+                <rect
+                    transform='translate(-5,-20)'
+                    class:hidden={i != highlightId}
+                    width=50
+                    height={30}
+                    rx=8
+                ></rect>
+                <text
+                    id={i}
+                >{(y - predict(x)).toFixed(2)}</text>
+            </g>
+        </g>
     {/each}
 </g>
 
@@ -54,6 +60,12 @@
         font-size: 1em;
         opacity: 1;
         transition: opacity, .5s;
+    }
+
+    rect {
+        fill: var(--background-color);
+        fill-opacity: .85;
+        stroke: none;
     }
 
     .hidden {

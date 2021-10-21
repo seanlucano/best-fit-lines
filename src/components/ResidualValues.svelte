@@ -30,17 +30,23 @@
     .highlighted {
         font-weight: bold;
         background-color: var(--background-color);
+        -webkit-transition: background-color 300ms linear;
+        -ms-transition: background-color 300ms linear;
+        transition: background-color 300ms linear;
         
     }
 
     span {
         text-align: right;
         min-width: 35px;
-        padding: 3px;
+        padding: 3px; 
         border-radius: 5px;
         font-weight: normal;
         background-color: white;
-        transition: backgorund-color 300ms, font-weight 300ms,  
+        -webkit-transition: background-color 300ms linear;
+        -ms-transition: background-color 300ms linear;
+        transition: background-color 300ms linear; 
+         
     }
 
     .squaredResidual {

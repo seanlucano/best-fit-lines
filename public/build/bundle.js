@@ -6267,7 +6267,7 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			attr_dev(span, "class", "squaredResidual svelte-11kk52");
+    			attr_dev(span, "class", "squaredResidual svelte-1s979i9");
     			attr_dev(span, "id", /*i*/ ctx[8]);
     			toggle_class(span, "highlighted", /*i*/ ctx[8] == /*highlightId*/ ctx[0]);
     			add_location(span, file$b, 12, 4, 343);
@@ -6328,7 +6328,7 @@ var app = (function () {
     			t0 = space();
     			span = element("span");
     			t1 = text(t1_value);
-    			attr_dev(span, "class", "ssr svelte-11kk52");
+    			attr_dev(span, "class", "ssr svelte-1s979i9");
     			add_location(span, file$b, 20, 0, 512);
     		},
     		l: function claim(nodes) {
@@ -7672,24 +7672,29 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (21:4) {#each points as {x, y}
+    // (23:4) {#each points as {x, y}
     function create_each_block$2(ctx) {
+    	let g1;
     	let line;
     	let line_x__value;
     	let line_y__value;
     	let line_x__value_1;
     	let line_y__value_1;
+    	let g0;
+    	let rect;
     	let text_1;
     	let t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(2) + "";
     	let t;
-    	let text_1_x_value;
-    	let text_1_y_value;
+    	let g0_transform_value;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
+    			g1 = svg_element("g");
     			line = svg_element("line");
+    			g0 = svg_element("g");
+    			rect = svg_element("rect");
     			text_1 = svg_element("text");
     			t = text(t_value);
     			attr_dev(line, "id", /*i*/ ctx[12]);
@@ -7697,22 +7702,31 @@ var app = (function () {
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[10]));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*x*/ ctx[9]));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[3](/*x*/ ctx[9])));
-    			attr_dev(line, "class", "svelte-z6l7mu");
-    			toggle_class(line, "translated", /*translating*/ ctx[5]);
-    			toggle_class(line, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
-    			add_location(line, file$6, 21, 8, 350);
+    			attr_dev(line, "class", "svelte-d8p0y6");
+    			add_location(line, file$6, 24, 12, 453);
+    			attr_dev(rect, "transform", "translate(-5,-20)");
+    			attr_dev(rect, "width", "50");
+    			attr_dev(rect, "height", 30);
+    			attr_dev(rect, "rx", "8");
+    			attr_dev(rect, "class", "svelte-d8p0y6");
+    			toggle_class(rect, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    			add_location(rect, file$6, 34, 16, 781);
     			attr_dev(text_1, "id", /*i*/ ctx[12]);
-    			attr_dev(text_1, "text-anchor", "middle");
-    			attr_dev(text_1, "x", text_1_x_value = /*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]);
-    			attr_dev(text_1, "y", text_1_y_value = /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2));
-    			attr_dev(text_1, "class", "svelte-z6l7mu");
-    			toggle_class(text_1, "translated", /*translating*/ ctx[5]);
-    			toggle_class(text_1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
-    			add_location(text_1, file$6, 32, 8, 634);
+    			attr_dev(text_1, "class", "svelte-d8p0y6");
+    			add_location(text_1, file$6, 41, 16, 1016);
+    			attr_dev(g0, "transform", g0_transform_value = "translate(" + (/*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]) + "," + /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2) + ")");
+    			add_location(g0, file$6, 33, 12, 686);
+    			attr_dev(g1, "class", "svelte-d8p0y6");
+    			toggle_class(g1, "translated", /*translating*/ ctx[5]);
+    			toggle_class(g1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    			add_location(g1, file$6, 23, 8, 374);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, line, anchor);
-    			insert_dev(target, text_1, anchor);
+    			insert_dev(target, g1, anchor);
+    			append_dev(g1, line);
+    			append_dev(g1, g0);
+    			append_dev(g0, rect);
+    			append_dev(g0, text_1);
     			append_dev(text_1, t);
 
     			if (!mounted) {
@@ -7737,35 +7751,26 @@ var app = (function () {
     				attr_dev(line, "y2", line_y__value_1);
     			}
 
-    			if (dirty & /*translating*/ 32) {
-    				toggle_class(line, "translated", /*translating*/ ctx[5]);
-    			}
-
     			if (dirty & /*highlightId*/ 16) {
-    				toggle_class(line, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    				toggle_class(rect, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			}
 
     			if (dirty & /*points, predict*/ 72 && t_value !== (t_value = (/*y*/ ctx[10] - /*predict*/ ctx[3](/*x*/ ctx[9])).toFixed(2) + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*xScale, points, offset*/ 193 && text_1_x_value !== (text_1_x_value = /*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7])) {
-    				attr_dev(text_1, "x", text_1_x_value);
-    			}
-
-    			if (dirty & /*yScale, points, predict*/ 74 && text_1_y_value !== (text_1_y_value = /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2))) {
-    				attr_dev(text_1, "y", text_1_y_value);
+    			if (dirty & /*xScale, points, offset, yScale, predict*/ 203 && g0_transform_value !== (g0_transform_value = "translate(" + (/*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]) + "," + /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2) + ")")) {
+    				attr_dev(g0, "transform", g0_transform_value);
     			}
 
     			if (dirty & /*translating*/ 32) {
-    				toggle_class(text_1, "translated", /*translating*/ ctx[5]);
+    				toggle_class(g1, "translated", /*translating*/ ctx[5]);
     			}
 
     			if (dirty & /*highlightId*/ 16) {
-    				toggle_class(text_1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
+    				toggle_class(g1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(line);
-    			if (detaching) detach_dev(text_1);
+    			if (detaching) detach_dev(g1);
     			mounted = false;
     			dispose();
     		}
@@ -7775,7 +7780,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(21:4) {#each points as {x, y}",
+    		source: "(23:4) {#each points as {x, y}",
     		ctx
     	});
 
@@ -7801,8 +7806,8 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", /*groupId*/ ctx[2]);
-    			attr_dev(g, "class", "svelte-z6l7mu");
-    			add_location(g, file$6, 19, 0, 293);
+    			attr_dev(g, "class", "svelte-d8p0y6");
+    			add_location(g, file$6, 21, 0, 317);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7815,7 +7820,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*xScale, points, offset, yScale, predict, translating, highlightId*/ 251) {
+    			if (dirty & /*translating, highlightId, xScale, points, offset, yScale, predict*/ 251) {
     				each_value = /*points*/ ctx[6];
     				validate_each_argument(each_value);
     				let i;
@@ -7872,7 +7877,7 @@ var app = (function () {
     	let { highlightId } = $$props;
     	let { translating } = $$props;
     	let { points } = $$props;
-    	let offset = 25;
+    	let offset;
 
     	const writable_props = [
     		'xScale',
@@ -7929,9 +7934,11 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*groupId, offset*/ 132) {
+    		if ($$self.$$.dirty & /*groupId*/ 4) {
     			if (groupId === 'userLineResidual') {
-    				$$invalidate(7, offset *= -1);
+    				$$invalidate(7, offset = -50);
+    			} else {
+    				$$invalidate(7, offset = 15);
     			}
     		}
     	};
