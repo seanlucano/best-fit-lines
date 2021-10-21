@@ -14,6 +14,7 @@ export const sequence = [
             feedback: `It's positive! As the number of donuts increases, so does transaction cost.`
         },	
         showPoints: true,
+        showFeedback: false
         
     },
     {	
@@ -52,7 +53,8 @@ export const sequence = [
         showUserLineControls: true,
         showRegressionLineControls: true,
         showHighlighting: true,
-        showSingleResidual: true
+        showSingleResidual: true,
+        showFeedback: false
         
     },
     {	title: 'Residuals',
@@ -74,7 +76,7 @@ export const sequence = [
         cta: `<p><strong>As you move your line closer to a selected point, and decrease the residual value for that point, what happens to the residuals for all of the the other points?</p>`,
         quiz: {
             questions: [`The residuals increase`, `The residuals decrease`, `Some increase and some descrease`],
-            correct: 0,
+            correct: 2,
             feedback: `It's sort of frustrating! Just looking at these residuals visually is not going to help us minimize all residuals. We might need a trustworthy mathematical procedure to help.`
     },	         
         showPoints: true,
@@ -85,12 +87,13 @@ export const sequence = [
         showSingleResidual: true,
         showHighlighting: true,
         showResidualControls: true,
+        showFeedback: false
     },
     
     {	title:"The 'least squares' method",
         prompt:`<p>Let's use some math to help us minimize residuals. If we want to truly find the <strong>best fit</strong> line, we need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one, making them all positive, before adding them all together.</p>
         <p>The <strong>Squared Residuals</table> table to the right shows the squared residuals for each point, as well as the total <strong>sum of squared residuals (SSR)</strong> for the line.`,	
-         cta: `<p><strong>Try to achieve the lowest SSR you can.  You can click on any point or any value in the table see how they correspond.</strong></p><p>Note: the values you are seeing displayed are rounded for readability, but don't worry!  'Under the hood' we're calculating the exact values.`,
+         cta: `<p><strong>Try to achieve the lowest SSR you can.  You can click on any point or any value in the table see how they correspond.</strong></p><p>Note: the values you are seeing displayed are rounded for readability.`,
          showPoints: true,
          showUserLineControls: true,
          showUserLine: true,

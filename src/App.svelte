@@ -14,7 +14,7 @@
 	import Header from './components/Header.svelte';
 	import Footer from './components/Header.svelte';
 	import ProgressBar from './components/ProgressBar.svelte';
-	import { counter } from './stores/sequence.js'
+	import { sequence, counter } from './stores/sequence.js'
 
 	// let counter = 0;
 	
@@ -51,7 +51,10 @@
 	<section id='tutorial'>
 		<div id='narrative'>
 			<div id='prompt'>
-				<Prompt />
+				<Prompt 
+					{...sequence[$counter].quiz}
+					{...sequence[$counter]}
+				/>
 			</div>
 			<div id="userNav">
 				<UserNav />

@@ -15,7 +15,6 @@
 
 	// boolean for knowing when to move the handles during drag events
 	let dragging = false;
-	$: console.log(dragging);
 	
 	// keeps track of which handle shoudl be moved
 	let target;
