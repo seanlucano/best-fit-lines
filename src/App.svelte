@@ -86,14 +86,14 @@
 
 	main {
 		padding: 1em;
-		height: calc(100vh - 5em);
+		height: calc(100vh - 2em);
 	}
 
 	#tutorial {
 		display: grid;
 		grid-template-columns: 1fr 2fr;
 		grid-gap: 1em;
-		height: calc(100% - 1em);
+		height: 90%;
 	}
 
 	#prompt {

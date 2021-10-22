@@ -11710,21 +11710,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-8cbscn");
+    			attr_dev(div0, "class", "svelte-1g1viyk");
     			add_location(div0, file, 52, 3, 1247);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-8cbscn");
+    			attr_dev(div1, "class", "svelte-1g1viyk");
     			add_location(div1, file, 58, 3, 1361);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-8cbscn");
+    			attr_dev(div2, "class", "svelte-1g1viyk");
     			add_location(div2, file, 51, 2, 1223);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-8cbscn");
+    			attr_dev(div3, "class", "svelte-1g1viyk");
     			add_location(div3, file, 63, 2, 1420);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-8cbscn");
+    			attr_dev(section, "class", "svelte-1g1viyk");
     			add_location(section, file, 50, 1, 1197);
-    			attr_dev(main, "class", "svelte-8cbscn");
+    			attr_dev(main, "class", "svelte-1g1viyk");
     			add_location(main, file, 45, 0, 1141);
     		},
     		l: function claim(nodes) {
