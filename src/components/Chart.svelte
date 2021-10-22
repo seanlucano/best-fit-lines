@@ -200,6 +200,7 @@
 				userLinePredict={userLinePredict}
 				bestFitLinePredict={$regressionLineStore.predict}
 				{...points[$member][highlightId]} 
+				{highlightId}
 			/>
 		{/if}
 	</Card>

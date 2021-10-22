@@ -27,11 +27,9 @@
 	circle {
 		fill-opacity: .5;
 		stroke-opacity: 0;
-		fill: grey;
 		stroke: black;
-		stroke-width: 2px;
-		transition: fill 300ms, fill-opacity 300ms, r 300ms;
-		
+		fill: grey;
+		transition: fill .5s, stroke-opacity .5s;
 	}
 
 	.clickable {
@@ -39,9 +37,11 @@
 	}
 
 	.highlighted {
-		fill-opacity: 0;
-		stroke-opacity: 1;
-		fill: black;
+		fill-opacity: .8;
+		fill: var(--interactive);
+		stroke-opacity: .8;
+		stroke-width: 2px;
+		/* fill: black; */
 		/* r: 10px; */
 	}
 	

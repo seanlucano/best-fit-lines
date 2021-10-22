@@ -5115,7 +5115,7 @@ var app = (function () {
     			attr_dev(circle, "cx", /*cx*/ ctx[0]);
     			attr_dev(circle, "cy", /*cy*/ ctx[1]);
     			attr_dev(circle, "id", /*id*/ ctx[2]);
-    			attr_dev(circle, "class", "svelte-gf9hu8");
+    			attr_dev(circle, "class", "svelte-px6xrr");
     			toggle_class(circle, "highlighted", /*id*/ ctx[2] == /*highlightId*/ ctx[3]);
     			toggle_class(circle, "clickable", /*showHighlighting*/ ctx[4]);
     			add_location(circle, file$f, 12, 0, 167);
@@ -8533,7 +8533,7 @@ var app = (function () {
 
     const file$4 = "src/components/PredictTooltip.svelte";
 
-    // (22:8) {#if showUserLine}
+    // (35:8) {#if showUserLine}
     function create_if_block_1$1(ctx) {
     	let p;
     	let span0;
@@ -8557,16 +8557,18 @@ var app = (function () {
     			t3 = text(/*userVal*/ ctx[5]);
     			t4 = text(", yeilding a residual difference of ");
     			span2 = element("span");
-    			t5 = text(/*userDiff*/ ctx[7]);
+    			t5 = text(/*userDiff*/ ctx[8]);
     			t6 = text(".");
-    			attr_dev(span0, "class", "user svelte-yj0cs8");
-    			add_location(span0, file$4, 22, 15, 556);
-    			attr_dev(span1, "class", "user svelte-yj0cs8");
-    			add_location(span1, file$4, 22, 71, 612);
-    			attr_dev(span2, "class", "user svelte-yj0cs8");
-    			add_location(span2, file$4, 22, 143, 684);
-    			attr_dev(p, "class", "svelte-yj0cs8");
-    			add_location(p, file$4, 22, 12, 553);
+    			attr_dev(span0, "class", "user svelte-17ad9d4");
+    			add_location(span0, file$4, 35, 15, 814);
+    			attr_dev(span1, "class", "user svelte-17ad9d4");
+    			toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span1, file$4, 35, 71, 870);
+    			attr_dev(span2, "class", "user svelte-17ad9d4");
+    			toggle_class(span2, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span2, file$4, 35, 176, 975);
+    			attr_dev(p, "class", "svelte-17ad9d4");
+    			add_location(p, file$4, 35, 12, 811);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -8582,7 +8584,16 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*userVal*/ 32) set_data_dev(t3, /*userVal*/ ctx[5]);
-    			if (dirty & /*userDiff*/ 128) set_data_dev(t5, /*userDiff*/ ctx[7]);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			}
+
+    			if (dirty & /*userDiff*/ 256) set_data_dev(t5, /*userDiff*/ ctx[8]);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span2, "highlighted", /*highlighting*/ ctx[6]);
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
@@ -8593,14 +8604,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(22:8) {#if showUserLine}",
+    		source: "(35:8) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:8) {#if showRegressionLine}
+    // (38:8) {#if showRegressionLine}
     function create_if_block$2(ctx) {
     	let p;
     	let t0;
@@ -8626,16 +8637,18 @@ var app = (function () {
     			t4 = text(/*regVal*/ ctx[4]);
     			t5 = text(", yeilding a residual difference of ");
     			span2 = element("span");
-    			t6 = text(/*regDiff*/ ctx[6]);
+    			t6 = text(/*regDiff*/ ctx[7]);
     			t7 = text(".");
-    			attr_dev(span0, "class", "best-fit svelte-yj0cs8");
-    			add_location(span0, file$4, 25, 19, 792);
-    			attr_dev(span1, "class", "best-fit svelte-yj0cs8");
-    			add_location(span1, file$4, 25, 83, 856);
-    			attr_dev(span2, "class", "best-fit svelte-yj0cs8");
-    			add_location(span2, file$4, 25, 158, 931);
-    			attr_dev(p, "class", "svelte-yj0cs8");
-    			add_location(p, file$4, 25, 12, 785);
+    			attr_dev(span0, "class", "best-fit svelte-17ad9d4");
+    			add_location(span0, file$4, 38, 19, 1116);
+    			attr_dev(span1, "class", "best-fit svelte-17ad9d4");
+    			toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span1, file$4, 38, 83, 1180);
+    			attr_dev(span2, "class", "best-fit svelte-17ad9d4");
+    			toggle_class(span2, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span2, file$4, 38, 191, 1288);
+    			attr_dev(p, "class", "svelte-17ad9d4");
+    			add_location(p, file$4, 38, 12, 1109);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -8652,7 +8665,16 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*regVal*/ 16) set_data_dev(t4, /*regVal*/ ctx[4]);
-    			if (dirty & /*regDiff*/ 64) set_data_dev(t6, /*regDiff*/ ctx[6]);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			}
+
+    			if (dirty & /*regDiff*/ 128) set_data_dev(t6, /*regDiff*/ ctx[7]);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span2, "highlighted", /*highlighting*/ ctx[6]);
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
@@ -8663,7 +8685,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(25:8) {#if showRegressionLine}",
+    		source: "(38:8) {#if showRegressionLine}",
     		ctx
     	});
 
@@ -8674,14 +8696,13 @@ var app = (function () {
     	let div;
     	let p;
     	let t0;
-    	let strong0;
+    	let span0;
     	let t1;
     	let t2;
-    	let strong2;
+    	let span1;
     	let t3;
     	let t4_value = /*y*/ ctx[1].toFixed(2) + "";
     	let t4;
-    	let strong1;
     	let t5;
     	let t6;
     	let if_block0 = /*showUserLine*/ ctx[2] && create_if_block_1$1(ctx);
@@ -8692,23 +8713,25 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t0 = text("A customer bought ");
-    			strong0 = element("strong");
+    			span0 = element("span");
     			t1 = text(/*x*/ ctx[0]);
-    			t2 = text(" donuts at a cost of ");
-    			strong2 = element("strong");
+    			t2 = text("donuts at a cost of");
+    			span1 = element("span");
     			t3 = text("$");
     			t4 = text(t4_value);
-    			strong1 = element("strong");
     			t5 = space();
     			if (if_block0) if_block0.c();
     			t6 = space();
     			if (if_block1) if_block1.c();
-    			add_location(strong0, file$4, 20, 29, 437);
-    			add_location(strong1, file$4, 20, 93, 501);
-    			add_location(strong2, file$4, 20, 70, 478);
-    			attr_dev(p, "class", "svelte-yj0cs8");
-    			add_location(p, file$4, 20, 8, 416);
-    			add_location(div, file$4, 19, 4, 402);
+    			attr_dev(span0, "class", "svelte-17ad9d4");
+    			toggle_class(span0, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span0, file$4, 33, 29, 638);
+    			attr_dev(span1, "class", "svelte-17ad9d4");
+    			toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			add_location(span1, file$4, 33, 97, 706);
+    			attr_dev(p, "class", "svelte-17ad9d4");
+    			add_location(p, file$4, 33, 8, 617);
+    			add_location(div, file$4, 32, 4, 603);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -8717,13 +8740,12 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			append_dev(div, p);
     			append_dev(p, t0);
-    			append_dev(p, strong0);
-    			append_dev(strong0, t1);
+    			append_dev(p, span0);
+    			append_dev(span0, t1);
     			append_dev(p, t2);
-    			append_dev(p, strong2);
-    			append_dev(strong2, t3);
-    			append_dev(strong2, t4);
-    			append_dev(strong2, strong1);
+    			append_dev(p, span1);
+    			append_dev(span1, t3);
+    			append_dev(span1, t4);
     			append_dev(div, t5);
     			if (if_block0) if_block0.m(div, null);
     			append_dev(div, t6);
@@ -8731,7 +8753,16 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*x*/ 1) set_data_dev(t1, /*x*/ ctx[0]);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span0, "highlighted", /*highlighting*/ ctx[6]);
+    			}
+
     			if (dirty & /*y*/ 2 && t4_value !== (t4_value = /*y*/ ctx[1].toFixed(2) + "")) set_data_dev(t4, t4_value);
+
+    			if (dirty & /*highlighting*/ 64) {
+    				toggle_class(span1, "highlighted", /*highlighting*/ ctx[6]);
+    			}
 
     			if (/*showUserLine*/ ctx[2]) {
     				if (if_block0) {
@@ -8793,6 +8824,19 @@ var app = (function () {
     	let { showRegressionLine } = $$props;
     	let { userLinePredict } = $$props;
     	let { bestFitLinePredict } = $$props;
+    	let { highlightId } = $$props;
+    	let highlighting = false;
+
+    	function highlight() {
+    		$$invalidate(6, highlighting = true);
+
+    		setTimeout(
+    			() => {
+    				$$invalidate(6, highlighting = false);
+    			},
+    			1000
+    		);
+    	}
 
     	const writable_props = [
     		'chartWidth',
@@ -8801,7 +8845,8 @@ var app = (function () {
     		'showUserLine',
     		'showRegressionLine',
     		'userLinePredict',
-    		'bestFitLinePredict'
+    		'bestFitLinePredict',
+    		'highlightId'
     	];
 
     	Object.keys($$props).forEach(key => {
@@ -8809,13 +8854,14 @@ var app = (function () {
     	});
 
     	$$self.$$set = $$props => {
-    		if ('chartWidth' in $$props) $$invalidate(8, chartWidth = $$props.chartWidth);
+    		if ('chartWidth' in $$props) $$invalidate(9, chartWidth = $$props.chartWidth);
     		if ('x' in $$props) $$invalidate(0, x = $$props.x);
     		if ('y' in $$props) $$invalidate(1, y = $$props.y);
     		if ('showUserLine' in $$props) $$invalidate(2, showUserLine = $$props.showUserLine);
     		if ('showRegressionLine' in $$props) $$invalidate(3, showRegressionLine = $$props.showRegressionLine);
-    		if ('userLinePredict' in $$props) $$invalidate(9, userLinePredict = $$props.userLinePredict);
-    		if ('bestFitLinePredict' in $$props) $$invalidate(10, bestFitLinePredict = $$props.bestFitLinePredict);
+    		if ('userLinePredict' in $$props) $$invalidate(10, userLinePredict = $$props.userLinePredict);
+    		if ('bestFitLinePredict' in $$props) $$invalidate(11, bestFitLinePredict = $$props.bestFitLinePredict);
+    		if ('highlightId' in $$props) $$invalidate(12, highlightId = $$props.highlightId);
     	};
 
     	$$self.$capture_state = () => ({
@@ -8826,6 +8872,9 @@ var app = (function () {
     		showRegressionLine,
     		userLinePredict,
     		bestFitLinePredict,
+    		highlightId,
+    		highlighting,
+    		highlight,
     		regVal,
     		regDiff,
     		userVal,
@@ -8833,17 +8882,19 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('chartWidth' in $$props) $$invalidate(8, chartWidth = $$props.chartWidth);
+    		if ('chartWidth' in $$props) $$invalidate(9, chartWidth = $$props.chartWidth);
     		if ('x' in $$props) $$invalidate(0, x = $$props.x);
     		if ('y' in $$props) $$invalidate(1, y = $$props.y);
     		if ('showUserLine' in $$props) $$invalidate(2, showUserLine = $$props.showUserLine);
     		if ('showRegressionLine' in $$props) $$invalidate(3, showRegressionLine = $$props.showRegressionLine);
-    		if ('userLinePredict' in $$props) $$invalidate(9, userLinePredict = $$props.userLinePredict);
-    		if ('bestFitLinePredict' in $$props) $$invalidate(10, bestFitLinePredict = $$props.bestFitLinePredict);
+    		if ('userLinePredict' in $$props) $$invalidate(10, userLinePredict = $$props.userLinePredict);
+    		if ('bestFitLinePredict' in $$props) $$invalidate(11, bestFitLinePredict = $$props.bestFitLinePredict);
+    		if ('highlightId' in $$props) $$invalidate(12, highlightId = $$props.highlightId);
+    		if ('highlighting' in $$props) $$invalidate(6, highlighting = $$props.highlighting);
     		if ('regVal' in $$props) $$invalidate(4, regVal = $$props.regVal);
-    		if ('regDiff' in $$props) $$invalidate(6, regDiff = $$props.regDiff);
+    		if ('regDiff' in $$props) $$invalidate(7, regDiff = $$props.regDiff);
     		if ('userVal' in $$props) $$invalidate(5, userVal = $$props.userVal);
-    		if ('userDiff' in $$props) $$invalidate(7, userDiff = $$props.userDiff);
+    		if ('userDiff' in $$props) $$invalidate(8, userDiff = $$props.userDiff);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -8851,20 +8902,24 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*userLinePredict, x*/ 513) {
+    		if ($$self.$$.dirty & /*userLinePredict, x*/ 1025) {
     			$$invalidate(5, userVal = userLinePredict(x).toFixed(2));
     		}
 
-    		if ($$self.$$.dirty & /*bestFitLinePredict, x*/ 1025) {
+    		if ($$self.$$.dirty & /*bestFitLinePredict, x*/ 2049) {
     			$$invalidate(4, regVal = bestFitLinePredict(x).toFixed(2));
     		}
 
     		if ($$self.$$.dirty & /*y, userVal*/ 34) {
-    			$$invalidate(7, userDiff = (y - userVal).toFixed(2));
+    			$$invalidate(8, userDiff = (y - userVal).toFixed(2));
     		}
 
     		if ($$self.$$.dirty & /*y, regVal*/ 18) {
-    			$$invalidate(6, regDiff = (y - regVal).toFixed(2));
+    			$$invalidate(7, regDiff = (y - regVal).toFixed(2));
+    		}
+
+    		if ($$self.$$.dirty & /*highlightId*/ 4096) {
+    			(highlight());
     		}
     	};
 
@@ -8875,11 +8930,13 @@ var app = (function () {
     		showRegressionLine,
     		regVal,
     		userVal,
+    		highlighting,
     		regDiff,
     		userDiff,
     		chartWidth,
     		userLinePredict,
-    		bestFitLinePredict
+    		bestFitLinePredict,
+    		highlightId
     	];
     }
 
@@ -8888,13 +8945,14 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$4, create_fragment$4, safe_not_equal, {
-    			chartWidth: 8,
+    			chartWidth: 9,
     			x: 0,
     			y: 1,
     			showUserLine: 2,
     			showRegressionLine: 3,
-    			userLinePredict: 9,
-    			bestFitLinePredict: 10
+    			userLinePredict: 10,
+    			bestFitLinePredict: 11,
+    			highlightId: 12
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -8907,7 +8965,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*chartWidth*/ ctx[8] === undefined && !('chartWidth' in props)) {
+    		if (/*chartWidth*/ ctx[9] === undefined && !('chartWidth' in props)) {
     			console.warn("<PredictTooltip> was created without expected prop 'chartWidth'");
     		}
 
@@ -8927,12 +8985,16 @@ var app = (function () {
     			console.warn("<PredictTooltip> was created without expected prop 'showRegressionLine'");
     		}
 
-    		if (/*userLinePredict*/ ctx[9] === undefined && !('userLinePredict' in props)) {
+    		if (/*userLinePredict*/ ctx[10] === undefined && !('userLinePredict' in props)) {
     			console.warn("<PredictTooltip> was created without expected prop 'userLinePredict'");
     		}
 
-    		if (/*bestFitLinePredict*/ ctx[10] === undefined && !('bestFitLinePredict' in props)) {
+    		if (/*bestFitLinePredict*/ ctx[11] === undefined && !('bestFitLinePredict' in props)) {
     			console.warn("<PredictTooltip> was created without expected prop 'bestFitLinePredict'");
+    		}
+
+    		if (/*highlightId*/ ctx[12] === undefined && !('highlightId' in props)) {
+    			console.warn("<PredictTooltip> was created without expected prop 'highlightId'");
     		}
     	}
 
@@ -8989,6 +9051,14 @@ var app = (function () {
     	}
 
     	set bestFitLinePredict(value) {
+    		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get highlightId() {
+    		throw new Error("<PredictTooltip>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set highlightId(value) {
     		throw new Error("<PredictTooltip>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -9401,7 +9471,8 @@ var app = (function () {
     		{
     			bestFitLinePredict: /*$regressionLineStore*/ ctx[25].predict
     		},
-    		points[/*$member*/ ctx[24]][/*highlightId*/ ctx[11]]
+    		points[/*$member*/ ctx[24]][/*highlightId*/ ctx[11]],
+    		{ highlightId: /*highlightId*/ ctx[11] }
     	];
 
     	let predicttooltip_props = {};
@@ -9437,7 +9508,8 @@ var app = (function () {
     					dirty[0] & /*$regressionLineStore*/ 33554432 && {
     						bestFitLinePredict: /*$regressionLineStore*/ ctx[25].predict
     					},
-    					dirty[0] & /*$member, highlightId*/ 16779264 && get_spread_object(points[/*$member*/ ctx[24]][/*highlightId*/ ctx[11]])
+    					dirty[0] & /*$member, highlightId*/ 16779264 && get_spread_object(points[/*$member*/ ctx[24]][/*highlightId*/ ctx[11]]),
+    					dirty[0] & /*highlightId*/ 2048 && { highlightId: /*highlightId*/ ctx[11] }
     				])
     			: {};
 
@@ -9587,7 +9659,7 @@ var app = (function () {
     	return block;
     }
 
-    // (215:3) {#each yTicks as tick}
+    // (216:3) {#each yTicks as tick}
     function create_each_block_2(ctx) {
     	let axis;
     	let current;
@@ -9639,14 +9711,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(215:3) {#each yTicks as tick}",
+    		source: "(216:3) {#each yTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (224:3) {#each xTicks as tick}
+    // (225:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -9698,14 +9770,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(224:3) {#each xTicks as tick}",
+    		source: "(225:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (232:3) {#if showPoints}
+    // (233:3) {#if showPoints}
     function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9794,14 +9866,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(232:3) {#if showPoints}",
+    		source: "(233:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (234:4) {#each points[$member] as {x, y}
+    // (235:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
@@ -9853,14 +9925,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(234:4) {#each points[$member] as {x, y}",
+    		source: "(235:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (249:3) {#if showRegressionLine}
+    // (250:3) {#if showRegressionLine}
     function create_if_block_3(ctx) {
     	let if_block0_anchor;
     	let regressionline;
@@ -9972,14 +10044,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(249:3) {#if showRegressionLine}",
+    		source: "(250:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (251:4) {#if showRegressionResiduals}
+    // (252:4) {#if showRegressionResiduals}
     function create_if_block_5(ctx) {
     	let residuals;
     	let current;
@@ -10035,14 +10107,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(251:4) {#if showRegressionResiduals}",
+    		source: "(252:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (263:4) {#if showSingleResidual}
+    // (264:4) {#if showSingleResidual}
     function create_if_block_4(ctx) {
     	let singleresidual;
     	let current;
@@ -10098,14 +10170,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(263:4) {#if showSingleResidual}",
+    		source: "(264:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (278:3) {#if showUserLine}
+    // (279:3) {#if showUserLine}
     function create_if_block$1(ctx) {
     	let if_block0_anchor;
     	let userline;
@@ -10219,14 +10291,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(278:3) {#if showUserLine}",
+    		source: "(279:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (279:4) {#if showUserResiduals}
+    // (280:4) {#if showUserResiduals}
     function create_if_block_2(ctx) {
     	let residuals;
     	let current;
@@ -10282,14 +10354,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(279:4) {#if showUserResiduals}",
+    		source: "(280:4) {#if showUserResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (293:4) {#if showSingleResidual}
+    // (294:4) {#if showSingleResidual}
     function create_if_block_1(ctx) {
     	let singleresidual;
     	let current;
@@ -10345,7 +10417,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(293:4) {#if showSingleResidual}",
+    		source: "(294:4) {#if showSingleResidual}",
     		ctx
     	});
 
@@ -10449,30 +10521,30 @@ var app = (function () {
     			attr_dev(div0, "id", "controls");
     			attr_dev(div0, "class", "svelte-qph85x");
     			add_location(div0, file$3, 149, 0, 3493);
-    			add_location(text0, file$3, 218, 12, 5403);
+    			add_location(text0, file$3, 219, 12, 5421);
     			attr_dev(text1, "text-anchor", "middle");
     			attr_dev(text1, "transform", text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)");
-    			add_location(text1, file$3, 217, 3, 5315);
+    			add_location(text1, file$3, 218, 3, 5333);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 213, 2, 5084);
-    			add_location(text2, file$3, 227, 10, 5764);
+    			add_location(g0, file$3, 214, 2, 5102);
+    			add_location(text2, file$3, 228, 10, 5782);
     			set_style(text3, "text-anchor", "middle");
     			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[26].left);
     			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[26].bottom / 2 + 15);
-    			add_location(text3, file$3, 226, 3, 5658);
+    			add_location(text3, file$3, 227, 3, 5676);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 222, 2, 5423);
+    			add_location(g1, file$3, 223, 2, 5441);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 230, 2, 5783);
+    			add_location(g2, file$3, 231, 2, 5801);
     			attr_dev(g3, "class", "regressionLine svelte-qph85x");
-    			add_location(g3, file$3, 247, 2, 6063);
+    			add_location(g3, file$3, 248, 2, 6081);
     			attr_dev(g4, "class", "userLine svelte-qph85x");
-    			add_location(g4, file$3, 276, 2, 6752);
+    			add_location(g4, file$3, 277, 2, 6770);
     			attr_dev(svg_1, "class", "svelte-qph85x");
-    			add_location(svg_1, file$3, 211, 1, 5024);
+    			add_location(svg_1, file$3, 212, 1, 5042);
     			attr_dev(div1, "id", "chart");
     			attr_dev(div1, "class", "svelte-qph85x");
-    			add_location(div1, file$3, 209, 0, 5004);
+    			add_location(div1, file$3, 210, 0, 5022);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11638,21 +11710,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-2mbgmt");
+    			attr_dev(div0, "class", "svelte-8cbscn");
     			add_location(div0, file, 52, 3, 1247);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-2mbgmt");
+    			attr_dev(div1, "class", "svelte-8cbscn");
     			add_location(div1, file, 58, 3, 1361);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-2mbgmt");
+    			attr_dev(div2, "class", "svelte-8cbscn");
     			add_location(div2, file, 51, 2, 1223);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-2mbgmt");
+    			attr_dev(div3, "class", "svelte-8cbscn");
     			add_location(div3, file, 63, 2, 1420);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-2mbgmt");
+    			attr_dev(section, "class", "svelte-8cbscn");
     			add_location(section, file, 50, 1, 1197);
-    			attr_dev(main, "class", "svelte-2mbgmt");
+    			attr_dev(main, "class", "svelte-8cbscn");
     			add_location(main, file, 45, 0, 1141);
     		},
     		l: function claim(nodes) {

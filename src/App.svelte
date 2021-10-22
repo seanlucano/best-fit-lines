@@ -81,6 +81,7 @@
 	--emphasis: #4433FF;
 	--heading: #2C0B8E;
 	--header-height: .5em;
+	--interactive: #DFEBF6;
 	}
 
 	main {
