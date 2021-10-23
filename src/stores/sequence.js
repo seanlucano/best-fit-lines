@@ -73,7 +73,7 @@ export const sequence = [
     },
     {	title: 'Minimizing residuals',
         prompt: `<p>If you want your line to <strong>become the best fit line</strong>, you will need to minimize the residuals as much as possible.  To help you out, we can draw all of them on at the same time.</p>`,
-        cta: `<p><strong>Move your line closer to any selected point.</p> <p>As the residual value decreaes for that point, what happens to the lengths of the other residuals?</p>`,
+        cta: `<p><strong>Move your line closer to any selected point.</p> <p>As the residual value decreases for that point, what happens to the lengths of the other residuals?</p>`,
         quiz: {
             questions: [`The other residuals increase`, `The other residuals decrease`, `Some increase and some descrease`],
             correct: 2,
