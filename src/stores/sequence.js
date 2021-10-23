@@ -6,7 +6,7 @@ export const sequence = [
     {	
         title: 'Welcome to best fit lines!',
         prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
-        <p>Just for fun, let's say all each transactions is for some (x) number of donuts for some (y) amount of US Dollars.</p>`,	
+        <p>Just for fun, let's say each transaction is for some (x) number of donuts for some (y) amount of US Dollars.</p>`,	
         cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
         quiz: {
             questions: [`Positive`, `Negative `],
