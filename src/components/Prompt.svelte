@@ -100,6 +100,7 @@
 		padding: .75em 1.35em;
 		background-color:#DFEBF6;
 		border-radius: .5em;
+		box-shadow: 0 2px 7px lightgrey;
 		position: relative;
 	}
 

@@ -1441,9 +1441,10 @@ var app = (function () {
             prompt:`<p>We know that these two variables have a positive relationship.  But what if we would like to be more specific?</p>
         <p>What if you wanted to be able to use all of this data from different transactions to <strong>predict</strong> the cost of a a future transaction given the number of donuts purchased.</p>
         <p>That relationship could be expressed in the form of a <strong>line</stong>.</p>`,	
-             cta: `<p><strong>Using the circle handles at the end points of the line, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line</p>`,
+             cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line</p>`,
              showPoints: true,
-             showUserLine: true
+             showUserLine: true,
+             showUserLineControls: true
         },
         {	
             title: 'Good line...best line',
@@ -1460,9 +1461,9 @@ var app = (function () {
         {	title: 'What makes a good "fit"',
             prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
         <p>Here's one way to start thinking about what makes a line's fit good or bad: <strong>you need to be able to measure the distance between each data point and the line.</strong></p>`,	
-            cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</p> <p> What do you think these distances represent?</p></strong>`,
+            cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p> What do you think these distances represent?</p>`,
             quiz: {
-                questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed cost and a predicted cost`,],
+                questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed and predicted costs`,],
                 correct: 2,
                 feedback: `The distance between a point and fitted line represents the difference between their cost (y) values. Click next to find out more.`
             },	
@@ -1480,7 +1481,7 @@ var app = (function () {
             prompt:` <p>Each points tells us about an <strong>observed</strong> transaction.  Our line, on the other hand, is making a <strong>prediction</strong> about a future transaction. If you pick any number of donuts (x), the line will tell us what cost (y) to expect.</p>
         <p>The distance between the <strong>observed</strong> cost and the line's <strong>predicted</strong> cost is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
-            cta: `<p><strong>Click on any point to see an explanation of the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
+            cta: `<p><strong>Click on any point to see an explanation of the residual cost for each transaction.</strong></p>`,
             showPoints: true,
             showUserLineControls: true,
             showRegressionLineControls: true,
@@ -1490,13 +1491,12 @@ var app = (function () {
             showPredictTooltip: true
         },
         {	title: 'Minimizing residuals',
-            prompt: `<p>Let's try to minimize the residuals, or errors, for your line.</p>`,
-            cta: `<strong><p>Try moving your line around to minimize the lengths of all residuals.</p></strong><p>To help you visualize the residuals, we will turn on all of the residual lines for all points.  You can still click any point to see the numeric value of a single point.</p>`,
-            cta: `<p><strong>As you move your line closer to a selected point, and decrease the residual value for that point, what happens to the residuals for all of the the other points?</p>`,
+            prompt: `<p>If you want your line to <strong>become the best fit line</strong>, you will need to minimize the residuals as much as possible.  To help you out, we can draw all of them on at the same time.</p>`,
+            cta: `<p><strong>Move your line closer to any selected point.</p> <p>As the residual value decreaes for that point, what happens to the lengths of the other residuals?</p>`,
             quiz: {
-                questions: [`The residuals increase`, `The residuals decrease`, `Some increase and some descrease`],
+                questions: [`The other residuals increase`, `The other residuals decrease`, `Some increase and some descrease`],
                 correct: 2,
-                feedback: `It's sort of frustrating! Just looking at these residuals visually is not going to help us minimize all residuals. We might need a trustworthy mathematical procedure to help.`
+                feedback: `This is not so easy!  Simply drawing residual lengths on the chart is not doing the trick. We are going to need a trustworthy mathematical procedure, instead!`
         },	         
             showPoints: true,
             showUserLineControls: true,
@@ -1511,8 +1511,8 @@ var app = (function () {
         
         {	title:"The 'least squares' method",
             prompt:`<p>Let's use some math to help us minimize residuals. If we want to truly find the <strong>best fit</strong> line, we need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one, making them all positive, before adding them all together.</p>
-        <p>The <strong>Squared Residuals</table> table to the right shows the squared residuals for each point, as well as the total <strong>sum of squared residuals (SSR)</strong> for the line.`,	
-             cta: `<p><strong>Try to achieve the lowest SSR you can.  You can click on any point or any value in the table see how they correspond.</strong></p><p>Note: the values you are seeing displayed are rounded for readability.`,
+        <p>The <strong>Squared Residuals</strong> table to the right shows the squared residuals for each point, as well as the total <strong>sum of squared residuals (SSR)</strong> for the line.`,	
+             cta: `<p><strong>Try to achieve the lowest SSR you can.</strong></p>  <p>You can click on any point or any value in the table see how they correspond.</p><p>Note: all values displayed are rounded for readability.`,
              showPoints: true,
              showUserLineControls: true,
              showUserLine: true,
@@ -1547,7 +1547,7 @@ var app = (function () {
 
     /* src/components/Prompt.svelte generated by Svelte v3.42.6 */
 
-    const { console: console_1 } = globals;
+    const { console: console_1$1 } = globals;
     const file$h = "src/components/Prompt.svelte";
 
     function get_each_context$5(ctx, list, i) {
@@ -1590,7 +1590,7 @@ var app = (function () {
     			if (if_block0) if_block0.c();
     			t1 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(div, "class", "submit svelte-1ossbc5");
+    			attr_dev(div, "class", "submit svelte-1bvsah0");
     			add_location(div, file$h, 75, 5, 1794);
     			add_location(form, file$h, 53, 4, 1209);
     		},
@@ -1768,7 +1768,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			i.textContent = "close";
-    			attr_dev(i, "class", "feedbackIcon material-icons-outlined incorrect svelte-1ossbc5");
+    			attr_dev(i, "class", "feedbackIcon material-icons-outlined incorrect svelte-1bvsah0");
     			add_location(i, file$h, 64, 9, 1532);
     		},
     		m: function mount(target, anchor) {
@@ -1798,7 +1798,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			i.textContent = "check";
-    			attr_dev(i, "class", "feedbackIcon material-icons-outlined correct svelte-1ossbc5");
+    			attr_dev(i, "class", "feedbackIcon material-icons-outlined correct svelte-1bvsah0");
     			add_location(i, file$h, 58, 9, 1367);
     		},
     		m: function mount(target, anchor) {
@@ -1844,10 +1844,10 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.__value = /*i*/ ctx[15];
     			input.value = input.__value;
-    			attr_dev(input, "class", "svelte-1ossbc5");
+    			attr_dev(input, "class", "svelte-1bvsah0");
     			/*$$binding_groups*/ ctx[12][0].push(input);
     			add_location(input, file$h, 71, 7, 1673);
-    			attr_dev(label, "class", "svelte-1ossbc5");
+    			attr_dev(label, "class", "svelte-1bvsah0");
     			add_location(label, file$h, 55, 6, 1296);
     		},
     		m: function mount(target, anchor) {
@@ -1987,7 +1987,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "feedback svelte-1ossbc5");
+    			attr_dev(div, "class", "feedback svelte-1bvsah0");
     			add_location(div, file$h, 81, 6, 1951);
     		},
     		m: function mount(target, anchor) {
@@ -2059,19 +2059,19 @@ var app = (function () {
     			if (if_block) if_block.c();
     			add_location(h2, file$h, 41, 2, 985);
     			attr_dev(div0, "id", "title");
-    			attr_dev(div0, "class", "svelte-1ossbc5");
+    			attr_dev(div0, "class", "svelte-1bvsah0");
     			add_location(div0, file$h, 40, 1, 958);
     			attr_dev(div1, "id", "text");
-    			attr_dev(div1, "class", "svelte-1ossbc5");
+    			attr_dev(div1, "class", "svelte-1bvsah0");
     			add_location(div1, file$h, 43, 1, 1011);
-    			attr_dev(i, "class", "material-icons-round svelte-1ossbc5");
+    			attr_dev(i, "class", "material-icons-round svelte-1bvsah0");
     			add_location(i, file$h, 47, 2, 1087);
     			html_tag.a = t5;
     			attr_dev(div2, "id", "quiz");
-    			attr_dev(div2, "class", "svelte-1ossbc5");
+    			attr_dev(div2, "class", "svelte-1bvsah0");
     			add_location(div2, file$h, 51, 2, 1156);
     			attr_dev(div3, "id", "cta");
-    			attr_dev(div3, "class", "svelte-1ossbc5");
+    			attr_dev(div3, "class", "svelte-1bvsah0");
     			add_location(div3, file$h, 46, 1, 1062);
     		},
     		m: function mount(target, anchor) {
@@ -2273,7 +2273,7 @@ var app = (function () {
     	const writable_props = ['title', 'prompt', 'cta', 'correct', 'questions', 'feedback', 'showFeedback'];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<Prompt> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<Prompt> was created with unknown prop '${key}'`);
     	});
 
     	const $$binding_groups = [[]];
@@ -8181,9 +8181,10 @@ var app = (function () {
     function create_default_slot$1(ctx) {
     	let div0;
     	let span0;
+    	let strong0;
     	let t1;
     	let span1;
-    	let strong;
+    	let strong1;
     	let t3;
     	let div1;
     	let t4;
@@ -8196,35 +8197,38 @@ var app = (function () {
     		c: function create() {
     			div0 = element("div");
     			span0 = element("span");
-    			span0.textContent = "Squared Residuals";
+    			strong0 = element("strong");
+    			strong0.textContent = "Squared Residuals";
     			t1 = space();
     			span1 = element("span");
-    			strong = element("strong");
-    			strong.textContent = "SSR";
+    			strong1 = element("strong");
+    			strong1.textContent = "SSR";
     			t3 = space();
     			div1 = element("div");
     			if (if_block0) if_block0.c();
     			t4 = space();
     			div2 = element("div");
     			if (if_block1) if_block1.c();
+    			add_location(strong0, file$5, 22, 12, 502);
     			add_location(span0, file$5, 22, 6, 496);
-    			add_location(strong, file$5, 23, 10, 538);
-    			add_location(span1, file$5, 23, 4, 532);
+    			add_location(strong1, file$5, 23, 10, 555);
+    			add_location(span1, file$5, 23, 4, 549);
     			attr_dev(div0, "class", "title svelte-1dspyky");
     			add_location(div0, file$5, 21, 4, 470);
     			attr_dev(div1, "id", "user");
     			attr_dev(div1, "class", "residualsRow svelte-1dspyky");
-    			add_location(div1, file$5, 24, 4, 576);
+    			add_location(div1, file$5, 24, 4, 593);
     			attr_dev(div2, "id", "regression");
     			attr_dev(div2, "class", "residualsRow svelte-1dspyky");
-    			add_location(div2, file$5, 30, 4, 748);
+    			add_location(div2, file$5, 30, 4, 765);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
     			append_dev(div0, span0);
+    			append_dev(span0, strong0);
     			append_dev(div0, t1);
     			append_dev(div0, span1);
-    			append_dev(span1, strong);
+    			append_dev(span1, strong1);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, div1, anchor);
     			if (if_block0) if_block0.m(div1, null);
@@ -9064,6 +9068,8 @@ var app = (function () {
     }
 
     /* src/components/Chart.svelte generated by Svelte v3.42.6 */
+
+    const { console: console_1 } = globals;
     const file$3 = "src/components/Chart.svelte";
 
     function get_each_context$1(ctx, list, i) {
@@ -9086,7 +9092,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (151:1) {#if showUserLineControls}
+    // (144:1) {#if showUserLineControls}
     function create_if_block_11(ctx) {
     	let control;
     	let updating_lineChecked;
@@ -9175,14 +9181,14 @@ var app = (function () {
     		block,
     		id: create_if_block_11.name,
     		type: "if",
-    		source: "(151:1) {#if showUserLineControls}",
+    		source: "(144:1) {#if showUserLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>
+    // (145:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>
     function create_default_slot_2(ctx) {
     	let t;
 
@@ -9202,14 +9208,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(152:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>",
+    		source: "(145:2) <Control     id='yourLine'     slope={$userLineStore.slope()}    yInt={$userLineStore.intercept()}    bind:lineChecked={showUserLine}     bind:resChecked={showUserResiduals}    showResidualControls={showResidualControls}    showResValues={showUserResiduals}    color='primary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (164:1) {#if showRegressionLineControls}
+    // (157:1) {#if showRegressionLineControls}
     function create_if_block_10(ctx) {
     	let control;
     	let updating_lineChecked;
@@ -9298,14 +9304,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(164:1) {#if showRegressionLineControls}",
+    		source: "(157:1) {#if showRegressionLineControls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (165:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>
+    // (158:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>
     function create_default_slot_1(ctx) {
     	let t;
 
@@ -9325,14 +9331,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(165:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>",
+    		source: "(158:2) <Control     id='regressionLine'     slope={$regressionLineStore.a}    yInt={$regressionLineStore.b}    bind:lineChecked={showRegressionLine}     bind:resChecked={showRegressionResiduals}    showResidualControls={showResidualControls}    showResValues={showRegressionResiduals}    color='secondary'>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (179:0) {#if showResidualsTable}
+    // (172:0) {#if showResidualsTable}
     function create_if_block_9(ctx) {
     	let div;
     	let residualstable;
@@ -9356,8 +9362,8 @@ var app = (function () {
     			div = element("div");
     			create_component(residualstable.$$.fragment);
     			attr_dev(div, "id", "residualsTable");
-    			attr_dev(div, "class", "svelte-qph85x");
-    			add_location(div, file$3, 179, 1, 4261);
+    			attr_dev(div, "class", "svelte-1ls3ayw");
+    			add_location(div, file$3, 172, 1, 4257);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9392,14 +9398,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(179:0) {#if showResidualsTable}",
+    		source: "(172:0) {#if showResidualsTable}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (191:0) {#if showPredictTooltip}
+    // (184:0) {#if showPredictTooltip}
     function create_if_block_7(ctx) {
     	let card;
     	let current;
@@ -9447,14 +9453,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(191:0) {#if showPredictTooltip}",
+    		source: "(184:0) {#if showPredictTooltip}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:2) {:else}
+    // (188:2) {:else}
     function create_else_block(ctx) {
     	let predicttooltip;
     	let current;
@@ -9533,14 +9539,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(195:2) {:else}",
+    		source: "(188:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (193:2) {#if highlightId === undefined}
+    // (186:2) {#if highlightId === undefined}
     function create_if_block_8(ctx) {
     	let p;
     	let strong;
@@ -9550,11 +9556,11 @@ var app = (function () {
     			p = element("p");
     			strong = element("strong");
     			strong.textContent = "Click on any point to see an explanation of the the residual cost here.";
-    			add_location(strong, file$3, 193, 74, 4651);
+    			add_location(strong, file$3, 186, 74, 4647);
     			set_style(p, "background-color", "#DFEBF6");
     			set_style(p, "padding", "1em");
     			set_style(p, "border-radius", "5px");
-    			add_location(p, file$3, 193, 3, 4580);
+    			add_location(p, file$3, 186, 3, 4576);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -9572,14 +9578,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(193:2) {#if highlightId === undefined}",
+    		source: "(186:2) {#if highlightId === undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (192:1) <Card>
+    // (185:1) <Card>
     function create_default_slot(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -9652,14 +9658,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(192:1) <Card>",
+    		source: "(185:1) <Card>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (216:3) {#each yTicks as tick}
+    // (209:3) {#each yTicks as tick}
     function create_each_block_2(ctx) {
     	let axis;
     	let current;
@@ -9711,14 +9717,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(216:3) {#each yTicks as tick}",
+    		source: "(209:3) {#each yTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (225:3) {#each xTicks as tick}
+    // (218:3) {#each xTicks as tick}
     function create_each_block_1(ctx) {
     	let axis;
     	let current;
@@ -9770,14 +9776,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(225:3) {#each xTicks as tick}",
+    		source: "(218:3) {#each xTicks as tick}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (233:3) {#if showPoints}
+    // (226:3) {#if showPoints}
     function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9866,14 +9872,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(233:3) {#if showPoints}",
+    		source: "(226:3) {#if showPoints}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (235:4) {#each points[$member] as {x, y}
+    // (228:4) {#each points[$member] as {x, y}
     function create_each_block$1(ctx) {
     	let circle;
     	let current;
@@ -9925,14 +9931,14 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(235:4) {#each points[$member] as {x, y}",
+    		source: "(228:4) {#each points[$member] as {x, y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (250:3) {#if showRegressionLine}
+    // (243:3) {#if showRegressionLine}
     function create_if_block_3(ctx) {
     	let if_block0_anchor;
     	let regressionline;
@@ -10044,14 +10050,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(250:3) {#if showRegressionLine}",
+    		source: "(243:3) {#if showRegressionLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (252:4) {#if showRegressionResiduals}
+    // (245:4) {#if showRegressionResiduals}
     function create_if_block_5(ctx) {
     	let residuals;
     	let current;
@@ -10107,14 +10113,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(252:4) {#if showRegressionResiduals}",
+    		source: "(245:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (264:4) {#if showSingleResidual}
+    // (257:4) {#if showSingleResidual}
     function create_if_block_4(ctx) {
     	let singleresidual;
     	let current;
@@ -10170,14 +10176,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(264:4) {#if showSingleResidual}",
+    		source: "(257:4) {#if showSingleResidual}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (279:3) {#if showUserLine}
+    // (272:3) {#if showUserLine}
     function create_if_block$1(ctx) {
     	let if_block0_anchor;
     	let userline;
@@ -10291,14 +10297,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(279:3) {#if showUserLine}",
+    		source: "(272:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (280:4) {#if showUserResiduals}
+    // (273:4) {#if showUserResiduals}
     function create_if_block_2(ctx) {
     	let residuals;
     	let current;
@@ -10354,14 +10360,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(280:4) {#if showUserResiduals}",
+    		source: "(273:4) {#if showUserResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (294:4) {#if showSingleResidual}
+    // (287:4) {#if showSingleResidual}
     function create_if_block_1(ctx) {
     	let singleresidual;
     	let current;
@@ -10417,7 +10423,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(294:4) {#if showSingleResidual}",
+    		source: "(287:4) {#if showSingleResidual}",
     		ctx
     	});
 
@@ -10519,32 +10525,32 @@ var app = (function () {
     			g4 = svg_element("g");
     			if (if_block6) if_block6.c();
     			attr_dev(div0, "id", "controls");
-    			attr_dev(div0, "class", "svelte-qph85x");
-    			add_location(div0, file$3, 149, 0, 3493);
-    			add_location(text0, file$3, 219, 12, 5421);
+    			attr_dev(div0, "class", "svelte-1ls3ayw");
+    			add_location(div0, file$3, 142, 0, 3489);
+    			add_location(text0, file$3, 212, 12, 5417);
     			attr_dev(text1, "text-anchor", "middle");
     			attr_dev(text1, "transform", text1_transform_value = "translate(20," + /*height*/ ctx[1] / 2 + ") rotate(-90)");
-    			add_location(text1, file$3, 218, 3, 5333);
+    			add_location(text1, file$3, 211, 3, 5329);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 214, 2, 5102);
-    			add_location(text2, file$3, 228, 10, 5782);
+    			add_location(g0, file$3, 207, 2, 5098);
+    			add_location(text2, file$3, 221, 10, 5778);
     			set_style(text3, "text-anchor", "middle");
     			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + /*margins*/ ctx[26].left);
     			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[26].bottom / 2 + 15);
-    			add_location(text3, file$3, 227, 3, 5676);
+    			add_location(text3, file$3, 220, 3, 5672);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 223, 2, 5441);
+    			add_location(g1, file$3, 216, 2, 5437);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 231, 2, 5801);
-    			attr_dev(g3, "class", "regressionLine svelte-qph85x");
-    			add_location(g3, file$3, 248, 2, 6081);
-    			attr_dev(g4, "class", "userLine svelte-qph85x");
-    			add_location(g4, file$3, 277, 2, 6770);
-    			attr_dev(svg_1, "class", "svelte-qph85x");
-    			add_location(svg_1, file$3, 212, 1, 5042);
+    			add_location(g2, file$3, 224, 2, 5797);
+    			attr_dev(g3, "class", "regressionLine svelte-1ls3ayw");
+    			add_location(g3, file$3, 241, 2, 6077);
+    			attr_dev(g4, "class", "userLine svelte-1ls3ayw");
+    			add_location(g4, file$3, 270, 2, 6766);
+    			attr_dev(svg_1, "class", "svelte-1ls3ayw");
+    			add_location(svg_1, file$3, 205, 1, 5038);
     			attr_dev(div1, "id", "chart");
-    			attr_dev(div1, "class", "svelte-qph85x");
-    			add_location(div1, file$3, 210, 0, 5022);
+    			attr_dev(div1, "class", "svelte-1ls3ayw");
+    			add_location(div1, file$3, 203, 0, 5018);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10947,17 +10953,15 @@ var app = (function () {
     	const [minY, maxY] = extent(points[$member], d => d.y);
 
     	// responsiveness
-    	onMount(resize);
-
-    	afterUpdate(() => {
-    		resize();
-    	});
-
-    	function resize() {
+    	const resize = () => {
     		$$invalidate(0, { width, height } = svg.getBoundingClientRect(), width, $$invalidate(1, height));
-    	}
+    		console.log(width, height);
+    	};
 
-    	//STATE CHANGE LOGIC
+    	//onMount(() => resize);
+    	//afterUpdate( () => {
+    	//	resize();
+    	//});
     	// changing datasets...will come back to this later
     	//tweening function
     	// const tweenedPoints = tweened(points, {
@@ -10969,12 +10973,12 @@ var app = (function () {
     	// 	tweenedPoints.set(data[key]);
     	// }
     	// $: setTween(member)
-    	// logic for seperating residuals slightly when both lines are present. 
+    	// seperating residuals slightly when both lines are present 
     	let translating = false;
 
     	let singleTranslating = false;
 
-    	// locig for highlighing related elements on click
+    	// highlighing related elements on click
     	let highlightId;
 
     	let clickedElement;
@@ -10993,7 +10997,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Chart> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<Chart> was created with unknown prop '${key}'`);
     	});
 
     	function control_lineChecked_binding(value) {
@@ -11314,7 +11318,7 @@ var app = (function () {
     			i = element("i");
     			i.textContent = "done";
     			attr_dev(i, "id", /*i*/ ctx[8]);
-    			attr_dev(i, "class", "material-icons-round svelte-f0dwbc");
+    			attr_dev(i, "class", "material-icons-round svelte-gknwsy");
     			add_location(i, file$1, 38, 24, 992);
     		},
     		m: function mount(target, anchor) {
@@ -11369,7 +11373,7 @@ var app = (function () {
     			t = space();
     			attr_dev(li, "id", /*i*/ ctx[8]);
     			set_style(li, "width", circleWidth + "px");
-    			attr_dev(li, "class", "svelte-f0dwbc");
+    			attr_dev(li, "class", "svelte-gknwsy");
     			toggle_class(li, "completed", /*i*/ ctx[8] < /*currentStep*/ ctx[0]);
     			toggle_class(li, "current", /*i*/ ctx[8] === /*currentStep*/ ctx[0]);
     			add_location(li, file$1, 36, 12, 789);
@@ -11480,12 +11484,12 @@ var app = (function () {
     			attr_dev(link, "rel", "stylesheet");
     			add_location(link, file$1, 28, 6, 549);
     			progress_1.value = /*$progress*/ ctx[1];
-    			attr_dev(progress_1, "class", "svelte-f0dwbc");
+    			attr_dev(progress_1, "class", "svelte-gknwsy");
     			add_location(progress_1, file$1, 34, 8, 704);
-    			attr_dev(ol, "class", "svelte-f0dwbc");
+    			attr_dev(ol, "class", "svelte-gknwsy");
     			add_location(ol, file$1, 33, 4, 691);
     			attr_dev(div, "id", "progressBar");
-    			attr_dev(div, "class", "svelte-f0dwbc");
+    			attr_dev(div, "class", "svelte-gknwsy");
     			add_location(div, file$1, 32, 0, 664);
     		},
     		l: function claim(nodes) {
@@ -11710,21 +11714,21 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-1g1viyk");
+    			attr_dev(div0, "class", "svelte-1rustye");
     			add_location(div0, file, 52, 3, 1247);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-1g1viyk");
-    			add_location(div1, file, 58, 3, 1361);
+    			attr_dev(div1, "class", "svelte-1rustye");
+    			add_location(div1, file, 59, 3, 1365);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-1g1viyk");
+    			attr_dev(div2, "class", "svelte-1rustye");
     			add_location(div2, file, 51, 2, 1223);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-1g1viyk");
-    			add_location(div3, file, 63, 2, 1420);
+    			attr_dev(div3, "class", "svelte-1rustye");
+    			add_location(div3, file, 64, 2, 1424);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-1g1viyk");
+    			attr_dev(section, "class", "svelte-1rustye");
     			add_location(section, file, 50, 1, 1197);
-    			attr_dev(main, "class", "svelte-1g1viyk");
+    			attr_dev(main, "class", "svelte-1rustye");
     			add_location(main, file, 45, 0, 1141);
     		},
     		l: function claim(nodes) {

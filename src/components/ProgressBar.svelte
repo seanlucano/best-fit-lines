@@ -51,7 +51,8 @@ const setCounter = (event) => {
     
     #progressBar {
         background-color: var(background-color);
-        padding: 1em 2em;
+        margin: 1em;
+        padding: 1em;
     }
 
 

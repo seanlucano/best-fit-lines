@@ -56,6 +56,7 @@
 					{...sequence[$counter]}
 				/>
 			</div>
+			
 			<div id="userNav">
 				<UserNav />
 			</div>
@@ -85,15 +86,15 @@
 	}
 
 	main {
-		padding: 1em;
-		height: calc(100vh - 2em);
+		height: 100vh;
 	}
 
 	#tutorial {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1fr 1.5fr;
 		grid-gap: 1em;
-		height: 90%;
+		height: calc(100vh - 6.6em);
+		margin: 1em;
 	}
 
 	#prompt {
@@ -102,14 +103,14 @@
 	}
 
 	#narrative {
-		border: 2px solid lightgrey;
-		border-radius: 5px;
+		border-radius: .5em;
 		display: flex;
 		gap: .5em;
 		flex-direction: column;
 		justify-content: space-between;
 		min-width: 200px;
 		background-color: white;
+		box-shadow: 0 2px 7px lightgrey;
 
 		
 	}

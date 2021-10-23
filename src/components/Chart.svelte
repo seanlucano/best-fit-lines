@@ -81,34 +81,30 @@
 	$: userLinePredict = function(x) { return $userLineStore.m * x + $userLineStore.b;}
 
 	// responsiveness
-	onMount(resize);
-	afterUpdate( () => {
-		resize();
-	});
-
-	function resize() {
+	const resize = () => {
 		({ width, height } = svg.getBoundingClientRect());
+		console.log(width, height);
 	}
 
+	//onMount(() => resize);
 
-	//STATE CHANGE LOGIC
+	//afterUpdate( () => {
+	//	resize();
+	//});
 	
 	// changing datasets...will come back to this later
-
 	//tweening function
 	// const tweenedPoints = tweened(points, {
 	// 	delay: 0,
 	// 	duration: 750,
 	// 	easing: easings.cubicOut 
 	// });
-
 	// function setTween(key) {
 	// 	tweenedPoints.set(data[key]);
 	// }
-
 	// $: setTween(member)
 
-	// logic for seperating residuals slightly when both lines are present. 
+	// seperating residuals slightly when both lines are present 
 	let translating = false;
 	let singleTranslating = false;
 	
@@ -126,10 +122,7 @@
 		}
 	}
 
-	
-
-
-	// locig for highlighing related elements on click
+	// highlighing related elements on click
 	let highlightId;
 	let clickedElement;
 	const highlight = (event) => {
@@ -333,13 +326,15 @@
 		/* max-width: 960px; */
 		min-height: 350px;
 		/* max-height: 1200px; */
-		transition: flex 1s linear;
+		/* transition: flex 1s linear; */
+        box-shadow: 0 2px 7px lightgrey;
+        
 	}
 
 	svg {
 		width: 100%;
 		height: 100%;
-	}
+	} 
 
 	#controls {
 		display: grid;

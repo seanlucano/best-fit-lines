@@ -22,9 +22,10 @@ export const sequence = [
         prompt:`<p>We know that these two variables have a positive relationship.  But what if we would like to be more specific?</p>
         <p>What if you wanted to be able to use all of this data from different transactions to <strong>predict</strong> the cost of a a future transaction given the number of donuts purchased.</p>
         <p>That relationship could be expressed in the form of a <strong>line</stong>.</p>`,	
-         cta: `<p><strong>Using the circle handles at the end points of the line, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line</p>`,
+         cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line</p>`,
          showPoints: true,
-         showUserLine: true
+         showUserLine: true,
+         showUserLineControls: true
     },
     {	
         title: 'Good line...best line',
@@ -41,9 +42,9 @@ export const sequence = [
     {	title: 'What makes a good "fit"',
         prompt:`<p>So we know that there is such a thing as a <strong>best fit</strong> line, but what makes this line so...best?  <p><strong>How do we know this new line is any better than the line you drew?</strong></p>
         <p>Here's one way to start thinking about what makes a line's fit good or bad: <strong>you need to be able to measure the distance between each data point and the line.</strong></p>`,	
-        cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</p> <p> What do you think these distances represent?</p></strong>`,
+        cta: `<p><strong>Click any point to reveal the distance between that point and the lines.</strong></p> <p> What do you think these distances represent?</p>`,
         quiz: {
-            questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed cost and a predicted cost`,],
+            questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed and predicted costs`,],
             correct: 2,
             feedback: `The distance between a point and fitted line represents the difference between their cost (y) values. Click next to find out more.`
         },	
@@ -61,7 +62,7 @@ export const sequence = [
         prompt:` <p>Each points tells us about an <strong>observed</strong> transaction.  Our line, on the other hand, is making a <strong>prediction</strong> about a future transaction. If you pick any number of donuts (x), the line will tell us what cost (y) to expect.</p>
         <p>The distance between the <strong>observed</strong> cost and the line's <strong>predicted</strong> cost is the <strong>residual</strong> (or error) value for the line at each point.</p>	
         `,
-        cta: `<p><strong>Click on any point to see an explanation of the residual cost for each transaction.</strong></p><p>You can view the explanation for either line, or for both at the same time<p>`,
+        cta: `<p><strong>Click on any point to see an explanation of the residual cost for each transaction.</strong></p>`,
         showPoints: true,
         showUserLineControls: true,
         showRegressionLineControls: true,
@@ -71,13 +72,12 @@ export const sequence = [
         showPredictTooltip: true
     },
     {	title: 'Minimizing residuals',
-        prompt: `<p>Let's try to minimize the residuals, or errors, for your line.</p>`,
-        cta: `<strong><p>Try moving your line around to minimize the lengths of all residuals.</p></strong><p>To help you visualize the residuals, we will turn on all of the residual lines for all points.  You can still click any point to see the numeric value of a single point.</p>`,
-        cta: `<p><strong>As you move your line closer to a selected point, and decrease the residual value for that point, what happens to the residuals for all of the the other points?</p>`,
+        prompt: `<p>If you want your line to <strong>become the best fit line</strong>, you will need to minimize the residuals as much as possible.  To help you out, we can draw all of them on at the same time.</p>`,
+        cta: `<p><strong>Move your line closer to any selected point.</p> <p>As the residual value decreaes for that point, what happens to the lengths of the other residuals?</p>`,
         quiz: {
-            questions: [`The residuals increase`, `The residuals decrease`, `Some increase and some descrease`],
+            questions: [`The other residuals increase`, `The other residuals decrease`, `Some increase and some descrease`],
             correct: 2,
-            feedback: `It's sort of frustrating! Just looking at these residuals visually is not going to help us minimize all residuals. We might need a trustworthy mathematical procedure to help.`
+            feedback: `This is not so easy!  Simply drawing residual lengths on the chart is not doing the trick. We are going to need a trustworthy mathematical procedure, instead!`
     },	         
         showPoints: true,
         showUserLineControls: true,
@@ -92,8 +92,8 @@ export const sequence = [
     
     {	title:"The 'least squares' method",
         prompt:`<p>Let's use some math to help us minimize residuals. If we want to truly find the <strong>best fit</strong> line, we need to find a line that has the lowest possible <strong>sum of all residuals</strong>.  <p>However, since some residuals are negative and some are positive, we can <strong>square</strong> each one, making them all positive, before adding them all together.</p>
-        <p>The <strong>Squared Residuals</table> table to the right shows the squared residuals for each point, as well as the total <strong>sum of squared residuals (SSR)</strong> for the line.`,	
-         cta: `<p><strong>Try to achieve the lowest SSR you can.  You can click on any point or any value in the table see how they correspond.</strong></p><p>Note: the values you are seeing displayed are rounded for readability.`,
+        <p>The <strong>Squared Residuals</strong> table to the right shows the squared residuals for each point, as well as the total <strong>sum of squared residuals (SSR)</strong> for the line.`,	
+         cta: `<p><strong>Try to achieve the lowest SSR you can.</strong></p>  <p>You can click on any point or any value in the table see how they correspond.</p><p>Note: all values displayed are rounded for readability.`,
          showPoints: true,
          showUserLineControls: true,
          showUserLine: true,
