@@ -99,13 +99,13 @@
 
 	#prompt {
 		flex: 1;
+		padding: 1em;
 		overflow: scroll;
 	}
 
 	#narrative {
 		border-radius: .5em;
 		display: flex;
-		gap: .5em;
 		flex-direction: column;
 		justify-content: space-between;
 		min-width: 200px;
@@ -116,7 +116,7 @@
 	}
 
 	#userNav {
-		margin:.5em;
+		margin:1em;
 	}
 
 

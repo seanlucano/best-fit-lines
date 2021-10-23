@@ -20,9 +20,9 @@ export const sequence = [
     {	
         title: 'Imagine a line',
         prompt:`<p>We know that these two variables have a positive relationship.  But what if we would like to be more specific?</p>
-        <p>What if you wanted to be able to use all of this data from different transactions to <strong>predict</strong> the cost of a a future transaction given the number of donuts purchased.</p>
+        <p>What if you wanted to be able to use all of this data from different transactions to <strong>predict</strong> the cost of a future transaction given the number of donuts purchased.</p>
         <p>That relationship could be expressed in the form of a <strong>line</stong>.</p>`,	
-         cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line</p>`,
+         cta: `<p><strong>Using the circle handles, try to place a line that would best express the dollars to donuts relationship.</strong></p><p>Click "Next" when you are happy with your line.</p>`,
          showPoints: true,
          showUserLine: true,
          showUserLineControls: true
