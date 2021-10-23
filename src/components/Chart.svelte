@@ -86,11 +86,9 @@
 		console.log(width, height);
 	}
 
-	//onMount(() => resize);
+	onMount(() => resize() ); 
 
-	//afterUpdate( () => {
-	//	resize();
-	//});
+	afterUpdate( () => resize() );
 	
 	// changing datasets...will come back to this later
 	//tweening function
