@@ -38,6 +38,20 @@
 	// 	nextDisabled = true;
 	// }
 
+	//check for non supported browsers
+	const is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	const is_ie = navigator.userAgent.indexOf("MSIE ") > -1 || user_agent.indexOf("Trident/") > -1;
+		
+	if (is_safar || is_ie) {
+			alert(`
+This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
+			
+Support for Safari and touchscreen deivces is coming soon! 
+
+Please visit again with one of our supported browsers.`);
+        }
+
+
 
 </script>
 

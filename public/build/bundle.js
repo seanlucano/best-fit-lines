@@ -11833,21 +11833,21 @@ var app = (function () {
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
     			attr_dev(div0, "class", "svelte-19bkmia");
-    			add_location(div0, file, 52, 3, 1247);
+    			add_location(div0, file, 66, 3, 1740);
     			attr_dev(div1, "id", "userNav");
     			attr_dev(div1, "class", "svelte-19bkmia");
-    			add_location(div1, file, 59, 3, 1365);
+    			add_location(div1, file, 73, 3, 1858);
     			attr_dev(div2, "id", "narrative");
     			attr_dev(div2, "class", "svelte-19bkmia");
-    			add_location(div2, file, 51, 2, 1223);
+    			add_location(div2, file, 65, 2, 1716);
     			attr_dev(div3, "id", "interactive");
     			attr_dev(div3, "class", "svelte-19bkmia");
-    			add_location(div3, file, 64, 2, 1424);
+    			add_location(div3, file, 78, 2, 1917);
     			attr_dev(section, "id", "tutorial");
     			attr_dev(section, "class", "svelte-19bkmia");
-    			add_location(section, file, 50, 1, 1197);
+    			add_location(section, file, 64, 1, 1690);
     			attr_dev(main, "class", "svelte-19bkmia");
-    			add_location(main, file, 45, 0, 1141);
+    			add_location(main, file, 59, 0, 1634);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11932,6 +11932,39 @@ var app = (function () {
     		alert: "#fa5639"
     	};
 
+    	// let counter = 0;
+    	// LOGIC FOR THE COUNTER
+    	// advances/decremets the counter via clck events in UserNav
+    	// const navEvent = (event) => {
+    	// 	if (event.detail.type === 'next') $counter +=1;
+    	// 	if (event.detail.type === 'back') $counter -=1;
+    	// }
+    	// // sets counter via click events in ProgressBar
+    	// const setCounter = (event) => {
+    	// 	$counter = Number(event.target.id);
+    	// }
+    	// LOGIC FOR DISABLING ENABLING THE NEXT BUTTON
+    	// $: nextDisabled = sequence[counter].nextDisabled;
+    	// const proceed = () => {
+    	// 	nextDisabled = false;
+    	// }
+    	// const reset = () =>{
+    	// 	nextDisabled = true;
+    	// }
+    	//check for non supported browsers
+    	const is_safari = (/^((?!chrome|android).)*safari/i).test(navigator.userAgent);
+
+    	const is_ie = navigator.userAgent.indexOf("MSIE ") > -1 || user_agent.indexOf("Trident/") > -1;
+
+    	if (is_safar || is_ie) {
+    		alert(`
+This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
+			
+Support for Safari and touchscreen deivces is coming soon! 
+
+Please visit again with one of our supported browsers.`);
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -11948,6 +11981,8 @@ var app = (function () {
     		ProgressBar,
     		sequence,
     		counter,
+    		is_safari,
+    		is_ie,
     		$counter
     	});
 
