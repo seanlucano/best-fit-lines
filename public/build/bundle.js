@@ -11832,22 +11832,22 @@ var app = (function () {
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-19bkmia");
-    			add_location(div0, file, 66, 3, 1740);
+    			attr_dev(div0, "class", "svelte-yr89vb");
+    			add_location(div0, file, 66, 3, 1746);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-19bkmia");
-    			add_location(div1, file, 73, 3, 1858);
+    			attr_dev(div1, "class", "svelte-yr89vb");
+    			add_location(div1, file, 73, 3, 1864);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-19bkmia");
-    			add_location(div2, file, 65, 2, 1716);
+    			attr_dev(div2, "class", "svelte-yr89vb");
+    			add_location(div2, file, 65, 2, 1722);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-19bkmia");
-    			add_location(div3, file, 78, 2, 1917);
+    			attr_dev(div3, "class", "svelte-yr89vb");
+    			add_location(div3, file, 78, 2, 1923);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-19bkmia");
-    			add_location(section, file, 64, 1, 1690);
-    			attr_dev(main, "class", "svelte-19bkmia");
-    			add_location(main, file, 59, 0, 1634);
+    			attr_dev(section, "class", "svelte-yr89vb");
+    			add_location(section, file, 64, 1, 1696);
+    			attr_dev(main, "class", "svelte-yr89vb");
+    			add_location(main, file, 59, 0, 1640);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11952,11 +11952,11 @@ var app = (function () {
     	// 	nextDisabled = true;
     	// }
     	//check for non supported browsers
-    	const is_safari = (/^((?!chrome|android).)*safari/i).test(navigator.userAgent);
+    	const isSafari = (/^((?!chrome|android).)*safari/i).test(navigator.userAgent);
 
-    	const is_ie = navigator.userAgent.indexOf("MSIE ") > -1 || user_agent.indexOf("Trident/") > -1;
+    	const isIe = navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1;
 
-    	if (is_safar || is_ie) {
+    	if (isSafari || isIe) {
     		alert(`
 This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
 			
@@ -11981,8 +11981,8 @@ Please visit again with one of our supported browsers.`);
     		ProgressBar,
     		sequence,
     		counter,
-    		is_safari,
-    		is_ie,
+    		isSafari,
+    		isIe,
     		$counter
     	});
 

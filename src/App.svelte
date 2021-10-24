@@ -39,10 +39,10 @@
 	// }
 
 	//check for non supported browsers
-	const is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-	const is_ie = navigator.userAgent.indexOf("MSIE ") > -1 || user_agent.indexOf("Trident/") > -1;
+	const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	const isIe = navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1;
 		
-	if (is_safar || is_ie) {
+	if (isSafari || isIe) {
 			alert(`
 This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
 			
@@ -107,7 +107,7 @@ Please visit again with one of our supported browsers.`);
 		display: grid;
 		grid-template-columns: 1fr 1.5fr;
 		grid-gap: 1em;
-		height: calc(100vh - 6.6em);
+		height: calc(100vh - 5em);
 		margin: 1em;
 	}
 
