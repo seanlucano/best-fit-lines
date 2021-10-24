@@ -11833,21 +11833,21 @@ var app = (function () {
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
     			attr_dev(div0, "class", "svelte-yr89vb");
-    			add_location(div0, file, 66, 3, 1746);
+    			add_location(div0, file, 66, 3, 1760);
     			attr_dev(div1, "id", "userNav");
     			attr_dev(div1, "class", "svelte-yr89vb");
-    			add_location(div1, file, 73, 3, 1864);
+    			add_location(div1, file, 73, 3, 1878);
     			attr_dev(div2, "id", "narrative");
     			attr_dev(div2, "class", "svelte-yr89vb");
-    			add_location(div2, file, 65, 2, 1722);
+    			add_location(div2, file, 65, 2, 1736);
     			attr_dev(div3, "id", "interactive");
     			attr_dev(div3, "class", "svelte-yr89vb");
-    			add_location(div3, file, 78, 2, 1923);
+    			add_location(div3, file, 78, 2, 1937);
     			attr_dev(section, "id", "tutorial");
     			attr_dev(section, "class", "svelte-yr89vb");
-    			add_location(section, file, 64, 1, 1696);
+    			add_location(section, file, 64, 1, 1710);
     			attr_dev(main, "class", "svelte-yr89vb");
-    			add_location(main, file, 59, 0, 1640);
+    			add_location(main, file, 59, 0, 1654);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11960,9 +11960,9 @@ var app = (function () {
     		alert(`
 This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
 			
-Support for Safari and touchscreen deivces is coming soon! 
+Support for Safari, iPad, and other touchscreen deivces is coming soon! 
 
-Please visit again with one of our supported browsers.`);
+Please visit again on a supported browser with a mouse.`);
     	}
 
     	const writable_props = [];

@@ -46,9 +46,9 @@
 			alert(`
 This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
 			
-Support for Safari and touchscreen deivces is coming soon! 
+Support for Safari, iPad, and other touchscreen deivces is coming soon! 
 
-Please visit again with one of our supported browsers.`);
+Please visit again on a supported browser with a mouse.`);
         }
 
 
