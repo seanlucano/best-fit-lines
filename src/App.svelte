@@ -100,23 +100,24 @@
 	#prompt {
 		flex: 1;
 		padding: 1em;
-		overflow: scroll;
+		overflow: auto;
 	}
 
 	#narrative {
+		height: 100%;
+		overflow: hidden;
 		border-radius: .5em;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 		min-width: 200px;
 		background-color: white;
 		box-shadow: 0 2px 7px lightgrey;
 
-		
 	}
 
 	#userNav {
-		margin:1em;
+		padding:1em;
+		background-color: var(--background-color);
 	}
 
 

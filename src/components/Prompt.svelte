@@ -96,7 +96,6 @@
 	}
 
 	#cta {
-		margin-top: 1.5em;
 		padding: .75em 1.35em;
 		background-color:#DFEBF6;
 		border-radius: .5em;

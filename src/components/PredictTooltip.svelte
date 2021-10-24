@@ -1,6 +1,5 @@
 <script>
 
-export let chartWidth;
 export let x;
 export let y;
 export let showUserLine;

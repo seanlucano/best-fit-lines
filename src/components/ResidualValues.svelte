@@ -39,6 +39,7 @@
     span {
         text-align: right;
         min-width: 35px;
+        max-width: 40px;
         padding: 3px; 
         border-radius: 5px;
         font-weight: normal;
