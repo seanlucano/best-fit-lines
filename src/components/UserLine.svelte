@@ -90,7 +90,6 @@
 		stroke: var(--primary);
 		opacity: 1;
 		stroke-width: 2px;
-		z-index: 0;
 	}
 
 	circle {
@@ -100,7 +99,6 @@
 		fill: var(--primary);
 		stroke: var(--primary);
 		cursor: move;
-		z-index: 1;
 		transition: stroke-width .5s, fill-opacity .5s;
 	}
 

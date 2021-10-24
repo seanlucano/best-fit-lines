@@ -5992,19 +5992,19 @@ var app = (function () {
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[4]));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](20));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*yy*/ ctx[3]));
-    			attr_dev(line, "class", "svelte-12621x1");
+    			attr_dev(line, "class", "svelte-s9h7gi");
     			add_location(line, file$c, 56, 0, 1387);
     			attr_dev(circle0, "id", "1");
     			attr_dev(circle0, "cx", circle0_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x1));
     			attr_dev(circle0, "cy", circle0_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y1));
     			attr_dev(circle0, "r", /*r*/ ctx[5]);
-    			attr_dev(circle0, "class", "svelte-12621x1");
+    			attr_dev(circle0, "class", "svelte-s9h7gi");
     			add_location(circle0, file$c, 63, 0, 1493);
     			attr_dev(circle1, "id", "2");
     			attr_dev(circle1, "cx", circle1_cx_value = /*xScale*/ ctx[0](/*$userLineStore*/ ctx[2].x2));
     			attr_dev(circle1, "cy", circle1_cy_value = /*yScale*/ ctx[1](/*$userLineStore*/ ctx[2].y2));
     			attr_dev(circle1, "r", /*r*/ ctx[5]);
-    			attr_dev(circle1, "class", "svelte-12621x1");
+    			attr_dev(circle1, "class", "svelte-s9h7gi");
     			add_location(circle1, file$c, 72, 0, 1654);
     		},
     		l: function claim(nodes) {
@@ -7755,21 +7755,21 @@ var app = (function () {
     			attr_dev(line, "y1", line_y__value = /*yScale*/ ctx[1](/*y*/ ctx[10]));
     			attr_dev(line, "x2", line_x__value_1 = /*xScale*/ ctx[0](/*x*/ ctx[9]));
     			attr_dev(line, "y2", line_y__value_1 = /*yScale*/ ctx[1](/*predict*/ ctx[3](/*x*/ ctx[9])));
-    			attr_dev(line, "class", "svelte-d8p0y6");
+    			attr_dev(line, "class", "svelte-1fuygad");
     			add_location(line, file$6, 24, 12, 453);
     			attr_dev(rect, "transform", "translate(-5,-20)");
     			attr_dev(rect, "width", "50");
     			attr_dev(rect, "height", 30);
     			attr_dev(rect, "rx", "8");
-    			attr_dev(rect, "class", "svelte-d8p0y6");
+    			attr_dev(rect, "class", "svelte-1fuygad");
     			toggle_class(rect, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			add_location(rect, file$6, 34, 16, 781);
     			attr_dev(text_1, "id", /*i*/ ctx[12]);
-    			attr_dev(text_1, "class", "svelte-d8p0y6");
+    			attr_dev(text_1, "class", "svelte-1fuygad");
     			add_location(text_1, file$6, 41, 16, 1016);
     			attr_dev(g0, "transform", g0_transform_value = "translate(" + (/*xScale*/ ctx[0](/*x*/ ctx[9]) + /*offset*/ ctx[7]) + "," + /*yScale*/ ctx[1]((/*y*/ ctx[10] + /*predict*/ ctx[3](/*x*/ ctx[9])) / 2) + ")");
     			add_location(g0, file$6, 33, 12, 686);
-    			attr_dev(g1, "class", "svelte-d8p0y6");
+    			attr_dev(g1, "class", "svelte-1fuygad");
     			toggle_class(g1, "translated", /*translating*/ ctx[5]);
     			toggle_class(g1, "hidden", /*i*/ ctx[12] != /*highlightId*/ ctx[4]);
     			add_location(g1, file$6, 23, 8, 374);
@@ -7859,7 +7859,7 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", /*groupId*/ ctx[2]);
-    			attr_dev(g, "class", "svelte-d8p0y6");
+    			attr_dev(g, "class", "svelte-1fuygad");
     			add_location(g, file$6, 21, 0, 317);
     		},
     		l: function claim(nodes) {
@@ -9127,7 +9127,7 @@ var app = (function () {
     }
 
     // (143:1) {#if showUserLineControls}
-    function create_if_block_11(ctx) {
+    function create_if_block_12(ctx) {
     	let control;
     	let updating_lineChecked;
     	let updating_resChecked;
@@ -9213,7 +9213,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_11.name,
+    		id: create_if_block_12.name,
     		type: "if",
     		source: "(143:1) {#if showUserLineControls}",
     		ctx
@@ -9250,7 +9250,7 @@ var app = (function () {
     }
 
     // (156:1) {#if showRegressionLineControls}
-    function create_if_block_10(ctx) {
+    function create_if_block_11(ctx) {
     	let control;
     	let updating_lineChecked;
     	let updating_resChecked;
@@ -9336,7 +9336,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_10.name,
+    		id: create_if_block_11.name,
     		type: "if",
     		source: "(156:1) {#if showRegressionLineControls}",
     		ctx
@@ -9373,7 +9373,7 @@ var app = (function () {
     }
 
     // (171:0) {#if showResidualsTable}
-    function create_if_block_9(ctx) {
+    function create_if_block_10(ctx) {
     	let div;
     	let residualstable;
     	let current;
@@ -9397,7 +9397,7 @@ var app = (function () {
     			create_component(residualstable.$$.fragment);
     			attr_dev(div, "id", "residualsTable");
     			attr_dev(div, "class", "svelte-1ls3ayw");
-    			add_location(div, file$3, 171, 1, 4330);
+    			add_location(div, file$3, 171, 1, 4322);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -9430,7 +9430,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_9.name,
+    		id: create_if_block_10.name,
     		type: "if",
     		source: "(171:0) {#if showResidualsTable}",
     		ctx
@@ -9440,7 +9440,7 @@ var app = (function () {
     }
 
     // (183:0) {#if showPredictTooltip}
-    function create_if_block_7(ctx) {
+    function create_if_block_8(ctx) {
     	let card;
     	let current;
 
@@ -9485,7 +9485,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_8.name,
     		type: "if",
     		source: "(183:0) {#if showPredictTooltip}",
     		ctx
@@ -9579,7 +9579,7 @@ var app = (function () {
     }
 
     // (185:2) {#if highlightId === undefined}
-    function create_if_block_8(ctx) {
+    function create_if_block_9(ctx) {
     	let p;
     	let strong;
 
@@ -9588,11 +9588,11 @@ var app = (function () {
     			p = element("p");
     			strong = element("strong");
     			strong.textContent = "Click on any point to see an explanation of the the residual cost here.";
-    			add_location(strong, file$3, 185, 74, 4720);
+    			add_location(strong, file$3, 185, 74, 4712);
     			set_style(p, "background-color", "#DFEBF6");
     			set_style(p, "padding", "1em");
     			set_style(p, "border-radius", "5px");
-    			add_location(p, file$3, 185, 3, 4649);
+    			add_location(p, file$3, 185, 3, 4641);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -9608,7 +9608,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_8.name,
+    		id: create_if_block_9.name,
     		type: "if",
     		source: "(185:2) {#if highlightId === undefined}",
     		ctx
@@ -9623,7 +9623,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block_8, create_else_block];
+    	const if_block_creators = [create_if_block_9, create_else_block];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -9816,7 +9816,7 @@ var app = (function () {
     }
 
     // (224:3) {#if showPoints}
-    function create_if_block_6(ctx) {
+    function create_if_block_7(ctx) {
     	let each_1_anchor;
     	let current;
     	let each_value = points[/*$member*/ ctx[24]];
@@ -9902,7 +9902,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_6.name,
+    		id: create_if_block_7.name,
     		type: "if",
     		source: "(224:3) {#if showPoints}",
     		ctx
@@ -9971,12 +9971,11 @@ var app = (function () {
     }
 
     // (241:3) {#if showRegressionLine}
-    function create_if_block_3(ctx) {
-    	let if_block0_anchor;
+    function create_if_block_5(ctx) {
+    	let if_block_anchor;
     	let regressionline;
-    	let if_block1_anchor;
     	let current;
-    	let if_block0 = /*showRegressionResiduals*/ ctx[6] && create_if_block_5(ctx);
+    	let if_block = /*showRegressionResiduals*/ ctx[6] && create_if_block_6(ctx);
 
     	regressionline = new RegressionLine({
     			props: {
@@ -9986,43 +9985,37 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_4(ctx);
-
     	const block = {
     		c: function create() {
-    			if (if_block0) if_block0.c();
-    			if_block0_anchor = empty();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
     			create_component(regressionline.$$.fragment);
-    			if (if_block1) if_block1.c();
-    			if_block1_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			if (if_block0) if_block0.m(target, anchor);
-    			insert_dev(target, if_block0_anchor, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
     			mount_component(regressionline, target, anchor);
-    			if (if_block1) if_block1.m(target, anchor);
-    			insert_dev(target, if_block1_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if (/*showRegressionResiduals*/ ctx[6]) {
-    				if (if_block0) {
-    					if_block0.p(ctx, dirty);
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
 
     					if (dirty[0] & /*showRegressionResiduals*/ 64) {
-    						transition_in(if_block0, 1);
+    						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_5(ctx);
-    					if_block0.c();
-    					transition_in(if_block0, 1);
-    					if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
+    					if_block = create_if_block_6(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
-    			} else if (if_block0) {
+    			} else if (if_block) {
     				group_outros();
 
-    				transition_out(if_block0, 1, 1, () => {
-    					if_block0 = null;
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
     				});
 
     				check_outros();
@@ -10032,55 +10025,28 @@ var app = (function () {
     			if (dirty[0] & /*xScale*/ 131072) regressionline_changes.xScale = /*xScale*/ ctx[17];
     			if (dirty[0] & /*yScale*/ 65536) regressionline_changes.yScale = /*yScale*/ ctx[16];
     			regressionline.$set(regressionline_changes);
-
-    			if (/*showSingleResidual*/ ctx[4]) {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
-
-    					if (dirty[0] & /*showSingleResidual*/ 16) {
-    						transition_in(if_block1, 1);
-    					}
-    				} else {
-    					if_block1 = create_if_block_4(ctx);
-    					if_block1.c();
-    					transition_in(if_block1, 1);
-    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-    				}
-    			} else if (if_block1) {
-    				group_outros();
-
-    				transition_out(if_block1, 1, 1, () => {
-    					if_block1 = null;
-    				});
-
-    				check_outros();
-    			}
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(if_block0);
+    			transition_in(if_block);
     			transition_in(regressionline.$$.fragment, local);
-    			transition_in(if_block1);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(if_block0);
+    			transition_out(if_block);
     			transition_out(regressionline.$$.fragment, local);
-    			transition_out(if_block1);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (if_block0) if_block0.d(detaching);
-    			if (detaching) detach_dev(if_block0_anchor);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     			destroy_component(regressionline, detaching);
-    			if (if_block1) if_block1.d(detaching);
-    			if (detaching) detach_dev(if_block1_anchor);
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3.name,
+    		id: create_if_block_5.name,
     		type: "if",
     		source: "(241:3) {#if showRegressionLine}",
     		ctx
@@ -10089,8 +10055,8 @@ var app = (function () {
     	return block;
     }
 
-    // (243:4) {#if showRegressionResiduals}
-    function create_if_block_5(ctx) {
+    // (242:4) {#if showRegressionResiduals}
+    function create_if_block_6(ctx) {
     	let residuals;
     	let current;
 
@@ -10143,85 +10109,21 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5.name,
+    		id: create_if_block_6.name,
     		type: "if",
-    		source: "(243:4) {#if showRegressionResiduals}",
+    		source: "(242:4) {#if showRegressionResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (255:4) {#if showSingleResidual}
-    function create_if_block_4(ctx) {
-    	let singleresidual;
-    	let current;
-
-    	singleresidual = new SingleResidual({
-    			props: {
-    				translating: /*singleTranslating*/ ctx[10],
-    				highlightId: /*highlightId*/ ctx[11],
-    				groupId: "regressionLineResidual",
-    				xScale: /*xScale*/ ctx[17],
-    				yScale: /*yScale*/ ctx[16],
-    				points: points[/*$member*/ ctx[24]],
-    				predict: /*$regressionLineStore*/ ctx[25].predict
-    			},
-    			$$inline: true
-    		});
-
-    	singleresidual.$on("click", /*highlight*/ ctx[27]);
-
-    	const block = {
-    		c: function create() {
-    			create_component(singleresidual.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(singleresidual, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const singleresidual_changes = {};
-    			if (dirty[0] & /*singleTranslating*/ 1024) singleresidual_changes.translating = /*singleTranslating*/ ctx[10];
-    			if (dirty[0] & /*highlightId*/ 2048) singleresidual_changes.highlightId = /*highlightId*/ ctx[11];
-    			if (dirty[0] & /*xScale*/ 131072) singleresidual_changes.xScale = /*xScale*/ ctx[17];
-    			if (dirty[0] & /*yScale*/ 65536) singleresidual_changes.yScale = /*yScale*/ ctx[16];
-    			if (dirty[0] & /*$member*/ 16777216) singleresidual_changes.points = points[/*$member*/ ctx[24]];
-    			if (dirty[0] & /*$regressionLineStore*/ 33554432) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[25].predict;
-    			singleresidual.$set(singleresidual_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(singleresidual.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(singleresidual.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(singleresidual, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_4.name,
-    		type: "if",
-    		source: "(255:4) {#if showSingleResidual}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (270:3) {#if showUserLine}
-    function create_if_block$1(ctx) {
-    	let if_block0_anchor;
+    // (258:3) {#if showUserLine}
+    function create_if_block_3(ctx) {
+    	let if_block_anchor;
     	let userline;
-    	let if_block1_anchor;
     	let current;
-    	let if_block0 = /*showUserResiduals*/ ctx[5] && create_if_block_2(ctx);
+    	let if_block = /*showUserResiduals*/ ctx[5] && create_if_block_4(ctx);
 
     	userline = new UserLine({
     			props: {
@@ -10232,43 +10134,37 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block1 = /*showSingleResidual*/ ctx[4] && create_if_block_1(ctx);
-
     	const block = {
     		c: function create() {
-    			if (if_block0) if_block0.c();
-    			if_block0_anchor = empty();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
     			create_component(userline.$$.fragment);
-    			if (if_block1) if_block1.c();
-    			if_block1_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			if (if_block0) if_block0.m(target, anchor);
-    			insert_dev(target, if_block0_anchor, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
     			mount_component(userline, target, anchor);
-    			if (if_block1) if_block1.m(target, anchor);
-    			insert_dev(target, if_block1_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if (/*showUserResiduals*/ ctx[5]) {
-    				if (if_block0) {
-    					if_block0.p(ctx, dirty);
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
 
     					if (dirty[0] & /*showUserResiduals*/ 32) {
-    						transition_in(if_block0, 1);
+    						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_2(ctx);
-    					if_block0.c();
-    					transition_in(if_block0, 1);
-    					if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
+    					if_block = create_if_block_4(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
-    			} else if (if_block0) {
+    			} else if (if_block) {
     				group_outros();
 
-    				transition_out(if_block0, 1, 1, () => {
-    					if_block0 = null;
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
     				});
 
     				check_outros();
@@ -10279,65 +10175,38 @@ var app = (function () {
     			if (dirty[0] & /*yScale*/ 65536) userline_changes.yScale = /*yScale*/ ctx[16];
     			if (dirty[0] & /*svg*/ 256) userline_changes.svg = /*svg*/ ctx[8];
     			userline.$set(userline_changes);
-
-    			if (/*showSingleResidual*/ ctx[4]) {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
-
-    					if (dirty[0] & /*showSingleResidual*/ 16) {
-    						transition_in(if_block1, 1);
-    					}
-    				} else {
-    					if_block1 = create_if_block_1(ctx);
-    					if_block1.c();
-    					transition_in(if_block1, 1);
-    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-    				}
-    			} else if (if_block1) {
-    				group_outros();
-
-    				transition_out(if_block1, 1, 1, () => {
-    					if_block1 = null;
-    				});
-
-    				check_outros();
-    			}
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(if_block0);
+    			transition_in(if_block);
     			transition_in(userline.$$.fragment, local);
-    			transition_in(if_block1);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(if_block0);
+    			transition_out(if_block);
     			transition_out(userline.$$.fragment, local);
-    			transition_out(if_block1);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (if_block0) if_block0.d(detaching);
-    			if (detaching) detach_dev(if_block0_anchor);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     			destroy_component(userline, detaching);
-    			if (if_block1) if_block1.d(detaching);
-    			if (detaching) detach_dev(if_block1_anchor);
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block_3.name,
     		type: "if",
-    		source: "(270:3) {#if showUserLine}",
+    		source: "(258:3) {#if showUserLine}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (271:4) {#if showUserResiduals}
-    function create_if_block_2(ctx) {
+    // (259:4) {#if showUserResiduals}
+    function create_if_block_4(ctx) {
     	let residuals;
     	let current;
 
@@ -10390,17 +10259,117 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2.name,
+    		id: create_if_block_4.name,
     		type: "if",
-    		source: "(271:4) {#if showUserResiduals}",
+    		source: "(259:4) {#if showUserResiduals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (285:4) {#if showSingleResidual}
-    function create_if_block_1(ctx) {
+    // (276:3) {#if showSingleResidual}
+    function create_if_block$1(ctx) {
+    	let if_block0_anchor;
+    	let if_block1_anchor;
+    	let current;
+    	let if_block0 = /*showUserLine*/ ctx[3] && create_if_block_2(ctx);
+    	let if_block1 = /*showRegressionLine*/ ctx[2] && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block0) if_block0.c();
+    			if_block0_anchor = empty();
+    			if (if_block1) if_block1.c();
+    			if_block1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block0) if_block0.m(target, anchor);
+    			insert_dev(target, if_block0_anchor, anchor);
+    			if (if_block1) if_block1.m(target, anchor);
+    			insert_dev(target, if_block1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*showUserLine*/ ctx[3]) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+
+    					if (dirty[0] & /*showUserLine*/ 8) {
+    						transition_in(if_block0, 1);
+    					}
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (/*showRegressionLine*/ ctx[2]) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+
+    					if (dirty[0] & /*showRegressionLine*/ 4) {
+    						transition_in(if_block1, 1);
+    					}
+    				} else {
+    					if_block1 = create_if_block_1(ctx);
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+    				}
+    			} else if (if_block1) {
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block0);
+    			transition_out(if_block1);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block0) if_block0.d(detaching);
+    			if (detaching) detach_dev(if_block0_anchor);
+    			if (if_block1) if_block1.d(detaching);
+    			if (detaching) detach_dev(if_block1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(276:3) {#if showSingleResidual}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (277:4) {#if showUserLine}
+    function create_if_block_2(ctx) {
+    	let g;
     	let singleresidual;
     	let current;
 
@@ -10421,10 +10390,14 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			g = svg_element("g");
     			create_component(singleresidual.$$.fragment);
+    			attr_dev(g, "class", "userLine svelte-1ls3ayw");
+    			add_location(g, file$3, 277, 5, 7009);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(singleresidual, target, anchor);
+    			insert_dev(target, g, anchor);
+    			mount_component(singleresidual, g, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -10447,7 +10420,77 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(singleresidual, detaching);
+    			if (detaching) detach_dev(g);
+    			destroy_component(singleresidual);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(277:4) {#if showUserLine}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (291:4) {#if showRegressionLine}
+    function create_if_block_1(ctx) {
+    	let g;
+    	let singleresidual;
+    	let current;
+
+    	singleresidual = new SingleResidual({
+    			props: {
+    				translating: /*singleTranslating*/ ctx[10],
+    				highlightId: /*highlightId*/ ctx[11],
+    				groupId: "regressionLineResidual",
+    				xScale: /*xScale*/ ctx[17],
+    				yScale: /*yScale*/ ctx[16],
+    				points: points[/*$member*/ ctx[24]],
+    				predict: /*$regressionLineStore*/ ctx[25].predict
+    			},
+    			$$inline: true
+    		});
+
+    	singleresidual.$on("click", /*highlight*/ ctx[27]);
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			create_component(singleresidual.$$.fragment);
+    			attr_dev(g, "class", "regressionLine svelte-1ls3ayw");
+    			add_location(g, file$3, 291, 5, 7333);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			mount_component(singleresidual, g, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const singleresidual_changes = {};
+    			if (dirty[0] & /*singleTranslating*/ 1024) singleresidual_changes.translating = /*singleTranslating*/ ctx[10];
+    			if (dirty[0] & /*highlightId*/ 2048) singleresidual_changes.highlightId = /*highlightId*/ ctx[11];
+    			if (dirty[0] & /*xScale*/ 131072) singleresidual_changes.xScale = /*xScale*/ ctx[17];
+    			if (dirty[0] & /*yScale*/ 65536) singleresidual_changes.yScale = /*yScale*/ ctx[16];
+    			if (dirty[0] & /*$member*/ 16777216) singleresidual_changes.points = points[/*$member*/ ctx[24]];
+    			if (dirty[0] & /*$regressionLineStore*/ 33554432) singleresidual_changes.predict = /*$regressionLineStore*/ ctx[25].predict;
+    			singleresidual.$set(singleresidual_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(singleresidual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(singleresidual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    			destroy_component(singleresidual);
     		}
     	};
 
@@ -10455,7 +10498,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(285:4) {#if showSingleResidual}",
+    		source: "(291:4) {#if showRegressionLine}",
     		ctx
     	});
 
@@ -10484,14 +10527,15 @@ var app = (function () {
     	let g2;
     	let g3;
     	let g4;
+    	let g5;
     	let div1_resize_listener;
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*showUserLineControls*/ ctx[22] && create_if_block_11(ctx);
-    	let if_block1 = /*showRegressionLineControls*/ ctx[21] && create_if_block_10(ctx);
-    	let if_block2 = /*showResidualsTable*/ ctx[18] && create_if_block_9(ctx);
-    	let if_block3 = /*showPredictTooltip*/ ctx[19] && create_if_block_7(ctx);
+    	let if_block0 = /*showUserLineControls*/ ctx[22] && create_if_block_12(ctx);
+    	let if_block1 = /*showRegressionLineControls*/ ctx[21] && create_if_block_11(ctx);
+    	let if_block2 = /*showResidualsTable*/ ctx[18] && create_if_block_10(ctx);
+    	let if_block3 = /*showPredictTooltip*/ ctx[19] && create_if_block_8(ctx);
     	let each_value_2 = /*yTicks*/ ctx[14];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
@@ -10516,9 +10560,10 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block4 = /*showPoints*/ ctx[23] && create_if_block_6(ctx);
-    	let if_block5 = /*showRegressionLine*/ ctx[2] && create_if_block_3(ctx);
-    	let if_block6 = /*showUserLine*/ ctx[3] && create_if_block$1(ctx);
+    	let if_block4 = /*showPoints*/ ctx[23] && create_if_block_7(ctx);
+    	let if_block5 = /*showRegressionLine*/ ctx[2] && create_if_block_5(ctx);
+    	let if_block6 = /*showUserLine*/ ctx[3] && create_if_block_3(ctx);
+    	let if_block7 = /*showSingleResidual*/ ctx[4] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -10557,34 +10602,38 @@ var app = (function () {
     			if (if_block5) if_block5.c();
     			g4 = svg_element("g");
     			if (if_block6) if_block6.c();
+    			g5 = svg_element("g");
+    			if (if_block7) if_block7.c();
     			attr_dev(div0, "id", "controls");
     			attr_dev(div0, "class", "svelte-1ls3ayw");
-    			add_location(div0, file$3, 141, 0, 3562);
-    			add_location(text0, file$3, 210, 12, 5524);
+    			add_location(div0, file$3, 141, 0, 3554);
+    			add_location(text0, file$3, 210, 12, 5516);
     			attr_dev(text1, "text-anchor", "middle");
     			attr_dev(text1, "transform", text1_transform_value = "translate(20," + (/*height*/ ctx[1] / 2 - 20) + ") rotate(-90)");
-    			add_location(text1, file$3, 209, 3, 5431);
+    			add_location(text1, file$3, 209, 3, 5423);
     			attr_dev(g0, "class", "axis y-axis");
-    			add_location(g0, file$3, 205, 2, 5200);
-    			add_location(text2, file$3, 219, 10, 5874);
+    			add_location(g0, file$3, 205, 2, 5192);
+    			add_location(text2, file$3, 219, 10, 5866);
     			set_style(text3, "text-anchor", "middle");
     			attr_dev(text3, "x", text3_x_value = /*width*/ ctx[0] / 2 + 10);
     			attr_dev(text3, "y", text3_y_value = /*height*/ ctx[1] - /*margins*/ ctx[26].bottom / 2 + 8);
-    			add_location(text3, file$3, 218, 3, 5779);
+    			add_location(text3, file$3, 218, 3, 5771);
     			attr_dev(g1, "class", "axis x-axis");
-    			add_location(g1, file$3, 214, 2, 5544);
+    			add_location(g1, file$3, 214, 2, 5536);
     			attr_dev(g2, "class", "points");
-    			add_location(g2, file$3, 222, 2, 5893);
+    			add_location(g2, file$3, 222, 2, 5885);
     			attr_dev(g3, "class", "regressionLine svelte-1ls3ayw");
-    			add_location(g3, file$3, 239, 2, 6173);
+    			add_location(g3, file$3, 239, 2, 6165);
     			attr_dev(g4, "class", "userLine svelte-1ls3ayw");
-    			add_location(g4, file$3, 268, 2, 6862);
+    			add_location(g4, file$3, 256, 2, 6561);
+    			attr_dev(g5, "class", "singleResiduals");
+    			add_location(g5, file$3, 274, 2, 6925);
     			attr_dev(svg_1, "class", "svelte-1ls3ayw");
-    			add_location(svg_1, file$3, 203, 1, 5140);
+    			add_location(svg_1, file$3, 203, 1, 5132);
     			attr_dev(div1, "id", "chart");
     			attr_dev(div1, "class", "svelte-1ls3ayw");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[35].call(div1));
-    			add_location(div1, file$3, 201, 0, 5068);
+    			add_location(div1, file$3, 201, 0, 5060);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10625,6 +10674,8 @@ var app = (function () {
     			if (if_block5) if_block5.m(g3, null);
     			append_dev(svg_1, g4);
     			if (if_block6) if_block6.m(g4, null);
+    			append_dev(svg_1, g5);
+    			if (if_block7) if_block7.m(g5, null);
     			/*svg_1_binding*/ ctx[34](svg_1);
     			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[35].bind(div1));
     			current = true;
@@ -10643,7 +10694,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_11(ctx);
+    					if_block0 = create_if_block_12(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div0, t0);
@@ -10666,7 +10717,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block_10(ctx);
+    					if_block1 = create_if_block_11(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div0, null);
@@ -10689,7 +10740,7 @@ var app = (function () {
     						transition_in(if_block2, 1);
     					}
     				} else {
-    					if_block2 = create_if_block_9(ctx);
+    					if_block2 = create_if_block_10(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
     					if_block2.m(t2.parentNode, t2);
@@ -10712,7 +10763,7 @@ var app = (function () {
     						transition_in(if_block3, 1);
     					}
     				} else {
-    					if_block3 = create_if_block_7(ctx);
+    					if_block3 = create_if_block_8(ctx);
     					if_block3.c();
     					transition_in(if_block3, 1);
     					if_block3.m(t3.parentNode, t3);
@@ -10803,7 +10854,7 @@ var app = (function () {
     						transition_in(if_block4, 1);
     					}
     				} else {
-    					if_block4 = create_if_block_6(ctx);
+    					if_block4 = create_if_block_7(ctx);
     					if_block4.c();
     					transition_in(if_block4, 1);
     					if_block4.m(g2, null);
@@ -10826,7 +10877,7 @@ var app = (function () {
     						transition_in(if_block5, 1);
     					}
     				} else {
-    					if_block5 = create_if_block_3(ctx);
+    					if_block5 = create_if_block_5(ctx);
     					if_block5.c();
     					transition_in(if_block5, 1);
     					if_block5.m(g3, null);
@@ -10849,7 +10900,7 @@ var app = (function () {
     						transition_in(if_block6, 1);
     					}
     				} else {
-    					if_block6 = create_if_block$1(ctx);
+    					if_block6 = create_if_block_3(ctx);
     					if_block6.c();
     					transition_in(if_block6, 1);
     					if_block6.m(g4, null);
@@ -10859,6 +10910,29 @@ var app = (function () {
 
     				transition_out(if_block6, 1, 1, () => {
     					if_block6 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (/*showSingleResidual*/ ctx[4]) {
+    				if (if_block7) {
+    					if_block7.p(ctx, dirty);
+
+    					if (dirty[0] & /*showSingleResidual*/ 16) {
+    						transition_in(if_block7, 1);
+    					}
+    				} else {
+    					if_block7 = create_if_block$1(ctx);
+    					if_block7.c();
+    					transition_in(if_block7, 1);
+    					if_block7.m(g5, null);
+    				}
+    			} else if (if_block7) {
+    				group_outros();
+
+    				transition_out(if_block7, 1, 1, () => {
+    					if_block7 = null;
     				});
 
     				check_outros();
@@ -10882,6 +10956,7 @@ var app = (function () {
     			transition_in(if_block4);
     			transition_in(if_block5);
     			transition_in(if_block6);
+    			transition_in(if_block7);
     			current = true;
     		},
     		o: function outro(local) {
@@ -10904,6 +10979,7 @@ var app = (function () {
     			transition_out(if_block4);
     			transition_out(if_block5);
     			transition_out(if_block6);
+    			transition_out(if_block7);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -10921,6 +10997,7 @@ var app = (function () {
     			if (if_block4) if_block4.d();
     			if (if_block5) if_block5.d();
     			if (if_block6) if_block6.d();
+    			if (if_block7) if_block7.d();
     			/*svg_1_binding*/ ctx[34](null);
     			div1_resize_listener();
     			mounted = false;
@@ -11174,7 +11251,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty[0] & /*height*/ 2) {
-    			$$invalidate(16, yScale = linear().domain([0, 16]).range([height - margins.bottom, margins.top]));
+    			$$invalidate(16, yScale = linear().domain([0, 14]).range([height - margins.bottom, margins.top]));
     		}
 
     		if ($$self.$$.dirty[0] & /*width*/ 1) {
@@ -11185,9 +11262,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty[0] & /*height*/ 2) {
-    			$$invalidate(14, yTicks = height > 180
-    			? [0, 2, 4, 6, 8, 10, 12, 14, 16]
-    			: [0, 4, 8, 16]);
+    			$$invalidate(14, yTicks = height > 180 ? [0, 2, 4, 6, 8, 10, 12, 14] : [0, 4, 8]);
     		}
 
     		if ($$self.$$.dirty[0] & /*$userLineStore*/ 128) {
@@ -11361,7 +11436,7 @@ var app = (function () {
     			i = element("i");
     			i.textContent = "done";
     			attr_dev(i, "id", /*i*/ ctx[8]);
-    			attr_dev(i, "class", "material-icons-round svelte-gknwsy");
+    			attr_dev(i, "class", "material-icons-round svelte-d5m0rk");
     			add_location(i, file$1, 38, 24, 992);
     		},
     		m: function mount(target, anchor) {
@@ -11416,7 +11491,7 @@ var app = (function () {
     			t = space();
     			attr_dev(li, "id", /*i*/ ctx[8]);
     			set_style(li, "width", circleWidth + "px");
-    			attr_dev(li, "class", "svelte-gknwsy");
+    			attr_dev(li, "class", "svelte-d5m0rk");
     			toggle_class(li, "completed", /*i*/ ctx[8] < /*currentStep*/ ctx[0]);
     			toggle_class(li, "current", /*i*/ ctx[8] === /*currentStep*/ ctx[0]);
     			add_location(li, file$1, 36, 12, 789);
@@ -11527,12 +11602,12 @@ var app = (function () {
     			attr_dev(link, "rel", "stylesheet");
     			add_location(link, file$1, 28, 6, 549);
     			progress_1.value = /*$progress*/ ctx[1];
-    			attr_dev(progress_1, "class", "svelte-gknwsy");
+    			attr_dev(progress_1, "class", "svelte-d5m0rk");
     			add_location(progress_1, file$1, 34, 8, 704);
-    			attr_dev(ol, "class", "svelte-gknwsy");
+    			attr_dev(ol, "class", "svelte-d5m0rk");
     			add_location(ol, file$1, 33, 4, 691);
     			attr_dev(div, "id", "progressBar");
-    			attr_dev(div, "class", "svelte-gknwsy");
+    			attr_dev(div, "class", "svelte-d5m0rk");
     			add_location(div, file$1, 32, 0, 664);
     		},
     		l: function claim(nodes) {

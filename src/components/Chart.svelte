@@ -65,7 +65,7 @@
 		.range([margins.left, width - margins.right]);
 
 	$: yScale = scaleLinear()
-		.domain([0, 16])
+		.domain([0, 14])
 		.range([height - margins.bottom, margins.top]);
 
 	// ticks
@@ -74,8 +74,8 @@
 		[0, 4, 8, 16];
 
 	$: yTicks = height > 180 ?
-	[0, 2, 4, 6, 8, 10, 12, 14, 16] :
-		[0, 4, 8, 16];
+	[0, 2, 4, 6, 8, 10, 12, 14] :
+		[0, 4, 8];
 
 
 	// based on the user line, returns a y value for a given x value. Re-runs anytime userLineStore changes
@@ -239,7 +239,6 @@
 
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
-				
 				{#if showRegressionResiduals}
 					<Residuals
 						{translating}
@@ -252,17 +251,6 @@
 					/>
 				{/if}
 				<RegressionLine {xScale} {yScale}/>
-				{#if showSingleResidual}
-				<SingleResidual
-					translating={singleTranslating}
-					on:click={highlight}
-					{highlightId}
-					groupId='regressionLineResidual'
-					{xScale} {yScale} 
-					points={points[$member]} 
-					predict={$regressionLineStore.predict}   
-				/>
-				{/if}
 			{/if}
 		</g>
 
@@ -281,19 +269,43 @@
 				{/if}
 			
 				<UserLine {xScale} {yScale} {svg} />
-				
-				{#if showSingleResidual}
-					<SingleResidual
-						translating={singleTranslating}
-						on:click={highlight}
-						{highlightId}
-						groupId='userLineResidual'
-						{xScale} {yScale} 
-						points={points[$member]} 
-						predict={userLinePredict}   
-					/>
-				{/if}
+	
 			{/if}
+		</g>
+		<g class='singleResiduals'>
+			{#if showSingleResidual}
+				{#if showUserLine}
+					<g class='userLine'>
+						<SingleResidual
+							translating={singleTranslating}
+							on:click={highlight}
+							{highlightId}
+							groupId='userLineResidual'
+							{xScale} {yScale} 
+							points={points[$member]} 
+							predict={userLinePredict}   
+						/>
+					</g>
+				{/if}
+
+				{#if showRegressionLine}
+					<g class='regressionLine'>
+						<SingleResidual
+							translating={singleTranslating}
+							on:click={highlight}
+							{highlightId}
+							groupId='regressionLineResidual'
+							{xScale} {yScale} 
+							points={points[$member]} 
+							predict={$regressionLineStore.predict}   
+						/>
+					</g>
+				{/if}
+			
+			{/if}
+
+
+
 		</g>
 	</svg>
 	

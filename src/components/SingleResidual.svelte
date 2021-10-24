@@ -68,6 +68,10 @@
         stroke: none;
     }
 
+    rect, text {
+        z-index: 2;
+    }
+
     .hidden {
         opacity: 0;
         visibility: hidden;
