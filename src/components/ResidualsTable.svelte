@@ -20,7 +20,7 @@ export let bestFitLinePredict;
 
 <Card>
     <div class='title'>
-      <span>Squared Residuals</span> 
+      <span><strong>Squared Residuals</strong></span> 
     <span><strong>SSR</strong></span></div>
     <div id='user' class="residualsRow">
       {#if showUserResiduals}
