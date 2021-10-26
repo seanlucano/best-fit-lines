@@ -46,7 +46,7 @@ export const sequence = [
         quiz: {
             questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed and predicted costs`,],
             correct: 2,
-            feedback: `The distance between a point and fitted line represents the difference between their cost (y) values. Click next to find out more.`
+            feedback: `Remember, points represent observed values, and the line represents a predicted value.  So the verticle distance represents the difference between the two cost values.`
         },	
         showPoints: true,
         showUserLine: true,
