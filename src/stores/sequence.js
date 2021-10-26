@@ -46,7 +46,7 @@ export const sequence = [
         quiz: {
             questions: [`The cost of a future transaction`, `The cost of an observed transaction`, `The difference between the observed and predicted costs`,],
             correct: 2,
-            feedback: `Remember, points represent observed values, and the line represents a predicted value.  So the verticle distance between the two represents the difference between the two (y) cost values for the given (x) donut values.`
+            feedback: `Remember, points represent observed values, and the line represents a predicted value.  So the verticle distance between the two represents the difference between the (y) cost values for a given (x) number of donuts.`
         },	
         showPoints: true,
         showUserLine: true,
