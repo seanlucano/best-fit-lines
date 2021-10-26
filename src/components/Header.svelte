@@ -21,9 +21,12 @@
     
     img {
         height: var(--header-height);
+        width: 5.3em;
     }
     
     header {
+    color: #525151;
+    font-weight: bold;
     display: flex;
     gap: 1em;
     justify-content: space-between;

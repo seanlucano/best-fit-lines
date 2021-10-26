@@ -11377,14 +11377,14 @@ var app = (function () {
     			span1 = element("span");
     			span1.textContent = "Best fit lines";
     			if (!src_url_equal(img.src, img_src_value = "images/lsl_logo.png")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "class", "svelte-c1ivjg");
+    			attr_dev(img, "class", "svelte-12jef6z");
     			add_location(img, file$2, 6, 8, 63);
     			add_location(span0, file$2, 7, 8, 103);
-    			attr_dev(div, "class", "course svelte-c1ivjg");
+    			attr_dev(div, "class", "course svelte-12jef6z");
     			add_location(div, file$2, 5, 4, 34);
     			attr_dev(span1, "class", "title");
     			add_location(span1, file$2, 9, 4, 157);
-    			attr_dev(header, "class", "svelte-c1ivjg");
+    			attr_dev(header, "class", "svelte-12jef6z");
     			add_location(header, file$2, 4, 0, 21);
     		},
     		l: function claim(nodes) {
