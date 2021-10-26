@@ -58,6 +58,7 @@ Please visit again on a supported browser with a mouse.`);
 
 
 <main>
+	<Header />
 	<ProgressBar 
 		currentStep={$counter} 
 		/>
@@ -95,7 +96,7 @@ Please visit again on a supported browser with a mouse.`);
 	--black: #000;
 	--emphasis: #4433FF;
 	--heading: #2C0B8E;
-	--header-height: .5em;
+	--header-height: 2.5em;
 	--interactive: #DFEBF6;
 	}
 
@@ -107,7 +108,7 @@ Please visit again on a supported browser with a mouse.`);
 		display: grid;
 		grid-template-columns: 1fr 1.5fr;
 		grid-gap: 1em;
-		height: calc(100vh - 5em);
+		height: calc(100vh - 6em - var(--header-height));
 		margin: 1em;
 	}
 

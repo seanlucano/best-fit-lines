@@ -31,6 +31,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -11349,17 +11357,34 @@ var app = (function () {
 
     function create_fragment$2(ctx) {
     	let header;
-    	let nav;
-    	let ul;
+    	let div;
+    	let img;
+    	let img_src_value;
+    	let t0;
+    	let span0;
+    	let t2;
+    	let span1;
 
     	const block = {
     		c: function create() {
     			header = element("header");
-    			nav = element("nav");
-    			ul = element("ul");
-    			add_location(ul, file$2, 6, 8, 48);
-    			add_location(nav, file$2, 5, 4, 34);
-    			attr_dev(header, "class", "svelte-1nwddp");
+    			div = element("div");
+    			img = element("img");
+    			t0 = space();
+    			span0 = element("span");
+    			span0.textContent = "MSQM Statistical Modeling";
+    			t2 = space();
+    			span1 = element("span");
+    			span1.textContent = "Best fit lines";
+    			if (!src_url_equal(img.src, img_src_value = "images/lsl_logo.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "svelte-c1ivjg");
+    			add_location(img, file$2, 6, 8, 63);
+    			add_location(span0, file$2, 7, 8, 103);
+    			attr_dev(div, "class", "course svelte-c1ivjg");
+    			add_location(div, file$2, 5, 4, 34);
+    			attr_dev(span1, "class", "title");
+    			add_location(span1, file$2, 9, 4, 157);
+    			attr_dev(header, "class", "svelte-c1ivjg");
     			add_location(header, file$2, 4, 0, 21);
     		},
     		l: function claim(nodes) {
@@ -11367,8 +11392,12 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, header, anchor);
-    			append_dev(header, nav);
-    			append_dev(nav, ul);
+    			append_dev(header, div);
+    			append_dev(div, img);
+    			append_dev(div, t0);
+    			append_dev(div, span0);
+    			append_dev(header, t2);
+    			append_dev(header, span1);
     		},
     		p: noop,
     		i: noop,
@@ -11786,19 +11815,22 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
-    	let progressbar;
+    	let header;
     	let t0;
+    	let progressbar;
+    	let t1;
     	let section;
     	let div2;
     	let div0;
     	let prompt;
-    	let t1;
+    	let t2;
     	let div1;
     	let usernav;
-    	let t2;
+    	let t3;
     	let div3;
     	let chart;
     	let current;
+    	header = new Header({ $$inline: true });
 
     	progressbar = new ProgressBar({
     			props: { currentStep: /*$counter*/ ctx[0] },
@@ -11819,34 +11851,36 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
-    			create_component(progressbar.$$.fragment);
+    			create_component(header.$$.fragment);
     			t0 = space();
+    			create_component(progressbar.$$.fragment);
+    			t1 = space();
     			section = element("section");
     			div2 = element("div");
     			div0 = element("div");
     			create_component(prompt.$$.fragment);
-    			t1 = space();
+    			t2 = space();
     			div1 = element("div");
     			create_component(usernav.$$.fragment);
-    			t2 = space();
+    			t3 = space();
     			div3 = element("div");
     			create_component(chart.$$.fragment);
     			attr_dev(div0, "id", "prompt");
-    			attr_dev(div0, "class", "svelte-yr89vb");
-    			add_location(div0, file, 66, 3, 1760);
+    			attr_dev(div0, "class", "svelte-5id4j6");
+    			add_location(div0, file, 67, 3, 1772);
     			attr_dev(div1, "id", "userNav");
-    			attr_dev(div1, "class", "svelte-yr89vb");
-    			add_location(div1, file, 73, 3, 1878);
+    			attr_dev(div1, "class", "svelte-5id4j6");
+    			add_location(div1, file, 74, 3, 1890);
     			attr_dev(div2, "id", "narrative");
-    			attr_dev(div2, "class", "svelte-yr89vb");
-    			add_location(div2, file, 65, 2, 1736);
+    			attr_dev(div2, "class", "svelte-5id4j6");
+    			add_location(div2, file, 66, 2, 1748);
     			attr_dev(div3, "id", "interactive");
-    			attr_dev(div3, "class", "svelte-yr89vb");
-    			add_location(div3, file, 78, 2, 1937);
+    			attr_dev(div3, "class", "svelte-5id4j6");
+    			add_location(div3, file, 79, 2, 1949);
     			attr_dev(section, "id", "tutorial");
-    			attr_dev(section, "class", "svelte-yr89vb");
-    			add_location(section, file, 64, 1, 1710);
-    			attr_dev(main, "class", "svelte-yr89vb");
+    			attr_dev(section, "class", "svelte-5id4j6");
+    			add_location(section, file, 65, 1, 1722);
+    			attr_dev(main, "class", "svelte-5id4j6");
     			add_location(main, file, 59, 0, 1654);
     		},
     		l: function claim(nodes) {
@@ -11854,16 +11888,18 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			mount_component(progressbar, main, null);
+    			mount_component(header, main, null);
     			append_dev(main, t0);
+    			mount_component(progressbar, main, null);
+    			append_dev(main, t1);
     			append_dev(main, section);
     			append_dev(section, div2);
     			append_dev(div2, div0);
     			mount_component(prompt, div0, null);
-    			append_dev(div2, t1);
+    			append_dev(div2, t2);
     			append_dev(div2, div1);
     			mount_component(usernav, div1, null);
-    			append_dev(section, t2);
+    			append_dev(section, t3);
     			append_dev(section, div3);
     			mount_component(chart, div3, null);
     			current = true;
@@ -11884,6 +11920,7 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
+    			transition_in(header.$$.fragment, local);
     			transition_in(progressbar.$$.fragment, local);
     			transition_in(prompt.$$.fragment, local);
     			transition_in(usernav.$$.fragment, local);
@@ -11891,6 +11928,7 @@ var app = (function () {
     			current = true;
     		},
     		o: function outro(local) {
+    			transition_out(header.$$.fragment, local);
     			transition_out(progressbar.$$.fragment, local);
     			transition_out(prompt.$$.fragment, local);
     			transition_out(usernav.$$.fragment, local);
@@ -11899,6 +11937,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
+    			destroy_component(header);
     			destroy_component(progressbar);
     			destroy_component(prompt);
     			destroy_component(usernav);
