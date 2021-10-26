@@ -35,13 +35,14 @@ $: if (!lineChecked) {
       <span id='lineFormula' class={color} >y = <strong>{slope.toFixed(2)}</strong>x + <strong>{yInt.toFixed(2)}</strong></span>
     {/if}
   </section>
-    
+   
+  {#if showResidualControls}
   <section class='resControls'>
-    {#if showResidualControls}
+    
       <Switch disabled={!lineChecked} bind:checked={resChecked} {color} />
       <span class='title'>Residuals</span>
-    {/if}
   </section>
+  {/if}
 </Card>
 
 <style>

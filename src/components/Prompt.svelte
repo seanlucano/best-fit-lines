@@ -3,70 +3,91 @@
 	import { createEventDispatcher } from 'svelte';
 	import Button from '../shared/Button.svelte';
 	import { sequence, counter } from '../stores/sequence.js';
-	
-	// export let counter;
 
-	const dispatch = createEventDispatcher();
-	
-	let showSubmit = true;
-	let showFeedback = false;
+	export let title = '';
+	export let prompt = '';
+	export let cta = '';
+
+	export let correct = 0;
+	export let questions = [];
+	export let feedback = '';
+	export let showFeedback = false;
 
 	let userChoice;
-	let correct;
+	let showSubmit = true;
+
+	$:{ if (!showFeedback) {
+		userChoice = undefined;
+		showSubmit = true;
+		}
+	}
 
 	function onSubmit() {
 		showSubmit = false;
 		showFeedback = true;
-		//dispatch('proceed');
-		//if (userChoice === sequence[counter].quiz.correct) {
-		//} else {	
-		//}
-	}
-
-	function onReset() {
-		showSubmit = true;
-		showFeedback = false;
-		//dispatch('reset');
+		console.log('showSubmit'+showSubmit);
+		console.log('showFeedback'+showFeedback);
 	}
 
 </script>
+<svelte:head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+	  rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+</svelte:head>
 
 {#key $counter}
 	<div id='title' in:fade>
-		<h2>{sequence[$counter].title}</h2>
+		<h2>{title}</h2>
 	</div>
 	<div in:fade id='text'>
-		{@html sequence[$counter].prompt}	
+		{@html prompt}	
 	</div>
 	<div in:fade id='cta'>
-		{@html sequence[$counter].cta}	
-	</div>
-	<div id='quiz'>
-		{#if sequence[$counter].quiz}
-			<form on:submit|preventDefault={onSubmit}>
-				{#each sequence[$counter].quiz.questions as question, i}
-					<label> 
-						<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
-						{question}
-					</label>
-				{/each}
-				<div class='submit'>
-					{#if showSubmit}
-						<Button type='submit' color='white'>Submit</Button>
-					{/if}
-				</div>
-				<div class='feedback'>
+		<i class="material-icons-round">
+			ads_click
+		</i>
+		{@html cta}
+		<div id='quiz'>
+			{#if sequence[$counter].quiz}
+				<form on:submit|preventDefault={onSubmit}>
+					{#each questions as question, i}
+						<label> 
+							{#if showFeedback}
+								{#if i == correct}
+									<i 
+									class='feedbackIcon material-icons-outlined
+									correct'>
+									check
+									</i>
+								{:else if i == userChoice && i != correct}
+									<i 
+									class='feedbackIcon material-icons-outlined
+									incorrect'>
+									close
+									</i>
+								{/if}
+							{/if}
+							<input bind:group={userChoice} name='quiz' type='radio' value='{i}'>
+								{question}
+						</label>
+					{/each}
+					<div class='submit'>
+						{#if showSubmit}
+							<Button type='submit' color='white'>Submit</Button>
+						{/if}
+					</div>
 					{#if showFeedback}
-					{@html sequence[$counter].quiz.feedback}
-						<!-- <Button 
-						type='reset'
-						on:click={onReset}
-						_class='secondary'>Try again</Button> -->
+						<div in:fade class='feedback'>
+							{@html feedback}
+						</div>
 					{/if}
-				</div>
-			</form>
-		{/if}
+				</form>
+			{/if}
+		</div>	
 	</div>
+	
 {/key}
 
 <style>
@@ -75,12 +96,21 @@
 	}
 
 	#cta {
-		padding-top: .5em;
+		padding: .75em 1.35em;
+		background-color:#DFEBF6;
+		border-radius: .5em;
+		box-shadow: 0 2px 7px lightgrey;
+		position: relative;
+	}
+
+	strong {
+		color: var(--heading);
 	}
 
 	#quiz label {
 		margin-bottom: .5em;
 		padding-left: .7em;
+		position: relative;
 	}
 
 	input {
@@ -95,13 +125,38 @@
 	}
 
 	.submit, .feedback {
-		margin-top: .7em;
+		margin-top: 1em;
 		text-align: center;
 	}
 
 	.feedback {
-		color: var(--accent);
+		color: var(--heading);
 	}
+
+	.correct {
+		color: green;
+		position: absolute;
+		top: -.15em;
+		left: -.4em;
+	}
+
+	.incorrect {
+		color: red;
+		position: absolute;
+		bottom: 0em;
+		left: -.4em;
+	}
+
+	.material-icons-round {
+		font-size: 1.75em;
+		padding: 3px;
+		position: absolute;
+		background: white;
+		border-radius: 50%;
+		top: -5px;
+		left: -5px;
+		color: var(--emphasis);
+    }
 	
 </style>
 	

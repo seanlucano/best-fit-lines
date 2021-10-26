@@ -7,7 +7,7 @@
 	import { regressionLinear } from 'd3-regression';
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	import * as easings from 'svelte/easing';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	
 	import { sequence, counter } from '../stores/sequence.js'
 	import { member, points } from '../stores/data.js';
@@ -22,6 +22,8 @@
 	import Residuals from './Residuals.svelte';
 	import SingleResidual from './SingleResidual.svelte';
 	import ResidualsTable from './ResidualsTable.svelte';
+	import PredictTooltip from './PredictTooltip.svelte';
+	import Card from '../shared/Card.svelte';
 
 
 	
@@ -33,7 +35,9 @@
 		showUserLineControls, 
 		showRegressionLineControls,
 		showResidualControls,
+		showHighlighting,
 		showSingleResidual,
+		showPredictTooltip,
 		showRegressionResiduals, 
 		showUserResiduals,
 		showResidualsTable} = sequence[$counter])
@@ -43,93 +47,97 @@
 	let width = 600;
 	let height = 400;
 	
+	$: console.log(width, height);
 
 	// chart margin
-	const margins = { top: 20, right: 20, bottom: 50, left: 50 };
+	const margins = { top: 20, right: 25, bottom: 65, left: 50 };
 
 
 	// MATHS
 	// array range
 	const [minX, maxX] = extent(points[$member],(d) => d.x);
 	const [minY, maxY] = extent(points[$member],(d) => d.y);
-
-	  
+	
+	
 	// scales
 	$: xScale = scaleLinear()
-		.domain([0, 20])
+		.domain([0, 16])
 		.range([margins.left, width - margins.right]);
 
 	$: yScale = scaleLinear()
-		.domain([0, 15])
+		.domain([0, 14])
 		.range([height - margins.bottom, margins.top]);
 
 	// ticks
 	$: xTicks = width > 360 ?
-		[0, 4, 8, 12, 16, 20] :
-		[0, 10, 20];
+		[0, 2, 4, 6, 8, 10, 12, 14, 16] :
+		[0, 4, 8, 16];
 
 	$: yTicks = height > 180 ?
-		[0, 3, 6, 9, 12, 15] :
-		[0, 5, 15];
+	[0, 2, 4, 6, 8, 10, 12, 14] :
+		[0, 4, 8];
 
 
 	// based on the user line, returns a y value for a given x value. Re-runs anytime userLineStore changes
 	$: userLinePredict = function(x) { return $userLineStore.m * x + $userLineStore.b;}
 
 	// responsiveness
-	onMount(resize);
-	afterUpdate( () => {
-		resize();
-	});
+	// const resize = () => {
+	// 	({ width, height } = svg.getBoundingClientRect());
+	// 	console.log(width, height);
+	// }
 
-	function resize() {
-		({ width, height } = svg.getBoundingClientRect());
-	}
+	// onMount(() => resize() ); 
 
-
-	//STATE CHANGE LOGIC
+	// afterUpdate( () => resize() );
 	
 	// changing datasets...will come back to this later
-
 	//tweening function
 	// const tweenedPoints = tweened(points, {
 	// 	delay: 0,
 	// 	duration: 750,
 	// 	easing: easings.cubicOut 
 	// });
-
 	// function setTween(key) {
 	// 	tweenedPoints.set(data[key]);
 	// }
-
 	// $: setTween(member)
 
+	// seperating residuals slightly when both lines are present 
 	let translating = false;
+	let singleTranslating = false;
 	
 	$: {
 		if(showRegressionResiduals === true && showUserResiduals === true) {
 			translating = true;
-		} else if (showSingleResidual && showUserLine && showRegressionLine) {
-			translating = true;
 		} else {
 			translating = false;
 		}
+
+		if (showSingleResidual && showUserLine && showRegressionLine) {
+			singleTranslating = true;
+		} else {
+			singleTranslating = false;
+		}
 	}
 
+	// highlighing related elements on click
 	let highlightId;
+	let clickedElement;
 	const highlight = (event) => {
-		highlightId = event.target.id;
-		console.log(event.target);
+		if (showHighlighting) {
+			highlightId = event.target.id;
+			clickedElement = event.target;
+		}
 	}
 
 	const removeHighlights = (event) => {
 		highlightId = undefined;
-		console.log(event.target);
 	}
 
 </script>
 
-<svelte:window on:resize='{resize}'/>
+<!-- <svelte:window on:resize='{resize}'/> -->
 
 <div id="controls">
 	{#if showUserLineControls}
@@ -161,7 +169,7 @@
 </div>
 
 {#if showResidualsTable}
-	<div id='residualsTable'>
+	<div id='residualsTable'>	
 		<ResidualsTable 
 			on:click={highlight}
 			{highlightId}
@@ -169,13 +177,29 @@
 			{showUserResiduals}
 			userLinePredict={userLinePredict}
 			bestFitLinePredict={$regressionLineStore.predict}
-		/>
+		/>	
 	</div>
+{/if}
+{#if showPredictTooltip}
+	<Card>
+		{#if highlightId === undefined}
+			<p style='background-color: #DFEBF6; padding: 1em;border-radius: 5px;'><strong>Click on any point to see an explanation of the the residual cost here.</strong></p>
+		{:else}
+			<PredictTooltip 
+				{showUserLine}
+				{showRegressionLine}
+				userLinePredict={userLinePredict}
+				bestFitLinePredict={$regressionLineStore.predict}
+				{...points[$member][highlightId]} 
+				{highlightId}
+			/>
+		{/if}
+	</Card>
 {/if}
 
 
 
-<div id='chart'>
+<div bind:offsetWidth={width} bind:offsetHeight={height} id='chart'>
 	
 	<svg bind:this={svg} on:click|self={removeHighlights}>
 		
@@ -183,7 +207,7 @@
 			{#each yTicks as tick}
 			<Axis axisType='yAxis' translate='translate(0, {yScale(tick)})' x1='{xScale(0)}' x2='{xScale(extent(xTicks)[1])}' x='{margins.left - 8}' y='+4' text={tick}></Axis>
 			{/each}
-			<text text-anchor='middle' transform='translate(20,{height/2}) rotate(-90)'
+			<text text-anchor='middle' transform='translate(20,{height/2 - 20}) rotate(-90)'
 			>cost ($)<text>
 		</g>
 
@@ -192,7 +216,7 @@
 			{#each xTicks as tick}
 			<Axis axisType='xAxis' translate='translate({xScale(tick)},0)' y1='{yScale(0)}' y2='{yScale(extent(yTicks)[1])}' y='{height - margins.bottom + 16}' text={tick}></Axis>
 			{/each}
-			<text style='text-anchor:middle;' x={width/2 + margins.left} y={height - margins.bottom/2 + 15}
+			<text style='text-anchor:middle;' x={width/2 + 10} y={height - margins.bottom/2 + 8}
 			>donuts<text>
 		</g>
 		
@@ -202,6 +226,7 @@
 				{#each points[$member] as {x, y}, i}
 					<Circle
 						on:click={highlight}
+						{showHighlighting}
 						{highlightId}
 						cx={xScale(x)} 
 						cy={yScale(y)} 
@@ -214,17 +239,6 @@
 
 		<g class='regressionLine'> 
 			{#if showRegressionLine}
-				{#if showSingleResidual}
-				<SingleResidual
-					{translating}
-					on:click={highlight}
-					{highlightId}
-					groupId='regressionLineResiduals'
-					{xScale} {yScale} 
-					points={points[$member]} 
-					predict={$regressionLineStore.predict}   
-				/>
-				{/if}
 				{#if showRegressionResiduals}
 					<Residuals
 						{translating}
@@ -237,24 +251,11 @@
 					/>
 				{/if}
 				<RegressionLine {xScale} {yScale}/>
-				
 			{/if}
 		</g>
 
 		<g class='userLine'>
 			{#if showUserLine}
-				{#if showSingleResidual}
-					<SingleResidual
-						{translating}
-						on:click={highlight}
-						{highlightId}
-						groupId='userLineResiduals'
-						{xScale} {yScale} 
-						points={points[$member]} 
-						predict={userLinePredict}   
-					/>
-				{/if}
-			
 				{#if showUserResiduals}
 					<Residuals 
 						{translating}
@@ -268,10 +269,46 @@
 				{/if}
 			
 				<UserLine {xScale} {yScale} {svg} />
+	
 			{/if}
 		</g>
-	
+		<g class='singleResiduals'>
+			{#if showSingleResidual}
+				{#if showUserLine}
+					<g class='userLine'>
+						<SingleResidual
+							translating={singleTranslating}
+							on:click={highlight}
+							{highlightId}
+							groupId='userLineResidual'
+							{xScale} {yScale} 
+							points={points[$member]} 
+							predict={userLinePredict}   
+						/>
+					</g>
+				{/if}
+
+				{#if showRegressionLine}
+					<g class='regressionLine'>
+						<SingleResidual
+							translating={singleTranslating}
+							on:click={highlight}
+							{highlightId}
+							groupId='regressionLineResidual'
+							{xScale} {yScale} 
+							points={points[$member]} 
+							predict={$regressionLineStore.predict}   
+						/>
+					</g>
+				{/if}
+			
+			{/if}
+
+
+
+		</g>
 	</svg>
+	
 	
 	<!-- <h3>Select quartet member:</h3>
 	<div style='display:flex;'>
@@ -296,16 +333,18 @@
 		background-color: white;
 		border-radius: .5em;
 		min-width: 300px;
-		max-width: 960px;
+		/* max-width: 960px; */
 		min-height: 350px;
-		max-height: 800px;
-		transition: flex 1s linear;
+		/* max-height: 1200px; */
+		/* transition: flex 1s linear; */
+        box-shadow: 0 2px 7px lightgrey;
+        
 	}
 
 	svg {
 		width: 100%;
 		height: 100%;
-	}
+	} 
 
 	#controls {
 		display: grid;
@@ -319,9 +358,12 @@
 
 	.regressionLine {
 		stroke: var(--secondary);
+		fill: var(--secondary);
 	}
 
 	.userLine {
-		stroke: var(--primary)
+		stroke: var(--primary);
+		fill: var(--primary);
 	}
+
 </style>

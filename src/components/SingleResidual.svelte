@@ -6,6 +6,14 @@
     export let highlightId;
     export let translating;
     export let points;
+
+    let offset;
+
+   $: if (groupId === 'userLineResidual') {
+       offset = -50;
+   } else {
+    offset = 15;
+   }
     
 </script>
 
@@ -13,39 +21,68 @@
 
 <g id={groupId}>
     {#each points as {x, y}, i}
-        <line
-            id={groupId}
-            class:translated={translating}
-            class:highlighted={i == highlightId}
-            on:click
-            x1={xScale(x)}
-            y1={yScale(y)}
-            x2={xScale(x)}
-            y2={yScale(predict(x))}
-        >
-        </line>
+        <g class:translated={translating} class:hidden={i != highlightId}>
+            <line
+                id={i}
+                on:click
+                x1={xScale(x)}
+                y1={yScale(y)}
+                x2={xScale(x)}
+                y2={yScale(predict(x))}
+            >
+            </line>
+            <g transform='translate({(xScale(x)) + offset},{yScale((y + predict(x))/2)})'>
+                <rect
+                    transform='translate(-5,-20)'
+                    class:hidden={i != highlightId}
+                    width=50
+                    height={30}
+                    rx=8
+                ></rect>
+                <text
+                    id={i}
+                >{(y - predict(x)).toFixed(2)}</text>
+            </g>
+        </g>
     {/each}
 </g>
+
 <style>
 
     line {
-            stroke-width: 0;
-            opacity: 0;
-            
-        }
-
-    .highlighted {
-        opacity: 1; 
-        stroke-width: 2.5;
-        stroke-dasharray: 2,2;
+        stroke-width: 2;
+        stroke-dasharray: 2,2;   
+        opacity: 1;
+        transition: opacity, .5s;
+    }
+    
+    text {
+        font-size: 1em;
+        opacity: 1;
+        transition: opacity, .5s;
     }
 
-    #regressionLineResiduals .translated {
+    rect {
+        fill: var(--background-color);
+        fill-opacity: .85;
+        stroke: none;
+    }
+
+    rect, text {
+        z-index: 2;
+    }
+
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #regressionLineResidual .translated {
         transform: translate(2.5px, 0px);
         transition: transform, 0.5s;
     }
 
-    #userLineResiduals .translated {
+    #userLineResidual .translated {
         transform: translate(-2.5px, 0px);
         transition: transform, 0.5s;
     }

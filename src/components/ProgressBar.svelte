@@ -35,7 +35,7 @@ const setCounter = (event) => {
         <progress value={$progress}></progress>
         {#each steps as step, i}
             <li on:click={setCounter}  id='{i}' class:completed={i < currentStep} class:current={i === currentStep} style='width:{circleWidth}px'>
-                    {#if i < currentStep }
+                    {#if i <= currentStep }
                         <i transition:scale id={i} class="material-icons-round">done</i>
                     {/if}
             </li>
@@ -51,7 +51,8 @@ const setCounter = (event) => {
     
     #progressBar {
         background-color: var(background-color);
-        padding: 1em 2em;
+        margin: 1em;
+        /* padding: 1em; */
     }
 
 
@@ -61,9 +62,9 @@ const setCounter = (event) => {
         width: 100%;
         height: 4px;
         top: 40%;
-        border: none;
-        
-        
+        border: none; 
+        -webkit-appearance: none;
+        appearance: none;
     }
 
     progress::-webkit-progress-bar {
@@ -71,6 +72,10 @@ const setCounter = (event) => {
         }
   
     progress::-webkit-progress-value {
+            background-color: var(--black)
+        }
+    
+    progress::-moz-progress-bar {
             background-color: var(--black)
         }
 
@@ -82,7 +87,6 @@ const setCounter = (event) => {
 
 
     ol {
-        /* margin: 1em 4em; */
         padding: 0;
         margin: 0;
         list-style-type: none;
@@ -112,7 +116,6 @@ const setCounter = (event) => {
     .current {
         color: var(--seconday);
         border-color: var(--black);
-        border-style: dashed;
 
     }
     
@@ -121,28 +124,5 @@ const setCounter = (event) => {
         font-size: 1.2em;
         font-weight: bold;
     }
-
-    /* li:after {
-        content: "";
-        top: 38%;
-        width: calc(14.28% - 32px);
-        height: 3px;
-        background-color: darkgrey;
-        position: absolute;
-        z-index: -1;
-        transition: .4s ease;
-    } */
-
-    /* .past:after {
-        content: "";
-        top: 38%;
-        width: calc(14.28% - 32px);
-        height: 3px;
-        background-color: var(--seconday);
-        position: absolute;
-        z-index: 1;
-        transition: .4s ease;
-    } */
-
 
 </style>

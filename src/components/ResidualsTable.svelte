@@ -19,7 +19,9 @@ export let bestFitLinePredict;
 </script>
 
 <Card>
-    
+    <div class='title'>
+      <span><strong>Squared Residuals</strong></span> 
+    <span><strong>SSR</strong></span></div>
     <div id='user' class="residualsRow">
       {#if showUserResiduals}
         <ResidualValues {highlightId} on:click predict={userLinePredict}/>
@@ -48,6 +50,12 @@ export let bestFitLinePredict;
 
   #regression {
     color: var(--secondary);
+  }
+
+  .title {
+    padding: .5em;
+    display: flex;
+    justify-content: space-between;
   }
 
   

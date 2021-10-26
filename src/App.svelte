@@ -14,7 +14,7 @@
 	import Header from './components/Header.svelte';
 	import Footer from './components/Header.svelte';
 	import ProgressBar from './components/ProgressBar.svelte';
-	import { counter } from './stores/sequence.js'
+	import { sequence, counter } from './stores/sequence.js'
 
 	// let counter = 0;
 	
@@ -38,6 +38,20 @@
 	// 	nextDisabled = true;
 	// }
 
+	//check for non supported browsers
+	const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	const isIe = navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1;
+		
+	if (isSafari || isIe) {
+			alert(`
+This interactive tutorial is curretly supported on Google Chrome and Firefox with a mouse-enabled device.
+			
+Support for Safari, iPad, and other touchscreen deivces is coming soon! 
+
+Please visit again on a supported browser with a mouse.`);
+        }
+
+
 
 </script>
 
@@ -51,8 +65,12 @@
 	<section id='tutorial'>
 		<div id='narrative'>
 			<div id='prompt'>
-				<Prompt />
+				<Prompt 
+					{...sequence[$counter].quiz}
+					{...sequence[$counter]}
+				/>
 			</div>
+			
 			<div id="userNav">
 				<UserNav />
 			</div>
@@ -75,42 +93,47 @@
 	--accent: #ffa600;
 	--alert: hsl(333, 100%, 45%);
 	--black: #000;
-	--header-height: 2em;
+	--emphasis: #4433FF;
+	--heading: #2C0B8E;
+	--header-height: .5em;
+	--interactive: #DFEBF6;
 	}
 
 	main {
-		padding: 1em;
-		height: calc(100vh - 5em);
+		height: 100vh;
 	}
 
 	#tutorial {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1fr 1.5fr;
 		grid-gap: 1em;
-		height: calc(100% - 4em);
+		height: calc(100vh - 5em);
+		margin: 1em;
 	}
 
 	#prompt {
 		flex: 1;
-		overflow: scroll;
+		padding: 1em;
+		overflow: auto;
 	}
 
 	#narrative {
-		border: 2px solid lightgrey;
-		border-radius: 5px;
+		height: 100%;
+		overflow: hidden;
+		border-radius: .5em;
 		display: flex;
-		gap: .5em;
 		flex-direction: column;
-		justify-content: space-between;
 		min-width: 200px;
 		background-color: white;
+		box-shadow: 0 2px 7px lightgrey;
 
-		
 	}
 
 	#userNav {
-		margin: 0 1em 0 1em;
+		padding:1em;
+		background-color: var(--background-color);
 	}
+
 
 	#interactive {
 		height: 100%;
