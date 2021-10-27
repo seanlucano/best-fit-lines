@@ -11372,7 +11372,7 @@ var app = (function () {
     			img = element("img");
     			t0 = space();
     			span0 = element("span");
-    			span0.textContent = "MSQM Statistical Modeling";
+    			span0.textContent = "Statistical Modeling";
     			t2 = space();
     			span1 = element("span");
     			span1.textContent = "Best fit lines";
@@ -11383,7 +11383,7 @@ var app = (function () {
     			attr_dev(div, "class", "course svelte-12jef6z");
     			add_location(div, file$2, 5, 4, 34);
     			attr_dev(span1, "class", "title");
-    			add_location(span1, file$2, 9, 4, 157);
+    			add_location(span1, file$2, 9, 4, 152);
     			attr_dev(header, "class", "svelte-12jef6z");
     			add_location(header, file$2, 4, 0, 21);
     		},

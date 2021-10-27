@@ -5,7 +5,7 @@
 <header>
     <div class="course">
         <img src="images/lsl_logo.png">
-        <span>MSQM Statistical Modeling</span>
+        <span>Statistical Modeling</span>
     </div>
     <span class="title">Best fit lines</span>
 </header>
