@@ -208,7 +208,7 @@
 			<Axis axisType='yAxis' translate='translate(0, {yScale(tick)})' x1='{xScale(0)}' x2='{xScale(extent(xTicks)[1])}' x='{margins.left - 8}' y='+4' text={tick}></Axis>
 			{/each}
 			<text text-anchor='middle' transform='translate(20,{height/2 - 20}) rotate(-90)'
-			>cost ($)<text>
+			>dollars<text>
 		</g>
 
 		
