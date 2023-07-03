@@ -7,7 +7,7 @@
         <img src="images/lsl_logo.png">
         <span>Statistical Modeling</span>
     </div>
-    <span class="title">Linear Regression</span>
+    <span class="title">Linear Regression: Least Squares</span>
 </header>
 
 <style>

@@ -4,7 +4,7 @@ export const counter = writable(0);
 
 export const sequence = [
     {	
-        title: 'Linear regression',
+        title: 'Linear regression: The least squares method',
         prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
         <p>Just for fun, let's say each transaction is for some number of donuts on the x axis for some amount of dollars on the y axis.</p>`,	
         cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
