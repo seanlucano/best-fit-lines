@@ -4,7 +4,7 @@ export const counter = writable(0);
 
 export const sequence = [
     {	
-        title: 'Welcome to best fit lines!',
+        title: 'Linear regression',
         prompt: `<p>Imagine each circle you see represents a single sales transaction.</p>
         <p>Just for fun, let's say each transaction is for some number of donuts on the x axis for some amount of dollars on the y axis.</p>`,	
         cta: `<p><strong>What best describes the dollars to donuts relationship?</p>`,
@@ -58,7 +58,7 @@ export const sequence = [
         showFeedback: false
         
     },
-    {	title: 'Residuals aka "Errors"',
+    {	title: 'Residuals aka "errors"',
         prompt:` <p>Each points tells us about an <strong>observed</strong> transaction.  Our line, on the other hand, is making a <strong>prediction</strong> about a future transaction. If you pick any number of donuts (x), the line will tell us what cost (y) to expect.</p>
         <p>The distance between the <strong>observed</strong> cost and the line's <strong>predicted</strong> cost is the <strong>residual (or error)</strong>  value for the line at each point.</p>	
         `,
@@ -106,7 +106,7 @@ export const sequence = [
         
     },
 
-    {	title: 'Sum of Squares Regression',
+    {	title: 'Sum of squares regression',
         prompt:`<p> So, let's come back to our original question...which line is <strong>best</strong>?</p> <p>Based on what we've learned so far, the best fitting line would also be the line that has the <strong>least sum of squared residuals</strong>.
         <p>This is why the best fit line is also called the <strong>least squares line</strong>.</p><p>This entire process is commonly known as <strong>linear regression</strong> and is a powerful tool in making predictions!<p/>`,	
          cta: `<p><strong>You may be noticing that when you minimize the SSR for your line, your line matches the best fit line exactly!</strong></p> 

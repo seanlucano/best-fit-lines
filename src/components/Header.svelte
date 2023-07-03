@@ -7,7 +7,7 @@
         <img src="images/lsl_logo.png">
         <span>Statistical Modeling</span>
     </div>
-    <span class="title">Best fit lines</span>
+    <span class="title">Linear Regression</span>
 </header>
 
 <style>
